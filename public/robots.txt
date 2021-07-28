@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://Sunnnner.github.io/sitemap.xml
