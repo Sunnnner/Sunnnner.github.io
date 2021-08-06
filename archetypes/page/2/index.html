@@ -20,7 +20,7 @@
 <link rel=mask-icon href=https://pythongo.wiki/safari-pinned-tab.svg>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.86.0">
+<meta name=generator content="Hugo 0.87.0">
 <link rel=alternate type=application/rss+xml href=https://pythongo.wiki/archetypes/index.xml>
 <script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="Archetypes">
 <meta property="og:description" content>
@@ -70,6 +70,19 @@
 <header class=page-header><div class=breadcrumbs><a href=https://pythongo.wiki/>Home</a></div>
 <h1>Archetypes</h1>
 </header>
+<article class=post-entry>
+<header class=entry-header>
+<h2>K8s基础操作</h2>
+</header>
+<section class=entry-content>
+<p>k8s获取所有运行的podskubectl get pods –all-namespaces -o wide
+获取当前集群名称kubectl get pods -o wide
+当前etcd中的注册的宿主机的pod地址网段信息etcdctl ls /kube-centos/network/subnets
+而每个node上的Pod子网是根据我们在安装flannel时配置来划分的，在etcd中查看该配置etcdctl get /kube-centos/network/config</p>
+</section>
+<footer class=entry-footer>November 2, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to K8s基础操作" href=https://pythongo.wiki/archetypes/k8s%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/></a>
+</article>
 <article class=post-entry>
 <header class=entry-header>
 <h2>Docker添加root权限省去sudo</h2>
@@ -207,31 +220,6 @@ os.path.samefile(path1, path2) 判断两个路径是否指向同一个文件</p>
 </section>
 <footer class=entry-footer>October 8, 2019&nbsp;·&nbsp;0 min&nbsp;·&nbsp;whitek</footer>
 <a class=entry-link aria-label="post link to K8s Install" href=https://pythongo.wiki/archetypes/k8s-install/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Docker操作</h2>
-</header>
-<section class=entry-content>
-<p>docker build 打包docker 项目
-docker-compose up 启动整体项目(docker-compose.yml文件)
-docker-compose down 强制停止docker运行的所有项目
-1、删除所有容器 docker rm docker ps -a -q
-2、删除所有镜像d ocker rmi docker images -q
-3、按条件删除镜像 没有打标签docker rmi docker images -q | awk '/^&lt;none>/ { print $3 }'
-镜像名包含关键字docker rmi –force docker images | grep doss-api | awk '{print $3}' //其中doss-api为关键字
-　docker-compose.yml
-service 项目
-image docker镜像名字，若本地没有会尝试在docker服务器拉取
-restart 是否stop后重启
-command 启动路径
-volumes 将docker容器文件夹与本地文件夹映射挂载 [本地:docker文件夹]
-environment 运行携带的参数
-ports运行端口
-links 关联项目，关联之后内部访问</p>
-</section>
-<footer class=entry-footer>October 8, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
-<a class=entry-link aria-label="post link to Docker操作" href=https://pythongo.wiki/archetypes/docker%E6%93%8D%E4%BD%9C/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

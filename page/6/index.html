@@ -20,7 +20,7 @@
 <link rel=mask-icon href=https://pythongo.wiki/safari-pinned-tab.svg>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.86.0">
+<meta name=generator content="Hugo 0.87.0">
 <link rel=alternate type=application/rss+xml href=https://pythongo.wiki/index.xml>
 <script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="whiteKBlog">
 <meta property="og:description" content>
@@ -67,6 +67,16 @@
 </nav>
 </header>
 <main class=main>
+<article class=post-entry>
+<header class=entry-header>
+<h2>深度优先遍历二叉树</h2>
+</header>
+<section class=entry-content>
+<p>class TreeNode(object): #定义二叉树类 def init(self,val,left=None,right=None): self.val = val self.left = left self.right = right class BinaryTree(object): def __init__(self,root=None): self.root = root def preScan(self,retList, node): #先序遍历：先跟、再左、后右 if node != None: retList.append(node.val) self.preScan(retList, node.left) self.preScan(retList, node.right) return retList def midScan(self, retList, node): #中序遍历：先左、再跟、后右 if node != None: self.midScan(retList, node.left) retList.append(node.val) self.midScan(retList, node.right) return retList def postScan(self, retList, node): #后序遍历：先左、再右、后跟 if node != None: self.postScan(retList, node.left) self.postScan(retList, node.right) retList.append(node.val) return retList if __name__ == "__main__": root = TreeNode(50) root....</p>
+</section>
+<footer class=entry-footer>January 1, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to 深度优先遍历二叉树" href=https://pythongo.wiki/archetypes/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/></a>
+</article>
 <article class=post-entry>
 <header class=entry-header>
 <h2>Python字典按值排序</h2>
@@ -159,16 +169,6 @@ class A(object): # 定义类属性记录实例化对象 __instance = None # 创�
 </section>
 <footer class=entry-footer>September 5, 2018&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
 <a class=entry-link aria-label="post link to Python单例" href=https://pythongo.wiki/archetypes/python%E5%8D%95%E4%BE%8B/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Python多态</h2>
-</header>
-<section class=entry-content>
-<p>对象的多种形态 比如说动物，动物分为很多种但是动物都会吃东西，但是动物吃的东西又不一样 # 有三种动物：狗、猫、猪， # 父类：动物、 # 子类：狗、猫、猪 可以添加子类自己的方法，自己扩展 # 动物的属性：动物的名字 # 动物的方法是eat（就是打印自己的名字） # 有一个饲养员：饲养员 # 饲养员的方法：feed_animal(需要饲养的动物) # 函数的实现是（其实就是调用动物的eat方法） class Animal(object): name="动物" def eat(self): print("%s会吃东西"%(self.name)) class Dog(Animal): def eat(self): print("小狗吃骨头") class Cat(Animal): def eat(self): print("小猫爱吃鱼") class Pig(Animal): def eat(self): print("小猪不知道吃什么") class Breeder(object): def feed_animal(self,animal): animal.eat() breeder=Breeder() dog=Dog() breeder.feed_animal(dog) cat=Cat() breeder.feed_animal(cat) pig=Pig() breeder.feed_animal(pig) </p>
-</section>
-<footer class=entry-footer>September 4, 2018&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
-<a class=entry-link aria-label="post link to Python多态" href=https://pythongo.wiki/archetypes/python%E5%A4%9A%E6%80%81/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

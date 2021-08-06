@@ -20,7 +20,7 @@
 <link rel=mask-icon href=https://pythongo.wiki/safari-pinned-tab.svg>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.86.0">
+<meta name=generator content="Hugo 0.87.0">
 <link rel=alternate type=application/rss+xml href=https://pythongo.wiki/index.xml>
 <script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="whiteKBlog">
 <meta property="og:description" content>
@@ -67,6 +67,16 @@
 </nav>
 </header>
 <main class=main>
+<article class=post-entry>
+<header class=entry-header>
+<h2>Shell 如何传参</h2>
+</header>
+<section class=entry-content>
+<p># how to pass arguments to shell script # 利用echo打印你传入的参数 # 上面可以看到$0表示 我们运行sh文件的语句 ./demo.sh，这个不是一个我们提供的真实的参数。 # echo $0 $1 $2 $3 # 换成args 数组方式去存储参数列表 args=("$@") # echo ${args[0]} ${args[1]} ${args[2]} ${args[3]} # 更简单的方法 $@可以表示传入的参数列表，直接打印出来 # echo $@ # 如何计算参数的个数 # $#可以存储参数的个数值 echo $# </p>
+</section>
+<footer class=entry-footer>August 18, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to Shell 如何传参" href=https://pythongo.wiki/archetypes/shell-%E5%A6%82%E4%BD%95%E4%BC%A0%E5%8F%82/></a>
+</article>
 <article class=post-entry>
 <header class=entry-header>
 <h2>Shell 获取用户输入</h2>
@@ -240,16 +250,6 @@ IO密集型->需要网络功能，大量的事件等待网络数据的到来–>
 </section>
 <footer class=entry-footer>February 1, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
 <a class=entry-link aria-label="post link to 广度优先遍历二叉树" href=https://pythongo.wiki/archetypes/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>深度优先遍历二叉树</h2>
-</header>
-<section class=entry-content>
-<p>class TreeNode(object): #定义二叉树类 def init(self,val,left=None,right=None): self.val = val self.left = left self.right = right class BinaryTree(object): def __init__(self,root=None): self.root = root def preScan(self,retList, node): #先序遍历：先跟、再左、后右 if node != None: retList.append(node.val) self.preScan(retList, node.left) self.preScan(retList, node.right) return retList def midScan(self, retList, node): #中序遍历：先左、再跟、后右 if node != None: self.midScan(retList, node.left) retList.append(node.val) self.midScan(retList, node.right) return retList def postScan(self, retList, node): #后序遍历：先左、再右、后跟 if node != None: self.postScan(retList, node.left) self.postScan(retList, node.right) retList.append(node.val) return retList if __name__ == "__main__": root = TreeNode(50) root....</p>
-</section>
-<footer class=entry-footer>January 1, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
-<a class=entry-link aria-label="post link to 深度优先遍历二叉树" href=https://pythongo.wiki/archetypes/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

@@ -20,7 +20,7 @@
 <link rel=mask-icon href=https://pythongo.wiki/safari-pinned-tab.svg>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.86.0">
+<meta name=generator content="Hugo 0.87.0">
 <link rel=alternate type=application/rss+xml href=https://pythongo.wiki/index.xml>
 <script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="whiteKBlog">
 <meta property="og:description" content>
@@ -82,6 +82,20 @@
 </a>
 </div>
 </footer>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>Ubuntu20.04 LTS编译python3.7</h2>
+</header>
+<section class=entry-content>
+<p>ubuntu20.04 LTS编译 python3.7.1 安装编译前依赖包 sudo apt-get install -y build-essential libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev zlib1g-dev gcc make 编译前配置 sudo ./configure --enable-optimizations --prefix=/usr/local/bin/python3.7
+–prefix指定安装位置
+编译安装 make
+sudo make install
+安装virtualenv虚拟环境来管理python版本 sudo apt install python3-pip pip install virtualenv pip install virtualenvwrapper mkdir .virtualenvs vim .zhsrc export WORKON_HOME=$HOME/.virtualenvs export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3 export VIRTUALENVWRAPPER_VIRTUALENV=~/.local/bin/virtualenv source ~/.local/bin/virtualenvwrapper.sh source ....</p>
+</section>
+<footer class=entry-footer>August 6, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to Ubuntu20.04 LTS编译python3.7" href=https://pythongo.wiki/archetypes/ubuntu-install-python3.7/></a>
 </article>
 <article class=post-entry>
 <header class=entry-header>
@@ -190,19 +204,6 @@ minikube start启动
 </section>
 <footer class=entry-footer>November 3, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
 <a class=entry-link aria-label="post link to Github Page自定义域名开启https" href=https://pythongo.wiki/archetypes/github-page%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%BC%80%E5%90%AFhttps/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>K8s基础操作</h2>
-</header>
-<section class=entry-content>
-<p>k8s获取所有运行的podskubectl get pods –all-namespaces -o wide
-获取当前集群名称kubectl get pods -o wide
-当前etcd中的注册的宿主机的pod地址网段信息etcdctl ls /kube-centos/network/subnets
-而每个node上的Pod子网是根据我们在安装flannel时配置来划分的，在etcd中查看该配置etcdctl get /kube-centos/network/config</p>
-</section>
-<footer class=entry-footer>November 2, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
-<a class=entry-link aria-label="post link to K8s基础操作" href=https://pythongo.wiki/archetypes/k8s%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

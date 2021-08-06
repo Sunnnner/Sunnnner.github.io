@@ -20,7 +20,7 @@
 <link rel=mask-icon href=https://pythongo.wiki/safari-pinned-tab.svg>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.86.0">
+<meta name=generator content="Hugo 0.87.0">
 <link rel=alternate type=application/rss+xml href=https://pythongo.wiki/index.xml>
 <script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="whiteKBlog">
 <meta property="og:description" content>
@@ -67,6 +67,31 @@
 </nav>
 </header>
 <main class=main>
+<article class=post-entry>
+<header class=entry-header>
+<h2>Docker操作</h2>
+</header>
+<section class=entry-content>
+<p>docker build 打包docker 项目
+docker-compose up 启动整体项目(docker-compose.yml文件)
+docker-compose down 强制停止docker运行的所有项目
+1、删除所有容器 docker rm docker ps -a -q
+2、删除所有镜像d ocker rmi docker images -q
+3、按条件删除镜像 没有打标签docker rmi docker images -q | awk '/^&lt;none>/ { print $3 }'
+镜像名包含关键字docker rmi –force docker images | grep doss-api | awk '{print $3}' //其中doss-api为关键字
+　docker-compose.yml
+service 项目
+image docker镜像名字，若本地没有会尝试在docker服务器拉取
+restart 是否stop后重启
+command 启动路径
+volumes 将docker容器文件夹与本地文件夹映射挂载 [本地:docker文件夹]
+environment 运行携带的参数
+ports运行端口
+links 关联项目，关联之后内部访问</p>
+</section>
+<footer class=entry-footer>October 8, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to Docker操作" href=https://pythongo.wiki/archetypes/docker%E6%93%8D%E4%BD%9C/></a>
+</article>
 <article class=post-entry>
 <header class=entry-header>
 <h2>Django Minio开发过程</h2>
@@ -179,21 +204,6 @@ Chromedriver
 </section>
 <footer class=entry-footer>September 9, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
 <a class=entry-link aria-label="post link to 什么是跨域及解决办法" href=https://pythongo.wiki/archetypes/%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Django_rest_framework</h2>
-</header>
-<section class=entry-content>
-<p>为什么要使用Django_rest_framework 能自动生成restful规范的API
-代码简介 并且开发速度快 Django_rest_framework框架有什么组件 序列化组件：serializers 对queryset序列化及对请求数据格式校验
-路由组件：routers 进行路由开发 视图组件： ModelViewSet 帮助开发者提供了一些类。 并在类中提供了多个方法 认证组件： 写一个类并注册到选线类（authentication_classes）， 再类的authticate方法中编写认证逻辑 权限组件：写一个类并注册到权限类（permission_classes）, 在类中的has_permission方法中编写认证逻辑 频率限制： 写一个类并注册到频率类（throttle_classes）, 在类中的allow_request/wait方法中编写认证逻辑 解析器 选择对数据解析的类， 在解析类中注册(parser_classes) 渲染器 定义数据如何渲染到页面上， 在渲染器类中注册(render_classes) 分页 对获取到的数据进行分页处理 pagination_class 版本 版本控制用来在不同的客户端使用不同的行为 在URL中设置version参数， 用户请求时候传入参数， 在request.version中获取版本, 根据版本不同，做不同处理 django rest framework框架的认证流程 用户请求走进来进入APIView， 初始化了默认的认证方式
-进入APIView.dispatch()方法， initial方法调用了request.user 如果我们配置了认证类， 走我们自己认证类中的authentication方法 django rest framework如何实现的用户访问频率控制 使用ip/用户账户作为建， 每次访问时间作为值， 构造一个字典数据， 存起来， 每次访问对时间列表进行判断
-把没有访问的超时的删掉。 在计算列表剩余的元素就能做到频率限制了 匿名账户， 使用IP控制， 但是无法完全控制， 因为用户可以更换代理IP 登陆用户使用账号控制，但是如果有很多账号，也无法限制 如何实现用户登陆认证 cookice session
-token 登陆成功后生成的加密字符串 JWT： json wed token 缩写， 他讲用户信息加密到token中 服务器不保存任何用户信息， 服务器通过使用保存的密匙来验证token的正确性 rest_framework序列化组件的作用,以及一些外键关系的钩子方法...</p>
-</section>
-<footer class=entry-footer>September 8, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
-<a class=entry-link aria-label="post link to Django_rest_framework" href=https://pythongo.wiki/archetypes/django_rest_framework/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

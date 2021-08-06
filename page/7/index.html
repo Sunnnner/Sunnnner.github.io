@@ -20,7 +20,7 @@
 <link rel=mask-icon href=https://pythongo.wiki/safari-pinned-tab.svg>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.86.0">
+<meta name=generator content="Hugo 0.87.0">
 <link rel=alternate type=application/rss+xml href=https://pythongo.wiki/index.xml>
 <script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="whiteKBlog">
 <meta property="og:description" content>
@@ -67,6 +67,16 @@
 </nav>
 </header>
 <main class=main>
+<article class=post-entry>
+<header class=entry-header>
+<h2>Python多态</h2>
+</header>
+<section class=entry-content>
+<p>对象的多种形态 比如说动物，动物分为很多种但是动物都会吃东西，但是动物吃的东西又不一样 # 有三种动物：狗、猫、猪， # 父类：动物、 # 子类：狗、猫、猪 可以添加子类自己的方法，自己扩展 # 动物的属性：动物的名字 # 动物的方法是eat（就是打印自己的名字） # 有一个饲养员：饲养员 # 饲养员的方法：feed_animal(需要饲养的动物) # 函数的实现是（其实就是调用动物的eat方法） class Animal(object): name="动物" def eat(self): print("%s会吃东西"%(self.name)) class Dog(Animal): def eat(self): print("小狗吃骨头") class Cat(Animal): def eat(self): print("小猫爱吃鱼") class Pig(Animal): def eat(self): print("小猪不知道吃什么") class Breeder(object): def feed_animal(self,animal): animal.eat() breeder=Breeder() dog=Dog() breeder.feed_animal(dog) cat=Cat() breeder.feed_animal(cat) pig=Pig() breeder.feed_animal(pig) </p>
+</section>
+<footer class=entry-footer>September 4, 2018&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to Python多态" href=https://pythongo.wiki/archetypes/python%E5%A4%9A%E6%80%81/></a>
+</article>
 <article class=post-entry>
 <header class=entry-header>
 <h2>Django定义USER四中方式</h2>
@@ -171,16 +181,6 @@ app_private_key_string.pem -----BEGIN RSA PRIVATE KEY----- 私钥内容 -----END
 </section>
 <footer class=entry-footer>June 1, 2018&nbsp;·&nbsp;3 min&nbsp;·&nbsp;whitek</footer>
 <a class=entry-link aria-label="post link to Django用户模块" href=https://pythongo.wiki/archetypes/django%E7%94%A8%E6%88%B7%E6%A8%A1%E5%9D%97/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Redis配置</h2>
-</header>
-<section class=entry-content>
-<p>1) 绑定IP地址,看业务开放 bind 0.0.0.0 2)Redis默认不是以守护进程的方式运行，可以通过该配置项修改，使用yes启用守护进程，设置为no daemonize no 3)保护模式 protected-mode no # 检查启动状态命令 ps -ef|grep redis |grep 6379 mac以配置文件启动 sudo redis-server /usr/local/etc/redis.conf Ubuntu以配置文件启动 sudo redis-server /etc/redis/redis.conf </p>
-</section>
-<footer class=entry-footer>May 31, 2018&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
-<a class=entry-link aria-label="post link to Redis配置" href=https://pythongo.wiki/archetypes/redis%E9%85%8D%E7%BD%AE/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
