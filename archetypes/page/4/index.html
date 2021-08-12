@@ -72,6 +72,17 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>什么是跨域及解决办法</h2>
+</header>
+<section class=entry-content>
+<p>跨域 浏览器从一个域名的网页去请求另一个域名的资源时,浏览器处于安全的考虑,不允许不同源的请求 同源策略：协议相同， 域名相同， 端口相同 处理办法： 通过JSONP跨域 JSON是一种数据交换格式 JSONP是一种非官方的跨域数据交互协议 JSONP是包含在函数调用中的json sjonp是包含在函数调用中的json script标签不收同源策略的影响，手动创建一个script标签，传递URL， 同时传入一个回调函数的名字 服务器得到名字后， 返回数据时会用这个函数名来包裹数据， 客户端获取到数据之后， 立即吧script标签删掉 cors：跨域资源共享 使用自定义的HTTP头部允许浏览器和服务器相互通信 如果是简单请求,直接设置允许访问的域名： 允许你的域名来获取我的数据 response[‘Access-Control-Allow-Origin‘] = “*” 如果是复杂请求,首先会发送options请求做预检,然后再发送真正的PUT/POST….请求 因此如果复杂请求是PUT等请求,则服务端需要设置允许某请求 如果复杂请求设置了请求头，则服务端需要设置允许某请求头 简单请求： 一次请求 非简单请求： 两次请求，在发送数据之前会先发一次请求用于做“预检”， 只有“预检”通过后才再发送一次请求用于数据传输。 只要同时满足以下两大条件，就属于简单请求。 (1) 请求方法是以下三种方法之一：HEAD GET POST (2)HTTP的头信息不超出以下几种字段： Accept Accept-Language Content-Language Last-Event-ID Content-Type：只限于三个值application/x-www-form-urlencoded、multipart/form-data、 text/plain JSONP和CORS：
+1.JSONP只能实现GET请求，而CORS支持所有类型的HTTP请求 2.jsonp需要client和server端的相互配合 3.cors在client端无需设置，server端需要针对不同的请求，来做head头的处理 </p>
+</section>
+<footer class=entry-footer>September 9, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to 什么是跨域及解决办法" href=https://pythongo.wiki/archetypes/%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Django_rest_framework</h2>
 </header>
 <section class=entry-content>
@@ -181,16 +192,6 @@ Python环境配置
 </section>
 <footer class=entry-footer>August 20, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
 <a class=entry-link aria-label="post link to Shell 文件测试操作" href=https://pythongo.wiki/archetypes/shell-%E6%96%87%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%93%8D%E4%BD%9C/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Shell if Then语句</h2>
-</header>
-<section class=entry-content>
-<p>! /bin/bash this is an example of a if -then if-then比较整数 score=91 if (("$score">90)) then echo "well done" fi if-then 比较字符串 word=abc if [$word="abc"] then echo "condition is true" fi if-then-else word=abc if [ $word='abccccc' ] then echo 'f' else echo 'false' fi if-then-elif-then-else num=6 if (($num>7)) then echo '6 is bigger' elif (($num&lt;7)) then echo '7 is bigger' else echo 'nonoooo' fi 整数比较符 -eq : (equal to)相等 例如： if [ "$a" -eq "$b" ] -ne : (not equal to)相等 例如： if [ "$a" -ne "$b" ] -gt : (greater than)大于 例如： if [ "$a" -gt "$b" ] -ge : (greater than or equal to)大于或等于 例如： if [ "$a" -ge "$b" ] -lt : (less than)小于 例如： if [ "$a" -lt "$b" ] -le : (less than or equal to)小于或等于 例如： if [ "$a" -le "$b" ] &lt; : 小于 例如： if (( "$a" &lt; "$b" )) &lt;= : 小于等于 例如： if (( "$a" &lt;= "$b" )) > : 大于 例如： if (( "$a" > "$b" )) >= : 大于等于 例如： if (( "$a" >= "$b" )) 字符串比较 = : 等于 例如： if [ "$a" = "$b" ] == : 等于 例如： if [ "$a" == "$b" ] !...</p>
-</section>
-<footer class=entry-footer>August 19, 2019&nbsp;·&nbsp;2 min&nbsp;·&nbsp;whitek</footer>
-<a class=entry-link aria-label="post link to Shell if Then语句" href=https://pythongo.wiki/archetypes/shell-if-then%E8%AF%AD%E5%8F%A5/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

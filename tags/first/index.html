@@ -71,6 +71,16 @@
 </header>
 <article class="post-entry tag-entry">
 <header class=entry-header>
+<h2>Django Orm聚合分组知识</h2>
+</header>
+<section class=entry-content>
+<p> annotate 聚合操作 有 Max Sum Count一些参数使用 =相当于sql中的as 如果想要查询的时候更换变量名称使用extra(select={"change_file": "model_file"}) 相当于 sql 中的as sql中order by分组在orm使用values进行表达 示例 # 按照各个省事进行聚合数量 DemoModel.objects.filter(test=xxx).extra(select={'position': city}).\ values("position", "location").annotate(count=Count(city)) </p>
+</section>
+<footer class=entry-footer>August 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to Django Orm聚合分组知识" href=https://pythongo.wiki/archetypes/django-orm%E8%81%9A%E5%90%88%E5%88%86%E7%BB%84%E7%9F%A5%E8%AF%86/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
 <h2>Ubuntu20.04 LTS编译python3.7</h2>
 </header>
 <section class=entry-content>

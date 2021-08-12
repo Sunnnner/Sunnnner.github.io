@@ -72,6 +72,16 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Django Orm聚合分组知识</h2>
+</header>
+<section class=entry-content>
+<p> annotate 聚合操作 有 Max Sum Count一些参数使用 =相当于sql中的as 如果想要查询的时候更换变量名称使用extra(select={"change_file": "model_file"}) 相当于 sql 中的as sql中order by分组在orm使用values进行表达 示例 # 按照各个省事进行聚合数量 DemoModel.objects.filter(test=xxx).extra(select={'position': city}).\ values("position", "location").annotate(count=Count(city)) </p>
+</section>
+<footer class=entry-footer>August 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to Django Orm聚合分组知识" href=https://pythongo.wiki/archetypes/django-orm%E8%81%9A%E5%90%88%E5%88%86%E7%BB%84%E7%9F%A5%E8%AF%86/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Ubuntu20.04 LTS编译python3.7</h2>
 </header>
 <section class=entry-content>
@@ -176,21 +186,6 @@ minikube start启动
 </section>
 <footer class=entry-footer>November 4, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
 <a class=entry-link aria-label="post link to Install Postgresql" href=https://pythongo.wiki/archetypes/install-postgresql/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Github Page自定义域名开启https</h2>
-</header>
-<section class=entry-content>
-<p>博主使用的cloudflare的cdn之前查了很久不清楚怎么使用github-page的https， 因github与Let’s Encrypt 合作提供自带cdn所以我们来配置一下， 首先关闭自定义域名的cdn服务其实就是关了他的域名解析
-首先我们看域名还是active状态
-其次我们关闭cloudflare站点cdn
-查看站点状态
-添加对github-Page的解析记录
-如果github-Page你的Custom domain上已经填写了自定义域名，删除掉域名保存一下，随后再次输入一次保存你会看到你的https已经开启了</p>
-</section>
-<footer class=entry-footer>November 3, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
-<a class=entry-link aria-label="post link to Github Page自定义域名开启https" href=https://pythongo.wiki/archetypes/github-page%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%BC%80%E5%90%AFhttps/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

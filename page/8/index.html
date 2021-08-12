@@ -69,6 +69,16 @@
 <main class=main>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Django用户模块</h2>
+</header>
+<section class=entry-content>
+<p>第一步创建Django项目 django-admin startproject blog 创建第一个应用user python manage.py startapp user 设置setting文件 ALLOWED_HOSTS=[“*”]//更改为所有都可以访问上线模式 INSTALLEN_APPS—》加入第一个user应用 创建templates文件夹 并设置TEMPLATES里面文件夹的路径os.path.join 设置DATABASES的储存为mysql 字段 DATABASES = { 'default': { 'ENGINE': 'django.db.backends.mysql', 'NAME': 'bookstore', 'USER':'root', 'PASSWORD':'123', 'HOST':'localhost', 'PORT':3306, } } 修改语言与时区 LANGUAGE_CODE = 'zh-Hans' TIME_ZONE = 'Asia/Shanghai' 设置静态文件收集static文件夹并在setting设置 STATIC_URL = '/static/' STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static') ] 设置主页url与视图函数 url(r'^$',index,name='index') def index(request): return render(request, 'index.html') 编写用户模块 编写注册模块 首先编写抽象类，所谓抽象类就是所有类模板都能用上的类 在根目录创建db pythonFile文件夹 创建base_model抽象基类抽象基类继承models.Model from django....</p>
+</section>
+<footer class=entry-footer>June 1, 2018&nbsp;·&nbsp;3 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to Django用户模块" href=https://pythongo.wiki/archetypes/django%E7%94%A8%E6%88%B7%E6%A8%A1%E5%9D%97/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Redis配置</h2>
 </header>
 <section class=entry-content>

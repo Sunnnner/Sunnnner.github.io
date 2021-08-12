@@ -72,6 +72,16 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Shell if Then语句</h2>
+</header>
+<section class=entry-content>
+<p>! /bin/bash this is an example of a if -then if-then比较整数 score=91 if (("$score">90)) then echo "well done" fi if-then 比较字符串 word=abc if [$word="abc"] then echo "condition is true" fi if-then-else word=abc if [ $word='abccccc' ] then echo 'f' else echo 'false' fi if-then-elif-then-else num=6 if (($num>7)) then echo '6 is bigger' elif (($num&lt;7)) then echo '7 is bigger' else echo 'nonoooo' fi 整数比较符 -eq : (equal to)相等 例如： if [ "$a" -eq "$b" ] -ne : (not equal to)相等 例如： if [ "$a" -ne "$b" ] -gt : (greater than)大于 例如： if [ "$a" -gt "$b" ] -ge : (greater than or equal to)大于或等于 例如： if [ "$a" -ge "$b" ] -lt : (less than)小于 例如： if [ "$a" -lt "$b" ] -le : (less than or equal to)小于或等于 例如： if [ "$a" -le "$b" ] &lt; : 小于 例如： if (( "$a" &lt; "$b" )) &lt;= : 小于等于 例如： if (( "$a" &lt;= "$b" )) > : 大于 例如： if (( "$a" > "$b" )) >= : 大于等于 例如： if (( "$a" >= "$b" )) 字符串比较 = : 等于 例如： if [ "$a" = "$b" ] == : 等于 例如： if [ "$a" == "$b" ] !...</p>
+</section>
+<footer class=entry-footer>August 19, 2019&nbsp;·&nbsp;2 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to Shell if Then语句" href=https://pythongo.wiki/archetypes/shell-if-then%E8%AF%AD%E5%8F%A5/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Shell 如何传参</h2>
 </header>
 <section class=entry-content>
@@ -243,16 +253,6 @@ IO密集型->需要网络功能，大量的事件等待网络数据的到来–>
 </section>
 <footer class=entry-footer>February 2, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
 <a class=entry-link aria-label="post link to 线程进程协程" href=https://pythongo.wiki/archetypes/%E7%BA%BF%E7%A8%8B%E8%BF%9B%E7%A8%8B%E5%8D%8F%E7%A8%8B/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>广度优先遍历二叉树</h2>
-</header>
-<section class=entry-content>
-<p>import queue class TreeNode: def init(self,val=None,left=None,right=None): self.val = val self.left = left self.right = right def settag(self,tag=None): self.tag = tag def visit(treenode): print(str(treenode.val),end=' ') def levelOrder(root): deque = queue.Queue() if(root is not None): deque.put(root) while(not deque.empty()): treenode = deque.get() visit(treenode) if(treenode.left is not None): deque.put(treenode.left) if(treenode.right is not None): deque.put(treenode.right) # 说一下他们的时间复杂度和空间复杂度 #　一般来说，时间复杂度高的算法比复杂度低的算法慢 ＃　时间复杂度的最优,最差,和平均值 ｀｀｀</p>
-</section>
-<footer class=entry-footer>February 1, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
-<a class=entry-link aria-label="post link to 广度优先遍历二叉树" href=https://pythongo.wiki/archetypes/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
