@@ -21,7 +21,7 @@
 <link rel=mask-icon href=https://pythongo.wiki/safari-pinned-tab.svg>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="Django Minio开发过程">
 <meta property="og:description" content="Desc Text.">
 <meta property="og:type" content="article">
@@ -116,7 +116,7 @@ Desc Text.
 <p>因为我用docker写的所以minio_storage_endpoint可以使用docker项目名称:端口号或者外网域名（static.media.com）或者外网IP:端口号</p>
 <p>浏览器复用minio静态服务器的media携带端口号怎么办？</p>
 <p>解决办法 nginx 负载均衡：</p>
-<pre><code class=language-conf data-lang=conf>upstream docker {
+<pre tabindex=0><code class=language-conf data-lang=conf>upstream docker {
     server docker:9000;
 }
 

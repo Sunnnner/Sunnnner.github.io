@@ -20,7 +20,7 @@
 <link rel=mask-icon href=https://pythongo.wiki/safari-pinned-tab.svg>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <link rel=alternate type=application/rss+xml href=https://pythongo.wiki/index.xml>
 <script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="whiteKBlog">
 <meta property="og:description" content>
@@ -67,6 +67,64 @@
 </nav>
 </header>
 <main class=main>
+<article class=post-entry>
+<header class=entry-header>
+<h2>Django文件压缩</h2>
+</header>
+<section class=entry-content>
+<p>类型和方法数据压缩分为两种类型。
+有损：在这种类型的压缩中，压缩时会降低数据质量（在这种情况下为图像和视频）。这被广泛用于压缩多媒体。
+无损：在这种类型的压缩中，数据质量（在这种情况下为图像）不会丢失。它广泛用于压缩无法承受数据丢失的敏感数据。
+安装与配置
+安装python图像处理库 Pillow
+`pip install Pillow``
+我们将建立一个简单的项目来演示图像上传以及上传之前和之后的文件大小。您也可以参考Django-docs或在此处下载完整的源代码。
+models.py from pil import Image from io import BytesIO from django.core.files.uploadedfile import InMemoryUploadedFile class File(models.Model): user = models.ForeignKey(KwsUser, verbose_name='所属用户', help_text='所属用户') file = models.FileField(upload_to=get_file_path, help_text='上传的文件') big_file = models.FileField(upload_to=get_pro_file_path, help_text='上传的原图', null=True, blank=True) upload_time = models.DateTimeField(auto_now_add=True, verbose_name='上传时间', null=True, blank=True) name = models.CharField(max_length=100, verbose_name='文件名', help_text='文件名') type = models.CharField(max_length=20, choices=FILETYPE, verbose_name='文件类型') uid = models.AutoField(primary_key=True) # 前端数据。。。。 minio_url = models.TextField(verbose_name='文件链接', blank=True) big_file_minio_url = models.TextField(verbose_name='大图文件链接', blank=True) def save（self，* args，** kwargs）： if not self....</p>
+</section>
+<footer class=entry-footer>October 11, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to Django文件压缩" href=https://pythongo.wiki/archetypes/django%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>静态文件的含义以及配置</h2>
+</header>
+<section class=entry-content>
+<p>Django staticfile 的配置 起初以为是我dockerfile写错了的问题，的确不是dockerfile的问题是我没有理解static_url与static_root的含义
+👍 如果不是前后端分离项目在每个APP下都应该有static与templates文件夹存在不然django收集静态文件收集不到
+STATIC_URL为Django返回给前端的路径即项目内部的static文件夹
+STATIC_ROOT为静态文件收集的路径即 python3 manage.py collectstatic 的文件夹
+STATIC_ROOT = os.path.join(BASE_DIR, ‘static’) 意思是把文件收集到项目下static文件夹下的static文件夹中
+所以方便起见我把 STATIC_ROOT = os.path.join(BASE_DIR, ‘')设置为了收集在项目下static文件夹下
+大坑不少小坑不断，学无止境啊</p>
+</section>
+<footer class=entry-footer>October 10, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to 静态文件的含义以及配置" href=https://pythongo.wiki/archetypes/%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AE/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>Os模块</h2>
+</header>
+<section class=entry-content>
+<p>os .path.dirname(path) 获取路径名
+os.path.basename(path) 获取文件名
+os.path.join(path1[,path2[,….]]) 将路径与文件名拼接成一个完整的路径
+os.path.split(path) 分割路径与文件名，返回元组(f_path, f_name), 如果完全使用目录，它也会将最后一个目录作为文件名分离，且不会判断文件或者目录是否存在
+os.path.splitext(path) 分割文件名与扩展名
+os.path.getsize(file) 或得文件大小，单位是字节
+os.path.gettatime(file) 或得文件最近的访问时间，返回的是浮点型秒数
+os.path.getctime(file) 或得文件的创建时间，返回的是浮点型秒数
+os.path.getmtime(file) 或得文件的修费时间，返回的是浮点型秒数
+os.path.exists(path) 判断路径是否存在
+os.path.isabs(path) 判断是否为绝对路径
+os.path.isdir(path) 判断是否存在且是一个目录
+os.path.isfile(path)
+os.path.islink(path) 判断是否存在且是一个符号链接
+os.path.ismount(path) 判断是否存在且是一个挂载点
+os.path.samefile(path1, path2) 判断两个路径是否指向同一个文件</p>
+</section>
+<footer class=entry-footer>October 10, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to Os模块" href=https://pythongo.wiki/archetypes/os%E6%A8%A1%E5%9D%97/></a>
+</article>
 <article class=post-entry>
 <header class=entry-header>
 <h2>K8s Install</h2>
@@ -161,48 +219,6 @@ upstream docker { server docker:9000; } server { listen 80; server_name static.m
 </section>
 <footer class=entry-footer>October 1, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
 <a class=entry-link aria-label="post link to TOKEN验证详解" href=https://pythongo.wiki/archetypes/token%E9%AA%8C%E8%AF%81%E8%AF%A6%E8%A7%A3/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>RESTful_API设计指南</h2>
-</header>
-<section class=entry-content>
-<p>网络应用程序，分为前端和后端两个部分， 当前的发展趋势， 就是前段设备层出不穷 因此，必须有一种统一的机制，方便不同的前端设备与后端进行通信， 这导致API架构的流行， > 甚至出现APIfirst的设计思想。
-协议 API与用户的通信协议， 总是使用HTTPs协议 域名 应尽量将API部署在专用域名之下
-https:// api.example.com 如果确定API很简单，不会有进一步扩展， 可以考虑放在主域名下
-https: // example.com 版本(Versioning) 应将API的版本号放入URL
-https://api.example.com/v1/ 另一种做法是，将版本号放在HTTP头信息中，但不如放入URL方便和直观。Github采用这种做法。
-路径(Endpoint) 路径又称”终点”（endpoint），表示API的具体网址。 在RESTful架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应。一般来说，数据库中的表都是同种记录的”集合”（collection），所以API中的名词也应该使用复数。 举例来说，有一个API提供动物园（zoo）的信息，还包括各种动物和雇员的信息，则它的路径应该设计成下面这样。 · https://api.example.com/v1/zoos · https://api.example.com/v1/animals · https://api.example.com/v1/employees HTTP动词 对于资源的具体操作类型，由HTTP动词表示。 常用的HTTP动词有下面五个（括号里是对应的SQL命令）。 GET(SELECT) : 从服务器取出资源(一项或者多项) POST(CREATE) : 在服务器新建一个资源 PUT(UPDATE) : 在服务器更新资源（客户端提供改变后的完整资源） PATCH(update): 在服务器更新资源（客户端提供改变的属性） DELETE(DELETE): 从服务器删除资源 还有两个不常用的HTTP动词 HEAD: 获取资源的元数据 OPTIONS: 获 取信息， 关于资源的哪些属性是客户端可以改变的 下面是一些例子 GET/ courses ：列出所有课程 POST/ courses : 添加一门课程 GET/ courses/ID: 获取某个课程的信息 PUT/ courses/ID: 更新某个指定课程信息（提供该课程的全部信息） PATCH/ courses/ID: 更新某个指定课程信息（提供该课程的部分信息） DELETE/courses/ID: 删除一门课程 GET/ courses/ ID/ class: 列出某个指定课程的所有班级 DELETE/courses/ class/ID: 删除某个指定课程的指定班级 过滤信息（Fitering） 如果记录数量很多，服务器不可能都将他们返回给用户，API应该提供参数， 过滤返回结果，下面是一些常见的参数 ?...</p>
-</section>
-<footer class=entry-footer>September 12, 2019&nbsp;·&nbsp;2 min&nbsp;·&nbsp;whitek</footer>
-<a class=entry-link aria-label="post link to RESTful_API设计指南" href=https://pythongo.wiki/archetypes/restful_api%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>动态网页爬取</h2>
-</header>
-<section class=entry-content>
-<p>我们使用自动化测试工具selenium pip install selenium
-PhantomJS 基于webkit的无界面浏览器
-ubuntu使用apt-get install phantomjs MAC使用bew cask install phantomjs
-Chromedriver
-与selenium配合因为phantomjs已经不支持selenium 如果使用Chrome进行测试，需要使用xvfb， Xvirtual framebuffer (xvfb)虚拟帧缓冲器， 简单来说它可以直接处理window的图形化功能，并且不会输出到屏幕上，这就摆脱了对可视窗口的依赖 MAC安装brew cask install chromedriver mac安装xvfb(可选) pip install xvfbwrapper</p>
-</section>
-<footer class=entry-footer>September 11, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
-<a class=entry-link aria-label="post link to 动态网页爬取" href=https://pythongo.wiki/archetypes/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E7%88%AC%E5%8F%96/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Sql修改字段长度</h2>
-</header>
-<section class=entry-content>
-<p>sql修改字段长度的语法 alter table 表名 modify 字段名 字段类型;
-标准sql所有都适用 alter table 数据库.表名 modify 字段名 字段类型;
-修改字段名名称 alter table 数据库名 表名 column col1 to col2;
-添加字段 alter table 数据库名.表名 add 字段名 类型;</p>
-</section>
-<footer class=entry-footer>September 10, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
-<a class=entry-link aria-label="post link to Sql修改字段长度" href=https://pythongo.wiki/archetypes/sql%E4%BF%AE%E6%94%B9%E5%AD%97%E6%AE%B5%E9%95%BF%E5%BA%A6/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

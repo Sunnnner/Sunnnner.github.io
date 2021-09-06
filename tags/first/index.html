@@ -20,7 +20,7 @@
 <link rel=mask-icon href=https://pythongo.wiki/safari-pinned-tab.svg>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <link rel=alternate type=application/rss+xml href=https://pythongo.wiki/tags/first/index.xml>
 <script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="first">
 <meta property="og:description" content>
@@ -69,6 +69,40 @@
 <header class=page-header><div class=breadcrumbs><a href=https://pythongo.wiki/>Home</a>&nbsp;»&nbsp;<a href=https://pythongo.wiki/tags/>Tags</a></div>
 <h1>first</h1>
 </header>
+<article class="post-entry tag-entry">
+<header class=entry-header>
+<h2>Go导入外部包失效问题</h2>
+</header>
+<section class=entry-content>
+<p> 小记在mac上使用vscode导入redis包失效问题
+解决办法
+vim .bash_profile # 环境变量导入当前工作目录 export GOPATH=/Users/xxx/Desktop/go-project cd /Users/xxx/Desktop/go-project go mod init example.com/m/v2 # 自动下载所需的包 go mod tidy # 项目源代码放置处 mkdir src cd src # 可以开始编写了 </p>
+</section>
+<footer class=entry-footer>August 26, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to Go导入外部包失效问题" href=https://pythongo.wiki/archetypes/go%E5%AF%BC%E5%85%A5%E5%A4%96%E9%83%A8%E5%8C%85%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
+<h2>Django Admin Permissions控制</h2>
+</header>
+<section class=entry-content>
+<p>is_staff bool 指定此用户是否可以访问管理站点 控制用户操作admin的权限由 django.contrib.auth.backends.ModelBackend 进行控制，它也进行控制用户的登录认证行为 ModelBackend源码解析 class ModelBackend: """ Authenticates against settings.AUTH_USER_MODEL. """ # 控制用户登录认证 通过重写此方法进行自定义登录认证 def authenticate(self, request, username=None, password=None, **kwargs): if username is None: username = kwargs.get(UserModel.USERNAME_FIELD) try: user = UserModel._default_manager.get_by_natural_key(username) except UserModel.DoesNotExist: # Run the default password hasher once to reduce the timing # difference between an existing and a nonexistent user (#20760). UserModel().set_password(password) else: if user.check_password(password) and self.user_can_authenticate(user): return user # 查看用户是否为可用状态 def user_can_authenticate(self, user): """ Reject users with is_active=False....</p>
+</section>
+<footer class=entry-footer>August 24, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to Django Admin Permissions控制" href=https://pythongo.wiki/archetypes/django-admin-permissions%E6%8E%A7%E5%88%B6/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
+<h2>Go词法单元</h2>
+</header>
+<section class=entry-content>
+<p>高级语言源程序内部的几个概念 token、关键字、标识符、操作符、分隔符和字面量 token token 是构成源程序的基本不可再分割的单元，编译器编译程序的第一步就是将源程序分割为一个个独立的token，这个过程就是词法分析
+go语言的token可以分为关键字、标识符、操作符、分隔符和字面常量等
+</p>
+</section>
+<footer class=entry-footer>August 17, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to Go词法单元" href=https://pythongo.wiki/archetypes/go%E8%AF%8D%E6%B3%95%E5%8D%95%E5%85%83/></a>
+</article>
 <article class="post-entry tag-entry">
 <header class=entry-header>
 <h2>Django Orm聚合分组知识</h2>

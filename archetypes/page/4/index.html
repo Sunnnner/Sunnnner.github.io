@@ -20,7 +20,7 @@
 <link rel=mask-icon href=https://pythongo.wiki/safari-pinned-tab.svg>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <link rel=alternate type=application/rss+xml href=https://pythongo.wiki/archetypes/index.xml>
 <script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="Archetypes">
 <meta property="og:description" content>
@@ -70,6 +70,48 @@
 <header class=page-header><div class=breadcrumbs><a href=https://pythongo.wiki/>Home</a></div>
 <h1>Archetypes</h1>
 </header>
+<article class=post-entry>
+<header class=entry-header>
+<h2>RESTful_API设计指南</h2>
+</header>
+<section class=entry-content>
+<p>网络应用程序，分为前端和后端两个部分， 当前的发展趋势， 就是前段设备层出不穷 因此，必须有一种统一的机制，方便不同的前端设备与后端进行通信， 这导致API架构的流行， > 甚至出现APIfirst的设计思想。
+协议 API与用户的通信协议， 总是使用HTTPs协议 域名 应尽量将API部署在专用域名之下
+https:// api.example.com 如果确定API很简单，不会有进一步扩展， 可以考虑放在主域名下
+https: // example.com 版本(Versioning) 应将API的版本号放入URL
+https://api.example.com/v1/ 另一种做法是，将版本号放在HTTP头信息中，但不如放入URL方便和直观。Github采用这种做法。
+路径(Endpoint) 路径又称”终点”（endpoint），表示API的具体网址。 在RESTful架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应。一般来说，数据库中的表都是同种记录的”集合”（collection），所以API中的名词也应该使用复数。 举例来说，有一个API提供动物园（zoo）的信息，还包括各种动物和雇员的信息，则它的路径应该设计成下面这样。 · https://api.example.com/v1/zoos · https://api.example.com/v1/animals · https://api.example.com/v1/employees HTTP动词 对于资源的具体操作类型，由HTTP动词表示。 常用的HTTP动词有下面五个（括号里是对应的SQL命令）。 GET(SELECT) : 从服务器取出资源(一项或者多项) POST(CREATE) : 在服务器新建一个资源 PUT(UPDATE) : 在服务器更新资源（客户端提供改变后的完整资源） PATCH(update): 在服务器更新资源（客户端提供改变的属性） DELETE(DELETE): 从服务器删除资源 还有两个不常用的HTTP动词 HEAD: 获取资源的元数据 OPTIONS: 获 取信息， 关于资源的哪些属性是客户端可以改变的 下面是一些例子 GET/ courses ：列出所有课程 POST/ courses : 添加一门课程 GET/ courses/ID: 获取某个课程的信息 PUT/ courses/ID: 更新某个指定课程信息（提供该课程的全部信息） PATCH/ courses/ID: 更新某个指定课程信息（提供该课程的部分信息） DELETE/courses/ID: 删除一门课程 GET/ courses/ ID/ class: 列出某个指定课程的所有班级 DELETE/courses/ class/ID: 删除某个指定课程的指定班级 过滤信息（Fitering） 如果记录数量很多，服务器不可能都将他们返回给用户，API应该提供参数， 过滤返回结果，下面是一些常见的参数 ?...</p>
+</section>
+<footer class=entry-footer>September 12, 2019&nbsp;·&nbsp;2 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to RESTful_API设计指南" href=https://pythongo.wiki/archetypes/restful_api%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>动态网页爬取</h2>
+</header>
+<section class=entry-content>
+<p>我们使用自动化测试工具selenium pip install selenium
+PhantomJS 基于webkit的无界面浏览器
+ubuntu使用apt-get install phantomjs MAC使用bew cask install phantomjs
+Chromedriver
+与selenium配合因为phantomjs已经不支持selenium 如果使用Chrome进行测试，需要使用xvfb， Xvirtual framebuffer (xvfb)虚拟帧缓冲器， 简单来说它可以直接处理window的图形化功能，并且不会输出到屏幕上，这就摆脱了对可视窗口的依赖 MAC安装brew cask install chromedriver mac安装xvfb(可选) pip install xvfbwrapper</p>
+</section>
+<footer class=entry-footer>September 11, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to 动态网页爬取" href=https://pythongo.wiki/archetypes/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E7%88%AC%E5%8F%96/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>Sql修改字段长度</h2>
+</header>
+<section class=entry-content>
+<p>sql修改字段长度的语法 alter table 表名 modify 字段名 字段类型;
+标准sql所有都适用 alter table 数据库.表名 modify 字段名 字段类型;
+修改字段名名称 alter table 数据库名 表名 column col1 to col2;
+添加字段 alter table 数据库名.表名 add 字段名 类型;</p>
+</section>
+<footer class=entry-footer>September 10, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to Sql修改字段长度" href=https://pythongo.wiki/archetypes/sql%E4%BF%AE%E6%94%B9%E5%AD%97%E6%AE%B5%E9%95%BF%E5%BA%A6/></a>
+</article>
 <article class=post-entry>
 <header class=entry-header>
 <h2>什么是跨域及解决办法</h2>
@@ -157,41 +199,6 @@ urlpatterns = [ url(r'^admin/', admin.site.urls), url(r'^index/', views.IndexVie
 </section>
 <footer class=entry-footer>September 3, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
 <a class=entry-link aria-label="post link to Python字符串操作" href=https://pythongo.wiki/archetypes/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>修改macos自带Python版本（尽量不要修改）</h2>
-</header>
-<section class=entry-content>
-<p>1.在下载最新python（3.6）：wget https://www.python.org/ftp/python/3.6.1/python-3.6.1-macosx10.6.pkg 2.安装python-3.6.1-macosx10.6.pkg 3.删除mac自带的python2.7： sudo rm -R /System/Library/Frameworks/Python.framework/Versions/2.7 4.把刚安装好的python移到原本系统python位置： sudo mv /Library/Frameworks/Python.framework/Versions/3.6 /System/Library/Frameworks/Python.framework/Versions 5.修改文件所属的Group，设置Group为wheel： sudo chown -R root:wheel /System/Library/Frameworks/Python.framework/Versions/3.6``` 6.更新Current的Link sudo rm /System/Library/Frameworks/Python.framework/Versions/Current sudo ln -s /System/Library/Frameworks/Python.framework/Versions/3.6 /System/Library/Frameworks/Python.framework/Versions/Current 7.删掉原来的执行文件 sudo rm /usr/bin/pydoc sudo rm /usr/bin/python sudo rm /usr/bin/pythonw sudo rm /usr/bin/python-config sudo rm /usr/bin/easy_install sudo rm /usr/bin/pyvenv 8.建立新的链接 sudo ln -s /System/Library/Frameworks/Python.framework/Versions/3.6/bin/pydoc3.6 /usr/bin/pydoc sudo ln -s /System/Library/Frameworks/Python.framework/Versions/3.6/bin/python3.6 /usr/bin/python sudo ln -s /System/Library/Frameworks/Python.framework/Versions/3.6/bin/pythonw3.6 /usr/bin/pythonw sudo ln -s /System/Library/Frameworks/Python.framework/Versions/3.6/bin/python3.6m-config /usr/bin/python-config sudo ln -s /System/Library/Frameworks/Python....</p>
-</section>
-<footer class=entry-footer>September 2, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
-<a class=entry-link aria-label="post link to 修改macos自带Python版本（尽量不要修改）" href=https://pythongo.wiki/archetypes/%E4%BF%AE%E6%94%B9macos%E8%87%AA%E5%B8%A6python%E7%89%88%E6%9C%AC%E5%B0%BD%E9%87%8F%E4%B8%8D%E8%A6%81%E4%BF%AE%E6%94%B9/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Python版本控制以及虚拟环境的安装</h2>
-</header>
-<section class=entry-content>
-<p>虚拟环境安装 当然首先你先去官网下载Python3.6 注意不是3.7 它现在还不兼容 下载好了之后安装这是Mac的路径包 随后配置下面的语句 pip3 install virtualenv 当然这里你要建立一个文件夹来存放你的虚拟环境 我这里是workspace mkdir workspace 虚拟环境管理包
-pip3 install virtualenvwrapper 虚拟环境文件夹 export WORKON_HOME='~/workspace'
-虚拟环境Python需要Python版本进行安装 VIRTUALENVWRAPPER_PYTHON="/Library/Frameworks/Python.framework/Versions/3.6/bin/python3.6"
-使用哪个Python环境的虚拟环境安装包 source /Library/Frameworks/Python.framework/Versions/3.6/bin/virtualenvwrapper.sh
-Python环境配置
-因为TensorFlow库的学习我安装虚拟环境可是我并不怎么会安装虚拟环境 就擅自删除了Mac自带的Python版本使用网上的安装默认的版本Python3.6 可是这是错误的决定安装了默认版本的3。6之后pip各种报错 到最后我总结了一句话 在.zshrc（如果你安装了oh_my_zsh）就加入这一条shell语句 这条语句代表了你的默认Python变量的地址 Python环境变量 export PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"</p>
-</section>
-<footer class=entry-footer>September 1, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
-<a class=entry-link aria-label="post link to Python版本控制以及虚拟环境的安装" href=https://pythongo.wiki/archetypes/python%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E4%BB%A5%E5%8F%8A%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E5%AE%89%E8%A3%85/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Shell 文件测试操作</h2>
-</header>
-<section class=entry-content>
-<p>#! /bin/bash # file test operators # 检查文件是否存在 -e 表示empty 默认文件是不为空 echo -e "Enter the name of file: ~" read filename # 注意括号内空格 -e 就是exist的意思,表示文件是否存在 if [ -e $filename ] then echo 'File found' else echo 'file is not exist or not found' fi # 检查是否是常规文件或者目录 -f表示file 判断是否是常规的文件 if [ -f $filename ] then echo "$filenamefound" else echo "$filenameis not exist or not fount" fi # 检查文件是否是空 if [ -s $filename ] then echo "$filenameis not empty" else echo "$filenameis empty" fi </p>
-</section>
-<footer class=entry-footer>August 20, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
-<a class=entry-link aria-label="post link to Shell 文件测试操作" href=https://pythongo.wiki/archetypes/shell-%E6%96%87%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%93%8D%E4%BD%9C/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

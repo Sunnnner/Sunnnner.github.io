@@ -20,7 +20,7 @@
 <link rel=mask-icon href=https://pythongo.wiki/safari-pinned-tab.svg>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <link rel=alternate type=application/rss+xml href=https://pythongo.wiki/index.xml>
 <script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="whiteKBlog">
 <meta property="og:description" content>
@@ -67,6 +67,47 @@
 </nav>
 </header>
 <main class=main>
+<article class=post-entry>
+<header class=entry-header>
+<h2>Divmod函数</h2>
+</header>
+<section class=entry-content>
+<p> python divmod()把除数和余数运算结果结合起来，返回一个包含商和余数的元组(a // b, a % b)。 >>> divmod(3600, 60) (60, 0) >>> divmod(3500, 60) (58, 20) </p>
+</section>
+<footer class=entry-footer>December 1, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to Divmod函数" href=https://pythongo.wiki/archetypes/divmod%E5%87%BD%E6%95%B0/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>使用minikube创建集群</h2>
+</header>
+<section class=entry-content>
+<p>curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_1.5.2.deb \ && sudo dpkg -i minikube_1.5.2.deb
+系统管理程序设置验证系统是否启用虚拟化 egrep -q ‘vmx|svm’ /proc/cpuinfo && echo yes || echo no 如果启用则需要关闭虚拟化
+minikube servion查看版本信息
+minikube start启动
+查看集群信息kubectl cluster-info</p>
+</section>
+<footer class=entry-footer>November 11, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to 使用minikube创建集群" href=https://pythongo.wiki/archetypes/%E4%BD%BF%E7%94%A8minikube%E5%88%9B%E5%BB%BA%E9%9B%86%E7%BE%A4/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>Install Postgresql</h2>
+</header>
+<section class=entry-content>
+<p>安装postgres sudo apt install postgresql postgresql-contrib
+安装完成后，PostgreSQL服务将自动启动。 要验证安装，我们将使用psql实用程序连接到PostgreSQL数据库服务器并打印服务器版本：sudo -u postgres psql -c “SELECT version();”
+安装完毕后，系统会创建一个数据库超级用户 postgres，密码为空。
+切换到postgres用户sudo -i -u postgres
+执行psql进入postgres shell 执行\password postgres修改默认密码
+修改/etc/postgresql/9.6/main下 postgresql.conf里面listen address为*
+修改pg_hba.conf all 地址为0.0.0.0/0
+重启sudo /etc/init.d/postgresql restart</p>
+</section>
+<footer class=entry-footer>November 4, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
+<a class=entry-link aria-label="post link to Install Postgresql" href=https://pythongo.wiki/archetypes/install-postgresql/></a>
+</article>
 <article class=post-entry>
 <header class=entry-header>
 <h2>Github Page自定义域名开启https</h2>
@@ -164,64 +205,6 @@ name – 字符串，属性名。
 </section>
 <footer class=entry-footer>October 12, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
 <a class=entry-link aria-label="post link to Git加速" href=https://pythongo.wiki/archetypes/git%E5%8A%A0%E9%80%9F/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Django文件压缩</h2>
-</header>
-<section class=entry-content>
-<p>类型和方法数据压缩分为两种类型。
-有损：在这种类型的压缩中，压缩时会降低数据质量（在这种情况下为图像和视频）。这被广泛用于压缩多媒体。
-无损：在这种类型的压缩中，数据质量（在这种情况下为图像）不会丢失。它广泛用于压缩无法承受数据丢失的敏感数据。
-安装与配置
-安装python图像处理库 Pillow
-`pip install Pillow``
-我们将建立一个简单的项目来演示图像上传以及上传之前和之后的文件大小。您也可以参考Django-docs或在此处下载完整的源代码。
-models.py from pil import Image from io import BytesIO from django.core.files.uploadedfile import InMemoryUploadedFile class File(models.Model): user = models.ForeignKey(KwsUser, verbose_name='所属用户', help_text='所属用户') file = models.FileField(upload_to=get_file_path, help_text='上传的文件') big_file = models.FileField(upload_to=get_pro_file_path, help_text='上传的原图', null=True, blank=True) upload_time = models.DateTimeField(auto_now_add=True, verbose_name='上传时间', null=True, blank=True) name = models.CharField(max_length=100, verbose_name='文件名', help_text='文件名') type = models.CharField(max_length=20, choices=FILETYPE, verbose_name='文件类型') uid = models.AutoField(primary_key=True) # 前端数据。。。。 minio_url = models.TextField(verbose_name='文件链接', blank=True) big_file_minio_url = models.TextField(verbose_name='大图文件链接', blank=True) def save（self，* args，** kwargs）： if not self....</p>
-</section>
-<footer class=entry-footer>October 11, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
-<a class=entry-link aria-label="post link to Django文件压缩" href=https://pythongo.wiki/archetypes/django%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>静态文件的含义以及配置</h2>
-</header>
-<section class=entry-content>
-<p>Django staticfile 的配置 起初以为是我dockerfile写错了的问题，的确不是dockerfile的问题是我没有理解static_url与static_root的含义
-👍 如果不是前后端分离项目在每个APP下都应该有static与templates文件夹存在不然django收集静态文件收集不到
-STATIC_URL为Django返回给前端的路径即项目内部的static文件夹
-STATIC_ROOT为静态文件收集的路径即 python3 manage.py collectstatic 的文件夹
-STATIC_ROOT = os.path.join(BASE_DIR, ‘static’) 意思是把文件收集到项目下static文件夹下的static文件夹中
-所以方便起见我把 STATIC_ROOT = os.path.join(BASE_DIR, ‘')设置为了收集在项目下static文件夹下
-大坑不少小坑不断，学无止境啊</p>
-</section>
-<footer class=entry-footer>October 10, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
-<a class=entry-link aria-label="post link to 静态文件的含义以及配置" href=https://pythongo.wiki/archetypes/%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AE/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Os模块</h2>
-</header>
-<section class=entry-content>
-<p>os .path.dirname(path) 获取路径名
-os.path.basename(path) 获取文件名
-os.path.join(path1[,path2[,….]]) 将路径与文件名拼接成一个完整的路径
-os.path.split(path) 分割路径与文件名，返回元组(f_path, f_name), 如果完全使用目录，它也会将最后一个目录作为文件名分离，且不会判断文件或者目录是否存在
-os.path.splitext(path) 分割文件名与扩展名
-os.path.getsize(file) 或得文件大小，单位是字节
-os.path.gettatime(file) 或得文件最近的访问时间，返回的是浮点型秒数
-os.path.getctime(file) 或得文件的创建时间，返回的是浮点型秒数
-os.path.getmtime(file) 或得文件的修费时间，返回的是浮点型秒数
-os.path.exists(path) 判断路径是否存在
-os.path.isabs(path) 判断是否为绝对路径
-os.path.isdir(path) 判断是否存在且是一个目录
-os.path.isfile(path)
-os.path.islink(path) 判断是否存在且是一个符号链接
-os.path.ismount(path) 判断是否存在且是一个挂载点
-os.path.samefile(path1, path2) 判断两个路径是否指向同一个文件</p>
-</section>
-<footer class=entry-footer>October 10, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;whitek</footer>
-<a class=entry-link aria-label="post link to Os模块" href=https://pythongo.wiki/archetypes/os%E6%A8%A1%E5%9D%97/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
