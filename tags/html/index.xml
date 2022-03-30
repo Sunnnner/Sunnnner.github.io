@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>html on whiteKBlog</title>
-    <link>https://pythongo.wiki/tags/html/</link>
+    <link>https://sunnnner.github.io/tags/html/</link>
     <description>Recent content in html on whiteKBlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 01 Mar 2019 11:16:46 +0800</lastBuildDate><atom:link href="https://pythongo.wiki/tags/html/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 Mar 2019 11:16:46 +0800</lastBuildDate><atom:link href="https://sunnnner.github.io/tags/html/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>框架</title>
-      <link>https://pythongo.wiki/archetypes/%E6%A1%86%E6%9E%B6/</link>
+      <link>https://sunnnner.github.io/archetypes/%E6%A1%86%E6%9E%B6/</link>
       <pubDate>Fri, 01 Mar 2019 11:16:46 +0800</pubDate>
       
-      <guid>https://pythongo.wiki/archetypes/%E6%A1%86%E6%9E%B6/</guid>
+      <guid>https://sunnnner.github.io/archetypes/%E6%A1%86%E6%9E%B6/</guid>
       <description>Desc Text.</description>
     </item>
     
