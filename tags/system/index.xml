@@ -13,4 +13,19 @@
 &lt;p>&lt;code>os.path.isfile(path)&lt;/code>&lt;/p>
 &lt;p>&lt;code>os.path.islink(path)&lt;/code> 判断是否存在且是一个符号链接&lt;/p>
 &lt;p>&lt;code>os.path.ismount(path) &lt;/code>判断是否存在且是一个挂载点&lt;/p>
+&lt;p>&lt;code>os.path.samefile(path1, path2)&lt;/code> 判断两个路径是否指向同一个文件&lt;/p></description></item><item><title>Os模块</title><link>https://sunnnner.github.io/p/os%E6%A8%A1%E5%9D%97/</link><pubDate>Thu, 10 Oct 2019 14:20:46 +0800</pubDate><guid>https://sunnnner.github.io/p/os%E6%A8%A1%E5%9D%97/</guid><description>&lt;p>&lt;code>os .path.dirname(path)&lt;/code> 获取路径名&lt;/p>
+&lt;p>&lt;code>os.path.basename(path)&lt;/code> 获取文件名&lt;/p>
+&lt;p>&lt;code>os.path.join(path1[,path2[,….]])&lt;/code> 将路径与文件名拼接成一个完整的路径&lt;/p>
+&lt;p>&lt;code>os.path.split(path) &lt;/code>分割路径与文件名，返回元组(f_path, f_name), 如果完全使用目录，它也会将最后一个目录作为文件名分离，且不会判断文件或者目录是否存在&lt;/p>
+&lt;p>&lt;code>os.path.splitext(path) &lt;/code>分割文件名与扩展名&lt;/p>
+&lt;p>&lt;code>os.path.getsize(file)&lt;/code> 或得文件大小，单位是字节&lt;/p>
+&lt;p>&lt;code>os.path.gettatime(file) &lt;/code>或得文件最近的访问时间，返回的是浮点型秒数&lt;/p>
+&lt;p>&lt;code>os.path.getctime(file) &lt;/code>或得文件的创建时间，返回的是浮点型秒数&lt;/p>
+&lt;p>&lt;code>os.path.getmtime(file)&lt;/code> 或得文件的修费时间，返回的是浮点型秒数&lt;/p>
+&lt;p>&lt;code>os.path.exists(path)&lt;/code> 判断路径是否存在&lt;/p>
+&lt;p>&lt;code>os.path.isabs(path)&lt;/code> 判断是否为绝对路径&lt;/p>
+&lt;p>&lt;code>os.path.isdir(path)&lt;/code> 判断是否存在且是一个目录&lt;/p>
+&lt;p>&lt;code>os.path.isfile(path)&lt;/code>&lt;/p>
+&lt;p>&lt;code>os.path.islink(path)&lt;/code> 判断是否存在且是一个符号链接&lt;/p>
+&lt;p>&lt;code>os.path.ismount(path) &lt;/code>判断是否存在且是一个挂载点&lt;/p>
 &lt;p>&lt;code>os.path.samefile(path1, path2)&lt;/code> 判断两个路径是否指向同一个文件&lt;/p></description></item></channel></rss>

@@ -121,9 +121,174 @@ b）将前面练习的解决方案集成到（ a）部分中的方案中，这�
 提供服务。&lt;/p>
 &lt;p>2-17 *异步系统。研究至少 5 个基于 Python 的不同异步系统，可以从 Twisted、 Greenlets、
 Tornado、 Diesel、 Concurrence、 Eventlet、 Gevent 等中选择。描述它们是什么，对
+它们进行分类，并找到它们之间的相似点和差异性，然后创建一些演示代码示例&lt;/p></description></item><item><title>Pysocket</title><link>https://sunnnner.github.io/p/pysocket/</link><pubDate>Thu, 10 Mar 2022 15:46:40 +0800</pubDate><guid>https://sunnnner.github.io/p/pysocket/</guid><description>&lt;p>2-1 套接字。面向连接的套接字和无连接套接字之间的区别是什么？&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>面向连接的套接字&lt;/th>
+&lt;th>无连接的套接字&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>在通信之前必须建立连接&lt;/td>
+&lt;td>在通信之前不需要建立连接&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>序列化的，可靠的不重复的数据交付&lt;/td>
+&lt;td>无法保证顺序性，可靠性或重复性，减少以一定的开销&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>没有记录边界&lt;/td>
+&lt;td>保存了记录边界&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>每条信息可以拆分成多个片段，并且每一个消息片段都能确保到达目的地，然后将他么按顺序组合在一起。&lt;/td>
+&lt;td>消息是以整体发送的。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>传输控制协议(TCP)&lt;/td>
+&lt;td>用户数据协议(UDP)&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>2-2 客户端/服务器架构。用自己的话描述这个术语的意思，并给出几个例子。
+1、服务器就是一系列硬件或软件，为一个或多个客户端（服务的用户）提供所需的“服务”。其存在的目的就是等待客户端的请求，并响应他们（提供服务），然后等待更多的请求。&lt;/p>
+&lt;p>2-3 套接字。 TCP 和 UDP 之中，哪种类型的服务器接受连接，并将它们转换到独立的
+套接字进行客户端通信？
+tcp&lt;/p>
+&lt;p>2-4 客户端。更新 TCP（tsTclnt.py）和 UDP（tsUclnt.py）客户端，以使得服务器名称
+无须硬编码到应用程序中。此外，应该允许用户指定主机名和端口号，且如果二者
+中任何一个或者全部参数丢失，那么应该使用默认值。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">sys&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="nn">argparse&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="vm">__name__&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;__main__&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">parser&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">argparse&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ArgumentParser&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">description&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;pls write host port&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">parser&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">add_argument&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;--host&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nb">type&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nb">str&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">default&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;localhost&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">parser&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">add_argument&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;--port&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nb">type&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nb">int&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">default&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">8000&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">args&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">parser&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">parse_args&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">host&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">args&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">host&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">args&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">port&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">args&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">host&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">args&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">port&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>2-6 Daytime 服务。使用 socket.getservbyname()来确定使用 UDP 协议的“daytime”服
+务的端口号。检查 getservbyname()的文档以获得其准确的使用语法（即 socket.
+getservbyname._ doc_）。那么，现在编写一个应用程序，使该应用程序能够通过网
+络发送一条虚拟消息，然后等待服务器回复。一旦你收到服务器的回复，就将其显
+示到屏幕上。&lt;/p>
+&lt;p>2-7 半双工聊天。创建一个简单的半双工聊天程序。指定半双工，我们的意思就是，当建
+立一个连接且服务开始后，只有一个人能打字，而另一个参与者在得到输入消息提示
+之前必须等待消息。并且，一旦发送者发送了一条消息，在他能够再次发送消息之前，
+必须等待对方回复。其中，一位参与者将在服务器一侧，而另一位在客户端一侧。&lt;/p>
+&lt;p>2-8 全双工聊天。更新上一个练习的解决方案，修改它以使你的聊天服务现在成为全双
+工模式，意味着通信两端都可以发送并接收消息，并且二者相互独立。&lt;/p>
+&lt;p>2-9 多用户全双工聊天。进一步修改你的解决方案，以使你的聊天服务支持多用户。&lt;/p>
+&lt;p>2-10 多用户、多房间、全双工聊天。现在让你的聊天服务支持多用户和多房间功能。&lt;/p>
+&lt;p>2-11 Web 客户端。编写一个 TCP 客户端，使其连接到你最喜欢的网站（删除“http://”和
+任何后续信息；只使用主机名）的 80 端口。一旦建立一个连接，就发送 HTTP 命令
+字符串 GET / \n，并将服务器返回的所有数据写入一个文件中（GET 命令会检索一个
+本文档由Linux公社 &lt;a class="link" href="https://www.linuxidc.com" target="_blank" rel="noopener"
+>www.linuxidc.com&lt;/a> 收集整理
+72 第 1 部分 通用应用主题
+Web 页面， /file 表明要获取的文件， \n 将命令发送到服务器）。检查检索到的文件的内
+容。内容是什么？你如何检查能确保所接收到的数据是正确的？（注意：你可能必须
+在命令字符串后面插入一个或两个换行符，通常一个就能正常工作）&lt;/p>
+&lt;p>2-12 睡眠服务器。创建一个睡眠服务器。客户端将请求一段时间之后进入睡眠状态。
+服务器将代表客户端发送命令，然后向客户端返回一条表明成功的消息。客户端应
+该睡眠或空闲所请求的时间长度。这是一个远程过程调用的简单实现，此过程中一
+个客户端的请求会通过网络调用另一台计算机上的命令。&lt;/p>
+&lt;p>2-13 名称服务器。设计并实现一个名称服务器。该服务器负责维护一个包含主机名-端
+口号对的数据库，也许还有对应服务器所提供的服务的字符串描述。针对一个或多
+个现有的服务器，注册它们的服务到你的名称服务器中（注意，在这种情况下，这
+些服务器是名称服务器的客户端）。
+每个启动的客户端都不知道它们所寻找的服务器地址。同样地，对于名称服务器的
+客户端来说，这些客户端应该发送一个请求到名称服务器，以指示它们正在寻找什
+么类型的服务。作为回复，名称服务器会向该客户端返回一个主机名-端口号对，
+然后该客户端就可以连接到适当的服务器来处理它的请求。
+选做题：
+1）为名称服务器添加缓存流行请求的功能。
+2）为你的名称服务器添加日志记录功能，跟踪哪些服务器注册了名称服务器，以
+及客户端正在请求哪些服务。
+3） 你的名称服务器应该定期通过相应的端口号 ping 已经注册的主机，以确保它们
+的服务确实处于开启状态。反复的失败将会导致名称服务器将其从服务列表中划去。
+你可以为那些注册了名称服务器的服务器实现真正的服务，或者仅仅使用虚拟服务
+器（仅仅应答一个请求）。&lt;/p>
+&lt;p>2-14 错误检查和优雅的关闭。本章所有的客户端/服务器示例代码都缺乏错误检查功
+能。我们并没有处理以下几种场景，例如，用户按Ctrl+C快捷键退出服务器或Ctrl+D
+快捷键终止客户端输入，也没有检查其他对 raw_input()的不适当输入或处理网络错
+误。因为这个缺陷，经常我们终止一个应用程序时并没有关闭套接字，很可能会导
+致丢失数据。本练习中，在示例中选择一对客户端/服务器程序，并添加足够的错
+误检查，这样每个应用程序就能正确地关闭，即关闭网络连接。&lt;/p>
+&lt;p>2-15 异步性和 SocketServer/socketserver。使用 TCP 服务器的示例，并使用其中一个
+mix-in 类来支持一个异步服务器。为了测试你的服务器，同时创建并运行多个客户
+端，并交叉显示你的服务器满足二者中请求的输出。&lt;/p>
+&lt;p>2-16 *扩展 SocketServer 类。在 SocketServer TCP 服务器代码中，我们不得不从原始
+的基础 TCP 客户端中修改客户端，因为 SocketServer 类没有维护多个请求之间
+的连接。
+a）继承 TCPServer 和 StreamRequestHandler 类并重新设计服务器，使其能够为每个客户
+端维持并使用单个连接（而不是每个请求一个连接）。
+b）将前面练习的解决方案集成到（ a）部分中的方案中，这样就可以并行为多个客户端
+提供服务。&lt;/p>
+&lt;p>2-17 *异步系统。研究至少 5 个基于 Python 的不同异步系统，可以从 Twisted、 Greenlets、
+Tornado、 Diesel、 Concurrence、 Eventlet、 Gevent 等中选择。描述它们是什么，对
 它们进行分类，并找到它们之间的相似点和差异性，然后创建一些演示代码示例&lt;/p></description></item><item><title>Djangoupgrade</title><link>https://sunnnner.github.io/djangoupgrade/</link><pubDate>Tue, 08 Mar 2022 11:06:40 +0800</pubDate><guid>https://sunnnner.github.io/djangoupgrade/</guid><description>&lt;ul>
 &lt;li>python3 中迭代器方法&lt;code>next()&lt;/code>已经改变为&lt;code>__next__()&lt;/code>&lt;/li>
+&lt;/ul></description></item><item><title>Djangoupgrade</title><link>https://sunnnner.github.io/p/djangoupgrade/</link><pubDate>Tue, 08 Mar 2022 11:06:40 +0800</pubDate><guid>https://sunnnner.github.io/p/djangoupgrade/</guid><description>&lt;ul>
+&lt;li>python3 中迭代器方法&lt;code>next()&lt;/code>已经改变为&lt;code>__next__()&lt;/code>&lt;/li>
 &lt;/ul></description></item><item><title>Go导入外部包失效问题</title><link>https://sunnnner.github.io/go%E5%AF%BC%E5%85%A5%E5%A4%96%E9%83%A8%E5%8C%85%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/</link><pubDate>Thu, 26 Aug 2021 10:48:36 +0800</pubDate><guid>https://sunnnner.github.io/go%E5%AF%BC%E5%85%A5%E5%A4%96%E9%83%A8%E5%8C%85%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/</guid><description>&lt;ul>
+&lt;li>
+&lt;p>小记在mac上使用vscode导入redis包失效问题&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>解决办法&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">vim .bash_profile
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 环境变量导入当前工作目录&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">GOPATH&lt;/span>&lt;span class="o">=&lt;/span>/Users/xxx/Desktop/go-project
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> /Users/xxx/Desktop/go-project
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">go mod init example.com/m/v2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 自动下载所需的包&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">go mod tidy
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 项目源代码放置处&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkdir src
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> src
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 可以开始编写了&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Go导入外部包失效问题</title><link>https://sunnnner.github.io/p/go%E5%AF%BC%E5%85%A5%E5%A4%96%E9%83%A8%E5%8C%85%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/</link><pubDate>Thu, 26 Aug 2021 10:48:36 +0800</pubDate><guid>https://sunnnner.github.io/p/go%E5%AF%BC%E5%85%A5%E5%A4%96%E9%83%A8%E5%8C%85%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/</guid><description>&lt;ul>
 &lt;li>
 &lt;p>小记在mac上使用vscode导入redis包失效问题&lt;/p>
 &lt;/li>
@@ -433,6 +598,276 @@ Tornado、 Diesel、 Concurrence、 Eventlet、 Gevent 等中选择。描述它�
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">None&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
+&lt;/div></description></item><item><title>Django Admin Permissions控制</title><link>https://sunnnner.github.io/p/django-admin-permissions%E6%8E%A7%E5%88%B6/</link><pubDate>Tue, 24 Aug 2021 09:26:52 +0800</pubDate><guid>https://sunnnner.github.io/p/django-admin-permissions%E6%8E%A7%E5%88%B6/</guid><description>&lt;ul>
+&lt;li>&lt;code>is_staff&lt;/code> bool 指定此用户是否可以访问管理站点&lt;/li>
+&lt;li>控制用户操作admin的权限由 &lt;code>django.contrib.auth.backends.ModelBackend&lt;/code> 进行控制，它也进行控制用户的登录认证行为&lt;/li>
+&lt;li>&lt;code>ModelBackend&lt;/code>源码解析&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt"> 10
+&lt;/span>&lt;span class="lnt"> 11
+&lt;/span>&lt;span class="lnt"> 12
+&lt;/span>&lt;span class="lnt"> 13
+&lt;/span>&lt;span class="lnt"> 14
+&lt;/span>&lt;span class="lnt"> 15
+&lt;/span>&lt;span class="lnt"> 16
+&lt;/span>&lt;span class="lnt"> 17
+&lt;/span>&lt;span class="lnt"> 18
+&lt;/span>&lt;span class="lnt"> 19
+&lt;/span>&lt;span class="lnt"> 20
+&lt;/span>&lt;span class="lnt"> 21
+&lt;/span>&lt;span class="lnt"> 22
+&lt;/span>&lt;span class="lnt"> 23
+&lt;/span>&lt;span class="lnt"> 24
+&lt;/span>&lt;span class="lnt"> 25
+&lt;/span>&lt;span class="lnt"> 26
+&lt;/span>&lt;span class="lnt"> 27
+&lt;/span>&lt;span class="lnt"> 28
+&lt;/span>&lt;span class="lnt"> 29
+&lt;/span>&lt;span class="lnt"> 30
+&lt;/span>&lt;span class="lnt"> 31
+&lt;/span>&lt;span class="lnt"> 32
+&lt;/span>&lt;span class="lnt"> 33
+&lt;/span>&lt;span class="lnt"> 34
+&lt;/span>&lt;span class="lnt"> 35
+&lt;/span>&lt;span class="lnt"> 36
+&lt;/span>&lt;span class="lnt"> 37
+&lt;/span>&lt;span class="lnt"> 38
+&lt;/span>&lt;span class="lnt"> 39
+&lt;/span>&lt;span class="lnt"> 40
+&lt;/span>&lt;span class="lnt"> 41
+&lt;/span>&lt;span class="lnt"> 42
+&lt;/span>&lt;span class="lnt"> 43
+&lt;/span>&lt;span class="lnt"> 44
+&lt;/span>&lt;span class="lnt"> 45
+&lt;/span>&lt;span class="lnt"> 46
+&lt;/span>&lt;span class="lnt"> 47
+&lt;/span>&lt;span class="lnt"> 48
+&lt;/span>&lt;span class="lnt"> 49
+&lt;/span>&lt;span class="lnt"> 50
+&lt;/span>&lt;span class="lnt"> 51
+&lt;/span>&lt;span class="lnt"> 52
+&lt;/span>&lt;span class="lnt"> 53
+&lt;/span>&lt;span class="lnt"> 54
+&lt;/span>&lt;span class="lnt"> 55
+&lt;/span>&lt;span class="lnt"> 56
+&lt;/span>&lt;span class="lnt"> 57
+&lt;/span>&lt;span class="lnt"> 58
+&lt;/span>&lt;span class="lnt"> 59
+&lt;/span>&lt;span class="lnt"> 60
+&lt;/span>&lt;span class="lnt"> 61
+&lt;/span>&lt;span class="lnt"> 62
+&lt;/span>&lt;span class="lnt"> 63
+&lt;/span>&lt;span class="lnt"> 64
+&lt;/span>&lt;span class="lnt"> 65
+&lt;/span>&lt;span class="lnt"> 66
+&lt;/span>&lt;span class="lnt"> 67
+&lt;/span>&lt;span class="lnt"> 68
+&lt;/span>&lt;span class="lnt"> 69
+&lt;/span>&lt;span class="lnt"> 70
+&lt;/span>&lt;span class="lnt"> 71
+&lt;/span>&lt;span class="lnt"> 72
+&lt;/span>&lt;span class="lnt"> 73
+&lt;/span>&lt;span class="lnt"> 74
+&lt;/span>&lt;span class="lnt"> 75
+&lt;/span>&lt;span class="lnt"> 76
+&lt;/span>&lt;span class="lnt"> 77
+&lt;/span>&lt;span class="lnt"> 78
+&lt;/span>&lt;span class="lnt"> 79
+&lt;/span>&lt;span class="lnt"> 80
+&lt;/span>&lt;span class="lnt"> 81
+&lt;/span>&lt;span class="lnt"> 82
+&lt;/span>&lt;span class="lnt"> 83
+&lt;/span>&lt;span class="lnt"> 84
+&lt;/span>&lt;span class="lnt"> 85
+&lt;/span>&lt;span class="lnt"> 86
+&lt;/span>&lt;span class="lnt"> 87
+&lt;/span>&lt;span class="lnt"> 88
+&lt;/span>&lt;span class="lnt"> 89
+&lt;/span>&lt;span class="lnt"> 90
+&lt;/span>&lt;span class="lnt"> 91
+&lt;/span>&lt;span class="lnt"> 92
+&lt;/span>&lt;span class="lnt"> 93
+&lt;/span>&lt;span class="lnt"> 94
+&lt;/span>&lt;span class="lnt"> 95
+&lt;/span>&lt;span class="lnt"> 96
+&lt;/span>&lt;span class="lnt"> 97
+&lt;/span>&lt;span class="lnt"> 98
+&lt;/span>&lt;span class="lnt"> 99
+&lt;/span>&lt;span class="lnt">100
+&lt;/span>&lt;span class="lnt">101
+&lt;/span>&lt;span class="lnt">102
+&lt;/span>&lt;span class="lnt">103
+&lt;/span>&lt;span class="lnt">104
+&lt;/span>&lt;span class="lnt">105
+&lt;/span>&lt;span class="lnt">106
+&lt;/span>&lt;span class="lnt">107
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">ModelBackend&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> Authenticates against settings.AUTH_USER_MODEL.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> &amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 控制用户登录认证 通过重写此方法进行自定义登录认证&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">authenticate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">request&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">username&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">None&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">password&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">None&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">**&lt;/span>&lt;span class="n">kwargs&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">username&lt;/span> &lt;span class="ow">is&lt;/span> &lt;span class="kc">None&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">username&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">kwargs&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">UserModel&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">USERNAME_FIELD&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">user&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">UserModel&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_default_manager&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get_by_natural_key&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">username&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">except&lt;/span> &lt;span class="n">UserModel&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">DoesNotExist&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Run the default password hasher once to reduce the timing&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># difference between an existing and a nonexistent user (#20760).&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">UserModel&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">set_password&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">password&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">user&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">check_password&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">password&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="ow">and&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">user_can_authenticate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">user&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">user&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 查看用户是否为可用状态&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">user_can_authenticate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">user&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> Reject users with is_active=False. Custom user models that don&amp;#39;t have
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> that attribute are allowed.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> &amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">is_active&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">getattr&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">user&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;is_active&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kc">None&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">is_active&lt;/span> &lt;span class="ow">or&lt;/span> &lt;span class="n">is_active&lt;/span> &lt;span class="ow">is&lt;/span> &lt;span class="kc">None&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 获取用户的permission列表&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">_get_user_permissions&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">user_obj&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">user_obj&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">user_permissions&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">all&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 获取用户的组权限列表&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">_get_group_permissions&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">user_obj&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">user_groups_field&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">get_user_model&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_meta&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get_field&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;groups&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">user_groups_query&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;group__&lt;/span>&lt;span class="si">%s&lt;/span>&lt;span class="s1">&amp;#39;&lt;/span> &lt;span class="o">%&lt;/span> &lt;span class="n">user_groups_field&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">related_query_name&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">Permission&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">objects&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">filter&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">**&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="n">user_groups_query&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">user_obj&lt;/span>&lt;span class="p">})&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 获取权限列表&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">_get_permissions&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">user_obj&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">obj&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">from_name&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> Return the permissions of `user_obj` from `from_name`. `from_name` can
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> be either &amp;#34;group&amp;#34; or &amp;#34;user&amp;#34; to return permissions from
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> `_get_group_permissions` or `_get_user_permissions` respectively.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> &amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="ow">not&lt;/span> &lt;span class="n">user_obj&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">is_active&lt;/span> &lt;span class="ow">or&lt;/span> &lt;span class="n">user_obj&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">is_anonymous&lt;/span> &lt;span class="ow">or&lt;/span> &lt;span class="n">obj&lt;/span> &lt;span class="ow">is&lt;/span> &lt;span class="ow">not&lt;/span> &lt;span class="kc">None&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="nb">set&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">perm_cache_name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;_&lt;/span>&lt;span class="si">%s&lt;/span>&lt;span class="s1">_perm_cache&amp;#39;&lt;/span> &lt;span class="o">%&lt;/span> &lt;span class="n">from_name&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="ow">not&lt;/span> &lt;span class="nb">hasattr&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">user_obj&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">perm_cache_name&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">user_obj&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">is_superuser&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">perms&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Permission&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">objects&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">all&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">perms&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">getattr&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;_get_&lt;/span>&lt;span class="si">%s&lt;/span>&lt;span class="s1">_permissions&amp;#39;&lt;/span> &lt;span class="o">%&lt;/span> &lt;span class="n">from_name&lt;/span>&lt;span class="p">)(&lt;/span>&lt;span class="n">user_obj&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">perms&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">perms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">values_list&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;content_type__app_label&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;codename&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">order_by&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">setattr&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">user_obj&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">perm_cache_name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">%s&lt;/span>&lt;span class="s2">.&lt;/span>&lt;span class="si">%s&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="o">%&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">ct&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">name&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="n">ct&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">name&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">perms&lt;/span>&lt;span class="p">})&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="nb">getattr&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">user_obj&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">perm_cache_name&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 获取用户权限列表&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">get_user_permissions&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">user_obj&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">obj&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">None&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> Return a set of permission strings the user `user_obj` has from their
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> `user_permissions`.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> &amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_get_permissions&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">user_obj&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">obj&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;user&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 获取组列表&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">get_group_permissions&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">user_obj&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">obj&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">None&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> Return a set of permission strings the user `user_obj` has from the
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> groups they belong.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> &amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_get_permissions&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">user_obj&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">obj&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;group&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 获取用户所有的权限列表&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">get_all_permissions&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">user_obj&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">obj&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">None&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="ow">not&lt;/span> &lt;span class="n">user_obj&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">is_active&lt;/span> &lt;span class="ow">or&lt;/span> &lt;span class="n">user_obj&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">is_anonymous&lt;/span> &lt;span class="ow">or&lt;/span> &lt;span class="n">obj&lt;/span> &lt;span class="ow">is&lt;/span> &lt;span class="ow">not&lt;/span> &lt;span class="kc">None&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="nb">set&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="ow">not&lt;/span> &lt;span class="nb">hasattr&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">user_obj&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;_perm_cache&amp;#39;&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">user_obj&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_perm_cache&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">*&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get_user_permissions&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">user_obj&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">*&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get_group_permissions&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">user_obj&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">user_obj&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_perm_cache&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 判断是否具有权限&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">has_perm&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">user_obj&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">perm&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">obj&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">None&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">user_obj&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">is_active&lt;/span> &lt;span class="ow">and&lt;/span> &lt;span class="n">perm&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get_all_permissions&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">user_obj&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">obj&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 返回某个model访问权限(True or False)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">has_module_perms&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">user_obj&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">app_label&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> Return True if user_obj has any permissions in the given app_label.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> &amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">user_obj&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">is_active&lt;/span> &lt;span class="ow">and&lt;/span> &lt;span class="nb">any&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">perm&lt;/span>&lt;span class="p">[:&lt;/span>&lt;span class="n">perm&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">index&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;.&amp;#39;&lt;/span>&lt;span class="p">)]&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">app_label&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> &lt;span class="n">perm&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get_all_permissions&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">user_obj&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 得到用户实例 (通过重写此方法或得自定义用户实例)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">get_user&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">user_id&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">user&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">UserModel&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_default_manager&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">pk&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">user_id&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">except&lt;/span> &lt;span class="n">UserModel&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">DoesNotExist&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">None&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">user&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">user_can_authenticate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">user&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="kc">None&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>重写示例&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">xxxBackend&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ModelBackend&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">authenticate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">request&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">username&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">None&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">password&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">None&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">**&lt;/span>&lt;span class="n">kwargs&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">user&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">UserModel&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">objects&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Q&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">username&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">username&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">|&lt;/span> &lt;span class="n">Q&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">phone&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">username&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">user&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">check_password&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">password&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">user&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">None&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">except&lt;/span> &lt;span class="n">UserModel&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">DoesNotExist&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">None&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">except&lt;/span> &lt;span class="n">MultipleObjectsReturned&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">None&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">get_user&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">user_id&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">UserModel&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">objects&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">pk&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">user_id&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">except&lt;/span> &lt;span class="n">UserModel&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">DoesNotExist&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">None&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
 &lt;/div></description></item><item><title>Go词法单元</title><link>https://sunnnner.github.io/go%E8%AF%8D%E6%B3%95%E5%8D%95%E5%85%83/</link><pubDate>Tue, 17 Aug 2021 10:10:49 +0800</pubDate><guid>https://sunnnner.github.io/go%E8%AF%8D%E6%B3%95%E5%8D%95%E5%85%83/</guid><description>&lt;h2 id="高级语言源程序内部的几个概念">高级语言源程序内部的几个概念&lt;/h2>
 &lt;ul>
 &lt;li>token、关键字、标识符、操作符、分隔符和字面量&lt;/li>
@@ -445,7 +880,37 @@ Tornado、 Diesel、 Concurrence、 Eventlet、 Gevent 等中选择。描述它�
 &lt;li>
 &lt;p>go语言的token可以分为关键字、标识符、操作符、分隔符和字面常量等&lt;/p>
 &lt;/li>
+&lt;/ul></description></item><item><title>Go词法单元</title><link>https://sunnnner.github.io/p/go%E8%AF%8D%E6%B3%95%E5%8D%95%E5%85%83/</link><pubDate>Tue, 17 Aug 2021 10:10:49 +0800</pubDate><guid>https://sunnnner.github.io/p/go%E8%AF%8D%E6%B3%95%E5%8D%95%E5%85%83/</guid><description>&lt;h2 id="高级语言源程序内部的几个概念">高级语言源程序内部的几个概念&lt;/h2>
+&lt;ul>
+&lt;li>token、关键字、标识符、操作符、分隔符和字面量&lt;/li>
+&lt;/ul>
+&lt;h3 id="token">token&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>token 是构成源程序的基本不可再分割的单元，编译器编译程序的第一步就是将源程序分割为一个个独立的token，这个过程就是词法分析&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>go语言的token可以分为关键字、标识符、操作符、分隔符和字面常量等&lt;/p>
+&lt;/li>
 &lt;/ul></description></item><item><title>Django Orm聚合分组知识</title><link>https://sunnnner.github.io/django-orm%E8%81%9A%E5%90%88%E5%88%86%E7%BB%84%E7%9F%A5%E8%AF%86/</link><pubDate>Thu, 12 Aug 2021 16:19:36 +0800</pubDate><guid>https://sunnnner.github.io/django-orm%E8%81%9A%E5%90%88%E5%88%86%E7%BB%84%E7%9F%A5%E8%AF%86/</guid><description>&lt;ul>
+&lt;li>&lt;code>annotate&lt;/code> 聚合操作 有 Max Sum Count一些参数使用 &lt;code>=&lt;/code>相当于sql中的&lt;code>as&lt;/code>&lt;/li>
+&lt;li>如果想要查询的时候更换变量名称使用&lt;code>extra(select={&amp;quot;change_file&amp;quot;: &amp;quot;model_file&amp;quot;})&lt;/code> 相当于 sql 中的&lt;code>as&lt;/code>&lt;/li>
+&lt;li>sql中&lt;code>order by&lt;/code>分组在orm使用&lt;code>values&lt;/code>进行表达&lt;/li>
+&lt;li>示例&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 按照各个省事进行聚合数量&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">DemoModel&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">objects&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">filter&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">test&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">xxx&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">extra&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">select&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="s1">&amp;#39;position&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">city&lt;/span>&lt;span class="p">})&lt;/span>&lt;span class="o">.&lt;/span>\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">values&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;position&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;location&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">annotate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">count&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">Count&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">city&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Django Orm聚合分组知识</title><link>https://sunnnner.github.io/p/django-orm%E8%81%9A%E5%90%88%E5%88%86%E7%BB%84%E7%9F%A5%E8%AF%86/</link><pubDate>Thu, 12 Aug 2021 16:19:36 +0800</pubDate><guid>https://sunnnner.github.io/p/django-orm%E8%81%9A%E5%90%88%E5%88%86%E7%BB%84%E7%9F%A5%E8%AF%86/</guid><description>&lt;ul>
 &lt;li>&lt;code>annotate&lt;/code> 聚合操作 有 Max Sum Count一些参数使用 &lt;code>=&lt;/code>相当于sql中的&lt;code>as&lt;/code>&lt;/li>
 &lt;li>如果想要查询的时候更换变量名称使用&lt;code>extra(select={&amp;quot;change_file&amp;quot;: &amp;quot;model_file&amp;quot;})&lt;/code> 相当于 sql 中的&lt;code>as&lt;/code>&lt;/li>
 &lt;li>sql中&lt;code>order by&lt;/code>分组在orm使用&lt;code>values&lt;/code>进行表达&lt;/li>
@@ -515,13 +980,206 @@ Tornado、 Diesel、 Concurrence、 Eventlet、 Gevent 等中选择。描述它�
 &lt;h2 id="创建python37虚拟环境">创建python3.7虚拟环境&lt;/h2>
 &lt;ul>
 &lt;li>&lt;code>mkvirtualenv -p mkvirtualenv -p /usr/local/bin/python3.7/bin/python3.7 py3.7&lt;/code>&lt;/li>
-&lt;/ul></description></item><item><title>K8s Install</title><link>https://sunnnner.github.io/k8s-install/</link><pubDate>Tue, 08 Oct 2019 14:57:24 +0800</pubDate><guid>https://sunnnner.github.io/k8s-install/</guid><description/></item><item><title>缺少的知识</title><link>https://sunnnner.github.io/%E7%BC%BA%E5%B0%91%E7%9A%84%E7%9F%A5%E8%AF%86/</link><pubDate>Sat, 01 Sep 2018 10:28:49 +0800</pubDate><guid>https://sunnnner.github.io/%E7%BC%BA%E5%B0%91%E7%9A%84%E7%9F%A5%E8%AF%86/</guid><description>&lt;ul>
+&lt;/ul></description></item><item><title>Ubuntu20.04 LTS编译python3.7</title><link>https://sunnnner.github.io/p/ubuntu20.04-lts%E7%BC%96%E8%AF%91python3.7/</link><pubDate>Fri, 06 Aug 2021 19:29:05 +0800</pubDate><guid>https://sunnnner.github.io/p/ubuntu20.04-lts%E7%BC%96%E8%AF%91python3.7/</guid><description>&lt;h1 id="ubuntu2004-lts编译-python371httpswwwpythonorgdownloadsreleasepython-371">ubuntu20.04 LTS编译 &lt;a class="link" href="https://www.python.org/downloads/release/python-371/" target="_blank" rel="noopener"
+>python3.7.1&lt;/a>&lt;/h1>
+&lt;h2 id="安装编译前依赖包">安装编译前依赖包&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>sudo apt-get install -y build-essential libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev zlib1g-dev gcc make &lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h2 id="编译前配置">编译前配置&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;code>sudo ./configure --enable-optimizations --prefix=/usr/local/bin/python3.7&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&amp;ndash;prefix指定安装位置&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="编译安装">编译安装&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;code>make&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>sudo make install&lt;/code>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="安装virtualenv虚拟环境来管理python版本">安装virtualenv虚拟环境来管理python版本&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>sudo apt install python3-pip&lt;/code>&lt;/li>
+&lt;li>&lt;code>pip install virtualenv&lt;/code>&lt;/li>
+&lt;li>&lt;code>pip install virtualenvwrapper&lt;/code>&lt;/li>
+&lt;li>&lt;code>mkdir .virtualenvs&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h2 id="vim-zhsrc">vim .zhsrc&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">WORKON_HOME&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">$HOME&lt;/span>/.virtualenvs
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">VIRTUALENVWRAPPER_PYTHON&lt;/span>&lt;span class="o">=&lt;/span>/usr/bin/python3
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">VIRTUALENVWRAPPER_VIRTUALENV&lt;/span>&lt;span class="o">=&lt;/span>~/.local/bin/virtualenv
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> ~/.local/bin/virtualenvwrapper.sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>&lt;code>source .zshrc&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h2 id="创建python37虚拟环境">创建python3.7虚拟环境&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>mkvirtualenv -p mkvirtualenv -p /usr/local/bin/python3.7/bin/python3.7 py3.7&lt;/code>&lt;/li>
+&lt;/ul></description></item><item><title>K8s Install</title><link>https://sunnnner.github.io/k8s-install/</link><pubDate>Tue, 08 Oct 2019 14:57:24 +0800</pubDate><guid>https://sunnnner.github.io/k8s-install/</guid><description/></item><item><title>K8s Install</title><link>https://sunnnner.github.io/p/k8s-install/</link><pubDate>Tue, 08 Oct 2019 14:57:24 +0800</pubDate><guid>https://sunnnner.github.io/p/k8s-install/</guid><description/></item><item><title>缺少的知识</title><link>https://sunnnner.github.io/%E7%BC%BA%E5%B0%91%E7%9A%84%E7%9F%A5%E8%AF%86/</link><pubDate>Sat, 01 Sep 2018 10:28:49 +0800</pubDate><guid>https://sunnnner.github.io/%E7%BC%BA%E5%B0%91%E7%9A%84%E7%9F%A5%E8%AF%86/</guid><description>&lt;ul>
+&lt;li>ISCSI相关操作&lt;/li>
+&lt;li>熟悉MVC，熟悉OOP，熟悉Python之外的其他OOP语言，Java者优先&lt;/li>
+&lt;li>rust&lt;/li>
+&lt;li>go&lt;/li>
+&lt;li>vue&lt;/li>
+&lt;/ul></description></item><item><title>缺少的知识</title><link>https://sunnnner.github.io/p/%E7%BC%BA%E5%B0%91%E7%9A%84%E7%9F%A5%E8%AF%86/</link><pubDate>Sat, 01 Sep 2018 10:28:49 +0800</pubDate><guid>https://sunnnner.github.io/p/%E7%BC%BA%E5%B0%91%E7%9A%84%E7%9F%A5%E8%AF%86/</guid><description>&lt;ul>
 &lt;li>ISCSI相关操作&lt;/li>
 &lt;li>熟悉MVC，熟悉OOP，熟悉Python之外的其他OOP语言，Java者优先&lt;/li>
 &lt;li>rust&lt;/li>
 &lt;li>go&lt;/li>
 &lt;li>vue&lt;/li>
 &lt;/ul></description></item><item><title>Python基础</title><link>https://sunnnner.github.io/python%E5%9F%BA%E7%A1%80/</link><pubDate>Sun, 03 Jun 2018 10:22:36 +0800</pubDate><guid>https://sunnnner.github.io/python%E5%9F%BA%E7%A1%80/</guid><description>&lt;h2 id="让python2支持中文">让python2支持中文&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#coding=utf-8&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#-*-coding:utf-8-*-&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>在页面头部写入&lt;/li>
+&lt;li>变量及数据类型&lt;/li>
+&lt;li>变量就是用来存东西的&lt;/li>
+&lt;li>程序就是用来处理数据的，而变量就是用来存储数据的&lt;/li>
+&lt;li>变量起名要有意义&lt;/li>
+&lt;/ul>
+&lt;h2 id="数据类型">数据类型&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">nnumber数字包括int&lt;/span> &lt;span class="n">long&lt;/span> &lt;span class="nb">float&lt;/span> &lt;span class="nb">complex&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">复数&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">bollernfalse&lt;/span> &lt;span class="n">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">String&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">list列表&lt;/span>&lt;span class="err">（&lt;/span>&lt;span class="n">数组&lt;/span>&lt;span class="err">）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">tuple元组&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">dictionary字典&lt;/span>&lt;span class="err">（&lt;/span>&lt;span class="n">对象&lt;/span>&lt;span class="err">）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">可以用type&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="n">来查看变量数据类型&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="关键字">关键字&lt;/h2>
+&lt;ul>
+&lt;li>交换模式下使用import keyword- keyword.kwlist查看当前系统python的关键字&lt;/li>
+&lt;li>python2中使用raw_iput进行获取用户键盘数据它会把任何数据当作字符串来对待&lt;/li>
+&lt;li>python3中使用input来捕获用户键盘数据但是在python2中input输入的内容必须是表达式&lt;/li>
+&lt;li>输出 print&lt;/li>
+&lt;/ul>
+&lt;h2 id="格式化">格式化&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="o">%&lt;/span>&lt;span class="n">c代表字符&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">%&lt;/span>&lt;span class="n">s&lt;/span> &lt;span class="n">通过str&lt;/span>&lt;span class="err">（）&lt;/span>&lt;span class="n">字符串转换来格式化&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">%&lt;/span>&lt;span class="n">i&lt;/span> &lt;span class="n">有符号十进制整数&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">%&lt;/span>&lt;span class="n">d&lt;/span> &lt;span class="n">有符号十进制整数&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">%&lt;/span>&lt;span class="n">u&lt;/span> &lt;span class="n">无符号十进制整数&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">%&lt;/span>&lt;span class="n">o&lt;/span> &lt;span class="n">八进制整数&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">%&lt;/span>&lt;span class="n">x&lt;/span> &lt;span class="n">十六进制整数&lt;/span>&lt;span class="err">（&lt;/span>&lt;span class="n">小写字母&lt;/span>&lt;span class="err">）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">%&lt;/span>&lt;span class="n">X&lt;/span> &lt;span class="n">十六进制整数&lt;/span>&lt;span class="err">（&lt;/span>&lt;span class="n">大写字母&lt;/span>&lt;span class="err">）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">%&lt;/span>&lt;span class="n">e&lt;/span> &lt;span class="n">索引符号&lt;/span>&lt;span class="err">（&lt;/span>&lt;span class="n">小写e&lt;/span>&lt;span class="err">）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">%&lt;/span>&lt;span class="n">E&lt;/span> &lt;span class="n">索引符号&lt;/span>&lt;span class="err">（&lt;/span>&lt;span class="n">大写E&lt;/span>&lt;span class="err">）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">%&lt;/span>&lt;span class="n">f&lt;/span> &lt;span class="n">浮点实数&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">%&lt;/span>&lt;span class="n">g&lt;/span> &lt;span class="o">%&lt;/span>&lt;span class="n">f与&lt;/span>&lt;span class="o">%&lt;/span>&lt;span class="n">e&lt;/span> &lt;span class="n">的简写&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">%&lt;/span>&lt;span class="n">G&lt;/span> &lt;span class="o">%&lt;/span>&lt;span class="n">F&lt;/span>&lt;span class="o">%&lt;/span>&lt;span class="n">E的简写&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\&lt;span class="n">n&lt;/span> &lt;span class="n">换行输出&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">python算术运算符&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">+-*/&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">//&lt;/span>&lt;span class="err">（&lt;/span>&lt;span class="n">取整除&lt;/span>&lt;span class="err">）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">%&lt;/span>&lt;span class="n">求余&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">**&lt;/span> &lt;span class="n">幂&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="赋值运算">赋值运算&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="o">+=&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">-=&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">*=&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">/=&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">%=&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">**=&lt;/span> &lt;span class="n">幂赋值运算符&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">//=&lt;/span> &lt;span class="n">取整除赋值运算符&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="--while循环">==- while循环==&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">complex&lt;/span>&lt;span class="err">（）&lt;/span>&lt;span class="n">创建一个复数&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">eval&lt;/span>&lt;span class="err">（）&lt;/span>&lt;span class="n">运算python中有效表达式并返回一个对象&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">tuple&lt;/span>&lt;span class="err">（）&lt;/span>&lt;span class="n">将序列s转换为一个元组&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">list&lt;/span>&lt;span class="err">（）&lt;/span>&lt;span class="n">转换为列表&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">unichr&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="n">转换为Unicode字符&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">ord&lt;/span>&lt;span class="err">（）&lt;/span>&lt;span class="n">转换为它的整数值&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">hex&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="n">将一个整数转换为一个十六进制的字符串&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">oct&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="n">将一个整数转换为一个八进制字符串&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Python基础</title><link>https://sunnnner.github.io/p/python%E5%9F%BA%E7%A1%80/</link><pubDate>Sun, 03 Jun 2018 10:22:36 +0800</pubDate><guid>https://sunnnner.github.io/p/python%E5%9F%BA%E7%A1%80/</guid><description>&lt;h2 id="让python2支持中文">让python2支持中文&lt;/h2>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1

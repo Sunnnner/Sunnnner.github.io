@@ -256,7 +256,295 @@ rclone copy gdrive:test /root/test&lt;/li>
 &lt;blockquote>
 &lt;p>显示上传时间
 rclone lsd gdrive:test&lt;/p>
+&lt;/blockquote></description></item><item><title>Rclone挂载googleDrive</title><link>https://sunnnner.github.io/p/rclone%E6%8C%82%E8%BD%BDgoogledrive/</link><pubDate>Wed, 04 Sep 2019 11:30:51 +0800</pubDate><guid>https://sunnnner.github.io/p/rclone%E6%8C%82%E8%BD%BDgoogledrive/</guid><description>&lt;ul>
+&lt;li>最近查找大容量存储工具，想到了免费版的Google云盘，询问了一下有一个无限空间的云盘，话不多说开始搞，在淘宝买了个账号开始配在自己的服务器上，但是发现并不是这么好配，查找了很多资料，到最后朋友给我说rclone可以挂在Google云盘，查了一下果然可以，把教程贴出来为以后查看方便&lt;/li>
+&lt;/ul>
+&lt;h2 id="首先安装rclone">首先安装rclone&lt;/h2>
+&lt;pre>&lt;code>wget https://www.moerats.com/usr/shell/rclone_debian.sh &amp;amp;&amp;amp; bash rclone_debian.sh
+&lt;/code>&lt;/pre>
+&lt;h2 id="初始化配置">初始化配置&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;span class="lnt">54
+&lt;/span>&lt;span class="lnt">55
+&lt;/span>&lt;span class="lnt">56
+&lt;/span>&lt;span class="lnt">57
+&lt;/span>&lt;span class="lnt">58
+&lt;/span>&lt;span class="lnt">59
+&lt;/span>&lt;span class="lnt">60
+&lt;/span>&lt;span class="lnt">61
+&lt;/span>&lt;span class="lnt">62
+&lt;/span>&lt;span class="lnt">63
+&lt;/span>&lt;span class="lnt">64
+&lt;/span>&lt;span class="lnt">65
+&lt;/span>&lt;span class="lnt">66
+&lt;/span>&lt;span class="lnt">67
+&lt;/span>&lt;span class="lnt">68
+&lt;/span>&lt;span class="lnt">69
+&lt;/span>&lt;span class="lnt">70
+&lt;/span>&lt;span class="lnt">71
+&lt;/span>&lt;span class="lnt">72
+&lt;/span>&lt;span class="lnt">73
+&lt;/span>&lt;span class="lnt">74
+&lt;/span>&lt;span class="lnt">75
+&lt;/span>&lt;span class="lnt">76
+&lt;/span>&lt;span class="lnt">77
+&lt;/span>&lt;span class="lnt">78
+&lt;/span>&lt;span class="lnt">79
+&lt;/span>&lt;span class="lnt">80
+&lt;/span>&lt;span class="lnt">81
+&lt;/span>&lt;span class="lnt">82
+&lt;/span>&lt;span class="lnt">83
+&lt;/span>&lt;span class="lnt">84
+&lt;/span>&lt;span class="lnt">85
+&lt;/span>&lt;span class="lnt">86
+&lt;/span>&lt;span class="lnt">87
+&lt;/span>&lt;span class="lnt">88
+&lt;/span>&lt;span class="lnt">89
+&lt;/span>&lt;span class="lnt">90
+&lt;/span>&lt;span class="lnt">91
+&lt;/span>&lt;span class="lnt">92
+&lt;/span>&lt;span class="lnt">93
+&lt;/span>&lt;span class="lnt">94
+&lt;/span>&lt;span class="lnt">95
+&lt;/span>&lt;span class="lnt">96
+&lt;/span>&lt;span class="lnt">97
+&lt;/span>&lt;span class="lnt">98
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"> rclone config
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">n) New remote
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">s) Set configuration password
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">q) Quit config
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">n/s/q&amp;gt; n
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">name&amp;gt; Rats #随便填，后面要用到
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Type of storage to configure.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Choose a number from below, or type in your own value
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 / Amazon Drive
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \ &amp;#34;amazon cloud drive&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 2 / Amazon S3 (also Dreamhost, Ceph, Minio)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \ &amp;#34;s3&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 3 / Backblaze B2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \ &amp;#34;b2&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 4 / Box
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \ &amp;#34;box&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 5 / Cache a remote
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \ &amp;#34;cache&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 6 / Dropbox
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \ &amp;#34;dropbox&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 7 / Encrypt/Decrypt a remote
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \ &amp;#34;crypt&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 8 / FTP Connection
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \ &amp;#34;ftp&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 9 / Google Cloud Storage (this is not Google Drive)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \ &amp;#34;google cloud storage&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">10 / Google Drive
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \ &amp;#34;drive&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">11 / Hubic
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \ &amp;#34;hubic&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">12 / Local Disk
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \ &amp;#34;local&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">13 / Microsoft Azure Blob Storage
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \ &amp;#34;azureblob&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">14 / Microsoft OneDrive
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \ &amp;#34;onedrive&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">15 / Openstack Swift (Rackspace Cloud Files, Memset Memstore, OVH)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \ &amp;#34;swift&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">16 / Pcloud
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \ &amp;#34;pcloud&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">17 / QingCloud Object Storage
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \ &amp;#34;qingstor&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">18 / SSH/SFTP Connection
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \ &amp;#34;sftp&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">19 / Webdav
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \ &amp;#34;webdav&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">20 / Yandex Disk
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \ &amp;#34;yandex&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">21 / http Connection
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \ &amp;#34;http&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Storage&amp;gt; 10 #选择10，Google Drive
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Google Application Client Id - leave blank normally.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">client_id&amp;gt; #留空
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Google Application Client Secret - leave blank normally.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">client_secret&amp;gt; #留空
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Service Account Credentials JSON file path - needed only if you want use SA instead of interactive login.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">service_account_file&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Remote config
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Use auto config?
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> * Say Y if not sure
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> * Say N if you are working on a remote or headless machine or Y didn&amp;#39;t work
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">y) Yes
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">n) No
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">y/n&amp;gt; n #选择n
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">If your browser doesn&amp;#39;t open automatically go to the following link: https://accounts.google.com/o/oauth2/auth.... #复制到浏览器打开，获取验证码
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Log in and authorize rclone for access
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Enter verification code&amp;gt; #填入上面获取到的验证码
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Configure this as a team drive?
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">y) Yes
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">n) No
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">y/n&amp;gt; y #选择y
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Fetching team drive list...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">No team drives found in your account--------------------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[Rats]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">client_id =
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">client_secret =
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">service_account_file =
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">token = {&amp;#34;access_token&amp;#34;:&amp;#34;ya29.GltFBd7UJN2qrxdG8FnG_rMuB18ogb8QlujdL7glvXtfV&amp;#34;}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">team_drive =
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--------------------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">y) Yes this is OK
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">e) Edit this remote
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">d) Delete this remote
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">y/e/d&amp;gt; y #选择y
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Current remotes:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Name Type
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">==== ====
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Rats drive
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">e) Edit existing remote
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">n) New remote
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">d) Delete remote
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">r) Rename remote
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">c) Copy remote
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">s) Set configuration password
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">q) Quit config
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">e/n/d/r/c/s/q&amp;gt; q #选择q退出
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="挂载硬盘这里坑比较多">挂载硬盘（这里坑比较多）&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>首先我们要在vps上创建一个文件夹(作为Google云盘的载体盘)&lt;/p>
+&lt;p>mkdir /root/GoogleDrive&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>首先我们先创建云盘文件夹&lt;/p>
+&lt;p>rclone mkdir test&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>其次我们使用rclone开始挂载云盘&lt;/p>
+&lt;p>rclone mount gdrive:test /root/GoogleDrive &amp;amp;&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>gdrive是谷歌云盘标识&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>卸载文件夹
+fusermount -qzu GoogleDrive&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>GoogleDrive 为你本地VPS载体文件夹&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>上传文件
+rclone copy /root/test gdrive:test&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>/root/test为本地文件 后面的为谷歌云盘标识及文件夹名字&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>文件下载
+rclone copy gdrive:test /root/test&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>下载到本地vps文件夹下&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>
+&lt;p>列表&lt;/p>
+&lt;p>rclone ls gdrive:test&lt;/p>
+&lt;p>rclone lsl gdrive:test&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>显示上传时间
+rclone lsd gdrive:test&lt;/p>
 &lt;/blockquote></description></item><item><title>Python工厂模式</title><link>https://sunnnner.github.io/python%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 06 Sep 2018 10:34:03 +0800</pubDate><guid>https://sunnnner.github.io/python%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h2 id="介绍一下工厂模式">介绍一下工厂模式&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">工厂模式是一个在软件开发中用来创建对象的设计模式。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">工厂模式包涵一个超类。这个超类提供一个抽象化的接口来创建一个特定类型的对象，而不是决定哪个对象可以被创建。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">当程序运行输入一个“类型”的时候，需要创建于此相应的对象。这就用到了工厂模式。在如此情形中，实现代码基于工厂模式，可以达到可扩展，可维护的代码。当增加一个新的类型，不在需要修改已存在的类，只增加能够产生新类型的子类。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">简单工厂模式的实质是由一个工厂类根据传入的参数，动态决定应该创建哪一个产品类（这些产品类继承自一个父类或接口）的实例。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">封装函数，动态创建商品类
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="说说有哪些mvc模式的框架">说说有哪些mvc模式的框架&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">Struts、Spring、ZF/.NET
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">耦合性低/重用性高/生命周期成本低/部署快/可维护性高/有利软件工程化管理
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">``
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Python工厂模式</title><link>https://sunnnner.github.io/p/python%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 06 Sep 2018 10:34:03 +0800</pubDate><guid>https://sunnnner.github.io/p/python%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h2 id="介绍一下工厂模式">介绍一下工厂模式&lt;/h2>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
