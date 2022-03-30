@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>linux on whiteKBlog</title><link>https://sunnnner.github.io/tags/linux/</link><description>Recent content in linux on whiteKBlog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 09 Sep 2019 11:39:55 +0800</lastBuildDate><atom:link href="https://sunnnner.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>什么是跨域及解决办法</title><link>https://sunnnner.github.io/archetypes/%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link><pubDate>Mon, 09 Sep 2019 11:39:55 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</guid><description>&lt;pre>&lt;code>跨域
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>linux on whiteKBlog</title><link>https://sunnnner.github.io/tags/linux/</link><description>Recent content in linux on whiteKBlog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 09 Sep 2019 11:39:55 +0800</lastBuildDate><atom:link href="https://sunnnner.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>什么是跨域及解决办法</title><link>https://sunnnner.github.io/%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link><pubDate>Mon, 09 Sep 2019 11:39:55 +0800</pubDate><guid>https://sunnnner.github.io/%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</guid><description>&lt;pre>&lt;code>跨域
 浏览器从一个域名的网页去请求另一个域名的资源时,浏览器处于安全的考虑,不允许不同源的请求
 同源策略：协议相同， 域名相同， 端口相同
 处理办法： 通过JSONP跨域
@@ -44,7 +44,7 @@ response[‘Access-Control-Allow-Origin‘] = “*”
 &lt;/div>&lt;p>JSONP和CORS：&lt;/p>
 &lt;pre>&lt;code>1.JSONP只能实现GET请求，而CORS支持所有类型的HTTP请求
 2.jsonp需要client和server端的相互配合
-3.cors在client端无需设置，server端需要针对不同的请求，来做head头的处理&lt;/code>&lt;/pre></description></item><item><title>什么是RPC</title><link>https://sunnnner.github.io/archetypes/%E4%BB%80%E4%B9%88%E6%98%AFrpc/</link><pubDate>Sat, 07 Sep 2019 11:36:55 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/%E4%BB%80%E4%B9%88%E6%98%AFrpc/</guid><description>&lt;p>RPC&lt;/p>
+3.cors在client端无需设置，server端需要针对不同的请求，来做head头的处理&lt;/code>&lt;/pre></description></item><item><title>什么是RPC</title><link>https://sunnnner.github.io/%E4%BB%80%E4%B9%88%E6%98%AFrpc/</link><pubDate>Sat, 07 Sep 2019 11:36:55 +0800</pubDate><guid>https://sunnnner.github.io/%E4%BB%80%E4%B9%88%E6%98%AFrpc/</guid><description>&lt;p>RPC&lt;/p>
 &lt;pre>&lt;code>远程过程中调用(RPC) 是一种协议， 程序可使用这种协议向网络中的另一台计算机上的程序请求服务
 RPC采用客户机/ 服务器模式， 请求程序就是一个客户机， 而服务提供程序就是一个服务器
 first 客户机调用进程发送一个有进程参数的调用信息到服务进程，然后等待应答信息

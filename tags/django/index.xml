@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>django on whiteKBlog</title><link>https://sunnnner.github.io/tags/django/</link><description>Recent content in django on whiteKBlog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 11 Oct 2019 15:28:02 +0800</lastBuildDate><atom:link href="https://sunnnner.github.io/tags/django/index.xml" rel="self" type="application/rss+xml"/><item><title>Django文件压缩</title><link>https://sunnnner.github.io/archetypes/django%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9/</link><pubDate>Fri, 11 Oct 2019 15:28:02 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/django%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9/</guid><description>&lt;p>类型和方法数据压缩分为两种类型。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>django on whiteKBlog</title><link>https://sunnnner.github.io/tags/django/</link><description>Recent content in django on whiteKBlog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 11 Oct 2019 15:28:02 +0800</lastBuildDate><atom:link href="https://sunnnner.github.io/tags/django/index.xml" rel="self" type="application/rss+xml"/><item><title>Django文件压缩</title><link>https://sunnnner.github.io/django%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9/</link><pubDate>Fri, 11 Oct 2019 15:28:02 +0800</pubDate><guid>https://sunnnner.github.io/django%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9/</guid><description>&lt;p>类型和方法数据压缩分为两种类型。&lt;/p>
 &lt;p>有损：在这种类型的压缩中，压缩时会降低数据质量（在这种情况下为图像和视频）。这被广泛用于压缩多媒体。&lt;/p>
 &lt;p>无损：在这种类型的压缩中，数据质量（在这种情况下为图像）不会丢失。它广泛用于压缩无法承受数据丢失的敏感数据。&lt;/p>
 &lt;p>安装与配置&lt;/p>
@@ -69,14 +69,14 @@
 &lt;/div>
 &lt;/div>&lt;p>在上面的models.py文件中，我们声明名称的实用程序方法compressImage并将其uploadedImage作为参数传递。save创建Upload对象时在模块中调用此方法。&lt;/p>
 &lt;p>我们使用python图像处理库Pillow（PIL）来处理图像处理。我们打开上载的图像并将其存储在一个临时对象中，imageTemproary并初始化BytesIO流以处理将更改写入图像的过程。我们使用此resize()方法将上传的图像调整为特定大小（在这种情况下小于原始大小），并使用seek() method将输出流指针流重置为初始位置。我们可以进一步使用Django的InMemoryUploadedFile，以覆盖现有的未压缩的图像。
-您可以继续自定义方法，以根据需要更改图像类型，尺寸和质量级别。&lt;/p></description></item><item><title>静态文件的含义以及配置</title><link>https://sunnnner.github.io/archetypes/%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 10 Oct 2019 15:27:14 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AE/</guid><description>&lt;h1 id="django-staticfile-的配置">Django staticfile 的配置&lt;/h1>
+您可以继续自定义方法，以根据需要更改图像类型，尺寸和质量级别。&lt;/p></description></item><item><title>静态文件的含义以及配置</title><link>https://sunnnner.github.io/%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 10 Oct 2019 15:27:14 +0800</pubDate><guid>https://sunnnner.github.io/%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AE/</guid><description>&lt;h1 id="django-staticfile-的配置">Django staticfile 的配置&lt;/h1>
 &lt;p>起初以为是我dockerfile写错了的问题，的确不是dockerfile的问题是我没有理解static_url与static_root的含义&lt;/p>
 &lt;p>👍 如果不是前后端分离项目在每个APP下都应该有static与templates文件夹存在不然django收集静态文件收集不到&lt;/p>
 &lt;p>STATIC_URL为Django返回给前端的路径即项目内部的static文件夹&lt;/p>
 &lt;p>STATIC_ROOT为静态文件收集的路径即 python3 manage.py collectstatic 的文件夹&lt;/p>
 &lt;p>STATIC_ROOT = os.path.join(BASE_DIR, &amp;lsquo;static&amp;rsquo;) 意思是把文件收集到项目下static文件夹下的static文件夹中&lt;/p>
 &lt;p>所以方便起见我把 STATIC_ROOT = os.path.join(BASE_DIR, &amp;lsquo;&amp;rsquo;)设置为了收集在项目下static文件夹下&lt;/p>
-&lt;p>大坑不少小坑不断，学无止境啊&lt;/p></description></item><item><title>Django Minio开发过程</title><link>https://sunnnner.github.io/archetypes/django-minio%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B/</link><pubDate>Sun, 06 Oct 2019 14:17:12 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/django-minio%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B/</guid><description>&lt;blockquote>
+&lt;p>大坑不少小坑不断，学无止境啊&lt;/p></description></item><item><title>Django Minio开发过程</title><link>https://sunnnner.github.io/django-minio%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B/</link><pubDate>Sun, 06 Oct 2019 14:17:12 +0800</pubDate><guid>https://sunnnner.github.io/django-minio%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B/</guid><description>&lt;blockquote>
 &lt;p>使用Django-minio-storage进行开发minio的静态文件存储功能，本来寻思用minio直接进行开发，既然django有这个包我们就拿来用一下&lt;/p>
 &lt;/blockquote>
 &lt;ul>
@@ -130,7 +130,7 @@ The last step is setting DEFAULT_FILE_STORAGE to &amp;quot;minio_storage.storage
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>JWT</title><link>https://sunnnner.github.io/archetypes/jwt/</link><pubDate>Wed, 02 Oct 2019 14:08:17 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/jwt/</guid><description>&lt;h1 id="jwtjson-web-token">JWT——Json web token&lt;/h1>
+&lt;/div></description></item><item><title>JWT</title><link>https://sunnnner.github.io/jwt/</link><pubDate>Wed, 02 Oct 2019 14:08:17 +0800</pubDate><guid>https://sunnnner.github.io/jwt/</guid><description>&lt;h1 id="jwtjson-web-token">JWT——Json web token&lt;/h1>
 &lt;pre>&lt;code>是为了在网络应用环境间传递声明而执行的一种基于JSON的开放标准，可实现无状态、分布式的Web应用授权。
 &lt;/code>&lt;/pre>
 &lt;h2 id="11-传统方式">1.1 传统方式&lt;/h2>
@@ -236,7 +236,7 @@ Cookie是不允许垮域访问的，这一点对Token机制是不存在的，前
 CSRF:因为不再依赖于Cookie，所以你就不需要考虑对CSRF（跨站请求伪造）的防范。
 性能: 一次网络往返时间（通过数据库查询session信息）总比做一次HMACSHA256计算 的Token验证和解析要费时得多.
 不需要为登录页面做特殊处理: 如果你使用Protractor 做功能测试的时候，不再需要为登录页面做特殊处理.
-基于标准化:你的API可以采用标准化的 JSON Web Token (JWT). 这个标准已经存在多个后端库（.NET, Ruby, Java,Python, PHP）和多家公司的支持（如：Firebase,Google, Microsoft）.&lt;/code>&lt;/pre></description></item><item><title>TOKEN验证详解</title><link>https://sunnnner.github.io/archetypes/token%E9%AA%8C%E8%AF%81%E8%AF%A6%E8%A7%A3/</link><pubDate>Tue, 01 Oct 2019 14:03:37 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/token%E9%AA%8C%E8%AF%81%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h1 id="为什么使用token验证">为什么使用token验证&lt;/h1>
+基于标准化:你的API可以采用标准化的 JSON Web Token (JWT). 这个标准已经存在多个后端库（.NET, Ruby, Java,Python, PHP）和多家公司的支持（如：Firebase,Google, Microsoft）.&lt;/code>&lt;/pre></description></item><item><title>TOKEN验证详解</title><link>https://sunnnner.github.io/token%E9%AA%8C%E8%AF%81%E8%AF%A6%E8%A7%A3/</link><pubDate>Tue, 01 Oct 2019 14:03:37 +0800</pubDate><guid>https://sunnnner.github.io/token%E9%AA%8C%E8%AF%81%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h1 id="为什么使用token验证">为什么使用token验证&lt;/h1>
 &lt;ul>
 &lt;li>在web领域基于token的身份验证随处可变，在大多说使用web API的互联网公司中，tokens是多用户下处理认证的最佳方式&lt;/li>
 &lt;/ul>
@@ -377,7 +377,7 @@ Having our API just serve data, we can also make the design choice to serve asse
 &lt;/code>&lt;/pre>
 &lt;h2 id="总结">总结&lt;/h2>
 &lt;pre>&lt;code>这篇文章仅仅是介绍了为什么选择基于Token的身份验证，并且怎样使用它。
-&lt;/code>&lt;/pre></description></item><item><title>Django中的FBV和CBV</title><link>https://sunnnner.github.io/archetypes/django%E4%B8%AD%E7%9A%84fbv%E5%92%8Ccbv/</link><pubDate>Thu, 05 Sep 2019 11:34:25 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/django%E4%B8%AD%E7%9A%84fbv%E5%92%8Ccbv/</guid><description>&lt;h2 id="fbv">FBV&lt;/h2>
+&lt;/code>&lt;/pre></description></item><item><title>Django中的FBV和CBV</title><link>https://sunnnner.github.io/django%E4%B8%AD%E7%9A%84fbv%E5%92%8Ccbv/</link><pubDate>Thu, 05 Sep 2019 11:34:25 +0800</pubDate><guid>https://sunnnner.github.io/django%E4%B8%AD%E7%9A%84fbv%E5%92%8Ccbv/</guid><description>&lt;h2 id="fbv">FBV&lt;/h2>
 &lt;blockquote>
 &lt;p>fbv就是在url中一个路径对应一个函数&lt;/p>
 &lt;/blockquote>
@@ -456,7 +456,7 @@ Having our API just serve data, we can also make the design choice to serve asse
 restful规范：’get’获取数据, ‘post’创建新数据, ‘put’更新, ‘patch’局部更新, ‘delete’删除, ‘head’, ‘options’, ‘trace’
 &lt;/code>&lt;/pre>
 &lt;h2 id="cbv重新定义dispatch函数">CBV重新定义dispatch函数&lt;/h2>
-&lt;pre>&lt;code>所有的方法本质上都是通过dispatch这个函数反射执行，如果想要在执行get或post方法前执行其他步骤，可以重写dispatch&lt;/code>&lt;/pre></description></item><item><title>Django定义USER四中方式</title><link>https://sunnnner.github.io/archetypes/django%E5%AE%9A%E4%B9%89user%E5%9B%9B%E4%B8%AD%E6%96%B9%E5%BC%8F/</link><pubDate>Mon, 03 Sep 2018 10:30:05 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/django%E5%AE%9A%E4%B9%89user%E5%9B%9B%E4%B8%AD%E6%96%B9%E5%BC%8F/</guid><description>&lt;ul>
+&lt;pre>&lt;code>所有的方法本质上都是通过dispatch这个函数反射执行，如果想要在执行get或post方法前执行其他步骤，可以重写dispatch&lt;/code>&lt;/pre></description></item><item><title>Django定义USER四中方式</title><link>https://sunnnner.github.io/django%E5%AE%9A%E4%B9%89user%E5%9B%9B%E4%B8%AD%E6%96%B9%E5%BC%8F/</link><pubDate>Mon, 03 Sep 2018 10:30:05 +0800</pubDate><guid>https://sunnnner.github.io/django%E5%AE%9A%E4%B9%89user%E5%9B%9B%E4%B8%AD%E6%96%B9%E5%BC%8F/</guid><description>&lt;ul>
 &lt;li>
 &lt;p>设计user models&lt;/p>
 &lt;/li>
@@ -478,7 +478,7 @@ restful规范：’get’获取数据, ‘post’创建新数据, ‘put’更�
 &lt;li>
 &lt;p>记录是否执行了迁移文件靠的是django_migrations这表&lt;/p>
 &lt;/li>
-&lt;/ul></description></item><item><title>Django用户模块</title><link>https://sunnnner.github.io/archetypes/django%E7%94%A8%E6%88%B7%E6%A8%A1%E5%9D%97/</link><pubDate>Fri, 01 Jun 2018 10:15:16 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/django%E7%94%A8%E6%88%B7%E6%A8%A1%E5%9D%97/</guid><description>&lt;h1 id="第一步创建django项目">第一步创建Django项目&lt;/h1>
+&lt;/ul></description></item><item><title>Django用户模块</title><link>https://sunnnner.github.io/django%E7%94%A8%E6%88%B7%E6%A8%A1%E5%9D%97/</link><pubDate>Fri, 01 Jun 2018 10:15:16 +0800</pubDate><guid>https://sunnnner.github.io/django%E7%94%A8%E6%88%B7%E6%A8%A1%E5%9D%97/</guid><description>&lt;h1 id="第一步创建django项目">第一步创建Django项目&lt;/h1>
 &lt;ul>
 &lt;li>&lt;code>django-admin startproject blog&lt;/code>&lt;/li>
 &lt;/ul>
@@ -1020,7 +1020,7 @@ restful规范：’get’获取数据, ‘post’创建新数据, ‘put’更�
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">redirect&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">reverse&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;index&amp;#39;&lt;/span>&lt;span class="p">))&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>页面开发</title><link>https://sunnnner.github.io/archetypes/blog-%E5%95%86%E5%93%81%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E5%BC%80%E5%8F%91/</link><pubDate>Thu, 31 May 2018 18:47:29 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/blog-%E5%95%86%E5%93%81%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E5%BC%80%E5%8F%91/</guid><description>&lt;ul>
+&lt;/div></description></item><item><title>页面开发</title><link>https://sunnnner.github.io/%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91/</link><pubDate>Thu, 31 May 2018 18:47:29 +0800</pubDate><guid>https://sunnnner.github.io/%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91/</guid><description>&lt;ul>
 &lt;li>首先新建app—&amp;gt;books并添加settings里面&lt;/li>
 &lt;li>因为我们需要在后台admin上传数据所以我们要创建富文本管理器并在setting设置他的选项&lt;/li>
 &lt;li>富文本管理器是一个插件我们这次使用的是tinymce并且我们需要将它加入到apps里面因为他是一个应用，但是这个应用是需要下载的&lt;/li>

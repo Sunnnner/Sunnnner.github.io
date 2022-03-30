@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>redis on whiteKBlog</title><link>https://sunnnner.github.io/tags/redis/</link><description>Recent content in redis on whiteKBlog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 01 Jun 2018 10:20:47 +0800</lastBuildDate><atom:link href="https://sunnnner.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml"/><item><title>Django Redis配置</title><link>https://sunnnner.github.io/archetypes/django-redis%E9%85%8D%E7%BD%AE/</link><pubDate>Fri, 01 Jun 2018 10:20:47 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/django-redis%E9%85%8D%E7%BD%AE/</guid><description>&lt;h1 id="django-setting配置redis储存session">Django-setting配置Redis储存session&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>redis on whiteKBlog</title><link>https://sunnnner.github.io/tags/redis/</link><description>Recent content in redis on whiteKBlog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 01 Jun 2018 10:20:47 +0800</lastBuildDate><atom:link href="https://sunnnner.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml"/><item><title>Django Redis配置</title><link>https://sunnnner.github.io/django-redis%E9%85%8D%E7%BD%AE/</link><pubDate>Fri, 01 Jun 2018 10:20:47 +0800</pubDate><guid>https://sunnnner.github.io/django-redis%E9%85%8D%E7%BD%AE/</guid><description>&lt;h1 id="django-setting配置redis储存session">Django-setting配置Redis储存session&lt;/h1>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
@@ -35,7 +35,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">SESSION_CACHE_ALIAS&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;default&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Redis配置</title><link>https://sunnnner.github.io/archetypes/redis%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 31 May 2018 18:53:17 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/redis%E9%85%8D%E7%BD%AE/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div></description></item><item><title>Redis配置</title><link>https://sunnnner.github.io/redis%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 31 May 2018 18:53:17 +0800</pubDate><guid>https://sunnnner.github.io/redis%E9%85%8D%E7%BD%AE/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2

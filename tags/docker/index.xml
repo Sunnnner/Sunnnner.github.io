@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>docker on whiteKBlog</title><link>https://sunnnner.github.io/tags/docker/</link><description>Recent content in docker on whiteKBlog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 01 Nov 2019 15:35:30 +0800</lastBuildDate><atom:link href="https://sunnnner.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker添加root权限省去sudo</title><link>https://sunnnner.github.io/archetypes/docker%E6%B7%BB%E5%8A%A0root%E6%9D%83%E9%99%90%E7%9C%81%E5%8E%BBsudo/</link><pubDate>Fri, 01 Nov 2019 15:35:30 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/docker%E6%B7%BB%E5%8A%A0root%E6%9D%83%E9%99%90%E7%9C%81%E5%8E%BBsudo/</guid><description>&lt;ul>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>docker on whiteKBlog</title><link>https://sunnnner.github.io/tags/docker/</link><description>Recent content in docker on whiteKBlog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 01 Nov 2019 15:35:30 +0800</lastBuildDate><atom:link href="https://sunnnner.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker添加root权限省去sudo</title><link>https://sunnnner.github.io/docker%E6%B7%BB%E5%8A%A0root%E6%9D%83%E9%99%90%E7%9C%81%E5%8E%BBsudo/</link><pubDate>Fri, 01 Nov 2019 15:35:30 +0800</pubDate><guid>https://sunnnner.github.io/docker%E6%B7%BB%E5%8A%A0root%E6%9D%83%E9%99%90%E7%9C%81%E5%8E%BBsudo/</guid><description>&lt;ul>
 &lt;li>首先使用root权限账户登录系统&lt;/li>
 &lt;li>首先查看用户组中有没有docker组sudo cat /etc/group | grep docker&lt;/li>
 &lt;/ul>
@@ -12,7 +12,7 @@
 &lt;p>sudo systemctl restart docker&lt;/p>
 &lt;p>运行docker info查看是否生效&lt;/p>
 &lt;p>如果提示get权限不足，修改/var/run/docker.sock权限即可&lt;/p>
-&lt;p>sudo chmod a+rw /var/run/docker.sock&lt;/p></description></item><item><title>Docker操作</title><link>https://sunnnner.github.io/archetypes/docker%E6%93%8D%E4%BD%9C/</link><pubDate>Tue, 08 Oct 2019 14:19:00 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/docker%E6%93%8D%E4%BD%9C/</guid><description>&lt;p>&lt;code>docker build&lt;/code> 打包docker 项目&lt;/p>
+&lt;p>sudo chmod a+rw /var/run/docker.sock&lt;/p></description></item><item><title>Docker操作</title><link>https://sunnnner.github.io/docker%E6%93%8D%E4%BD%9C/</link><pubDate>Tue, 08 Oct 2019 14:19:00 +0800</pubDate><guid>https://sunnnner.github.io/docker%E6%93%8D%E4%BD%9C/</guid><description>&lt;p>&lt;code>docker build&lt;/code> 打包docker 项目&lt;/p>
 &lt;p>&lt;code>docker-compose up&lt;/code> 启动整体项目(docker-compose.yml文件)&lt;/p>
 &lt;p>&lt;code>docker-compose down&lt;/code> 强制停止docker运行的所有项目&lt;/p>
 &lt;p>1、删除所有容器 docker rm &lt;code>docker ps -a -q&lt;/code>&lt;/p>

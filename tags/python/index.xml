@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>python on whiteKBlog</title><link>https://sunnnner.github.io/tags/python/</link><description>Recent content in python on whiteKBlog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 10 Dec 2019 15:43:08 +0800</lastBuildDate><atom:link href="https://sunnnner.github.io/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Python日期转换</title><link>https://sunnnner.github.io/archetypes/python%E6%97%A5%E6%9C%9F%E8%BD%AC%E6%8D%A2/</link><pubDate>Tue, 10 Dec 2019 15:43:08 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/python%E6%97%A5%E6%9C%9F%E8%BD%AC%E6%8D%A2/</guid><description>&lt;ul>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>python on whiteKBlog</title><link>https://sunnnner.github.io/tags/python/</link><description>Recent content in python on whiteKBlog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 10 Dec 2019 15:43:08 +0800</lastBuildDate><atom:link href="https://sunnnner.github.io/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Python日期转换</title><link>https://sunnnner.github.io/python%E6%97%A5%E6%9C%9F%E8%BD%AC%E6%8D%A2/</link><pubDate>Tue, 10 Dec 2019 15:43:08 +0800</pubDate><guid>https://sunnnner.github.io/python%E6%97%A5%E6%9C%9F%E8%BD%AC%E6%8D%A2/</guid><description>&lt;ul>
 &lt;li>秒数是相对于1970.1.1号的秒数&lt;/li>
 &lt;li>日期的模块有time、datetime&lt;/li>
 &lt;/ul>
@@ -70,7 +70,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">datetime&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">datetime&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">2012&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">11&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">19&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Log BasicConfig函数</title><link>https://sunnnner.github.io/archetypes/log-basicconfig%E5%87%BD%E6%95%B0/</link><pubDate>Thu, 05 Dec 2019 15:40:17 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/log-basicconfig%E5%87%BD%E6%95%B0/</guid><description>&lt;h1 id="loggingbasicconfig函数">logging.basicConfig函数&lt;/h1>
+&lt;/div></description></item><item><title>Log BasicConfig函数</title><link>https://sunnnner.github.io/log-basicconfig%E5%87%BD%E6%95%B0/</link><pubDate>Thu, 05 Dec 2019 15:40:17 +0800</pubDate><guid>https://sunnnner.github.io/log-basicconfig%E5%87%BD%E6%95%B0/</guid><description>&lt;h1 id="loggingbasicconfig函数">logging.basicConfig函数&lt;/h1>
 &lt;ul>
 &lt;li>logging模块是Python内置标准模块，主要用于输出运行日志，可以设置输出日志的等级、日志保存路径，日志文件回滚等&lt;/li>
 &lt;/ul>
@@ -276,7 +276,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Divmod函数</title><link>https://sunnnner.github.io/archetypes/divmod%E5%87%BD%E6%95%B0/</link><pubDate>Sun, 01 Dec 2019 15:39:29 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/divmod%E5%87%BD%E6%95%B0/</guid><description>&lt;ul>
+&lt;/div></description></item><item><title>Divmod函数</title><link>https://sunnnner.github.io/divmod%E5%87%BD%E6%95%B0/</link><pubDate>Sun, 01 Dec 2019 15:39:29 +0800</pubDate><guid>https://sunnnner.github.io/divmod%E5%87%BD%E6%95%B0/</guid><description>&lt;ul>
 &lt;li>python divmod()把除数和余数运算结果结合起来，返回一个包含商和余数的元组(a // b, a % b)。&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -293,7 +293,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">(&lt;/span>&lt;span class="mi">58&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">20&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Python Collections Duque函数演示</title><link>https://sunnnner.github.io/archetypes/python-collections-duque%E5%87%BD%E6%95%B0%E6%BC%94%E7%A4%BA/</link><pubDate>Tue, 15 Oct 2019 15:33:37 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/python-collections-duque%E5%87%BD%E6%95%B0%E6%BC%94%E7%A4%BA/</guid><description>&lt;ul>
+&lt;/div></description></item><item><title>Python Collections Duque函数演示</title><link>https://sunnnner.github.io/python-collections-duque%E5%87%BD%E6%95%B0%E6%BC%94%E7%A4%BA/</link><pubDate>Tue, 15 Oct 2019 15:33:37 +0800</pubDate><guid>https://sunnnner.github.io/python-collections-duque%E5%87%BD%E6%95%B0%E6%BC%94%E7%A4%BA/</guid><description>&lt;ul>
 &lt;li>duque函数有一个maxlen参数，当append的时候，如果超过，那么最前面的就会被挤出队列&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -332,7 +332,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="err">‘&lt;/span>&lt;span class="o">**&lt;/span>&lt;span class="err">’&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="mi">20&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Getattr函数</title><link>https://sunnnner.github.io/archetypes/getattr%E5%87%BD%E6%95%B0/</link><pubDate>Mon, 14 Oct 2019 15:31:31 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/getattr%E5%87%BD%E6%95%B0/</guid><description>&lt;p>##描述&lt;/p>
+&lt;/div></description></item><item><title>Getattr函数</title><link>https://sunnnner.github.io/getattr%E5%87%BD%E6%95%B0/</link><pubDate>Mon, 14 Oct 2019 15:31:31 +0800</pubDate><guid>https://sunnnner.github.io/getattr%E5%87%BD%E6%95%B0/</guid><description>&lt;p>##描述&lt;/p>
 &lt;p>&lt;code>getattr()&lt;/code> 函数用于返回一个对象属性值。&lt;/p>
 &lt;h2 id="语法">语法&lt;/h2>
 &lt;p>&lt;code>getattr&lt;/code> 语法：&lt;/p>
@@ -343,7 +343,7 @@
 &lt;code>default&lt;/code> – 默认返回值，如果不提供该参数，在没有对应属性时，将触发 AttributeError。&lt;/p>
 &lt;h2 id="返回值">返回值&lt;/h2>
 &lt;pre>&lt;code>返回对象属性值。
-&lt;/code>&lt;/pre></description></item><item><title>Hasattr函数</title><link>https://sunnnner.github.io/archetypes/hasattr%E5%87%BD%E6%95%B0/</link><pubDate>Sun, 13 Oct 2019 15:30:12 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/hasattr%E5%87%BD%E6%95%B0/</guid><description>&lt;h1 id="描述">描述&lt;/h1>
+&lt;/code>&lt;/pre></description></item><item><title>Hasattr函数</title><link>https://sunnnner.github.io/hasattr%E5%87%BD%E6%95%B0/</link><pubDate>Sun, 13 Oct 2019 15:30:12 +0800</pubDate><guid>https://sunnnner.github.io/hasattr%E5%87%BD%E6%95%B0/</guid><description>&lt;h1 id="描述">描述&lt;/h1>
 &lt;p>&lt;code>hasattr()&lt;/code> 函数用于判断对象是否包含对应的属性。&lt;/p>
 &lt;h2 id="语法">语法&lt;/h2>
 &lt;p>&lt;code>hasattr&lt;/code> 语法：&lt;/p>
@@ -353,7 +353,7 @@
 &lt;p>&lt;code>name&lt;/code> – 字符串，属性名。&lt;/p>
 &lt;h2 id="返回值">返回值&lt;/h2>
 &lt;pre>&lt;code>如果对象有该属性返回 True，否则返回 False。
-&lt;/code>&lt;/pre></description></item><item><title>Os模块</title><link>https://sunnnner.github.io/archetypes/os%E6%A8%A1%E5%9D%97/</link><pubDate>Thu, 10 Oct 2019 14:20:46 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/os%E6%A8%A1%E5%9D%97/</guid><description>&lt;p>&lt;code>os .path.dirname(path)&lt;/code> 获取路径名&lt;/p>
+&lt;/code>&lt;/pre></description></item><item><title>Os模块</title><link>https://sunnnner.github.io/os%E6%A8%A1%E5%9D%97/</link><pubDate>Thu, 10 Oct 2019 14:20:46 +0800</pubDate><guid>https://sunnnner.github.io/os%E6%A8%A1%E5%9D%97/</guid><description>&lt;p>&lt;code>os .path.dirname(path)&lt;/code> 获取路径名&lt;/p>
 &lt;p>&lt;code>os.path.basename(path)&lt;/code> 获取文件名&lt;/p>
 &lt;p>&lt;code>os.path.join(path1[,path2[,….]])&lt;/code> 将路径与文件名拼接成一个完整的路径&lt;/p>
 &lt;p>&lt;code>os.path.split(path) &lt;/code>分割路径与文件名，返回元组(f_path, f_name), 如果完全使用目录，它也会将最后一个目录作为文件名分离，且不会判断文件或者目录是否存在&lt;/p>
@@ -368,7 +368,7 @@
 &lt;p>&lt;code>os.path.isfile(path)&lt;/code>&lt;/p>
 &lt;p>&lt;code>os.path.islink(path)&lt;/code> 判断是否存在且是一个符号链接&lt;/p>
 &lt;p>&lt;code>os.path.ismount(path) &lt;/code>判断是否存在且是一个挂载点&lt;/p>
-&lt;p>&lt;code>os.path.samefile(path1, path2)&lt;/code> 判断两个路径是否指向同一个文件&lt;/p></description></item><item><title>Python实现AES加密</title><link>https://sunnnner.github.io/archetypes/python%E5%AE%9E%E7%8E%B0aes%E5%8A%A0%E5%AF%86/</link><pubDate>Sat, 05 Oct 2019 14:14:41 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/python%E5%AE%9E%E7%8E%B0aes%E5%8A%A0%E5%AF%86/</guid><description>&lt;h2 id="环境">环境&lt;/h2>
+&lt;p>&lt;code>os.path.samefile(path1, path2)&lt;/code> 判断两个路径是否指向同一个文件&lt;/p></description></item><item><title>Python实现AES加密</title><link>https://sunnnner.github.io/python%E5%AE%9E%E7%8E%B0aes%E5%8A%A0%E5%AF%86/</link><pubDate>Sat, 05 Oct 2019 14:14:41 +0800</pubDate><guid>https://sunnnner.github.io/python%E5%AE%9E%E7%8E%B0aes%E5%8A%A0%E5%AF%86/</guid><description>&lt;h2 id="环境">环境&lt;/h2>
 &lt;ul>
 &lt;li>python3.6&lt;/li>
 &lt;li>三方库—pyCryptodome&lt;/li>
@@ -712,7 +712,7 @@
 &lt;p>更好的&lt;a class="link" href="https://blog.csdn.net/hh775313602/article/details/78991340" target="_blank" rel="noopener"
 >方法&lt;/a>&lt;/p>
 &lt;/li>
-&lt;/ul></description></item><item><title>动态网页爬取</title><link>https://sunnnner.github.io/archetypes/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E7%88%AC%E5%8F%96/</link><pubDate>Wed, 11 Sep 2019 11:42:10 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E7%88%AC%E5%8F%96/</guid><description>&lt;p>我们使用自动化测试工具selenium
+&lt;/ul></description></item><item><title>动态网页爬取</title><link>https://sunnnner.github.io/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E7%88%AC%E5%8F%96/</link><pubDate>Wed, 11 Sep 2019 11:42:10 +0800</pubDate><guid>https://sunnnner.github.io/%E5%8A%A8%E6%80%81%E7%BD%91%E9%A1%B5%E7%88%AC%E5%8F%96/</guid><description>&lt;p>我们使用自动化测试工具selenium
 &lt;code>pip install selenium&lt;/code>&lt;/p>
 &lt;p>PhantomJS
 基于webkit的无界面浏览器&lt;/p>
@@ -723,7 +723,7 @@ MAC使用bew cask install phantomjs&lt;/p>
 如果使用Chrome进行测试，需要使用xvfb， Xvirtual framebuffer (xvfb)虚拟帧缓冲器， 简单来说它可以直接处理window的图形化功能，并且不会输出到屏幕上，这就摆脱了对可视窗口的依赖
 &lt;/code>&lt;/pre>
 &lt;p>MAC安装brew cask install chromedriver
-mac安装xvfb(可选) pip install xvfbwrapper&lt;/p></description></item><item><title>Python字符串操作</title><link>https://sunnnner.github.io/archetypes/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</link><pubDate>Tue, 03 Sep 2019 11:25:09 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</guid><description>&lt;table>
+mac安装xvfb(可选) pip install xvfbwrapper&lt;/p></description></item><item><title>Python字符串操作</title><link>https://sunnnner.github.io/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</link><pubDate>Tue, 03 Sep 2019 11:25:09 +0800</pubDate><guid>https://sunnnner.github.io/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</guid><description>&lt;table>
 &lt;thead>
 &lt;tr>
 &lt;th>语法&lt;/th>
@@ -868,7 +868,7 @@ mac安装xvfb(可选) pip install xvfbwrapper&lt;/p></description></item><item><
 &lt;td>&lt;/td>
 &lt;/tr>
 &lt;/tbody>
-&lt;/table></description></item><item><title>修改macos自带Python版本（尽量不要修改）</title><link>https://sunnnner.github.io/archetypes/%E4%BF%AE%E6%94%B9macos%E8%87%AA%E5%B8%A6python%E7%89%88%E6%9C%AC%E5%B0%BD%E9%87%8F%E4%B8%8D%E8%A6%81%E4%BF%AE%E6%94%B9/</link><pubDate>Mon, 02 Sep 2019 11:24:14 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/%E4%BF%AE%E6%94%B9macos%E8%87%AA%E5%B8%A6python%E7%89%88%E6%9C%AC%E5%B0%BD%E9%87%8F%E4%B8%8D%E8%A6%81%E4%BF%AE%E6%94%B9/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
+&lt;/table></description></item><item><title>修改macos自带Python版本（尽量不要修改）</title><link>https://sunnnner.github.io/%E4%BF%AE%E6%94%B9macos%E8%87%AA%E5%B8%A6python%E7%89%88%E6%9C%AC%E5%B0%BD%E9%87%8F%E4%B8%8D%E8%A6%81%E4%BF%AE%E6%94%B9/</link><pubDate>Mon, 02 Sep 2019 11:24:14 +0800</pubDate><guid>https://sunnnner.github.io/%E4%BF%AE%E6%94%B9macos%E8%87%AA%E5%B8%A6python%E7%89%88%E6%9C%AC%E5%B0%BD%E9%87%8F%E4%B8%8D%E8%A6%81%E4%BF%AE%E6%94%B9/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -966,7 +966,7 @@ mac安装xvfb(可选) pip install xvfbwrapper&lt;/p></description></item><item><
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 输入python命令，查看版本python
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Python版本控制以及虚拟环境的安装</title><link>https://sunnnner.github.io/archetypes/python%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E4%BB%A5%E5%8F%8A%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E5%AE%89%E8%A3%85/</link><pubDate>Sun, 01 Sep 2019 11:22:47 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/python%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E4%BB%A5%E5%8F%8A%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E5%AE%89%E8%A3%85/</guid><description>&lt;h2 id="虚拟环境安装">虚拟环境安装&lt;/h2>
+&lt;/div></description></item><item><title>Python版本控制以及虚拟环境的安装</title><link>https://sunnnner.github.io/python%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E4%BB%A5%E5%8F%8A%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E5%AE%89%E8%A3%85/</link><pubDate>Sun, 01 Sep 2019 11:22:47 +0800</pubDate><guid>https://sunnnner.github.io/python%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E4%BB%A5%E5%8F%8A%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E5%AE%89%E8%A3%85/</guid><description>&lt;h2 id="虚拟环境安装">虚拟环境安装&lt;/h2>
 &lt;pre>&lt;code>当然首先你先去官网下载Python3.6 注意不是3.7 它现在还不兼容
 下载好了之后安装这是Mac的路径包
 随后配置下面的语句
@@ -993,7 +993,7 @@ mkdir workspace
 这条语句代表了你的默认Python变量的地址
 &lt;/code>&lt;/pre>
 &lt;h2 id="python环境变量">Python环境变量&lt;/h2>
-&lt;p>export PATH=&amp;quot;/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}&amp;quot;&lt;/p></description></item><item><title>数据库优化</title><link>https://sunnnner.github.io/archetypes/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/</link><pubDate>Tue, 05 Feb 2019 11:15:10 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/</guid><description>&lt;h2 id="redis-数据库优化">redis 数据库优化&lt;/h2>
+&lt;p>export PATH=&amp;quot;/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}&amp;quot;&lt;/p></description></item><item><title>数据库优化</title><link>https://sunnnner.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/</link><pubDate>Tue, 05 Feb 2019 11:15:10 +0800</pubDate><guid>https://sunnnner.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/</guid><description>&lt;h2 id="redis-数据库优化">redis 数据库优化&lt;/h2>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
@@ -1043,7 +1043,7 @@ mkdir workspace
 &lt;p>数据库设计优化&lt;/p>
 &lt;pre>&lt;code>1、完全分离（范式化设计）
 2、完全内嵌（反范式化设计）
-3、部分内嵌（折中方案）&lt;/code>&lt;/pre></description></item><item><title>数据库如何优化</title><link>https://sunnnner.github.io/archetypes/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96/</link><pubDate>Mon, 04 Feb 2019 10:52:21 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96/</guid><description>&lt;p>优化SQL语句&lt;/p>
+3、部分内嵌（折中方案）&lt;/code>&lt;/pre></description></item><item><title>数据库如何优化</title><link>https://sunnnner.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96/</link><pubDate>Mon, 04 Feb 2019 10:52:21 +0800</pubDate><guid>https://sunnnner.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96/</guid><description>&lt;p>优化SQL语句&lt;/p>
 &lt;p>通过添加索引进行优化&lt;/p>
 &lt;p>优化Order by&lt;/p>
 &lt;p>有两种方式如下：&lt;/p>
@@ -1193,14 +1193,14 @@ mkdir workspace
 &lt;p>看完我说的你在百度django和爬虫的面试题&lt;/p>
 &lt;p>RESTfromework问得也挺多&lt;/p>
 &lt;p>apiview和viewset有啥关系&lt;/p>
-&lt;p>问rest是啥&lt;/p></description></item><item><title>Session+cookie和使用tocken有什么区别</title><link>https://sunnnner.github.io/archetypes/session+cookie%E5%92%8C%E4%BD%BF%E7%94%A8tocken%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/</link><pubDate>Sun, 03 Feb 2019 10:51:26 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/session+cookie%E5%92%8C%E4%BD%BF%E7%94%A8tocken%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/</guid><description>&lt;p>cookie数据存放在客户的浏览器上，session数据放在服务器上。&lt;/p>
+&lt;p>问rest是啥&lt;/p></description></item><item><title>Session+cookie和使用tocken有什么区别</title><link>https://sunnnner.github.io/session-cookie%E5%92%8C%E4%BD%BF%E7%94%A8tocken%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/</link><pubDate>Sun, 03 Feb 2019 10:51:26 +0800</pubDate><guid>https://sunnnner.github.io/session-cookie%E5%92%8C%E4%BD%BF%E7%94%A8tocken%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/</guid><description>&lt;p>cookie数据存放在客户的浏览器上，session数据放在服务器上。&lt;/p>
 &lt;p>cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗&lt;/p>
 &lt;p>考虑到安全应当使用session。&lt;/p>
 &lt;p>考虑到减轻服务器性能方面，应当使用COOKIE。&lt;/p>
 &lt;p>将登陆信息等重要信息存放为SESSION&lt;/p>
 &lt;p>其他信息如果需要保留，可以放在COOKIE中&lt;/p>
 &lt;p>session 和 token并不矛盾，作为身份认证 token安全性比session好&lt;/p>
-&lt;p>token就是令牌，比如你授权（登录）一个程序时，他就是个依据，判断你是否已经授权该软件；cookie就是写在客户端的一个txt文件，里面包括你登录信息之类的，这样你下次在登录某个网站，就会自动调用cookie自动登录用户名；session和cookie差不多，只是session是写在服务器端的文件，也需要在客户端写入cookie文件，但是文件里是你的浏览器编号.Session的状态是存储在服务器端，客户端只有session id；而Token的状态是存储在客户端。&lt;/p></description></item><item><title>线程进程协程</title><link>https://sunnnner.github.io/archetypes/%E7%BA%BF%E7%A8%8B%E8%BF%9B%E7%A8%8B%E5%8D%8F%E7%A8%8B/</link><pubDate>Sat, 02 Feb 2019 10:46:49 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/%E7%BA%BF%E7%A8%8B%E8%BF%9B%E7%A8%8B%E5%8D%8F%E7%A8%8B/</guid><description>&lt;ul>
+&lt;p>token就是令牌，比如你授权（登录）一个程序时，他就是个依据，判断你是否已经授权该软件；cookie就是写在客户端的一个txt文件，里面包括你登录信息之类的，这样你下次在登录某个网站，就会自动调用cookie自动登录用户名；session和cookie差不多，只是session是写在服务器端的文件，也需要在客户端写入cookie文件，但是文件里是你的浏览器编号.Session的状态是存储在服务器端，客户端只有session id；而Token的状态是存储在客户端。&lt;/p></description></item><item><title>线程进程协程</title><link>https://sunnnner.github.io/%E7%BA%BF%E7%A8%8B%E8%BF%9B%E7%A8%8B%E5%8D%8F%E7%A8%8B/</link><pubDate>Sat, 02 Feb 2019 10:46:49 +0800</pubDate><guid>https://sunnnner.github.io/%E7%BA%BF%E7%A8%8B%E8%BF%9B%E7%A8%8B%E5%8D%8F%E7%A8%8B/</guid><description>&lt;ul>
 &lt;li>
 &lt;p>进程是系统进行资源分配和调度的一个独立单位，进程是资源分配的单位，线程是cpu调度的单位。&lt;/p>
 &lt;/li>
@@ -1258,7 +1258,7 @@ mkdir workspace
 &lt;li>
 &lt;p>尽量不要再协程里面做IO密集型操作&lt;/p>
 &lt;/li>
-&lt;/ul></description></item><item><title>广度优先遍历二叉树</title><link>https://sunnnner.github.io/archetypes/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</link><pubDate>Fri, 01 Feb 2019 10:44:14 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
+&lt;/ul></description></item><item><title>广度优先遍历二叉树</title><link>https://sunnnner.github.io/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</link><pubDate>Fri, 01 Feb 2019 10:44:14 +0800</pubDate><guid>https://sunnnner.github.io/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -1326,7 +1326,7 @@ mkdir workspace
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">｀｀｀&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>深度优先遍历二叉树</title><link>https://sunnnner.github.io/archetypes/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</link><pubDate>Tue, 01 Jan 2019 10:41:11 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div></description></item><item><title>深度优先遍历二叉树</title><link>https://sunnnner.github.io/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</link><pubDate>Tue, 01 Jan 2019 10:41:11 +0800</pubDate><guid>https://sunnnner.github.io/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -1420,7 +1420,7 @@ mkdir workspace
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">retList3&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Python字典按值排序</title><link>https://sunnnner.github.io/archetypes/python%E5%AD%97%E5%85%B8%E6%8C%89%E5%80%BC%E6%8E%92%E5%BA%8F/</link><pubDate>Sun, 02 Dec 2018 10:39:55 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/python%E5%AD%97%E5%85%B8%E6%8C%89%E5%80%BC%E6%8E%92%E5%BA%8F/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div></description></item><item><title>Python字典按值排序</title><link>https://sunnnner.github.io/python%E5%AD%97%E5%85%B8%E6%8C%89%E5%80%BC%E6%8E%92%E5%BA%8F/</link><pubDate>Sun, 02 Dec 2018 10:39:55 +0800</pubDate><guid>https://sunnnner.github.io/python%E5%AD%97%E5%85%B8%E6%8C%89%E5%80%BC%E6%8E%92%E5%BA%8F/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -1446,7 +1446,7 @@ mkdir workspace
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>&lt;span class="n">v&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">k&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="n">k&lt;/span> &lt;span class="p">,&lt;/span>&lt;span class="n">v&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">items&lt;/span>&lt;span class="p">()}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Python上楼梯问题</title><link>https://sunnnner.github.io/archetypes/python%E4%B8%8A%E6%A5%BC%E6%A2%AF%E9%97%AE%E9%A2%98/</link><pubDate>Sat, 01 Dec 2018 10:39:04 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/python%E4%B8%8A%E6%A5%BC%E6%A2%AF%E9%97%AE%E9%A2%98/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div></description></item><item><title>Python上楼梯问题</title><link>https://sunnnner.github.io/python%E4%B8%8A%E6%A5%BC%E6%A2%AF%E9%97%AE%E9%A2%98/</link><pubDate>Sat, 01 Dec 2018 10:39:04 +0800</pubDate><guid>https://sunnnner.github.io/python%E4%B8%8A%E6%A5%BC%E6%A2%AF%E9%97%AE%E9%A2%98/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -1498,7 +1498,7 @@ mkdir workspace
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">demo&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">10&lt;/span>&lt;span class="p">))&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Python快速排序</title><link>https://sunnnner.github.io/archetypes/python%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</link><pubDate>Thu, 01 Nov 2018 10:38:06 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/python%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div></description></item><item><title>Python快速排序</title><link>https://sunnnner.github.io/python%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</link><pubDate>Thu, 01 Nov 2018 10:38:06 +0800</pubDate><guid>https://sunnnner.github.io/python%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -1542,7 +1542,7 @@ mkdir workspace
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">A&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Python链表</title><link>https://sunnnner.github.io/archetypes/python%E9%93%BE%E8%A1%A8/</link><pubDate>Tue, 02 Oct 2018 10:37:28 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/python%E9%93%BE%E8%A1%A8/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div></description></item><item><title>Python链表</title><link>https://sunnnner.github.io/python%E9%93%BE%E8%A1%A8/</link><pubDate>Tue, 02 Oct 2018 10:37:28 +0800</pubDate><guid>https://sunnnner.github.io/python%E9%93%BE%E8%A1%A8/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -1614,7 +1614,7 @@ mkdir workspace
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">tmp&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">tmp&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">next&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Python二分查找</title><link>https://sunnnner.github.io/archetypes/python%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</link><pubDate>Mon, 01 Oct 2018 10:36:53 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/python%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div></description></item><item><title>Python二分查找</title><link>https://sunnnner.github.io/python%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</link><pubDate>Mon, 01 Oct 2018 10:36:53 +0800</pubDate><guid>https://sunnnner.github.io/python%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -1680,7 +1680,7 @@ mkdir workspace
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;二分查找&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">t4&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">t3&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Python冒泡算法</title><link>https://sunnnner.github.io/archetypes/python%E5%86%92%E6%B3%A1%E7%AE%97%E6%B3%95/</link><pubDate>Sat, 08 Sep 2018 10:36:08 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/python%E5%86%92%E6%B3%A1%E7%AE%97%E6%B3%95/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div></description></item><item><title>Python冒泡算法</title><link>https://sunnnner.github.io/python%E5%86%92%E6%B3%A1%E7%AE%97%E6%B3%95/</link><pubDate>Sat, 08 Sep 2018 10:36:08 +0800</pubDate><guid>https://sunnnner.github.io/python%E5%86%92%E6%B3%A1%E7%AE%97%E6%B3%95/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -1700,7 +1700,7 @@ mkdir workspace
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">sun&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Python装饰器</title><link>https://sunnnner.github.io/archetypes/python%E8%A3%85%E9%A5%B0%E5%99%A8/</link><pubDate>Fri, 07 Sep 2018 10:35:21 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/python%E8%A3%85%E9%A5%B0%E5%99%A8/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div></description></item><item><title>Python装饰器</title><link>https://sunnnner.github.io/python%E8%A3%85%E9%A5%B0%E5%99%A8/</link><pubDate>Fri, 07 Sep 2018 10:35:21 +0800</pubDate><guid>https://sunnnner.github.io/python%E8%A3%85%E9%A5%B0%E5%99%A8/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -1734,7 +1734,7 @@ mkdir workspace
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">test&lt;/span>&lt;span class="p">()&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Python单例</title><link>https://sunnnner.github.io/archetypes/python%E5%8D%95%E4%BE%8B/</link><pubDate>Wed, 05 Sep 2018 10:32:39 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/python%E5%8D%95%E4%BE%8B/</guid><description>&lt;ul>
+&lt;/div></description></item><item><title>Python单例</title><link>https://sunnnner.github.io/python%E5%8D%95%E4%BE%8B/</link><pubDate>Wed, 05 Sep 2018 10:32:39 +0800</pubDate><guid>https://sunnnner.github.io/python%E5%8D%95%E4%BE%8B/</guid><description>&lt;ul>
 &lt;li>
 &lt;p>举个常见的单例模式例子，我们日常使用的电脑上都有一个回收站，在整个操作系统中，回收站只能有一个实例，整个系统都使用这个唯一的实例，而且回收站自行提供自己的实例。因此回收站是单例模式的应用。&lt;/p>
 &lt;/li>
@@ -1856,7 +1856,7 @@ mkdir workspace
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Singleton&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">__init__flag&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">True&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Python多态</title><link>https://sunnnner.github.io/archetypes/python%E5%A4%9A%E6%80%81/</link><pubDate>Tue, 04 Sep 2018 10:32:01 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/python%E5%A4%9A%E6%80%81/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div></description></item><item><title>Python多态</title><link>https://sunnnner.github.io/python%E5%A4%9A%E6%80%81/</link><pubDate>Tue, 04 Sep 2018 10:32:01 +0800</pubDate><guid>https://sunnnner.github.io/python%E5%A4%9A%E6%80%81/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -1938,7 +1938,7 @@ mkdir workspace
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">breeder&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">feed_animal&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">pig&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Celery任务队列</title><link>https://sunnnner.github.io/archetypes/celery%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97/</link><pubDate>Sun, 02 Sep 2018 10:29:21 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/celery%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97/</guid><description>&lt;h1 id="celery-简介">celery 简介&lt;/h1>
+&lt;/div></description></item><item><title>Celery任务队列</title><link>https://sunnnner.github.io/celery%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97/</link><pubDate>Sun, 02 Sep 2018 10:29:21 +0800</pubDate><guid>https://sunnnner.github.io/celery%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97/</guid><description>&lt;h1 id="celery-简介">celery 简介&lt;/h1>
 &lt;h2 id="任务队列">任务队列&lt;/h2>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -1954,7 +1954,7 @@ mkdir workspace
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">4.Celery 系统可包含多个职程和中间人，以此获得高可用性和横向扩展能力。
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>支付宝生成密匙步骤</title><link>https://sunnnner.github.io/archetypes/%E6%94%AF%E4%BB%98%E5%AE%9D%E7%94%9F%E6%88%90%E5%AF%86%E5%8C%99%E6%AD%A5%E9%AA%A4/</link><pubDate>Tue, 05 Jun 2018 10:26:17 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/%E6%94%AF%E4%BB%98%E5%AE%9D%E7%94%9F%E6%88%90%E5%AF%86%E5%8C%99%E6%AD%A5%E9%AA%A4/</guid><description>&lt;h1 id="生成秘钥文件">生成秘钥文件&lt;/h1>
+&lt;/div></description></item><item><title>支付宝生成密匙步骤</title><link>https://sunnnner.github.io/%E6%94%AF%E4%BB%98%E5%AE%9D%E7%94%9F%E6%88%90%E5%AF%86%E5%8C%99%E6%AD%A5%E9%AA%A4/</link><pubDate>Tue, 05 Jun 2018 10:26:17 +0800</pubDate><guid>https://sunnnner.github.io/%E6%94%AF%E4%BB%98%E5%AE%9D%E7%94%9F%E6%88%90%E5%AF%86%E5%8C%99%E6%AD%A5%E9%AA%A4/</guid><description>&lt;h1 id="生成秘钥文件">生成秘钥文件&lt;/h1>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -2019,5 +2019,5 @@ mkdir workspace
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-----END PUBLIC KEY-----
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>怎么加快页面的访问速度</title><link>https://sunnnner.github.io/archetypes/%E6%80%8E%E4%B9%88%E5%8A%A0%E5%BF%AB%E9%A1%B5%E9%9D%A2%E7%9A%84%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6/</link><pubDate>Thu, 31 May 2018 18:47:29 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/%E6%80%8E%E4%B9%88%E5%8A%A0%E5%BF%AB%E9%A1%B5%E9%9D%A2%E7%9A%84%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6/</guid><description>&lt;p>··· 我理解是压缩代码然后减少请求，多使用ajax 图片存第三方资源库&lt;/p>
+&lt;/div></description></item><item><title>怎么加快页面的访问速度</title><link>https://sunnnner.github.io/%E6%80%8E%E4%B9%88%E5%8A%A0%E5%BF%AB%E9%A1%B5%E9%9D%A2%E7%9A%84%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6/</link><pubDate>Thu, 31 May 2018 18:47:29 +0800</pubDate><guid>https://sunnnner.github.io/%E6%80%8E%E4%B9%88%E5%8A%A0%E5%BF%AB%E9%A1%B5%E9%9D%A2%E7%9A%84%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6/</guid><description>&lt;p>··· 我理解是压缩代码然后减少请求，多使用ajax 图片存第三方资源库&lt;/p>
 &lt;p>全静态，读写分离，加带宽 再开cdn&lt;/p></description></item></channel></rss>

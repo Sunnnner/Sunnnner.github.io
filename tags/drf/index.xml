@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>drf on whiteKBlog</title><link>https://sunnnner.github.io/tags/drf/</link><description>Recent content in drf on whiteKBlog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 12 Sep 2019 11:43:08 +0800</lastBuildDate><atom:link href="https://sunnnner.github.io/tags/drf/index.xml" rel="self" type="application/rss+xml"/><item><title>RESTful_API设计指南</title><link>https://sunnnner.github.io/archetypes/restful_api%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97/</link><pubDate>Thu, 12 Sep 2019 11:43:08 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/restful_api%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97/</guid><description>&lt;blockquote>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>drf on whiteKBlog</title><link>https://sunnnner.github.io/tags/drf/</link><description>Recent content in drf on whiteKBlog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 12 Sep 2019 11:43:08 +0800</lastBuildDate><atom:link href="https://sunnnner.github.io/tags/drf/index.xml" rel="self" type="application/rss+xml"/><item><title>RESTful_API设计指南</title><link>https://sunnnner.github.io/restful_api%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97/</link><pubDate>Thu, 12 Sep 2019 11:43:08 +0800</pubDate><guid>https://sunnnner.github.io/restful_api%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97/</guid><description>&lt;blockquote>
 &lt;p>网络应用程序，分为前端和后端两个部分， 当前的发展趋势， 就是前段设备层出不穷
 因此，必须有一种统一的机制，方便不同的前端设备与后端进行通信， 这导致API架构的流行， &amp;gt; 甚至出现APIfirst的设计思想。&lt;/p>
 &lt;/blockquote>
@@ -125,7 +125,7 @@ Hypermedia API的设计被称为HATEOAS。Github的API就是这种设计，访�
 &lt;h2 id="其他">其他&lt;/h2>
 &lt;pre>&lt;code>(1) API的身份认证应该使用OAuth 2.0框架。
 (2) 服务器返回的数据格式，应该尽量使用JSON，避免使用XML。
-&lt;/code>&lt;/pre></description></item><item><title>Django_rest_framework</title><link>https://sunnnner.github.io/archetypes/django_rest_framework/</link><pubDate>Sun, 08 Sep 2019 11:37:47 +0800</pubDate><guid>https://sunnnner.github.io/archetypes/django_rest_framework/</guid><description>&lt;p>为什么要使用Django_rest_framework
+&lt;/code>&lt;/pre></description></item><item><title>Django_rest_framework</title><link>https://sunnnner.github.io/django_rest_framework/</link><pubDate>Sun, 08 Sep 2019 11:37:47 +0800</pubDate><guid>https://sunnnner.github.io/django_rest_framework/</guid><description>&lt;p>为什么要使用Django_rest_framework
 能自动生成restful规范的API&lt;/p>
 &lt;pre>&lt;code>代码简介 并且开发速度快
 &lt;/code>&lt;/pre>
