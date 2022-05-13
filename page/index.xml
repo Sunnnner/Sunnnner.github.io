@@ -1,4 +1,61 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pages on whiteKBlog</title><link>https://sunnnner.github.io/page/</link><description>Recent content in Pages on whiteKBlog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 10 Mar 2022 15:46:40 +0800</lastBuildDate><atom:link href="https://sunnnner.github.io/page/index.xml" rel="self" type="application/rss+xml"/><item><title>Pysocket</title><link>https://sunnnner.github.io/pysocket/</link><pubDate>Thu, 10 Mar 2022 15:46:40 +0800</pubDate><guid>https://sunnnner.github.io/pysocket/</guid><description>&lt;p>2-1 套接字。面向连接的套接字和无连接套接字之间的区别是什么？&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pages on whiteKBlog</title><link>https://sunnnner.github.io/page/</link><description>Recent content in Pages on whiteKBlog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 13 May 2022 13:39:13 +0800</lastBuildDate><atom:link href="https://sunnnner.github.io/page/index.xml" rel="self" type="application/rss+xml"/><item><title>使用itertools处理python嵌套列表问题</title><link>https://sunnnner.github.io/%E4%BD%BF%E7%94%A8itertools%E5%A4%84%E7%90%86python%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E9%97%AE%E9%A2%98/</link><pubDate>Fri, 13 May 2022 13:39:13 +0800</pubDate><guid>https://sunnnner.github.io/%E4%BD%BF%E7%94%A8itertools%E5%A4%84%E7%90%86python%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E9%97%AE%E9%A2%98/</guid><description>&lt;ul>
+&lt;li>
+&lt;p>使用itertools处理python嵌套列表问题&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>当我们想要把一串字符分割成列表的时候&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">itertools&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">a&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;1111&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;gt;&amp;gt;&amp;gt;&lt;/span>&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">list&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">itertools&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">chain&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">)))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">output&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;1&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;1&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;1&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;1&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>嵌套列表组合成一个列表&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">itertools&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">a&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">],&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="mi">3&lt;/span>&lt;span class="p">],&lt;/span> &lt;span class="mi">4&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">5&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">itertools&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">chain&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">from_iterable&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">output&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">3&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">4&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">5&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Pysocket</title><link>https://sunnnner.github.io/pysocket/</link><pubDate>Thu, 10 Mar 2022 15:46:40 +0800</pubDate><guid>https://sunnnner.github.io/pysocket/</guid><description>&lt;p>2-1 套接字。面向连接的套接字和无连接套接字之间的区别是什么？&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
