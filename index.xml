@@ -1,4 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>whiteKBlog</title><link>https://sunnnner.github.io/</link><description>Recent content on whiteKBlog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 13 May 2022 13:39:13 +0800</lastBuildDate><atom:link href="https://sunnnner.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>使用itertools处理python嵌套列表问题</title><link>https://sunnnner.github.io/%E4%BD%BF%E7%94%A8itertools%E5%A4%84%E7%90%86python%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E9%97%AE%E9%A2%98/</link><pubDate>Fri, 13 May 2022 13:39:13 +0800</pubDate><guid>https://sunnnner.github.io/%E4%BD%BF%E7%94%A8itertools%E5%A4%84%E7%90%86python%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E9%97%AE%E9%A2%98/</guid><description>&lt;ul>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>whiteKBlog</title><link>https://sunnnner.github.io/</link><description>Recent content on whiteKBlog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 07 Jul 2022 10:08:33 +0800</lastBuildDate><atom:link href="https://sunnnner.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Python虚拟环境pipenv使用</title><link>https://sunnnner.github.io/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83pipenv%E4%BD%BF%E7%94%A8/</link><pubDate>Thu, 07 Jul 2022 10:08:33 +0800</pubDate><guid>https://sunnnner.github.io/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83pipenv%E4%BD%BF%E7%94%A8/</guid><description>&lt;ul>
+&lt;li>
+&lt;p>pipenv 是一个包的版本控制软件，与我之前用过的rust语言中的cargo类似，与go的包管理器也类似，它能够锁定当前包的依赖项&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Ubuntu中可以使用&lt;code>sudo apt install pipenv&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>也可以使用当前python环境中的pip进行安装&lt;code>pip install pipenv&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>pipenv 命令&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>指定python版本 &lt;code>pipenv --python 3.8.12&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>使用当前requements文件生成Pipfile文件&lt;code>pipenv install&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>锁定当前Pipfile文件&lt;code>pipenv lock&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>详细信息请参阅&lt;code>https://pipenv.pypa.io/en/latest/&lt;/code>&lt;/p>
+&lt;/li>
+&lt;/ul></description></item><item><title>使用itertools处理python嵌套列表问题</title><link>https://sunnnner.github.io/%E4%BD%BF%E7%94%A8itertools%E5%A4%84%E7%90%86python%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E9%97%AE%E9%A2%98/</link><pubDate>Fri, 13 May 2022 13:39:13 +0800</pubDate><guid>https://sunnnner.github.io/%E4%BD%BF%E7%94%A8itertools%E5%A4%84%E7%90%86python%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E9%97%AE%E9%A2%98/</guid><description>&lt;ul>
 &lt;li>
 &lt;p>使用itertools处理python嵌套列表问题&lt;/p>
 &lt;/li>
