@@ -1,4 +1,57 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>whiteKBlog</title><link>https://sunnnner.github.io/</link><description>Recent content on whiteKBlog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 07 Jul 2022 10:08:33 +0800</lastBuildDate><atom:link href="https://sunnnner.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Python虚拟环境pipenv使用</title><link>https://sunnnner.github.io/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83pipenv%E4%BD%BF%E7%94%A8/</link><pubDate>Thu, 07 Jul 2022 10:08:33 +0800</pubDate><guid>https://sunnnner.github.io/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83pipenv%E4%BD%BF%E7%94%A8/</guid><description>&lt;ul>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>whiteKBlog</title><link>https://sunnnner.github.io/</link><description>Recent content on whiteKBlog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 08 Jul 2022 09:32:29 +0800</lastBuildDate><atom:link href="https://sunnnner.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Python线程安全</title><link>https://sunnnner.github.io/python%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</link><pubDate>Fri, 08 Jul 2022 09:32:29 +0800</pubDate><guid>https://sunnnner.github.io/python%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</guid><description>&lt;ul>
+&lt;li>线程不安全的主要原因是我们的代码不是原子操作导致的&lt;/li>
+&lt;li>原子操作(atomic operation),指不会被线程调度机制打断的操作，这种操作一旦开始，就一直运行到结束，中间不会切换，它类似与数据库的事务操作。&lt;/li>
+&lt;li>为确保线程安全，我们需要人工实现原子操作，因为我们不能保证我们在多线程的情况下代码都具有原子性&lt;/li>
+&lt;li>因此我们需要使用线程锁来使代码具有原子性&lt;/li>
+&lt;li>代码实例&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">threading&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">Thread&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Lock&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">number&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">lock&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Lock&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">target&lt;/span>&lt;span class="p">():&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">global&lt;/span> &lt;span class="n">number&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> &lt;span class="n">_&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="nb">range&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">1000000&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">with&lt;/span> &lt;span class="n">lock&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">number&lt;/span> &lt;span class="o">+=&lt;/span> &lt;span class="mi">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 开启两个线程&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">threads&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="n">Thread&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">target&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">target&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="n">_&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="nb">range&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">)]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> &lt;span class="n">t&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">threads&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">t&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">start&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> &lt;span class="n">t&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">threads&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">t&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">join&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">number&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>现在，不论你执行多少次，输出都是2000000&lt;/li>
+&lt;/ul></description></item><item><title>Python虚拟环境pipenv使用</title><link>https://sunnnner.github.io/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83pipenv%E4%BD%BF%E7%94%A8/</link><pubDate>Thu, 07 Jul 2022 10:08:33 +0800</pubDate><guid>https://sunnnner.github.io/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83pipenv%E4%BD%BF%E7%94%A8/</guid><description>&lt;ul>
 &lt;li>
 &lt;p>pipenv 是一个包的版本控制软件，与我之前用过的rust语言中的cargo类似，与go的包管理器也类似，它能够锁定当前包的依赖项&lt;/p>
 &lt;/li>
