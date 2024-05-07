@@ -1,151 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>redis on whiteKBlog</title><link>https://sunnnner.github.io/tags/redis/</link><description>Recent content in redis on whiteKBlog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 01 Jun 2018 10:20:47 +0800</lastBuildDate><atom:link href="https://sunnnner.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml"/><item><title>Django Redis配置</title><link>https://sunnnner.github.io/django-redis%E9%85%8D%E7%BD%AE/</link><pubDate>Fri, 01 Jun 2018 10:20:47 +0800</pubDate><guid>https://sunnnner.github.io/django-redis%E9%85%8D%E7%BD%AE/</guid><description>&lt;h1 id="django-setting配置redis储存session">Django-setting配置Redis储存session&lt;/h1>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># redis配置&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">CACHES&lt;/span>&lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;default&amp;#39;&lt;/span>&lt;span class="p">:{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;BACKEND&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;django_redis.cache.RedisCache&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;LOCATION&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;redis://127.0.0.1:6379/2&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;OPTIONS&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;CLIENT_CLASS&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;django_redis.client.DefaultClient&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;PASSWORD&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 储存session设置&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">SESSION_ENGING&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;django.contrib.session.backends.cache&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">SESSION_CACHE_ALIAS&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;default&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item><item><title>Django Redis配置</title><link>https://sunnnner.github.io/p/django-redis%E9%85%8D%E7%BD%AE/</link><pubDate>Fri, 01 Jun 2018 10:20:47 +0800</pubDate><guid>https://sunnnner.github.io/p/django-redis%E9%85%8D%E7%BD%AE/</guid><description>&lt;h1 id="django-setting配置redis储存session">Django-setting配置Redis储存session&lt;/h1>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># redis配置&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">CACHES&lt;/span>&lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;default&amp;#39;&lt;/span>&lt;span class="p">:{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;BACKEND&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;django_redis.cache.RedisCache&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;LOCATION&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;redis://127.0.0.1:6379/2&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;OPTIONS&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;CLIENT_CLASS&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;django_redis.client.DefaultClient&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;PASSWORD&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 储存session设置&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">SESSION_ENGING&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;django.contrib.session.backends.cache&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">SESSION_CACHE_ALIAS&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;default&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item><item><title>Redis配置</title><link>https://sunnnner.github.io/redis%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 31 May 2018 18:53:17 +0800</pubDate><guid>https://sunnnner.github.io/redis%E9%85%8D%E7%BD%AE/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-yml" data-lang="yml">&lt;span class="line">&lt;span class="cl">&lt;span class="m">1&lt;/span>&lt;span class="l">) 绑定IP地址,看业务开放&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="l">bind 0.0.0.0&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="l">)Redis默认不是以守护进程的方式运行，可以通过该配置项修改，使用yes启用守护进程，设置为no&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="l">daemonize no&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="m">3&lt;/span>&lt;span class="l">)保护模式&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="l">protected-mode no &lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c"># 检查启动状态命令&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="l">ps -ef|grep redis |grep 6379&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="l">mac以配置文件启动&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="l">sudo redis-server /usr/local/etc/redis.conf&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="l">Ubuntu以配置文件启动&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="l">sudo redis-server /etc/redis/redis.conf&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item><item><title>Redis配置</title><link>https://sunnnner.github.io/p/redis%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 31 May 2018 18:53:17 +0800</pubDate><guid>https://sunnnner.github.io/p/redis%E9%85%8D%E7%BD%AE/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-yml" data-lang="yml">&lt;span class="line">&lt;span class="cl">&lt;span class="m">1&lt;/span>&lt;span class="l">) 绑定IP地址,看业务开放&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="l">bind 0.0.0.0&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="l">)Redis默认不是以守护进程的方式运行，可以通过该配置项修改，使用yes启用守护进程，设置为no&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="l">daemonize no&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="m">3&lt;/span>&lt;span class="l">)保护模式&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="l">protected-mode no &lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c"># 检查启动状态命令&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="l">ps -ef|grep redis |grep 6379&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="l">mac以配置文件启动&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="l">sudo redis-server /usr/local/etc/redis.conf&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="l">Ubuntu以配置文件启动&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="l">sudo redis-server /etc/redis/redis.conf&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>redis on whiteKBlog</title>
+    <link>https://sunnnner.github.io/tags/redis/</link>
+    <description>Recent content in redis on whiteKBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 01 Jun 2018 10:20:47 +0800</lastBuildDate><atom:link href="https://sunnnner.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Django Redis配置</title>
+      <link>https://sunnnner.github.io/django-redis%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Fri, 01 Jun 2018 10:20:47 +0800</pubDate>
+      
+      <guid>https://sunnnner.github.io/django-redis%E9%85%8D%E7%BD%AE/</guid>
+      <description>Django-setting配置Redis储存session 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 # redis配置 CACHES= { &amp;#39;default&amp;#39;:{ &amp;#34;BACKEND&amp;#34;: &amp;#39;django_redis.cache.RedisCache&amp;#39;, &amp;#34;LOCATION&amp;#34;: &amp;#34;redis://127.0.0.1:6379/2&amp;#34;, &amp;#34;OPTIONS&amp;#34;: { &amp;#34;CLIENT_CLASS&amp;#34;: &amp;#34;django_redis.client.DefaultClient&amp;#34;, &amp;#34;PASSWORD&amp;#34;: &amp;#34;&amp;#34;, } } } # 储存session设置 SESSION_ENGING = &amp;#34;django.contrib.session.backends.cache&amp;#34; SESSION_CACHE_ALIAS = &amp;#34;default&amp;#34; </description>
+    </item>
+    
+    <item>
+      <title>Django Redis配置</title>
+      <link>https://sunnnner.github.io/p/django-redis%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Fri, 01 Jun 2018 10:20:47 +0800</pubDate>
+      
+      <guid>https://sunnnner.github.io/p/django-redis%E9%85%8D%E7%BD%AE/</guid>
+      <description>Django-setting配置Redis储存session 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 # redis配置 CACHES= { &amp;#39;default&amp;#39;:{ &amp;#34;BACKEND&amp;#34;: &amp;#39;django_redis.cache.RedisCache&amp;#39;, &amp;#34;LOCATION&amp;#34;: &amp;#34;redis://127.0.0.1:6379/2&amp;#34;, &amp;#34;OPTIONS&amp;#34;: { &amp;#34;CLIENT_CLASS&amp;#34;: &amp;#34;django_redis.client.DefaultClient&amp;#34;, &amp;#34;PASSWORD&amp;#34;: &amp;#34;&amp;#34;, } } } # 储存session设置 SESSION_ENGING = &amp;#34;django.contrib.session.backends.cache&amp;#34; SESSION_CACHE_ALIAS = &amp;#34;default&amp;#34; </description>
+    </item>
+    
+    <item>
+      <title>Redis配置</title>
+      <link>https://sunnnner.github.io/redis%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Thu, 31 May 2018 18:53:17 +0800</pubDate>
+      
+      <guid>https://sunnnner.github.io/redis%E9%85%8D%E7%BD%AE/</guid>
+      <description> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 1) 绑定IP地址,看业务开放 bind 0.0.0.0 2)Redis默认不是以守护进程的方式运行，可以通过该配置项修改，使用yes启用守护进程，设置为no daemonize no 3)保护模式 protected-mode no # 检查启动状态命令 ps -ef|grep redis |grep 6379 mac以配置文件启动 sudo redis-server /usr/local/etc/redis.conf Ubuntu以配置文件启动 sudo redis-server /etc/redis/redis.conf </description>
+    </item>
+    
+    <item>
+      <title>Redis配置</title>
+      <link>https://sunnnner.github.io/p/redis%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Thu, 31 May 2018 18:53:17 +0800</pubDate>
+      
+      <guid>https://sunnnner.github.io/p/redis%E9%85%8D%E7%BD%AE/</guid>
+      <description> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 1) 绑定IP地址,看业务开放 bind 0.0.0.0 2)Redis默认不是以守护进程的方式运行，可以通过该配置项修改，使用yes启用守护进程，设置为no daemonize no 3)保护模式 protected-mode no # 检查启动状态命令 ps -ef|grep redis |grep 6379 mac以配置文件启动 sudo redis-server /usr/local/etc/redis.conf Ubuntu以配置文件启动 sudo redis-server /etc/redis/redis.conf </description>
+    </item>
+    
+  </channel>
+</rss>
