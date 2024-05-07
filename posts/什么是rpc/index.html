@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>什么是RPC | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">什么是RPC</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>07.09.2019</time>
+    <span>in</span>
+    
+      <a href="/categories/network">network</a>
+  </strong>
+  <span> • 26 words</span>
+  <span> • 1 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/rpc">RPC</a>
+    </div>
+  
+</div>
+
+      <div class="content"><p>RPC</p>
+<pre><code>远程过程中调用(RPC) 是一种协议， 程序可使用这种协议向网络中的另一台计算机上的程序请求服务
+
+RPC采用客户机/ 服务器模式， 请求程序就是一个客户机， 而服务提供程序就是一个服务器
+
+first 客户机调用进程发送一个有进程参数的调用信息到服务进程，然后等待应答信息
+
+second 在服务端， 进程保持睡眠状态知道调用信息到达为止， 当一个调用到达， 服务器或得晋城参数， 结果， 发送答复信息， 然后等待下一个调用信息
+
+next 客户端调用进程接受答复信息， 或得进程结果， 然后调用执行继续进行
+</code></pre>
+<p>为什么要使用API</p>
+<pre><code>系统之间为了调用数据
+数据的传输格式：json, xml
+</code></pre></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

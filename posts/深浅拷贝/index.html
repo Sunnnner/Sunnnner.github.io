@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>深拷贝与浅拷贝 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">深拷贝与浅拷贝</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>12.07.2022</time>
+    <span>in</span>
+    
+      <a href="/categories/python">python</a>
+  </strong>
+  <span> • 184 words</span>
+  <span> • 1 minute read</span>
+  
+  
+</div>
+
+      <div class="content"><h1 id="与is的区别">==与is的区别</h1>
+<hr>
+<ul>
+<li>=代表赋值</li>
+<li>使用is和==：</li>
+<li>
+<pre><code>print（a is b ）#a 的地址 is b的地址----&gt;返回布尔值：True 或者False
+</code></pre>
+</li>
+<li>Python对小整数对象池的定义是 [-5, 257) 这些整数对象是提前建立好的不会被垃圾回收，在一个Python的程序中，所有位于这个范围内的的整数使用的都是同一个对象</li>
+<li>==是比较的两个对象值是否相等</li>
+<li>is是比较两个引用否指向了同一个对象（引用比较）</li>
+</ul>
+<hr>
+<h3 id="拷贝">拷贝</h3>
+<hr>
+<ul>
+<li>复制粘贴</li>
+</ul>
+<hr>
+<h3 id="浅拷贝">浅拷贝</h3>
+<ul>
+<li>浅拷贝是对于一个对象的顶层拷贝；通俗的理解是：拷贝了引用，并没有拷贝内容；浅拷贝只拷贝父对象，不会拷贝对象的内部的子对象。</li>
+<li>浅拷贝：产生的地址（引用）是新的，但是里面引用的元素还是原来的元素</li>
+<li>
+<pre><code> import copy
+</code></pre>
+</li>
+<li>
+<pre><code> 变量1=copy.copy(要拷的变量)
+</code></pre>
+</li>
+<li>拷贝过后地址会变化</li>
+<li>什么是浅拷贝：</li>
+<li>切片[:1]是浅拷贝</li>
+<li>使用工厂函数（如list/dir/set）</li>
+<li>•使用copy模块中的copy()函数</li>
+</ul>
+<hr>
+<h3 id="深拷贝">深拷贝</h3>
+<ul>
+<li>可变类型都新产生了一份地址，不可变类型就共用一个地址</li>
+<li>
+<pre><code>import copy
+</code></pre>
+</li>
+<li>
+<pre><code>list2=copy.deepcopy(list1)
+</code></pre>
+</li>
+</ul>
+<hr>
+<h3 id="拷贝的特殊情况">拷贝的特殊情况</h3>
+<ul>
+<li>对于不可变类型，没有拷贝这种说法的</li>
+<li>数值：小整数对象池</li>
+<li>字符串：字符串驻留机制</li>
+<li>元组，：对象不可变</li>
+<li>注意：如果是元组，能不能执行深拷贝，取决于元组中得类型是可变还是不可变，只有可变类型的时候才可以执行深拷贝</li>
+<li></li>
+</ul>
+<hr>
+<h3 id="字典">字典</h3>
+<ul>
+<li>字典中有copy&mdash;-&gt;两个地址不相同</li>
+<li>内置函数:list&mdash;&gt;两个地址不同</li>
+<li></li>
+</ul>
+<hr>
+<h1 id="3--进制位运算">3.  进制、位运算</h1>
+<ul>
+<li>一个字节占8位</li>
+</ul>
+<h3 id="补码反码">补码，反码</h3>
+<ul>
+<li>二进制：0~1</li>
+<li>十进制0~9</li>
+<li>十六进制0~9 A~F</li>
+<li>八进制0~7</li>
+<li>二进制转十进制</li>
+<li>基数：2</li>
+<li>位权：从右侧的0开始叫做基数</li>
+<li>原码，反码，补码</li>
+<li>进行运算的时候：补码&mdash;》负数</li>
+<li>正数：补码=反码</li>
+<li>负数：&mdash;-》符号位不变取反+1</li>
+<li>空出来的全部补符号位不论空几个</li>
+<li>补码转原码：符号位不变取反+1</li>
+</ul>
+<h3 id="位运算">位运算</h3>
+<ul>
+<li>二进制bin（0b）</li>
+<li>八进制oct (0o)</li>
+<li>十六进制hex(0x)</li>
+<li></li>
+<li>位移</li>
+<li>左移</li>
+<li>用途:快速计算一个数乘以2的n次方 (例如8&laquo;3 等同于8*2^3)</li>
+<li>5&laquo;1   &mdash;&gt;5*2^1左移1位</li>
+<li>5&laquo;2   &mdash;-&gt;5*2^2左移2位</li>
+<li>右移</li>
+<li>x &raquo; n x的所有二进制位向右移动n位,移出的位删掉,移进的位补符号位 右移不会改变一个数的符号</li>
+<li>x 右移 n 位就相当于除以2的n次方 用途:快速计算一个数除以	2的n次方 (8&raquo;3 等同于8/2^3)</li>
+<li>&amp;按位与</li>
+<li>| 按位或</li>
+<li>^ 按位异或</li>
+<li>~ 按位取反</li>
+<li>&laquo; 按位左移</li>
+<li>
+<blockquote>
+<blockquote>
+<p>按位右移</p>
+</blockquote>
+</blockquote>
+</li>
+<li></li>
+</ul>
+<hr>
+<h3 id="作用域">作用域</h3>
+<hr>
+<ul>
+<li>命名空间是一个字典（dictionary）</li>
+<li>他的键就是变量名</li>
+<li>他的值就是那些变量的值</li>
+<li>每个函数都有着自已的命名空间，叫做局部命名空间，它记录了函数的变量，包括函数的参数和局部定义的变量。</li>
+<li>每个模块拥有它自己的命名空间，叫做全局命名空间，它记录了模块的变量，包括函数。类，其他导入的模块，模块级的变量和常量</li>
+<li>还有就是内置命名空间，任何模块均可访问它，它存放着内置函数的函数和异常</li>
+</ul>
+<h3 id="globals-locals">globals locals</h3>
+<ul>
+<li>命名空间就是记录变量的，通常是通过字典展示变量情况</li>
+<li>
+<pre><code>print(locals())
+</code></pre>
+</li>
+<li>
+<pre><code>locals()记录函数你的函数中那些是局部变量
+</code></pre>
+</li>
+<li>
+<pre><code>print(globals（）)
+</code></pre>
+</li>
+<li>
+<pre><code>globals记录全局变量
+</code></pre>
+</li>
+<li>推荐locals在函数内使用</li>
+<li>globals在全局使用</li>
+<li></li>
+</ul>
+<hr>
+<h3 id="legb-规则">LEGB 规则</h3>
+<hr>
+<ul>
+<li>L-Local(function)；函数内的名字空间</li>
+<li>E-Enclosing function locals；外部嵌套函数的名字空间(例如closure（闭包）)</li>
+<li>G-Global(module)；函数定义所在模块（文件）的名字空间</li>
+<li>B-Builtin(Python)；Python内置模块的名字空间</li>
+<li>Python 使用 LEGB 的顺序来查找一个符号对应的对象</li>
+<li>
+<pre><code> locals -&gt; enclosing function -&gt; globals -&gt; builtins
+</code></pre>
+</li>
+<li>locals ，当前所在命名空间（如函数，模块），函数的参数也属于命名空房内的变量</li>
+<li>Enclosing( 封闭)：enclosing[In&rsquo;kloz]，外部嵌套函数的命名空间（闭包中常见）</li>
+<li>globals：globals，全局变量，函数定义所在模块的命名空间</li>
+<li>builtins(内建)•	builtins，内建模块的命名空间。</li>
+<li>
+<pre><code>  print（&quot;__bulitins__&quot;）
+</code></pre>
+</li>
+<li>
+<pre><code> abs()函数求绝对值的函数
+</code></pre>
+</li>
+<li></li>
+</ul>
+<hr>
+<h3 id="私有化">私有化</h3>
+<hr>
+<ul>
+<li>xx: 公有变量</li>
+<li>_x: 单前置下划线,私有化属性或方法</li>
+<li>
+<pre><code>from somemodule import *禁止导入,类对象和子类可以访问
+</code></pre>
+</li>
+<li>__xx：双前置下划线,避免与子类中的属性命名冲突，无法在外部直接访问(名字重整所以访问不到)</li>
+<li><strong>xx</strong>:双前后下划线,用户名字空间的魔法对象或属性。例如:<strong>init</strong> , __ 不要自己发明这样的名字</li>
+<li>xx_:单后置下划线,用于避免与Python关键词的冲突</li>
+<li>&ldquo;__&ldquo;私有的，在函数中可以使用</li>
+<li>如果是全局变量是私有的，则函数中可以使用，而类中不能使用</li>
+<li>但是”_&ldquo;的类和函数都能使用</li>
+<li>导入的情况下模块中的全局变量中的_xx,__xx均不可被访问</li>
+<li>共有：</li>
+<li>
+<pre><code>外界可以直接访问
+</code></pre>
+</li>
+<li>
+<pre><code>模块中共有
+</code></pre>
+</li>
+<li>私有：</li>
+<li>
+<pre><code>模块中私有：
+</code></pre>
+</li>
+<li>
+<pre><code>本模块中私有：函数中可以访问，类中不能访问
+</code></pre>
+</li>
+<li>
+<pre><code>模块中导入私有：_xx本模块中随意使用，
+</code></pre>
+</li>
+<li>
+<pre><code>但是通过froM模块名import这种方式导入则不可以使用
+</code></pre>
+</li>
+<li>
+<pre><code>但是导入方式是：import模块名这时就可以使用私有
+</code></pre>
+</li>
+<li>
+<pre><code>print（dir(s)）查看某个对象的可用方法
+</code></pre>
+</li>
+<li>名字重整：</li>
+<li>类中的私有的属性或者方法进行名字的重新整理&mdash;&gt;__age====_类名__age</li>
+<li>模块中的私有的属性 _num,_test()在导入的时候有（from&hellip;import&hellip;），直接给你隐藏起来_属性和_方法</li>
+<li></li>
+</ul>
+<hr>
+<h3 id="属性property">属性property</h3>
+<hr>
+<ul>
+<li>这个属性就是为了私有属性成立的</li>
+<li>age=property（get_age,set_age）</li>
+<li>注意顺序，get在前set在后</li>
+<li></li>
+<li>@property</li>
+<li>成为属性函数</li>
+</ul></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

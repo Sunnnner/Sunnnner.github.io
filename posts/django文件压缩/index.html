@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Django文件压缩 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Django文件压缩</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>11.10.2019</time>
+    <span>in</span>
+    
+      <a href="/categories/django">django</a>
+  </strong>
+  <span> • 111 words</span>
+  <span> • 1 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9">文件压缩</a>
+    </div>
+  
+</div>
+
+      <div class="content"><p>类型和方法数据压缩分为两种类型。</p>
+<p>有损：在这种类型的压缩中，压缩时会降低数据质量（在这种情况下为图像和视频）。这被广泛用于压缩多媒体。</p>
+<p>无损：在这种类型的压缩中，数据质量（在这种情况下为图像）不会丢失。它广泛用于压缩无法承受数据丢失的敏感数据。</p>
+<p>安装与配置</p>
+<p>安装python图像处理库 Pillow</p>
+<p>`pip install Pillow``</p>
+<p>我们将建立一个简单的项目来演示图像上传以及上传之前和之后的文件大小。您也可以参考Django-docs或在此处下载完整的源代码。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>models<span style="color:#f92672">.</span>py
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pil <span style="color:#f92672">import</span> Image
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> io <span style="color:#f92672">import</span> BytesIO
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> django.core.files.uploadedfile <span style="color:#f92672">import</span> InMemoryUploadedFile 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">File</span>(models<span style="color:#f92672">.</span>Model):
+</span></span><span style="display:flex;"><span>    user <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>ForeignKey(KwsUser, verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;所属用户&#39;</span>, help_text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;所属用户&#39;</span>)
+</span></span><span style="display:flex;"><span>    file <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>FileField(upload_to<span style="color:#f92672">=</span>get_file_path, help_text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;上传的文件&#39;</span>)
+</span></span><span style="display:flex;"><span>    big_file <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>FileField(upload_to<span style="color:#f92672">=</span>get_pro_file_path, help_text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;上传的原图&#39;</span>, null<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, blank<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    upload_time <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>DateTimeField(auto_now_add<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;上传时间&#39;</span>, null<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, blank<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    name <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;文件名&#39;</span>, help_text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;文件名&#39;</span>)
+</span></span><span style="display:flex;"><span>    type <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>, choices<span style="color:#f92672">=</span>FILETYPE, verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;文件类型&#39;</span>)
+</span></span><span style="display:flex;"><span>    uid <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>AutoField(primary_key<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)  <span style="color:#75715e"># 前端数据。。。。</span>
+</span></span><span style="display:flex;"><span>    minio_url <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>TextField(verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;文件链接&#39;</span>, blank<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    big_file_minio_url <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>TextField(verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;大图文件链接&#39;</span>, blank<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">save</span><span style="color:#960050;background-color:#1e0010">（</span>self<span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">*</span> args<span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">**</span> kwargs<span style="color:#960050;background-color:#1e0010">）：</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> self<span style="color:#f92672">.</span>uid
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>file <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>compressImage<span style="color:#960050;background-color:#1e0010">（</span> self<span style="color:#f92672">.</span>file
+</span></span><span style="display:flex;"><span>        super<span style="color:#960050;background-color:#1e0010">（</span>File<span style="color:#960050;background-color:#1e0010">，</span>self<span style="color:#960050;background-color:#1e0010">）</span><span style="color:#f92672">.</span>save<span style="color:#960050;background-color:#1e0010">（</span><span style="color:#f92672">*</span> args<span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">**</span> kwargs<span style="color:#960050;background-color:#1e0010">）</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">compressImage</span><span style="color:#960050;background-color:#1e0010">（</span>self<span style="color:#960050;background-color:#1e0010">，</span>file<span style="color:#960050;background-color:#1e0010">）：</span>
+</span></span><span style="display:flex;"><span>        imageTemproary <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open<span style="color:#960050;background-color:#1e0010">（</span>file<span style="color:#960050;background-color:#1e0010">）</span>
+</span></span><span style="display:flex;"><span>        outputIoStream <span style="color:#f92672">=</span> BytesIO<span style="color:#960050;background-color:#1e0010">（）</span>
+</span></span><span style="display:flex;"><span>        imageTemproaryResized <span style="color:#f92672">=</span> imageTemproary<span style="color:#f92672">.</span>resize<span style="color:#960050;background-color:#1e0010">（（</span><span style="color:#ae81ff">1020</span>,<span style="color:#ae81ff">573</span><span style="color:#960050;background-color:#1e0010">））</span>
+</span></span><span style="display:flex;"><span>        imageTemproary<span style="color:#f92672">.</span>save<span style="color:#960050;background-color:#1e0010">（</span>outputIoStream<span style="color:#960050;background-color:#1e0010">，</span>format <span style="color:#f92672">=</span><span style="color:#e6db74">&#39;JPEG&#39;</span><span style="color:#960050;background-color:#1e0010">，</span>quality <span style="color:#f92672">=</span> <span style="color:#ae81ff">60</span><span style="color:#960050;background-color:#1e0010">）</span>
+</span></span><span style="display:flex;"><span>        outputIoStream<span style="color:#f92672">.</span>seek<span style="color:#960050;background-color:#1e0010">（</span><span style="color:#ae81ff">0</span><span style="color:#960050;background-color:#1e0010">）</span>
+</span></span><span style="display:flex;"><span>        UploadedImage <span style="color:#f92672">=</span> InMemoryUploadedFile<span style="color:#960050;background-color:#1e0010">（</span>outputIoStream<span style="color:#960050;background-color:#1e0010">，</span><span style="color:#e6db74">&#39;ImageField&#39;</span><span style="color:#960050;background-color:#1e0010">，“％</span>s<span style="color:#f92672">.</span>jpg<span style="color:#960050;background-color:#1e0010">”</span> <span style="color:#960050;background-color:#1e0010">％</span>file<span style="color:#f92672">.</span>name<span style="color:#f92672">.</span>split<span style="color:#960050;background-color:#1e0010">（</span><span style="color:#e6db74">&#39;.&#39;</span><span style="color:#960050;background-color:#1e0010">）</span>[<span style="color:#ae81ff">0</span>]<span style="color:#960050;background-color:#1e0010">，</span><span style="color:#e6db74">&#39;image / jpeg&#39;</span><span style="color:#960050;background-color:#1e0010">，</span>sys<span style="color:#f92672">.</span>getsizeof<span style="color:#960050;background-color:#1e0010">（</span>outputIoStream<span style="color:#960050;background-color:#1e0010">），</span><span style="color:#66d9ef">None</span><span style="color:#960050;background-color:#1e0010">）</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> uploadImage
+</span></span></code></pre></div><p>在上面的models.py文件中，我们声明名称的实用程序方法compressImage并将其uploadedImage作为参数传递。save创建Upload对象时在模块中调用此方法。</p>
+<p>我们使用python图像处理库Pillow（PIL）来处理图像处理。我们打开上载的图像并将其存储在一个临时对象中，imageTemproary并初始化BytesIO流以处理将更改写入图像的过程。我们使用此resize()方法将上传的图像调整为特定大小（在这种情况下小于原始大小），并使用seek() method将输出流指针流重置为初始位置。我们可以进一步使用Django的InMemoryUploadedFile，以覆盖现有的未压缩的图像。
+您可以继续自定义方法，以根据需要更改图像类型，尺寸和质量级别。</p></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

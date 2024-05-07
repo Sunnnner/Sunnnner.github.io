@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Python实现AES加密 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Python实现AES加密</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>05.10.2019</time>
+    <span>in</span>
+    
+      <a href="/categories/python">python</a>
+  </strong>
+  <span> • 406 words</span>
+  <span> • 2 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/aes%E5%8A%A0%E5%AF%86">aes加密</a>
+    </div>
+  
+</div>
+
+      <div class="content"><h2 id="环境">环境</h2>
+<ul>
+<li>python3.6</li>
+<li>三方库—pyCryptodome</li>
+</ul>
+<h2 id="介绍">介绍</h2>
+<p>之前的AES加密中，Py2或者3.4都是采用的pyCrypto这个模块但是它已经停止维护，现在多了一个分支pyCryptodome这个模块
+如果有别的模块不能安装可以去这个网站下载安装<a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/">点我</a></p>
+<p>进去之后都会有安装教程</p>
+<h2 id="编写代码支付宝接口">编写代码支付宝接口</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># -*- coding: utf-8 -*-</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># pip install pycryptodome(这个一定要有)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#pip install winrandom</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.PublicKey <span style="color:#f92672">import</span> RSA
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Signature <span style="color:#f92672">import</span> PKCS1_v1_5
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Hash <span style="color:#f92672">import</span> SHA256
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> base64 <span style="color:#f92672">import</span> b64encode, b64decode
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> urllib.parse <span style="color:#f92672">import</span> quote_plus
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> urllib.parse <span style="color:#f92672">import</span> urlparse, parse_qs
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> urllib.request <span style="color:#f92672">import</span> urlopen
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> base64 <span style="color:#f92672">import</span> decodebytes, encodebytes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> json
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AliPay</span>(object):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    支付宝支付接口
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, appid, app_notify_url, app_private_key_path,
+</span></span><span style="display:flex;"><span>                 alipay_public_key_path, return_url, debug<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>appid <span style="color:#f92672">=</span> appid
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>app_notify_url <span style="color:#f92672">=</span> app_notify_url
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>app_private_key_path <span style="color:#f92672">=</span> app_private_key_path
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>app_private_key <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>return_url <span style="color:#f92672">=</span> return_url
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> open(self<span style="color:#f92672">.</span>app_private_key_path) <span style="color:#66d9ef">as</span> fp:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>app_private_key <span style="color:#f92672">=</span> RSA<span style="color:#f92672">.</span>importKey(fp<span style="color:#f92672">.</span>read())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>alipay_public_key_path <span style="color:#f92672">=</span> alipay_public_key_path
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> open(self<span style="color:#f92672">.</span>alipay_public_key_path) <span style="color:#66d9ef">as</span> fp:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>alipay_public_key <span style="color:#f92672">=</span> RSA<span style="color:#f92672">.</span>importKey(fp<span style="color:#f92672">.</span>read())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> debug <span style="color:#f92672">is</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>__gateway <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://openapi.alipaydev.com/gateway.do&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>__gateway <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://openapi.alipay.com/gateway.do&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">direct_pay</span>(self, subject, out_trade_no, total_amount, return_url<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, <span style="color:#f92672">**</span>kwargs):
+</span></span><span style="display:flex;"><span>        biz_content <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;subject&#34;</span>: subject,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;out_trade_no&#34;</span>: out_trade_no,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;total_amount&#34;</span>: total_amount,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;product_code&#34;</span>: <span style="color:#e6db74">&#34;FAST_INSTANT_TRADE_PAY&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># &#34;qr_pay_mode&#34;:4</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        biz_content<span style="color:#f92672">.</span>update(kwargs)
+</span></span><span style="display:flex;"><span>        data <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>build_body(<span style="color:#e6db74">&#34;alipay.trade.page.pay&#34;</span>, biz_content, self<span style="color:#f92672">.</span>return_url)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>sign_data(data)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">build_body</span>(self, method, biz_content, return_url<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>        data <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;app_id&#34;</span>: self<span style="color:#f92672">.</span>appid,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;method&#34;</span>: method,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;charset&#34;</span>: <span style="color:#e6db74">&#34;utf-8&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;sign_type&#34;</span>: <span style="color:#e6db74">&#34;RSA2&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;timestamp&#34;</span>: datetime<span style="color:#f92672">.</span>now()<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74"> %H:%M:%S&#34;</span>),
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;1.0&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;biz_content&#34;</span>: biz_content
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> return_url <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            data[<span style="color:#e6db74">&#34;notify_url&#34;</span>] <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>app_notify_url
+</span></span><span style="display:flex;"><span>            data[<span style="color:#e6db74">&#34;return_url&#34;</span>] <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>return_url
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> data
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">sign_data</span>(self, data):
+</span></span><span style="display:flex;"><span>        data<span style="color:#f92672">.</span>pop(<span style="color:#e6db74">&#34;sign&#34;</span>, <span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 排序后的字符串</span>
+</span></span><span style="display:flex;"><span>        unsigned_items <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>ordered_data(data)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#拼接字符串</span>
+</span></span><span style="display:flex;"><span>        unsigned_string <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&amp;&#34;</span><span style="color:#f92672">.</span>join(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">=</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(k, v) <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> unsigned_items)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#签名</span>
+</span></span><span style="display:flex;"><span>        sign <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>sign(unsigned_string<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;utf-8&#34;</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#排序</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ordered_items = self.ordered_data(data)</span>
+</span></span><span style="display:flex;"><span>        quoted_string <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&amp;&#34;</span><span style="color:#f92672">.</span>join(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">=</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(k, quote_plus(v)) <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> unsigned_items)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 获得最终的订单信息字符串</span>
+</span></span><span style="display:flex;"><span>        signed_string <span style="color:#f92672">=</span> quoted_string <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&amp;sign=&#34;</span> <span style="color:#f92672">+</span> quote_plus(sign)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> signed_string
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ordered_data</span>(self, data):
+</span></span><span style="display:flex;"><span>        complex_keys <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> key, value <span style="color:#f92672">in</span> data<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> isinstance(value, dict):
+</span></span><span style="display:flex;"><span>                complex_keys<span style="color:#f92672">.</span>append(key)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 将字典类型的数据dump出来</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> key <span style="color:#f92672">in</span> complex_keys:
+</span></span><span style="display:flex;"><span>            data[key] <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>dumps(data[key], separators<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#39;,&#39;</span>, <span style="color:#e6db74">&#39;:&#39;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> sorted([(k, v) <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> data<span style="color:#f92672">.</span>items()])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">sign</span>(self, unsigned_string):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 开始计算签名</span>
+</span></span><span style="display:flex;"><span>        key <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>app_private_key
+</span></span><span style="display:flex;"><span>        signer <span style="color:#f92672">=</span> PKCS1_v1_5<span style="color:#f92672">.</span>new(key)
+</span></span><span style="display:flex;"><span>        signature <span style="color:#f92672">=</span> signer<span style="color:#f92672">.</span>sign(SHA256<span style="color:#f92672">.</span>new(unsigned_string))
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># base64 编码，转换为unicode表示并移除回车</span>
+</span></span><span style="display:flex;"><span>        sign <span style="color:#f92672">=</span> encodebytes(signature)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf8&#34;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> sign
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_verify</span>(self, raw_content, signature):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 开始计算签名</span>
+</span></span><span style="display:flex;"><span>        key <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>alipay_public_key
+</span></span><span style="display:flex;"><span>        signer <span style="color:#f92672">=</span> PKCS1_v1_5<span style="color:#f92672">.</span>new(key)
+</span></span><span style="display:flex;"><span>        digest <span style="color:#f92672">=</span> SHA256<span style="color:#f92672">.</span>new()
+</span></span><span style="display:flex;"><span>        digest<span style="color:#f92672">.</span>update(raw_content<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;utf8&#34;</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> signer<span style="color:#f92672">.</span>verify(digest, decodebytes(signature<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;utf8&#34;</span>))):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">verify</span>(self, data, signature):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;sign_type&#34;</span> <span style="color:#f92672">in</span> data:
+</span></span><span style="display:flex;"><span>            sign_type <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>pop(<span style="color:#e6db74">&#34;sign_type&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 排序后的字符串</span>
+</span></span><span style="display:flex;"><span>        unsigned_items <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>ordered_data(data)
+</span></span><span style="display:flex;"><span>        message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&amp;&#34;</span><span style="color:#f92672">.</span>join(<span style="color:#e6db74">u</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">=</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(k, v) <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> unsigned_items)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_verify(message, signature)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    return_url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://47.94.224.53:8000/?charset=utf-8&amp;out_trade_no=20180614122222&amp;method=alipay.trade.page.pay.return&amp;total_amount=100.01&amp;sign=m1u20Z</span><span style="color:#e6db74">%2F</span><span style="color:#e6db74">YTU0uipXfDYktEINrkaAmv5dh1RHYyeb6wDZzBB</span><span style="color:#e6db74">%2F</span><span style="color:#e6db74">HLt9x87W91sqsN8%2BO6%2BuxwZLEAOC5olHJDBplYHLhR5s60UXFyvvagmfNAdQYOIV7Rk3yYWkz2P7bejB7n9tOQ9Kj8</span><span style="color:#e6db74">%2F</span><span style="color:#e6db74">xMf9me5YZts1gZlLcedetHDSuDzHDTPB9Lhc1qhnF7655hYf1P9qA%2B6l%2BVFIwihmPxDsb9n7vuw34dtHFHTUuK</span><span style="color:#e6db74">%2F</span><span style="color:#e6db74">Gn3sqjKwAtN5igfOJibyTYeVMjASTMSDir0HC9xVWMgyzE3BJidNnWhSvoMUah</span><span style="color:#e6db74">%2F</span><span style="color:#e6db74">DVToJZCPcydpgmd0zZ7iZMelxE4cQ7KJRidgDa4</span><span style="color:#e6db74">%2F</span><span style="color:#e6db74">AsUU0ZJrY3</span><span style="color:#e6db74">%2F</span><span style="color:#e6db74">Rnw%3D%3D&amp;trade_no=2018061421001004760200615074&amp;auth_app_id=2016091300503105&amp;version=1.0&amp;app_id=2016091300503105&amp;sign_type=RSA2&amp;seller_id=2088102175472298&amp;timestamp=2018-06-14+18%3A12%3A38&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">from</span> newpro.settings <span style="color:#f92672">import</span> private_key_path, ali_public_path
+</span></span><span style="display:flex;"><span>    alipay <span style="color:#f92672">=</span> AliPay(
+</span></span><span style="display:flex;"><span>        appid<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;2016091700530413&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#异步的通知接口，当在浏览器扫描创建订单后，这个时候关闭页面，此时可以在客户端或者支护宝账号里面看到这个为支付完成的信息</span>
+</span></span><span style="display:flex;"><span>        app_notify_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://118.190.202.67:8001/alipay/return/&#34;</span>,
+</span></span><span style="display:flex;"><span>        app_private_key_path<span style="color:#f92672">=</span>private_key_path,
+</span></span><span style="display:flex;"><span>        alipay_public_key_path<span style="color:#f92672">=</span>ali_public_path,  <span style="color:#75715e"># 支付宝的公钥，验证支付宝回传消息使用，不是你自己的公钥,</span>
+</span></span><span style="display:flex;"><span>        debug<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,  <span style="color:#75715e"># 默认False,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#同步接口，支付成功后会跳转的接口</span>
+</span></span><span style="display:flex;"><span>        return_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://47.94.224.53:8000/alipay/return/&#34;</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    o <span style="color:#f92672">=</span> urlparse(return_url)
+</span></span><span style="display:flex;"><span>    query <span style="color:#f92672">=</span> parse_qs(o<span style="color:#f92672">.</span>query)
+</span></span><span style="display:flex;"><span>    processed_query <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>    ali_sign <span style="color:#f92672">=</span> query<span style="color:#f92672">.</span>pop(<span style="color:#e6db74">&#34;sign&#34;</span>)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> key, value <span style="color:#f92672">in</span> query<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>        processed_query[key] <span style="color:#f92672">=</span> value[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;processed_query===&#34;</span>, processed_query)
+</span></span><span style="display:flex;"><span>    print(alipay<span style="color:#f92672">.</span>verify(processed_query, ali_sign))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    url <span style="color:#f92672">=</span> alipay<span style="color:#f92672">.</span>direct_pay(
+</span></span><span style="display:flex;"><span>        subject<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;测试订单&#34;</span>,
+</span></span><span style="display:flex;"><span>        out_trade_no<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;20180615109866gsss&#34;</span>,
+</span></span><span style="display:flex;"><span>        total_amount<span style="color:#f92672">=</span><span style="color:#ae81ff">100.01</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#沙箱环境</span>
+</span></span><span style="display:flex;"><span>    re_url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://openapi.alipaydev.com/gateway.do?</span><span style="color:#e6db74">{data}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(data<span style="color:#f92672">=</span>url)
+</span></span><span style="display:flex;"><span>    print(re_url)
+</span></span></code></pre></div><ul>
+<li>
+<p>python加解密<a href="https://blog.csdn.net/s740556472/article/details/79026128">点我</a></p>
+</li>
+<li>
+<p>更好的<a href="https://blog.csdn.net/hh775313602/article/details/78991340">方法</a></p>
+</li>
+</ul></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

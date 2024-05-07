@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>git基础 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">git基础</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>12.07.2021</time>
+    <span>in</span>
+    
+      <a href="/categories/github">github</a>
+  </strong>
+  <span> • 125 words</span>
+  <span> • 1 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/git">git</a>
+    </div>
+  
+</div>
+
+      <div class="content"><h1 id="linux的发行版">Linux的发行版</h1>
+<ul>
+<li>ubtnutu</li>
+<li>redhat</li>
+<li>gebtoo</li>
+<li>gentoo</li>
+</ul>
+<h1 id="linux最最基本的命令">linux最最基本的命令</h1>
+<ul>
+<li><code>ls</code>: 列出所在目录的文件</li>
+<li><code>cd</code>：进入根目录</li>
+<li><code>cd 目录名</code>：进入目录名/</li>
+<li><code>mkdir 文件夹的名字</code>: 新建文件夹</li>
+</ul>
+<h1 id="vi基本命令">vi基本命令</h1>
+<p>-<code>i</code>进入编辑模式
+-<code>esc</code>退出编辑模式
+-<code>：</code>shift+:进入控制模式
+-<code>wq</code>:保存退出
+-<code>w</code>:保存
+-<code>q</code>:退出
+-<code>dd</code>:删除一行</p>
+<h1 id="git基本命令">git基本命令</h1>
+<p>-<code>git init</code>初始话一个git仓库</p>
+<ul>
+<li><code>git clone项目地址</code></li>
+<li><code>cd项目地址</code></li>
+<li><code>vim notes.md</code>编辑note.md文档</li>
+<li><code>git add *</code>告诉git把文件添加到仓库</li>
+<li><code>git commit -m&quot;注释&quot;</code>告诉git把文件提交到仓库</li>
+<li><code>git push</code></li>
+<li><code>git diff</code>：查看提交了些什么</li>
+<li><code>git log</code>:查看提交历史</li>
+<li><code>git pull</code>：拉下来最新的代码</li>
+<li><code>git log --pretty=oneline</code>git log参数简洁显示最近提交的信息</li>
+</ul>
+<h1 id="git-时光机总总结">git 时光机总总结</h1>
+<ul>
+<li><code>HEAD</code>指向当前版本</li>
+<li><code>HEAD^</code>指向前一个版本^^前一个的前一个版本</li>
+<li><code>id</code>git log 前面的psh</li>
+<li><code>git log</code>查看当前提交的历史</li>
+<li><code>git log --pretty=oneline</code>常看当前提交的历史简洁版</li>
+<li><code>git reset --hard commit_id</code>commit_id代表指向的HEAD^</li>
+<li><code>git reflog</code>查看命令历史进行回到未来</li>
+<li>
+<h1 id="git-修改总结">git 修改总结</h1>
+</li>
+<li><code>git add</code>第一次修改提交只是储存在暂存区没有进行commit</li>
+<li><code>git add</code>第二次修改后不进行提交存放在工作区</li>
+<li><code>git add</code>第三次提交第二次的修改合并第一次的提交</li>
+<li><code>git commit</code>第四次进行commit</li>
+<li>
+<h1 id="git-的撤销操作">git 的撤销操作</h1>
+</li>
+<li><code>git checkout -- file</code>回到最后一次编辑位置</li>
+<li></li>
+<li><code>git reset HEAD file</code>如果你不小心add进入了暂存区你就要用这个回滚到head的地方然后在执行checkout</li>
+<li><code>git rm</code>用于删除仓库文件</li>
+<li>
+<h1 id="仓库分布式部署流程">仓库分布式部署流程</h1>
+</li>
+<li><code>$ ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</code>创建SSH Key</li>
+<li><code>Create a new repo</code>创建一个新的仓库</li>
+<li><code>根据页面提示在终端执行一边代码</code></li>
+<li><code>$ git remote add origin git@github.com:自己的git用户民/learngit.git</code>以后推送设置</li>
+<li><code>$ git push -u origin master</code>推送到git第一次推送使用-u</li>
+<li><code>$ git push origin master</code></li>
+<li>以后直接推送</li>
+<li><code>git remote add origin git@server-name:path/repo-name.git</code>要关联一个远程库</li>
+<li>``</li>
+</ul></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

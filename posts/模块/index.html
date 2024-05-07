@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>python模块 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">python模块</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>12.07.2022</time>
+    <span>in</span>
+    
+      <a href="/categories/python">python</a>
+  </strong>
+  <span> • 115 words</span>
+  <span> • 1 minute read</span>
+  
+  
+</div>
+
+      <div class="content"><h1 id="查看模块">查看模块</h1>
+<hr>
+<ul>
+<li>
+<pre><code>import os
+</code></pre>
+</li>
+<li>
+<pre><code>import time
+</code></pre>
+</li>
+<li>
+<pre><code>import random
+</code></pre>
+</li>
+<li>
+<pre><code>print(os.__file__)
+</code></pre>
+</li>
+<li>
+<pre><code>print(timr.__file__)
+</code></pre>
+</li>
+<li>
+<pre><code>print(random.__file__)
+</code></pre>
+</li>
+<li></li>
+</ul>
+<hr>
+<ul>
+<li>
+<h1 id="引出模块的摸个部分">引出模块的摸个部分</h1>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<pre><code>from(模块名)import（方法名）
+</code></pre>
+</li>
+<li></li>
+</ul>
+<hr>
+<h1 id="导入方式">导入方式</h1>
+<hr>
+<pre><code>1.import 模块名  导入
+2.from 模块名，模块的某i一部分
+3.from 模块 import * 导入所有
+2，3在使用的时候不前面添加模块但是
+</code></pre>
+<hr>
+<ul>
+<li>
+<h1 id="__-all__">__ all__</h1>
+</li>
+</ul>
+<hr>
+<ul>
+<li>对外暴露的内容</li>
+<li>要想隐藏你的模块中的一些内容可以使用__ all__但是它只在from&hellip;import场景中才会起作用</li>
+<li></li>
+<li>
+<h3 id="import-模块名-as--别名">import 模块名 as  别名</h3>
+</li>
+<li>使用别名进行调用</li>
+<li></li>
+<li>模块的搜索顺序</li>
+<li>
+<pre><code>  import sys
+</code></pre>
+</li>
+<li>
+<pre><code>  print(sys.path)
+</code></pre>
+</li>
+<li>
+<h3 id="只要加载模块模块里面的内容就会被加载一边">只要加载模块模块里面的内容就会被加载一边</h3>
+</li>
+<li></li>
+<li>
+<h3 id="模块制作">模块制作</h3>
+</li>
+<li>__ name__:__name __==‘__main __’当前文件</li>
+<li>__ name__==&ldquo;模块名&quot;导入使用</li>
+</ul>
+<hr>
+<ul>
+<li>
+<h1 id="包">包</h1>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<h3 id="方式一">方式一</h3>
+</li>
+<li>如 果是有包的情况下，导入的时候就要：包名.模块名</li>
+<li>
+<pre><code>import msg.sendmsg
+</code></pre>
+</li>
+<li>
+<pre><code>msg.sendmsg.sendmsg()
+</code></pre>
+</li>
+<li>特点，每次调用的时候，必须包名.模块名.函数名（）</li>
+<li>__ init__.py中内容是通过包名.函数名来访问</li>
+<li>
+<h4 id="tree当前目录以树形结构显示">tree当前目录以树形结构显示</h4>
+</li>
+<li>
+<h4 id="touch-创建文件">touch 创建文件</h4>
+</li>
+<li>
+<h3 id="方式二">方式二</h3>
+</li>
+<li>from 包名import *表示导入包中所有的内容</li>
+<li>为了去报文件夹作为包来去使用，必须在文件夹中定义一个__ init__.py文件</li>
+<li>为了能够让外界认为是包，定义__ init__。py文件，在里面添加暴露内容__ all__=[]</li>
+<li>模块名的暴露是通过 __ all__=[&lsquo;模块1名&rsquo;，&lsquo;模块2名&rsquo;]</li>
+<li>
+<h3 id="方式三">方式三</h3>
+</li>
+<li>from 文件名 inport  模块1名，模块2名</li>
+<li>这个模式下不能使用__ init__中的函数</li>
+<li></li>
+</ul>
+<hr>
+<ul>
+<li>
+<h1 id="包的嵌套">包的嵌套</h1>
+</li>
+</ul>
+<hr>
+<ul>
+<li>ls -alh 查看详细信息</li>
+<li></li>
+</ul>
+<hr>
+<ul>
+<li>
+<h1 id="打包模块">打包模块</h1>
+</li>
+</ul>
+<hr>
+<ul>
+<li>与打包目录共存平等级的</li>
+<li>
+<pre><code>setup.py
+</code></pre>
+</li>
+<li>
+<pre><code>from distutils.core import setup
+</code></pre>
+</li>
+<li>
+<pre><code>#导入核心模块中的setup函数，setup（*args）
+</code></pre>
+</li>
+<li></li>
+</ul>
+<hr>
+<ul>
+<li>
+<h1 id="使用sys模块">使用sys.模块</h1>
+</li>
+</ul>
+<hr>
+<ul>
+<li>sys.argv</li>
+<li>命令行参数</li>
+<li>自动把python3后面的命令传入到argv列表里</li>
+<li>无需键盘输入参数传递参数，用命令就可以直接传递</li>
+<li></li>
+</ul>
+<hr>
+<ul>
+<li>
+<h1 id="列表推导式">列表推导式</h1>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<pre><code>list1=[x for x in range(1,10,2)]
+</code></pre>
+</li>
+<li>
+<pre><code>list =[5 for x in rang(10)]
+</code></pre>
+</li>
+<li>添加if条件</li>
+<li>
+<pre><code>list=[x for x in fang(0,30) if x%3==0]
+</code></pre>
+</li>
+<li></li>
+</ul></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

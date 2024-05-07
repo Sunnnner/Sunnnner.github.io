@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>页面开发 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">页面开发</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>31.05.2018</time>
+    <span>in</span>
+    
+      <a href="/categories/django">django</a>
+  </strong>
+  <span> • 447 words</span>
+  <span> • 3 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/django">django</a>
+    </div>
+  
+</div>
+
+      <div class="content"><ul>
+<li>首先新建app—&gt;books并添加settings里面</li>
+<li>因为我们需要在后台admin上传数据所以我们要创建富文本管理器并在setting设置他的选项</li>
+<li>富文本管理器是一个插件我们这次使用的是tinymce并且我们需要将它加入到apps里面因为他是一个应用，但是这个应用是需要下载的</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>TINTMCE_DEFAULT_CONFIG <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;theme&#39;</span>: <span style="color:#e6db74">&#34;modern&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;wight&#39;</span>: <span style="color:#ae81ff">600</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;height&#39;</span>: <span style="color:#ae81ff">400</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>
+<p>我们需要设置制定一个媒体文件夹来存放我们的图片<code>MEDIA_ROOT = os.path.join(BASE_DIR, 'static')</code></p>
+</li>
+<li>
+<p>添加应用的urls``</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>url(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;^books/&#39;</span>, include(<span style="color:#e6db74">&#39;books.urls&#39;</span>,namespace<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;books&#39;</span>)),
+</span></span><span style="display:flex;"><span>url(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;^tinymce/&#39;</span>, include(<span style="color:#e6db74">&#39;tinymce.urls&#39;</span>,namespace<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tinymce&#39;</span>)),
+</span></span></code></pre></div><ul>
+<li>我们开始写books里面的字段首先查看页面我们需要什么字段</li>
+<li>首先我们创建tinymac富文本需要的字段，这里的字段映射全局</li>
+<li>在books目录下创建任意的.py文件这里我的是emums.py</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 此处1，2，3，4代表书本的id</span>
+</span></span><span style="display:flex;"><span>PYTHON <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>JAVASCRIPT <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>ALGORITHMS <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>MACHINELEARNING <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>OPERATINSGYSTEM <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>DATABASE <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># BOOKS_TYPE作为一个字典传输到models</span>
+</span></span><span style="display:flex;"><span>BOOKS_TYPE <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    PYTHON: <span style="color:#e6db74">&#39;python&#39;</span>,
+</span></span><span style="display:flex;"><span>    JAVASCRIPT: <span style="color:#e6db74">&#39;javascript&#39;</span>,
+</span></span><span style="display:flex;"><span>    ALGORITHMS: <span style="color:#e6db74">&#39;数据库结构与算法&#39;</span>,
+</span></span><span style="display:flex;"><span>    MACHINELEARNING: <span style="color:#e6db74">&#39;机器学习&#39;</span>,
+</span></span><span style="display:flex;"><span>    OPERATINSGYSTEM: <span style="color:#e6db74">&#39;操作系统&#39;</span>,
+</span></span><span style="display:flex;"><span>    DATABASE: <span style="color:#e6db74">&#39;数据库&#39;</span>,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 代表商品的上线或者下线状态</span>
+</span></span><span style="display:flex;"><span>OFFLINE <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>ONLINE <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>STATUS_CHOICE <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    OFFLINE: <span style="color:#e6db74">&#39;下线&#39;</span>,
+</span></span><span style="display:flex;"><span>    ONLINE: <span style="color:#e6db74">&#39;上线&#39;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>我们开始写models.py</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> django.db <span style="color:#f92672">import</span> models
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> db.base_model <span style="color:#f92672">import</span> BaseModel
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> tinymce.models <span style="color:#f92672">import</span> HTMLField
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> books.enums <span style="color:#f92672">import</span> BOOKS_TYPE, STATUS_CHOICE,PYTHON,ONLINE
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create your models here.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BookManager</span>(models<span style="color:#f92672">.</span>Manager):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39;商品模型管理器类&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># type_id 表示前段传输商品id进行查找商品. limit表示返回几个之前的商品的数据, sort代表排序状态，初始值默认</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_books_by_type</span>(self, type_id, limit<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, sort<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;default&#39;</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;根据商品类型id查询商品信息&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 如果是新商品就根据他的添加时间进行排序-代表从大到小进行排序</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> sort <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;new&#39;</span>:
+</span></span><span style="display:flex;"><span>            order_by <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;-create_time&#39;</span>,)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 根据销量最多进行排序</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> sort <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;hot&#39;</span>:
+</span></span><span style="display:flex;"><span>            order_by <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;-sales&#39;</span>,)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 根据价格进行排序</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> sort <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;price&#39;</span>:
+</span></span><span style="display:flex;"><span>            order_by <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;price&#39;</span>,)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># pk国外代表一种主键的简写，别的名字也行这是整个表的主键，这里代表的意思就是默认按照主键primary_key从大到小默认进行排序</span>
+</span></span><span style="display:flex;"><span>            order_by <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;-pk&#39;</span>,)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 查询数据 filter是过滤数据，order_by是排序，(*order_by)是对上面的order_by进行解包成列表</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 对解包的数据进行过滤排序并返回一个新的列表books_li</span>
+</span></span><span style="display:flex;"><span>        books_li <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>filter(type_id<span style="color:#f92672">=</span>type_id)<span style="color:#f92672">.</span>order_by(<span style="color:#f92672">*</span>order_by)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 查询结果集的限制</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> limit:
+</span></span><span style="display:flex;"><span>            books_li <span style="color:#f92672">=</span> books_li[:limit]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> books_li
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_books_by_id</span>(self, books_id):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;根据商品id获取商品信息&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>            books <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>get(id<span style="color:#f92672">=</span>books_id)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span> self<span style="color:#f92672">.</span>model<span style="color:#f92672">.</span>DoesNotExist:
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 商品不存在</span>
+</span></span><span style="display:flex;"><span>            books <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> books
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Books</span>(BaseModel):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39;商品模型类&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 使用迭代器进行数据赋值 因为books_type是字典所以要取items</span>
+</span></span><span style="display:flex;"><span>    books_type_choices <span style="color:#f92672">=</span> ((k, v) <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> BOOKS_TYPE<span style="color:#f92672">.</span>items())
+</span></span><span style="display:flex;"><span>    status_choices <span style="color:#f92672">=</span> ((k, v) <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> STATUS_CHOICE<span style="color:#f92672">.</span>items())
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 定义书籍的id与书籍的状态</span>
+</span></span><span style="display:flex;"><span>    type_id <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>SmallIntegerField(default<span style="color:#f92672">=</span>PYTHON, choices<span style="color:#f92672">=</span>books_type_choices,verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;商品种类&#39;</span>)
+</span></span><span style="display:flex;"><span>    name <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>, verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;商品名称&#39;</span>)
+</span></span><span style="display:flex;"><span>    desc <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">128</span>, verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;商品简介&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># decimal_places代表小数后两位</span>
+</span></span><span style="display:flex;"><span>    price <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>DecimalField(max_digits<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, decimal_places<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;商品价格&#39;</span>)
+</span></span><span style="display:flex;"><span>    unit <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>, verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;商品单位&#39;</span>)
+</span></span><span style="display:flex;"><span>    stock <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>IntegerField(default<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;商品库存&#39;</span>)
+</span></span><span style="display:flex;"><span>    sales <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>IntegerField(default<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;商品销量&#39;</span>)
+</span></span><span style="display:flex;"><span>    detail <span style="color:#f92672">=</span> HTMLField(verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;商品详情&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># upload_to所以可以用uoload_to来指定文件存放的前缀路径</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 实际的路径就是 MEDIA_ROOT/books/filename</span>
+</span></span><span style="display:flex;"><span>    image <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>ImageField(upload_to<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;books&#39;</span>, verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;商品图片&#39;</span>)
+</span></span><span style="display:flex;"><span>    status <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>SmallIntegerField(default<span style="color:#f92672">=</span> ONLINE, choices<span style="color:#f92672">=</span>status_choices,verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;商品状态&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __str__(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>name
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 创建事务管理器</span>
+</span></span><span style="display:flex;"><span>    object <span style="color:#f92672">=</span> BookManager()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Meta</span>():
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#制定数据库名称</span>
+</span></span><span style="display:flex;"><span>        db_table <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;s_books&#39;</span>
+</span></span></code></pre></div><ul>
+<li>将用户模块注册到admin</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> django.contrib <span style="color:#f92672">import</span> admin
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> books.models <span style="color:#f92672">import</span> Books
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Register your models here.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>admin<span style="color:#f92672">.</span>site<span style="color:#f92672">.</span>register(Books)
+</span></span></code></pre></div><ul>
+<li>创建用户主页视图views信息</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> django.shortcuts <span style="color:#f92672">import</span> render,redirect
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> books.models <span style="color:#f92672">import</span> Books
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> books.enums <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> django.core.urlresolvers <span style="color:#f92672">import</span> reverse
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> django.core.paginator <span style="color:#f92672">import</span> Paginator
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create your views here.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>(request):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39;显示首页&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    python_new <span style="color:#f92672">=</span> Books<span style="color:#f92672">.</span>object<span style="color:#f92672">.</span>get_books_by_type(PYTHON, <span style="color:#ae81ff">3</span>, sort<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;new&#39;</span>)
+</span></span><span style="display:flex;"><span>    python_hot <span style="color:#f92672">=</span> Books<span style="color:#f92672">.</span>object<span style="color:#f92672">.</span>get_books_by_type(PYTHON, <span style="color:#ae81ff">4</span>, sort<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;hot&#39;</span>)
+</span></span><span style="display:flex;"><span>    javascript_new <span style="color:#f92672">=</span> Books<span style="color:#f92672">.</span>object<span style="color:#f92672">.</span>get_books_by_type(JAVASCRIPT, <span style="color:#ae81ff">3</span>, sort<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;new&#39;</span>)
+</span></span><span style="display:flex;"><span>    javascript_hot <span style="color:#f92672">=</span> Books<span style="color:#f92672">.</span>object<span style="color:#f92672">.</span>get_books_by_type(JAVASCRIPT, <span style="color:#ae81ff">4</span>, sort<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;hot&#39;</span>)
+</span></span><span style="display:flex;"><span>    algorithms_new <span style="color:#f92672">=</span> Books<span style="color:#f92672">.</span>object<span style="color:#f92672">.</span>get_books_by_type(ALGORITHMS, <span style="color:#ae81ff">3</span>, sort<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;new&#39;</span>)
+</span></span><span style="display:flex;"><span>    algorithms_hot <span style="color:#f92672">=</span> Books<span style="color:#f92672">.</span>object<span style="color:#f92672">.</span>get_books_by_type(ALGORITHMS, <span style="color:#ae81ff">4</span>, sort<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;new&#39;</span>)
+</span></span><span style="display:flex;"><span>    machinelearning_new <span style="color:#f92672">=</span> Books<span style="color:#f92672">.</span>object<span style="color:#f92672">.</span>get_books_by_type(MACHINELEARNING, <span style="color:#ae81ff">3</span>,sort<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;new&#39;</span>)
+</span></span><span style="display:flex;"><span>    machinelearning_hot <span style="color:#f92672">=</span> Books<span style="color:#f92672">.</span>object<span style="color:#f92672">.</span>get_books_by_type(MACHINELEARNING, <span style="color:#ae81ff">4</span>, sort<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;hot&#39;</span>)
+</span></span><span style="display:flex;"><span>    operatingsystem_new <span style="color:#f92672">=</span> Books<span style="color:#f92672">.</span>object<span style="color:#f92672">.</span>get_books_by_type(OPERATINSGYSTEM, <span style="color:#ae81ff">3</span>, sort<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;new&#39;</span>)
+</span></span><span style="display:flex;"><span>    operatingsystem_hot <span style="color:#f92672">=</span> Books<span style="color:#f92672">.</span>object<span style="color:#f92672">.</span>get_books_by_type(OPERATINSGYSTEM, <span style="color:#ae81ff">4</span>, sort<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;hot&#39;</span>)
+</span></span><span style="display:flex;"><span>    database_new <span style="color:#f92672">=</span> Books<span style="color:#f92672">.</span>object<span style="color:#f92672">.</span>get_books_by_type(DATABASE, <span style="color:#ae81ff">3</span>, sort<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;new&#39;</span>)
+</span></span><span style="display:flex;"><span>    database_hot <span style="color:#f92672">=</span> Books<span style="color:#f92672">.</span>object<span style="color:#f92672">.</span>get_books_by_type(DATABASE, <span style="color:#ae81ff">4</span>, sort<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;hot&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 定义模板上下文</span>
+</span></span><span style="display:flex;"><span>    content <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;python_new&#39;</span>: python_new,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;python_hot&#39;</span>: python_hot,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;javascript_new&#39;</span>: javascript_new,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;javascript_hot&#39;</span>: javascript_hot,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;algorithms_new&#39;</span>: algorithms_new,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;algorithms_hot&#39;</span>: algorithms_hot,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;machinelearning_new&#39;</span>: machinelearning_new,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;machinelearning_hot&#39;</span>: machinelearning_hot,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;operatingsystem_new&#39;</span>: operatingsystem_new,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;operatingsystem_hot&#39;</span>: operatingsystem_hot,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;database_new&#39;</span>: database_new,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;database_hot&#39;</span>: database_hot,
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render(request, <span style="color:#e6db74">&#39;index.html&#39;</span>, content)
+</span></span></code></pre></div><ul>
+<li>创建商品详情页</li>
+<li>首先创建url<code>url(r'^(?P&lt;books_id&gt;\d+)/$',deatil,name='deatil')</code></li>
+<li>创建视图</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">deatil</span>(request, books_id):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39;显示商品的详细信息&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    books <span style="color:#f92672">=</span> Books<span style="color:#f92672">.</span>object<span style="color:#f92672">.</span>get_books_by_id(books_id<span style="color:#f92672">=</span>books_id)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> books <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> redirect(reverse(<span style="color:#e6db74">&#39;index&#39;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 新品推荐</span>
+</span></span><span style="display:flex;"><span>    books_li <span style="color:#f92672">=</span> Books<span style="color:#f92672">.</span>object<span style="color:#f92672">.</span>get_books_by_type(type_id<span style="color:#f92672">=</span>books<span style="color:#f92672">.</span>type_id, limit<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, sort<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;new&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 定义返回数据</span>
+</span></span><span style="display:flex;"><span>    content <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;books&#39;</span>: books,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;books_li&#39;</span>: books_li,
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render(request, <span style="color:#e6db74">&#39;detail.html&#39;</span>, content)
+</span></span></code></pre></div><ul>
+<li>设置前端显示模板语言</li>
+</ul></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

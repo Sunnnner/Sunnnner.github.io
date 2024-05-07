@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Rclone挂载googleDrive | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Rclone挂载googleDrive</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>04.09.2019</time>
+    <span>in</span>
+    
+      <a href="/categories/linux">linux</a>
+  </strong>
+  <span> • 421 words</span>
+  <span> • 2 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/rclone">rclone</a>
+    </div>
+  
+</div>
+
+      <div class="content"><ul>
+<li>最近查找大容量存储工具，想到了免费版的Google云盘，询问了一下有一个无限空间的云盘，话不多说开始搞，在淘宝买了个账号开始配在自己的服务器上，但是发现并不是这么好配，查找了很多资料，到最后朋友给我说rclone可以挂在Google云盘，查了一下果然可以，把教程贴出来为以后查看方便</li>
+</ul>
+<h2 id="首先安装rclone">首先安装rclone</h2>
+<pre><code>wget https://www.moerats.com/usr/shell/rclone_debian.sh &amp;&amp; bash rclone_debian.sh
+</code></pre>
+<h2 id="初始化配置">初始化配置</h2>
+<pre tabindex="0"><code>    rclone config
+n) New remote
+s) Set configuration password
+q) Quit config
+n/s/q&gt; n
+name&gt; Rats  #随便填，后面要用到
+Type of storage to configure.
+Choose a number from below, or type in your own value
+ 1 / Amazon Drive
+   \ &#34;amazon cloud drive&#34;
+ 2 / Amazon S3 (also Dreamhost, Ceph, Minio)
+   \ &#34;s3&#34;
+ 3 / Backblaze B2
+   \ &#34;b2&#34;
+ 4 / Box
+   \ &#34;box&#34;
+ 5 / Cache a remote
+   \ &#34;cache&#34;
+ 6 / Dropbox
+   \ &#34;dropbox&#34;
+ 7 / Encrypt/Decrypt a remote
+   \ &#34;crypt&#34;
+ 8 / FTP Connection
+   \ &#34;ftp&#34;
+ 9 / Google Cloud Storage (this is not Google Drive)
+   \ &#34;google cloud storage&#34;
+10 / Google Drive
+   \ &#34;drive&#34;
+11 / Hubic
+   \ &#34;hubic&#34;
+12 / Local Disk
+   \ &#34;local&#34;
+13 / Microsoft Azure Blob Storage
+   \ &#34;azureblob&#34;
+14 / Microsoft OneDrive
+   \ &#34;onedrive&#34;
+15 / Openstack Swift (Rackspace Cloud Files, Memset Memstore, OVH)
+   \ &#34;swift&#34;
+16 / Pcloud
+   \ &#34;pcloud&#34;
+17 / QingCloud Object Storage
+   \ &#34;qingstor&#34;
+18 / SSH/SFTP Connection
+   \ &#34;sftp&#34;
+19 / Webdav
+   \ &#34;webdav&#34;
+20 / Yandex Disk
+   \ &#34;yandex&#34;
+21 / http Connection
+   \ &#34;http&#34;
+Storage&gt; 10  #选择10，Google Drive
+Google Application Client Id - leave blank normally.
+client_id&gt;  #留空 
+Google Application Client Secret - leave blank normally.
+client_secret&gt;  #留空
+Service Account Credentials JSON file path - needed only if you want use SA instead of interactive login.
+service_account_file&gt; 
+Remote config
+Use auto config?
+ * Say Y if not sure
+ * Say N if you are working on a remote or headless machine or Y didn&#39;t work
+y) Yes
+n) No
+y/n&gt; n  #选择n
+If your browser doesn&#39;t open automatically go to the following link: https://accounts.google.com/o/oauth2/auth....  #复制到浏览器打开，获取验证码
+Log in and authorize rclone for access
+Enter verification code&gt;  #填入上面获取到的验证码
+Configure this as a team drive?
+y) Yes
+n) No
+y/n&gt; y  #选择y
+Fetching team drive list...
+No team drives found in your account--------------------
+[Rats]
+client_id = 
+client_secret = 
+service_account_file = 
+token = {&#34;access_token&#34;:&#34;ya29.GltFBd7UJN2qrxdG8FnG_rMuB18ogb8QlujdL7glvXtfV&#34;}
+team_drive = 
+--------------------
+y) Yes this is OK
+e) Edit this remote
+d) Delete this remote
+y/e/d&gt; y  #选择y
+Current remotes:
+ 
+Name                 Type
+====                 ====
+Rats                 drive
+ 
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q&gt; q  #选择q退出
+</code></pre><h2 id="挂载硬盘这里坑比较多">挂载硬盘（这里坑比较多）</h2>
+<ul>
+<li>
+<p>首先我们要在vps上创建一个文件夹(作为Google云盘的载体盘)</p>
+<p>mkdir /root/GoogleDrive</p>
+</li>
+<li>
+<p>首先我们先创建云盘文件夹</p>
+<p>rclone mkdir test</p>
+</li>
+<li>
+<p>其次我们使用rclone开始挂载云盘</p>
+<p>rclone mount gdrive:test /root/GoogleDrive &amp;</p>
+</li>
+</ul>
+<blockquote>
+<p>gdrive是谷歌云盘标识</p>
+</blockquote>
+<ul>
+<li>卸载文件夹
+fusermount -qzu GoogleDrive</li>
+</ul>
+<blockquote>
+<p>GoogleDrive 为你本地VPS载体文件夹</p>
+</blockquote>
+<ul>
+<li>上传文件
+rclone copy /root/test gdrive:test</li>
+</ul>
+<blockquote>
+<p>/root/test为本地文件 后面的为谷歌云盘标识及文件夹名字</p>
+</blockquote>
+<ul>
+<li>文件下载
+rclone copy gdrive:test /root/test</li>
+</ul>
+<blockquote>
+<p>下载到本地vps文件夹下</p>
+</blockquote>
+<ul>
+<li>
+<p>列表</p>
+<p>rclone ls gdrive:test</p>
+<p>rclone lsl gdrive:test</p>
+</li>
+</ul>
+<blockquote>
+<p>显示上传时间
+rclone lsd gdrive:test</p>
+</blockquote></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

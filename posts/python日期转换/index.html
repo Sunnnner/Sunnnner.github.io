@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Python日期转换 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Python日期转换</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>10.12.2019</time>
+    <span>in</span>
+    
+      <a href="/categories/python">python</a>
+  </strong>
+  <span> • 58 words</span>
+  <span> • 1 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0">内置函数</a>
+    </div>
+  
+</div>
+
+      <div class="content"><ul>
+<li>秒数是相对于1970.1.1号的秒数</li>
+<li>日期的模块有time、datetime</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> datetime
+</span></span><span style="display:flex;"><span>t <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>datetime(<span style="color:#ae81ff">2009</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">21</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">10</span>)   <span style="color:#75715e"># 分别是年份、月份、日、小时、分钟、秒、微妙(10-6秒)</span>
+</span></span><span style="display:flex;"><span>print (t<span style="color:#f92672">-</span>datetime<span style="color:#f92672">.</span>datetime(<span style="color:#ae81ff">1970</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>))<span style="color:#f92672">.</span>total_seconds()  <span style="color:#75715e"># 总共多少秒</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> datetime<span style="color:#f92672">,</span> time
+</span></span><span style="display:flex;"><span>t <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>datetime(<span style="color:#ae81ff">2011</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">21</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>time<span style="color:#f92672">.</span>mktime(t<span style="color:#f92672">.</span>timetuple())
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1319148000.0</span>
+</span></span><span style="display:flex;"><span>string转datetime
+</span></span><span style="display:flex;"><span>str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2012-11-19&#39;</span>
+</span></span><span style="display:flex;"><span>date_time <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>strptime(str,<span style="color:#e6db74">&#39;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>datetime<span style="color:#f92672">.</span>datetime(<span style="color:#ae81ff">2012</span>,<span style="color:#ae81ff">11</span>,<span style="color:#ae81ff">19</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>datetime转string
+</span></span><span style="display:flex;"><span>date_time<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#39;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;2012-11-19&#39;</span>
+</span></span></code></pre></div><h2 id="datetime转时间戳">datetime转时间戳</h2>
+<p><code>time_time = time.mktime(date_time.timetuple())</code></p>
+<h2 id="时间戳转string">时间戳转string</h2>
+<ul>
+<li><code>time.strftime('%Y-%m-%d',time.localtime(time_time))</code></li>
+<li>&lsquo;2012-11-19&rsquo;</li>
+</ul>
+<h2 id="date转datetime">date转datetime</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>date <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>date<span style="color:#f92672">.</span>today()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>date
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>datetime<span style="color:#f92672">.</span>date(<span style="color:#ae81ff">2012</span>,<span style="color:#ae81ff">11</span>,<span style="color:#ae81ff">19</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>datetime<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>strptime(str(date),<span style="color:#e6db74">&#39;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span>)    <span style="color:#75715e">#将date转换为str，在由str转换为datetime</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>datetime<span style="color:#f92672">.</span>datetime(<span style="color:#ae81ff">2012</span>,<span style="color:#ae81ff">11</span>,<span style="color:#ae81ff">19</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>)
+</span></span></code></pre></div></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>字典 on 学无止境</title>
+    <link>https://sunnnner.github.io/tags/%E5%AD%97%E5%85%B8/</link>
+    <description>Recent content in 字典 on 学无止境</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 02 Dec 2018 10:39:55 +0800</lastBuildDate>
+    <atom:link href="https://sunnnner.github.io/tags/%E5%AD%97%E5%85%B8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python字典按值排序</title>
+      <link>https://sunnnner.github.io/posts/python%E5%AD%97%E5%85%B8%E6%8C%89%E5%80%BC%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Sun, 02 Dec 2018 10:39:55 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/python%E5%AD%97%E5%85%B8%E6%8C%89%E5%80%BC%E6%8E%92%E5%BA%8F/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Django用户模块 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Django用户模块</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>01.06.2018</time>
+    <span>in</span>
+    
+      <a href="/categories/django">django</a>
+  </strong>
+  <span> • 509 words</span>
+  <span> • 3 minute read</span>
+  
+  
+</div>
+
+      <div class="content"><h1 id="第一步创建django项目">第一步创建Django项目</h1>
+<ul>
+<li><code>django-admin startproject blog</code></li>
+</ul>
+<h2 id="创建第一个应用user">创建第一个应用user</h2>
+<ul>
+<li><code>python manage.py startapp user</code></li>
+</ul>
+<h2 id="设置setting文件">设置setting文件</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ALLOWED_HOSTS<span style="color:#f92672">=</span>[<span style="color:#960050;background-color:#1e0010">“</span><span style="color:#f92672">*</span><span style="color:#960050;background-color:#1e0010">”</span>]<span style="color:#f92672">//</span>更改为所有都可以访问上线模式
+</span></span><span style="display:flex;"><span>INSTALLEN_APPS<span style="color:#960050;background-color:#1e0010">—》</span>加入第一个user应用
+</span></span></code></pre></div><ul>
+<li>创建templates文件夹 并设置TEMPLATES里面文件夹的路径os.path.join</li>
+<li>设置DATABASES的储存为mysql</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>字段
+</span></span><span style="display:flex;"><span>DATABASES <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;default&#39;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;ENGINE&#39;</span>: <span style="color:#e6db74">&#39;django.db.backends.mysql&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;NAME&#39;</span>: <span style="color:#e6db74">&#39;bookstore&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;USER&#39;</span>:<span style="color:#e6db74">&#39;root&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;PASSWORD&#39;</span>:<span style="color:#e6db74">&#39;123&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;HOST&#39;</span>:<span style="color:#e6db74">&#39;localhost&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;PORT&#39;</span>:<span style="color:#ae81ff">3306</span>,
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="修改语言与时区">修改语言与时区</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>LANGUAGE_CODE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;zh-Hans&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>TIME_ZONE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Asia/Shanghai&#39;</span>
+</span></span></code></pre></div><h2 id="设置静态文件收集static文件夹并在setting设置">设置静态文件收集static文件夹并在setting设置</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>STATIC_URL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/static/&#39;</span>
+</span></span><span style="display:flex;"><span>STATICFILES_DIRS <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(BASE_DIR, <span style="color:#e6db74">&#39;static&#39;</span>)
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><h2 id="设置主页url与视图函数">设置主页url与视图函数</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>url(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;^$&#39;</span>,index,name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;index&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>(request):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render(request, <span style="color:#e6db74">&#39;index.html&#39;</span>)
+</span></span></code></pre></div><h2 id="编写用户模块">编写用户模块</h2>
+<h2 id="编写注册模块">编写注册模块</h2>
+<ul>
+<li>首先编写抽象类，所谓抽象类就是所有类模板都能用上的类</li>
+<li>在根目录创建<code>db pythonFile</code>文件夹</li>
+</ul>
+<h2 id="创建base_model抽象基类抽象基类继承modelsmodel">创建base_model抽象基类抽象基类继承models.Model</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> django.db <span style="color:#f92672">import</span> models
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BaseModel</span>(models<span style="color:#f92672">.</span>Model):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39;模型抽象基类&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    is_delete <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>BooleanField(default<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;是否删除&#39;</span>)
+</span></span><span style="display:flex;"><span>    create_time <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>DateTimeField(auto_now_add<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;创建时间&#39;</span>)
+</span></span><span style="display:flex;"><span>    update_time <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>DateTimeField(auto_now<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;更新时间&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Meta</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 继承抽象类</span>
+</span></span><span style="display:flex;"><span>        abstract <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span></code></pre></div><ul>
+<li>根目录创建utils文件夹该文件夹的作用作为加密用户密码</li>
+<li>创建get_hash文件夹</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> hashlib <span style="color:#f92672">import</span> sha256
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_hash</span>(str):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39;取一个字符串的hash值&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    sh <span style="color:#f92672">=</span> sha256
+</span></span><span style="display:flex;"><span>    sh<span style="color:#f92672">.</span>update(str<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;utf8&#39;</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> sh<span style="color:#f92672">.</span>hexdigest()
+</span></span></code></pre></div><ul>
+<li>打开app内的models模块开始编写用户模块</li>
+<li>导入get_hash函数</li>
+<li>导入抽象基类</li>
+<li>创建用户字段使其继承与抽象基类</li>
+<li>其中db_table的作用为制定创建数据库的名称</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Passport</span>(BaseModel):
+</span></span><span style="display:flex;"><span>    username <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>,verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;用户名称&#39;</span>,unique<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    password <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">40</span>,verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;用户密码&#39;</span>)
+</span></span><span style="display:flex;"><span>    email <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>EmailField(verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;用户邮箱&#39;</span>)
+</span></span><span style="display:flex;"><span>    is_active <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>BooleanField(default<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, verbose_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;激活状态&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 创建用户表的管理器</span>
+</span></span><span style="display:flex;"><span>    object <span style="color:#f92672">=</span> PassportManager()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Meta</span>():
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 指定数据库名称</span>
+</span></span><span style="display:flex;"><span>        db_table <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;s_user_accoumt&#39;</span>
+</span></span></code></pre></div><ul>
+<li>创建添加用户跟查找用户模块注意此字段必须在用户模块的上方因为此字段继承的model.Manager模块在用户模块之上</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PassportManager</span>(models<span style="color:#f92672">.</span>Manager):
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_user</span>(self,username, password, email):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;添加一个用户信息&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># s使用crate方法添加一个用户</span>
+</span></span><span style="display:flex;"><span>        passport <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>create(username<span style="color:#f92672">=</span>username, password<span style="color:#f92672">=</span>get_hash(password), email<span style="color:#f92672">=</span>email)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 并且返回当前的数据</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> passport
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find_user</span>(self,username, password):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;&#39;&#39;根据用户的信息进行查找用户&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>            passport <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>get(username<span style="color:#f92672">=</span>username, password<span style="color:#f92672">=</span>get_hash(password))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span> self<span style="color:#f92672">.</span>model<span style="color:#f92672">.</span>DoesNotExist:
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 账户不存在</span>
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;=======&#34;</span>)
+</span></span><span style="display:flex;"><span>            passport <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 返回当前的信息</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> passport
+</span></span></code></pre></div><ul>
+<li>创建完成之后python3 manage.py makemigrations迁移同步</li>
+<li>编写用户注册视图函数</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>url(r<span style="color:#960050;background-color:#1e0010">’</span><span style="color:#f92672">^/</span>register<span style="color:#f92672">/</span><span style="color:#960050;background-color:#1e0010">$’</span>, register, name<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">’</span>register<span style="color:#960050;background-color:#1e0010">’</span>),
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">register</span>(request):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>method <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;GET&#39;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> render(request,<span style="color:#e6db74">&#39;register.html&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        username <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>POST<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;user_name&#39;</span>)
+</span></span><span style="display:flex;"><span>        password <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>POST<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;pwd&#39;</span>)
+</span></span><span style="display:flex;"><span>        password1 <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>POST<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;cpwd&#39;</span>)
+</span></span><span style="display:flex;"><span>        email <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>POST<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;email&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># all方法进行数据校验，如果里面任意值为空，就不通过校验</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> all([username,password,password1,email]):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> render(request, <span style="color:#e6db74">&#39;register.html&#39;</span>, {
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;msg&#39;</span>:<span style="color:#e6db74">&#39;不能输入有空的参数&#39;</span>
+</span></span><span style="display:flex;"><span>            })
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 邮箱正则验证</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> re<span style="color:#f92672">.</span><span style="color:#66d9ef">match</span>(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;[a-z0-9][\w\.\-]*@[a-z0-9\-]+(\.[a-z]{2,5}){1,2}$&#39;</span>, email):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> render(request, <span style="color:#e6db74">&#39;register.html&#39;</span>, {<span style="color:#e6db74">&#39;msg&#39;</span>:<span style="color:#e6db74">&#39;输入的邮箱不正确&#39;</span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 通过向数据库添加用户信息</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 调用添加用户的方法</span>
+</span></span><span style="display:flex;"><span>        passport <span style="color:#f92672">=</span> Passport<span style="color:#f92672">.</span>object<span style="color:#f92672">.</span>add_user(username<span style="color:#f92672">=</span>username, password<span style="color:#f92672">=</span>password, email<span style="color:#f92672">=</span>email)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> redirect(reverse(<span style="color:#e6db74">&#39;user:register&#39;</span>), {<span style="color:#e6db74">&#39;cmsg&#39;</span>:<span style="color:#e6db74">&#39;注册成功&#39;</span>})
+</span></span></code></pre></div><h2 id="创建登录模块">创建登录模块</h2>
+<ul>
+<li>url(r’^login/$’, login, name=’login’),</li>
+<li>因为登录模块用到ajax 所以我们先写前端数据</li>
+<li>首先ajax传输不用表单数据我们就删除from表单</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;form_input&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    {% csrf_token %}
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;username&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ username }}&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;name_input&#34;</span> <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;请输入用户名&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;user_error&#34;</span>&gt;输入错误&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;password&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pwd&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pass_input&#34;</span> <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;请输入密码&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pwd_error&#34;</span>&gt;输入错误&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;more_input clearfix&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>		&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;remember&#34;</span> <span style="color:#a6e22e">checked</span><span style="color:#f92672">=</span><span style="color:#e6db74">{{</span> <span style="color:#a6e22e">checked</span> <span style="color:#960050;background-color:#1e0010">}}</span>&gt;
+</span></span><span style="display:flex;"><span>		&lt;<span style="color:#f92672">label</span>&gt;记住用户名&lt;/<span style="color:#f92672">label</span>&gt;
+</span></span><span style="display:flex;"><span>		&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;#&#34;</span>&gt;忘记密码&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;button&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btnLogin&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;登录&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;input_submit&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>AJAX
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{% static &#39;js/jquery-1.12.4.min.js&#39; %}&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">$</span>(<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;#btnLogin&#39;</span>).<span style="color:#a6e22e">click</span>(<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//获取用户名和密码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">使用jquay获取用户的信息</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">username</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;#username&#39;</span>).<span style="color:#a6e22e">val</span>();
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">password</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;#pwd&#39;</span>).<span style="color:#a6e22e">val</span>();
+</span></span><span style="display:flex;"><span>                <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">设置csrf_token为标签设置其属性name</span><span style="color:#f92672">=</span><span style="color:#a6e22e">csrfmiddlewaretoken并将获取到的cdrf_token的值赋值给csrf</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">csrf</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;input[name=&#34;csrfmiddlewaretoken&#34;]&#39;</span>).<span style="color:#a6e22e">val</span>();
+</span></span><span style="display:flex;"><span>                <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">返回当前记住用户的状态true</span><span style="color:#f92672">/</span><span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">remember</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;#remember&#39;</span>).<span style="color:#a6e22e">prop</span>(<span style="color:#e6db74">&#39;checked&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//发起ajax请求
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;username&#39;</span><span style="color:#f92672">:</span><span style="color:#a6e22e">username</span>, <span style="color:#e6db74">&#39;password&#39;</span><span style="color:#f92672">:</span><span style="color:#a6e22e">password</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;csrfmiddlewaretoken&#39;</span><span style="color:#f92672">:</span><span style="color:#a6e22e">csrf</span>, <span style="color:#e6db74">&#39;remember&#39;</span><span style="color:#f92672">:</span><span style="color:#a6e22e">remember</span>};
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//ajax将python字典转换为了json字符串型字典此时类型为json类型
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">post</span>(<span style="color:#e6db74">&#39;{% url &#34;user:login&#34; %}&#39;</span>, <span style="color:#a6e22e">params</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">data</span>){
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e">//用户名密码错误{&#39;res&#39;:0}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    <span style="color:#75715e">//登录成功{&#39;res&#39;:1}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    <span style="color:#75715e">//状态码状态码为01，2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">res</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;用户名或者密码错误&#39;</span>)
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">res</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>                        {
+</span></span><span style="display:flex;"><span>                            <span style="color:#75715e">//跳转页面  获取后端next_url
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                            <span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">href</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">next_url</span>
+</span></span><span style="display:flex;"><span>                        }
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">res</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;请填写完整的用户名或者密码&#39;</span>)
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                })
+</span></span><span style="display:flex;"><span>            })
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><h2 id="后端代码">后端代码</h2>
+<ul>
+<li>用户登录校验</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">login</span>(request):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>method <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;GET&#39;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 记住用户名功能 checked表示单选框状态</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>COOKIES<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;username&#34;</span>):
+</span></span><span style="display:flex;"><span>            username <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>COOKIES<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;username&#34;</span>)
+</span></span><span style="display:flex;"><span>            checked <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            username <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>            checked <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        context <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;username&#39;</span>: username,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;checked&#39;</span> : checked,
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> render(request, <span style="color:#e6db74">&#39;login.html&#39;</span>, context)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> request<span style="color:#f92672">.</span>method <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;POST&#39;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 此时post取的是前段ajax数据并不是表单数据因为表单已经删除</span>
+</span></span><span style="display:flex;"><span>        username <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>POST<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;username&#39;</span>)
+</span></span><span style="display:flex;"><span>        password <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>POST<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;password&#39;</span>)
+</span></span><span style="display:flex;"><span>        remember <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>POST<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;remember&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 数据校验 使用all()方法进行校验只有两个都不为空时才为true</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> all([username, password]):
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 数据为空 返回ajax里面的状态码json数据</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> JsonResponse({<span style="color:#e6db74">&#39;res&#39;</span>: <span style="color:#ae81ff">2</span>})
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 调用查找方法判断用户是否存在</span>
+</span></span><span style="display:flex;"><span>        passport <span style="color:#f92672">=</span> Passport<span style="color:#f92672">.</span>object<span style="color:#f92672">.</span>find_user(username<span style="color:#f92672">=</span>username,password<span style="color:#f92672">=</span>password)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> passport:
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 两种方法都是重定向到主页</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># next_url = request.session.get(&#39;url_path&#39;, reverse(&#39;index&#39;))</span>
+</span></span><span style="display:flex;"><span>            next_url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/&#39;</span>
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#39;---------------&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 登录成功 返回状态码并设置next_url数据传输到前段都是字典模式会自动转换成json字符串</span>
+</span></span><span style="display:flex;"><span>            jire <span style="color:#f92672">=</span> JsonResponse({<span style="color:#e6db74">&#39;res&#39;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;next_url&#39;</span>: next_url})
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 如果单选框选中</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> remember <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;true&#39;</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># 记住用户名并设置cookie的保存时间</span>
+</span></span><span style="display:flex;"><span>                jire<span style="color:#f92672">.</span>set_cookie(<span style="color:#e6db74">&#39;username&#39;</span>, username, max_age<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#f92672">*</span><span style="color:#ae81ff">24</span><span style="color:#f92672">*</span><span style="color:#ae81ff">3600</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># 不要记住用户名并删除cookie</span>
+</span></span><span style="display:flex;"><span>                jire<span style="color:#f92672">.</span>delete_cookie(<span style="color:#e6db74">&#39;username&#39;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 记住用户名的状态</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 设置是否登录状态前段要用用session保存到服务器</span>
+</span></span><span style="display:flex;"><span>            request<span style="color:#f92672">.</span>session[<span style="color:#e6db74">&#39;islogin&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>            request<span style="color:#f92672">.</span>session[<span style="color:#e6db74">&#39;username&#39;</span>] <span style="color:#f92672">=</span> username
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 当前用户的唯一标示</span>
+</span></span><span style="display:flex;"><span>            request<span style="color:#f92672">.</span>session[<span style="color:#e6db74">&#39;passport_id&#39;</span>] <span style="color:#f92672">=</span> passport<span style="color:#f92672">.</span>id
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> jire
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> JsonResponse({<span style="color:#e6db74">&#39;res&#39;</span>: <span style="color:#ae81ff">0</span>})
+</span></span></code></pre></div><h2 id="退出">退出</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>url(r<span style="color:#960050;background-color:#1e0010">’</span><span style="color:#f92672">^</span>logout<span style="color:#f92672">/</span><span style="color:#960050;background-color:#1e0010">$’</span>, logout, name<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">’</span>logout<span style="color:#960050;background-color:#1e0010">’</span>),
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">logout</span>(request):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39;用户退出操作&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 清空用户session数据</span>
+</span></span><span style="display:flex;"><span>    request<span style="color:#f92672">.</span>session<span style="color:#f92672">.</span>flush()
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 然后跳转首页</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> redirect(reverse(<span style="color:#e6db74">&#39;index&#39;</span>))
+</span></span></code></pre></div></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

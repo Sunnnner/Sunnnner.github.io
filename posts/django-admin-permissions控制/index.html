@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Django Admin Permissions控制 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Django Admin Permissions控制</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>24.08.2021</time>
+    <span>in</span>
+    
+      <a href="/categories/django">django</a>
+  </strong>
+  <span> • 390 words</span>
+  <span> • 2 minute read</span>
+  
+  
+</div>
+
+      <div class="content"><ul>
+<li><code>is_staff</code> bool 指定此用户是否可以访问管理站点</li>
+<li>控制用户操作admin的权限由 <code>django.contrib.auth.backends.ModelBackend</code> 进行控制，它也进行控制用户的登录认证行为</li>
+<li><code>ModelBackend</code>源码解析</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ModelBackend</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Authenticates against settings.AUTH_USER_MODEL.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 控制用户登录认证 通过重写此方法进行自定义登录认证</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">authenticate</span>(self, request, username<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, password<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, <span style="color:#f92672">**</span>kwargs):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> username <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            username <span style="color:#f92672">=</span> kwargs<span style="color:#f92672">.</span>get(UserModel<span style="color:#f92672">.</span>USERNAME_FIELD)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>            user <span style="color:#f92672">=</span> UserModel<span style="color:#f92672">.</span>_default_manager<span style="color:#f92672">.</span>get_by_natural_key(username)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span> UserModel<span style="color:#f92672">.</span>DoesNotExist:
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Run the default password hasher once to reduce the timing</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># difference between an existing and a nonexistent user (#20760).</span>
+</span></span><span style="display:flex;"><span>            UserModel()<span style="color:#f92672">.</span>set_password(password)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> user<span style="color:#f92672">.</span>check_password(password) <span style="color:#f92672">and</span> self<span style="color:#f92672">.</span>user_can_authenticate(user):
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> user
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 查看用户是否为可用状态</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">user_can_authenticate</span>(self, user):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        Reject users with is_active=False. Custom user models that don&#39;t have
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        that attribute are allowed.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        is_active <span style="color:#f92672">=</span> getattr(user, <span style="color:#e6db74">&#39;is_active&#39;</span>, <span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> is_active <span style="color:#f92672">or</span> is_active <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 获取用户的permission列表</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_get_user_permissions</span>(self, user_obj):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> user_obj<span style="color:#f92672">.</span>user_permissions<span style="color:#f92672">.</span>all()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 获取用户的组权限列表</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_get_group_permissions</span>(self, user_obj):
+</span></span><span style="display:flex;"><span>        user_groups_field <span style="color:#f92672">=</span> get_user_model()<span style="color:#f92672">.</span>_meta<span style="color:#f92672">.</span>get_field(<span style="color:#e6db74">&#39;groups&#39;</span>)
+</span></span><span style="display:flex;"><span>        user_groups_query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;group__</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> user_groups_field<span style="color:#f92672">.</span>related_query_name()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Permission<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(<span style="color:#f92672">**</span>{user_groups_query: user_obj})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 获取权限列表</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_get_permissions</span>(self, user_obj, obj, from_name):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        Return the permissions of `user_obj` from `from_name`. `from_name` can
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        be either &#34;group&#34; or &#34;user&#34; to return permissions from
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        `_get_group_permissions` or `_get_user_permissions` respectively.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> user_obj<span style="color:#f92672">.</span>is_active <span style="color:#f92672">or</span> user_obj<span style="color:#f92672">.</span>is_anonymous <span style="color:#f92672">or</span> obj <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> set()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        perm_cache_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;_</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">_perm_cache&#39;</span> <span style="color:#f92672">%</span> from_name
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> hasattr(user_obj, perm_cache_name):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> user_obj<span style="color:#f92672">.</span>is_superuser:
+</span></span><span style="display:flex;"><span>                perms <span style="color:#f92672">=</span> Permission<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>all()
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>                perms <span style="color:#f92672">=</span> getattr(self, <span style="color:#e6db74">&#39;_get_</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">_permissions&#39;</span> <span style="color:#f92672">%</span> from_name)(user_obj)
+</span></span><span style="display:flex;"><span>            perms <span style="color:#f92672">=</span> perms<span style="color:#f92672">.</span>values_list(<span style="color:#e6db74">&#39;content_type__app_label&#39;</span>, <span style="color:#e6db74">&#39;codename&#39;</span>)<span style="color:#f92672">.</span>order_by()
+</span></span><span style="display:flex;"><span>            setattr(user_obj, perm_cache_name, {<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">.</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> (ct, name) <span style="color:#66d9ef">for</span> ct, name <span style="color:#f92672">in</span> perms})
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> getattr(user_obj, perm_cache_name)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 获取用户权限列表</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_user_permissions</span>(self, user_obj, obj<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        Return a set of permission strings the user `user_obj` has from their
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        `user_permissions`.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_get_permissions(user_obj, obj, <span style="color:#e6db74">&#39;user&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 获取组列表</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_group_permissions</span>(self, user_obj, obj<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        Return a set of permission strings the user `user_obj` has from the
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        groups they belong.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_get_permissions(user_obj, obj, <span style="color:#e6db74">&#39;group&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 获取用户所有的权限列表</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_all_permissions</span>(self, user_obj, obj<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> user_obj<span style="color:#f92672">.</span>is_active <span style="color:#f92672">or</span> user_obj<span style="color:#f92672">.</span>is_anonymous <span style="color:#f92672">or</span> obj <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> set()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> hasattr(user_obj, <span style="color:#e6db74">&#39;_perm_cache&#39;</span>):
+</span></span><span style="display:flex;"><span>            user_obj<span style="color:#f92672">.</span>_perm_cache <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">*</span>self<span style="color:#f92672">.</span>get_user_permissions(user_obj),
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">*</span>self<span style="color:#f92672">.</span>get_group_permissions(user_obj),
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> user_obj<span style="color:#f92672">.</span>_perm_cache
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 判断是否具有权限</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">has_perm</span>(self, user_obj, perm, obj<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> user_obj<span style="color:#f92672">.</span>is_active <span style="color:#f92672">and</span> perm <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>get_all_permissions(user_obj, obj)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 返回某个model访问权限(True or False)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">has_module_perms</span>(self, user_obj, app_label):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        Return True if user_obj has any permissions in the given app_label.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> user_obj<span style="color:#f92672">.</span>is_active <span style="color:#f92672">and</span> any(
+</span></span><span style="display:flex;"><span>            perm[:perm<span style="color:#f92672">.</span>index(<span style="color:#e6db74">&#39;.&#39;</span>)] <span style="color:#f92672">==</span> app_label
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> perm <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>get_all_permissions(user_obj)
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 得到用户实例 (通过重写此方法或得自定义用户实例)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_user</span>(self, user_id):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>            user <span style="color:#f92672">=</span> UserModel<span style="color:#f92672">.</span>_default_manager<span style="color:#f92672">.</span>get(pk<span style="color:#f92672">=</span>user_id)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span> UserModel<span style="color:#f92672">.</span>DoesNotExist:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> user <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>user_can_authenticate(user) <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">None</span>
+</span></span></code></pre></div><ul>
+<li>重写示例</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">xxxBackend</span>(ModelBackend):
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">authenticate</span>(self, request, username<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, password<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, <span style="color:#f92672">**</span>kwargs):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>            user <span style="color:#f92672">=</span> UserModel<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>get(Q(username<span style="color:#f92672">=</span>username) <span style="color:#f92672">|</span> Q(phone<span style="color:#f92672">=</span>username))
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> user<span style="color:#f92672">.</span>check_password(password):
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> user
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span> UserModel<span style="color:#f92672">.</span>DoesNotExist:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span> MultipleObjectsReturned:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_user</span>(self, user_id):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> UserModel<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>get(pk<span style="color:#f92672">=</span>user_id)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span> UserModel<span style="color:#f92672">.</span>DoesNotExist:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span></code></pre></div></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

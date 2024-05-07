@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>python元祖与字典 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">python元祖与字典</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>12.07.2022</time>
+    <span>in</span>
+    
+      <a href="/categories/python">python</a>
+  </strong>
+  <span> • 131 words</span>
+  <span> • 1 minute read</span>
+  
+  
+</div>
+
+      <div class="content"><h1 id="元祖">元祖</h1>
+<ul>
+<li><code>tuple（）</code>定义元组</li>
+<li>元组中存放的数据可以使int,str list diec</li>
+<li>读取元组的值使用下标</li>
+<li>元组的修改和删除是不支持的</li>
+<li>但是列表支持修改a[0]=99元组不允许删除部分：remove pop del元组不能使用</li>
+</ul>
+<ul>
+<li>元组可以使用的函数：index count</li>
+<li>index函数：参数是要查找的元素，返回的位置（第一次找到的元素的位置），你没有找到则报错</li>
+<li>count函数：要查找的元素的个数</li>
+<li>tuple（）函数：可以将列表，字符串转成元组，但是int整形不能转</li>
+</ul>
+<hr>
+<h1 id="字典">字典</h1>
+<hr>
+<ul>
+<li><code>list</code></li>
+<li><code>tuple</code></li>
+<li><code>dict</code></li>
+<li><strong>1、以键值对作为整体，保存的数据</strong></li>
+<li><strong>2、字典中的key不能重复，如果有相同的则后面的值覆盖了前面相同key的值</strong></li>
+<li><strong>3、字典中元素的顺序是无序</strong></li>
+<li><strong>B.字典中值的获取</strong></li>
+<li><strong>根据键获取值</strong></li>
+</ul>
+<pre tabindex="0"><code>graph LR
+字典名key--&gt;value
+</code></pre><ul>
+<li><strong>可以通过get():字典名.get(key,default)&mdash;》如果找不到key则显示默认值</strong></li>
+<li><strong>C、字典的增删改查：</strong></li>
+<li><strong>1、添加：根据key实现添加，student【&lsquo;sxe&rsquo;】=‘男’注意：如果里面有sex，key 值则覆盖，没有的话则添加进来键值对</strong></li>
+<li></li>
+</ul>
+<hr>
+<h1 id="删除元素">删除元素</h1>
+<hr>
+<p>-<code>pop del remove</code></p>
+<ul>
+<li>根据key删除</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>key value</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key value</td>
+<td></td>
+</tr>
+<tr>
+<td>key value</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="删除方式">删除方式</h3>
+<ul>
+<li><code>del</code>del字典名[key]如果key在字典中不存在显示keyError</li>
+<li><code>pop</code> 字典名.pop(key)返回当前key对应的值  如果key在字典中不存在显示：keyError</li>
+<li><code>popitem</code>  随机删除  如果字典中所有内容都要删除则可以使用popiteam（）报错</li>
+<li>
+<h3 id="删除多个元素键值对">删除多个元素（键值对）</h3>
+</li>
+<li>
+<h4 id="方式">方式：</h4>
+</li>
+<li>a.del字典名 ：整个字典包含字典的空间都被回收如果使用则报错</li>
+<li>clear（）通过字典调用函数</li>
+<li>
+<h3 id="修改元素">修改元素</h3>
+</li>
+<li>修改：字典【key】=新值 则覆盖原有的value</li>
+<li>查找:</li>
+<li>
+<pre><code> 字典.get(key)
+</code></pre>
+</li>
+<li>
+<pre><code> 字典[key]
+</code></pre>
+</li>
+</ul>
+<hr>
+<h1 id="字典的键值操作">字典的键值操作</h1>
+<hr>
+<ul>
+<li>1.熟悉一些函数</li>
+<li>2.字典.keys（）获取字典的所有的键</li>
+<li>3.字典.values()获取字典的值</li>
+<li>4.字典.iteams()输出一个元组</li>
+</ul>
+<hr>
+<h1 id="遍历">遍历</h1>
+<hr>
+<ul>
+<li>遍历键keys()for key in 字典.keys():</li>
+<li>遍历键values()for value in  字典.values():</li>
+<li>
+<h3 id="遍历字典">遍历字典:</h3>
+</li>
+<li>
+<h3 id="1元组下标方式">1元组下标方式</h3>
+</li>
+<li>
+<h3 id="a_tuple-in-aitems">a_tuple in a.items():</h3>
+<h3 id="printkeyvalueformata_tuple0a_tuple1">print(&lsquo;key={},value={}&rsquo;.format(a_tuple[0],a_tuple[1]))</h3>
+</li>
+<li>
+<h3 id="2拆元组方式">2、拆元组方式</h3>
+</li>
+<li>
+<h3 id="for-keyvalue-in-aitems">for key,value in a.items():</h3>
+</li>
+</ul>
+<h2 id="-----printkeyvalueformatkeyvalue">&hellip;.:     print(&lsquo;key={},value={}&rsquo;.format(key,value))</h2>
+<ul>
+<li>
+<h2 id="使用枚举遍历enumerate">使用枚举遍历enumerate()</h2>
+</li>
+<li>
+<h3 id="有下标">有下标</h3>
+</li>
+<li>使用</li>
+<li>enumerate（dict.keys()/values()）&mdash;&gt;</li>
+<li>for index,key/value in enumerate(index.keys()/values()/或者字典本身)</li>
+<li>enumerate的特点：</li>
+<li>还可以接收第二个参数，用于指定索引起始值</li>
+<li>可以遍历值</li>
+<li></li>
+</ul>
+<hr>
+<h1 id="set">set</h1>
+<hr>
+<ul>
+<li>set特点：</li>
+<li>可以将一个元组转换为set集合并且是每个字符都分开以逗号相隔</li>
+<li>2、去重复并且打乱里面的排序</li>
+<li>3、x&amp;y（交集）比较集合里的元素有相同的就取出相同的没有相同的返回set()</li>
+<li>4、x|y（并集）合并两个集合y在x的后面</li>
+<li>5、x-y（差集） 取第一个集合的值如果这两个集合有重复的就去点重复的还是取x的集合的值</li>
+<li>6、x^y（对称差）去掉重复的合并两个集合</li>
+<li>7、交集有长度</li>
+<li>
+<h1 id="使用set进行列表取重复">使用set（）进行列表取重复</h1>
+</li>
+<li>运算符‘+’可以使两个或者以上的字符串列表元组合并但不包括字典集合set</li>
+<li>元素安抚‘*’可以使两个或者以上的字符串列表元组复制但不包括字典集合set</li>
+<li>in/notin 的使用不包括集合set</li>
+<li>
+<h1 id="python-内置函数">python 内置函数</h1>
+</li>
+<li>cmp(a,b)   比较两个值</li>
+<li>len(item)  计算容器中的元素个数或者长度</li>
+<li>max(item)  返回容器中元素最大值</li>
+<li>min(item)  返回容器中元素最小值</li>
+<li>del(item)  删除变量//删除的引用//能删除指定的键值对</li>
+</ul>
+<hr>
+<h1 id="引用">引用</h1>
+<hr>
+<ul>
+<li>涉及到‘=’都是引用</li>
+</ul>
+<hr>
+<h1 id="可变类型和不可变类型">可变类型和不可变类型</h1>
+<hr>
+<ul>
+<li>不可变类型：字符串，数字，元组</li>
+<li>可变类型：列表，字典（集合呢？）</li>
+</ul></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

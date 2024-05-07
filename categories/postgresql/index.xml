@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Postgresql on 学无止境</title>
+    <link>https://sunnnner.github.io/categories/postgresql/</link>
+    <description>Recent content in Postgresql on 学无止境</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 07 May 2024 13:48:09 +0800</lastBuildDate>
+    <atom:link href="https://sunnnner.github.io/categories/postgresql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Install Postgresql</title>
+      <link>https://sunnnner.github.io/posts/install-postgresql/</link>
+      <pubDate>Mon, 04 Nov 2019 15:37:26 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/install-postgresql/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

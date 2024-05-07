@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>TOKEN验证详解 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">TOKEN验证详解</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>01.10.2019</time>
+    <span>in</span>
+    
+      <a href="/categories/token">token</a>
+  </strong>
+  <span> • 175 words</span>
+  <span> • 1 minute read</span>
+  
+  
+</div>
+
+      <div class="content"><h1 id="为什么使用token验证">为什么使用token验证</h1>
+<ul>
+<li>在web领域基于token的身份验证随处可变，在大多说使用web API的互联网公司中，tokens是多用户下处理认证的最佳方式</li>
+</ul>
+<h2 id="一下几点特性会让你在程序中使用基于token-的身份验证">一下几点特性会让你在程序中使用基于Token 的身份验证</h2>
+<ul>
+<li>无状态、可扩展</li>
+<li>支持移动设备</li>
+<li>跨程序调用</li>
+<li>安全</li>
+<li>那些使用基于Token的身份验证的大佬们</li>
+<li>大部分你见到过的API和WEB应用都是用tokens，列如facebook, twitter, google+, github等</li>
+</ul>
+<h2 id="token的起源">Token的起源</h2>
+<ul>
+<li>
+<p>在介绍基于token的身份验证的原理与优势之前，不妨先看看之前的认证都是怎么做的</p>
+<pre><code>  基于服务器的验证
+  我们都是知道HTTP协议是无状态的，这种无状态意味着程序需要验证每一次请求，从而辨别客户端的身份。
+  在这之前，程序都是通过在服务端存储的登录信息来辨别请求的。这种方式一般都是通过存储Session来完成。
+  随着Web，应用程序，已经移动端的兴起，这种验证的方式逐渐暴露出了问题。尤其是在可扩展性方面。
+</code></pre>
+</li>
+</ul>
+<h2 id="基于服务器的验证方式暴露的一些问题">基于服务器的验证方式暴露的一些问题</h2>
+<pre><code>1、session：每次认证用户发起请求时， 服务器需要去创建一个记录来存储信息， 当越来越多的用户发请求时， 内存的开销也会不断增加
+
+2、可获振兴：在服务端的内存中使用session存储的登录信息，办所而来的是可扩展性问题
+
+3、CORS（跨域资源共享）： 当我们需要让数据跨多台移动设备上使用时， 跨域资源共享回事一个让人头疼的问题， 在使用ajax抓取另一个域的资源，就可以会出现禁止请求的情况
+
+4、CSRF（跨站请求伪造）： 用户在访问银行网站时， 他们很容易受到跨站请求伪造的攻击， 并且能够被利用其访问其他网站
+
+在这些问题中，可扩展性是最突出，因此我们有必要去寻求一种更有行之有效的方法
+</code></pre>
+<h2 id="基于token的验证原理">基于TOKEN的验证原理</h2>
+<pre><code>基于Token的身份验证是无状态的，我们不将用户信息存在服务器或Session中。
+
+这种概念解决了在服务端存储信息时的许多问题
+
+　　NoSession意味着你的程序可以根据需要去增减机器，而不用去担心用户是否登录。
+
+基于Token的身份验证的过程如下:
+
+1.用户通过用户名和密码发送请求。
+
+2.程序验证。
+
+3.程序返回一个签名的token 给客户端。
+
+4.客户端储存token,并且每次用于每次发送请求。
+
+5.服务端验证token并返回数据。
+
+每一次请求都需要token。token应该在HTTP的头部发送从而保证了Http请求无状态。我们同样通过设置服务器属性Access-Control-Allow-Origin:* ，让服务器能接受到来自所有域的请求。需要主要的是，在ACAO头部标明(designating)*时，不得带有像HTTP认证，客户端SSL证书和cookies的证书。
+</code></pre>
+<h2 id="代码实例流程">代码实例流程：</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">//用户第一次登录
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">username</span> <span style="color:#a6e22e">pwd</span> <span style="color:#a6e22e">client_type</span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//接口判断
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">token</span><span style="color:#f92672">&amp;</span><span style="color:#a6e22e">uid</span>){
+</span></span><span style="display:flex;"><span>   <span style="color:#a6e22e">查询token表</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">$token</span><span style="color:#f92672">=</span><span style="color:#a6e22e">where</span> <span style="color:#a6e22e">uid</span> <span style="color:#f92672">=</span><span style="color:#a6e22e">uid</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">$token</span><span style="color:#f92672">==</span><span style="color:#a6e22e">token</span>){
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">登录成功</span><span style="color:#960050;background-color:#1e0010">！！</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">返回token</span> <span style="color:#a6e22e">和</span> <span style="color:#a6e22e">uid</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#66d9ef">else</span>{
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">登录失败</span><span style="color:#960050;background-color:#1e0010">！！</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">usename</span> <span style="color:#a6e22e">powd</span> <span style="color:#a6e22e">client_type</span>){
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">检验用户名和密码</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">正确</span><span style="color:#960050;background-color:#1e0010">）</span>{
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">得到uid</span> <span style="color:#a6e22e">并</span> <span style="color:#a6e22e">生成token</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">md5</span>( <span style="color:#a6e22e">uid</span>.<span style="color:#a6e22e">pwd</span>.<span style="color:#a6e22e">time</span>() <span style="color:#a6e22e">自己定义规则</span> )<span style="color:#960050;background-color:#1e0010">）</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">uid不存在</span>){
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">into</span> <span style="color:#a6e22e">token</span> <span style="color:#a6e22e">表</span>   <span style="color:#a6e22e">id</span> <span style="color:#a6e22e">uid</span> <span style="color:#a6e22e">token</span>
+</span></span><span style="display:flex;"><span>        }<span style="color:#66d9ef">else</span>{
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">where</span> <span style="color:#a6e22e">uid</span><span style="color:#f92672">=</span><span style="color:#a6e22e">$uid</span> <span style="color:#a6e22e">修改token</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">返回token</span> <span style="color:#a6e22e">和</span> <span style="color:#a6e22e">uid</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#66d9ef">else</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">返回错误信息</span><span style="color:#960050;background-color:#1e0010">；</span>    
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="客户端c进行文件存储uid-和token">客户端c进行文件存储uid 和token</h2>
+<pre><code>下次再次登录时使用uid和token
+实现了用户登录的互踢
+当我们在程序中认证了信息并取得token之后，我们便能通过这个Token做许多的事情。
+
+我们甚至能基于创建一个基于权限的token传给第三方应用程序，这些第三方程序能够获取到我们的数据（当然只有在我们允许的特定的token）
+</code></pre>
+<h2 id="tokens的优势">Tokens的优势</h2>
+<ul>
+<li>
+<p>无状态、可扩展</p>
+<pre><code>  在客户端存储的Tokens是无状态的，并且能够被扩展。基于这种无状态和不存储Session信息，负载负载均衡器能够将用户信息从一个服务传到其他服务器上。
+
+  如果我们将已验证的用户的信息保存在Session中，则每次请求都需要用户向已验证的服务器发送验证信息(称为Session亲和性)。用户量大时，可能会造成一些拥堵。但是不要着急。使用tokens之后这些问题都迎刃而解，因为tokens自己hold住了用户的验证信息。
+</code></pre>
+</li>
+</ul>
+<h2 id="安全性">安全性</h2>
+<pre><code>请求中发送token而不再是发送cookie能够防止CSRF(跨站请求伪造)。即使在客户端使用cookie存储token，cookie也仅仅是一个存储机制而不是用于认证。不将信息存储在Session中，让我们少了对session操作。 
+
+token是有时效的，一段时间之后用户需要重新验证。我们也不一定需要等到token自动失效，token有撤回的操作，通过token revocataion可以使一个特定的token或是一组有相同认证的token无效。
+</code></pre>
+<h2 id="可扩展性">可扩展性（）</h2>
+<pre><code>Tokens能够创建与其它程序共享权限的程序。例如，能将一个随便的社交帐号和自己的大号(Fackbook或是Twitter)联系起来。当通过服务登录Twitter(我们将这个过程Buffer)时，我们可以将这些Buffer附到Twitter的数据流上(we are allowing Buffer to post to our Twitter stream)。
+
+使用tokens时，可以提供可选的权限给第三方应用程序。当用户想让另一个应用程序访问它们的数据，我们可以通过建立自己的API，得出特殊权限的tokens。
+</code></pre>
+<h2 id="多平台跨域">多平台跨域</h2>
+<pre><code>我们提前先来谈论一下CORS(跨域资源共享)，对应用程序和服务进行扩展的时候，需要介入各种各种的设备和应用程序。
+
+Having our API just serve data, we can also make the design choice to serve assets from a CDN. This eliminates the issues that CORS brings up after we set a quick header configuration for our application.
+
+只要用户有一个通过了验证的token，数据和资源就能够在任何域上被请求到。
+</code></pre>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->          Access<!-- raw HTML omitted -->-Control<!-- raw HTML omitted -->-Allow<!-- raw HTML omitted -->-Origin<!-- raw HTML omitted -->: <!-- raw HTML omitted -->*       <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="基于标准">基于标准</h2>
+<pre><code>创建token的时候，你可以设定一些选项。我们在后续的文章中会进行更加详尽的描述，但是标准的用法会在JSON Web Tokens体现。
+
+最近的程序和文档是供给JSON Web Tokens的。它支持众多的语言。这意味在未来的使用中你可以真正的转换你的认证机制。
+</code></pre>
+<h2 id="总结">总结</h2>
+<pre><code>这篇文章仅仅是介绍了为什么选择基于Token的身份验证，并且怎样使用它。
+</code></pre></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

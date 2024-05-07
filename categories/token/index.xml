@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Token on 学无止境</title>
+    <link>https://sunnnner.github.io/categories/token/</link>
+    <description>Recent content in Token on 学无止境</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 01 Oct 2019 14:03:37 +0800</lastBuildDate>
+    <atom:link href="https://sunnnner.github.io/categories/token/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TOKEN验证详解</title>
+      <link>https://sunnnner.github.io/posts/token%E9%AA%8C%E8%AF%81%E8%AF%A6%E8%A7%A3/</link>
+      <pubDate>Tue, 01 Oct 2019 14:03:37 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/token%E9%AA%8C%E8%AF%81%E8%AF%A6%E8%A7%A3/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>TCP编程 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">TCP编程</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>12.07.2022</time>
+    <span>in</span>
+    
+      <a href="/categories/network">network</a>
+  </strong>
+  <span> • 27 words</span>
+  <span> • 1 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/tcp">tcp</a>
+    </div>
+  
+</div>
+
+      <div class="content"><p>ip.addr 过滤ip地址
+udp.port 过滤端口</p>
+<hr>
+<h1 id="tftp简单文件传输协议">TFTP(简单文件传输协议)</h1>
+<hr>
+<ul>
+<li>BS 浏览器/服务器模式</li>
+<li>CS 客户端/服务器模式</li>
+<li></li>
+</ul>
+<h3 id="关于下载和上传">关于下载和上传</h3>
+<ul>
+<li>上传是读本地写远程</li>
+<li>下载是读远程写本地</li>
+<li></li>
+</ul>
+<hr>
+<h2 id="tcp相关介绍">tcp相关介绍</h2>
+<ul>
+<li>tcp-&gt;传输控制协议</li>
+<li>udp-&gt;用户数据报协议</li>
+<li>tcp和udp区别：</li>
+<li>TCP面向连接&mdash;UDP面向无连接</li>
+<li>TCP首部20字节&mdash;UDP首部8字节</li>
+<li>TCP只能点对点通信&mdash;UDP可以实现一对一，一对多，多对一，多对多通信</li>
+<li>TCP使用字节流传输&mdash;UDP使用报文传输</li>
+<li>TCP提供可靠，==稳定的传输（三次握手，数据确认机制，重传机制，拥塞控制）==，由于这些导致TCP传输效率低，速度慢（各种机制+每次连接都会消耗CPU，内存等资源）&mdash;UDP提供不可靠，不稳定的传输（网络不好容易丢包），但传输效率高，速度快</li>
+<li>tcp服务器创建流程</li>
+<li>
+<ol>
+<li>socket创建一个套接字</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>bind绑定ip和port</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>listen使套接字变为可以被动链接</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>accept等待客户端的链接</li>
+</ol>
+</li>
+<li>
+<ol start="5">
+<li>recv/send接收发送数据</li>
+</ol>
+</li>
+</ul></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

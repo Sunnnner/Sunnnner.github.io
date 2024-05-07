@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>正则表达式 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">正则表达式</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>12.07.2022</time>
+    <span>in</span>
+    
+      <a href="/categories/python">python</a>
+  </strong>
+  <span> • 122 words</span>
+  <span> • 1 minute read</span>
+  
+  
+</div>
+
+      <div class="content"><hr>
+<h1 id="正则表达式简介">正则表达式简介</h1>
+<hr>
+<h3 id="正则表达式的定义">正则表达式的定义</h3>
+<ul>
+<li>正则表达式是对字符串操作的一种逻辑公式，就是用事先定义好的一些特定字符、及这些特定字符的组合，组成一个“规则字符串”，这个“规则字符串”用来表达对字符串的一种过滤逻辑。</li>
+<li>正则表达式，又称正规表示式、正规表示法、正规表达式、规则表达式、常规表示法（英语：Regular Expression，在代码中常简写为regex、regexp或RE），是计算机科学的一个概念。</li>
+<li>正则表达式使用单个字符串来描述、匹配一系列匹配某个句法规则的字符串。在很多文本编辑器里，正则表达式通常被用来检索、替换那些匹配某个模式的文本。</li>
+<li>Regular	Expression的“Regular”⼀般被译为“正则”、“正规”、“常规”。</li>
+<li>此处 的“Regular”即是“规则”、“规律”的意思，Regular	Expression即“描述某种规则 的表达式”之意。</li>
+<li>正则表达式的特点是：灵活性、逻辑性和功能性非常强；可以迅速地用极简单的方式达到字符串的复杂控制。对于刚接触的人来说，比较晦涩难懂。</li>
+<li>
+<pre><code>import re
+</code></pre>
+</li>
+<li>
+<pre><code>使用match方法进行匹配操作
+</code></pre>
+</li>
+<li>
+<pre><code>result = re.match(正则表达式, 要匹配的字符串)
+</code></pre>
+</li>
+<li>
+<pre><code> 如果上一步匹配到数据的话，可以使用group方法来提取数据
+</code></pre>
+</li>
+<li>
+<pre><code> result.group()
+</code></pre>
+</li>
+<li>
+<pre><code> 如果返回None就是没有任何匹配的
+</code></pre>
+</li>
+<li>re.match是用来进行正则匹配检查的方法，若字符串匹配正则表达式，</li>
+<li>则match方法返回匹配对象（Match Object）</li>
+<li>否则返回None（注意不是空字符串&quot;&quot;）</li>
+<li>匹配对象Macth Object具有group方法，用来返回字符串的匹配部分。</li>
+<li>re.match() 能够匹配出以xxx开头的字符串</li>
+<li>而且匹配过程中是从左到右的过程。</li>
+</ul>
+<hr>
+<h3 id="表示字符">表示字符</h3>
+<hr>
+<ul>
+<li></li>
+<li>【^ 】表示不是这个范围的只能用一次在开头</li>
+<li></li>
+<li>。匹配任意1个字符（除了\n）</li>
+<li></li>
+<li>【】匹配[	]中列举的字符 数字范围[0-9]</li>
+<li></li>
+<li>\d(digit) 匹配数字，即0-9</li>
+<li></li>
+<li>\D 匹配⾮数字，即不是数字</li>
+<li></li>
+<li>\s(space) 匹配空白，即空格，tab</li>
+<li></li>
+<li>\S 匹配非空白键(\t),\n,\r</li>
+<li></li>
+<li>\w &ndash;&gt;word  0-9 a-z A-Z 匹配单词字符 ==_==</li>
+<li></li>
+<li>\W 匹配非单词字符 不是0-9 a-z A-Z  减号-不能匹配</li>
+<li></li>
+</ul>
+<hr>
+<h3 id="四表示数量">四、表示数量</h3>
+<hr>
+<ul>
+<li>
+<ul>
+<li>代表0到多个\w<em>代表0个\w或者多个\w没有限制</em>代表连续的</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ul>
+<li>代表大于等于1至少要有1个</li>
+</ul>
+</li>
+<li></li>
+<li>? 等于1或者0，可以没有也可以有但只能有1次</li>
+<li></li>
+<li>{m}&mdash;&gt;\d{11}表示11位手机号码 匹配前⼀个字符出现m次</li>
+<li></li>
+<li>{m，}   m数量以上没有限制</li>
+<li>{m,n}   大于等于m小于等于n</li>
+<li></li>
+</ul>
+<hr>
+<h1 id="表示边界">表示边界</h1>
+<hr>
+<ul>
+<li>^ 匹配字符串开头</li>
+<li>[^]这是非其他代表开头</li>
+<li></li>
+<li>$ 匹配字符串结尾</li>
+<li></li>
+<li>r 在正则表达式的前面加r的区别  \  n是两个分别的字符，不加r\n就是换行</li>
+<li>加r相当于\ \的效果</li>
+<li>如果加了r跟$就是拿着后面的数值跟前面的正则进行匹配</li>
+<li></li>
+<li>\b 匹配一个单词的边界</li>
+<li></li>
+<li>\B 匹配⾮单词边界</li>
+<li></li>
+</ul>
+<hr>
+<h1 id="匹配分组">匹配分组</h1>
+<ul>
+<li>| 匹配左右任意一个表达式</li>
+<li></li>
+<li>（ab）将括号中的字符作为一个分组</li>
+<li>如果有分组从左至右0-n整体是0组</li>
+<li>==如果打印groups打印出元组==</li>
+<li></li>
+<li>\·转义成正常·</li>
+<li>\number 引用分组num匹配到的字符串反向引用</li>
+<li>back引用</li>
+<li>\number指你的组的编号</li>
+<li>==引用前面的内容引用的是内容不是正则表达式==</li>
+<li>r代表原始字符串</li>
+<li></li>
+<li>(?P<!-- raw HTML omitted -->) 分组起别名</li>
+<li>(?P = name)引用别名为Name分组匹配到的字符串</li>
+<li></li>
+</ul>
+<pre><code>http://[^:]+?
+</code></pre>
+<hr>
+<h1 id="高级应用">高级应用</h1>
+<ul>
+<li></li>
+<li>
+<pre><code>re.srarch
+</code></pre>
+</li>
+<li>
+<pre><code>从左边搜索，搜到第一个就推出
+</code></pre>
+</li>
+<li>
+<pre><code>re.findall()
+</code></pre>
+</li>
+<li>
+<pre><code>结果是列表把所有符合条件的都添加到列表
+</code></pre>
+</li>
+<li>
+<pre><code>sub 替换
+</code></pre>
+</li>
+<li>
+<pre><code>sub(表达式，替换内容或者函数或者匿名函数labda，原表达式)
+</code></pre>
+</li>
+<li></li>
+</ul>
+<hr>
+<h2 id="spilt切割">spilt切割</h2>
+<ul>
+<li></li>
+<li>re.spilt(r&quot;)</li>
+<li></li>
+</ul>
+<hr>
+<h1 id="python贪婪和非贪婪">python贪婪和非贪婪</h1>
+<ul>
+<li></li>
+<li>Python⾥数量词默认是贪婪的（在少数语⾔⾥也可能是默认⾮贪婪），总是 尝试匹配尽可能多的字符；</li>
+<li>⾮贪婪则相反，总是尝试匹配尽可能少的字符。</li>
+<li>在&quot;*&quot;,&quot;?&quot;,&quot;+&quot;,&quot;{m,n}&ldquo;后⾯加上？，使贪婪变成⾮贪婪</li>
+<li></li>
+</ul></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>python：面向对象-设计模式 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">python：面向对象-设计模式</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>12.07.2022</time>
+    <span>in</span>
+    
+      <a href="/categories/python">python</a>
+  </strong>
+  <span> • 22 words</span>
+  <span> • 1 minute read</span>
+  
+  
+</div>
+
+      <div class="content"><h1 id="设计模式">设计模式</h1>
+<hr>
+<ul>
+<li>设计模式是高成次的方案，并不关心具体的实现细节</li>
+<li>比如算法和数据结构和网页。对应正在尝试解决问题，何种算法和数据结构最优，则是由软件工程师自己把握。</li>
+</ul>
+<hr>
+<h1 id="简单工厂模式">简单工厂模式</h1>
+<hr>
+<ul>
+<li>使用工厂模式场景：</li>
+<li>1 要不断的创建车的子类对象，</li>
+<li>2 需要一个工厂统一负责管理子类</li>
+<li>实质是</li>
+<li>
+<h3 id="工厂方法模式">工厂方法模式</h3>
+</li>
+<li>1简单工厂模式：</li>
+<li>有一个工厂同意管理子类对象，如果在添加子类，则需要改变工厂</li>
+<li>2工厂方法模式：</li>
+<li>一个子类类型对应一个工厂，好处：不会影响整体的使用</li>
+<li></li>
+</ul>
+<hr>
+<h2 id="__-new__方法">__ new__方法</h2>
+<ul>
+<li>__new__至少要有一个参数cls，代表要实例化的类，此参数在实例化时由Python解释器自动提供</li>
+<li>__new__必须要有返回值，返回实例化出来的实例，这点在自己实现__new__时要特别注意，可以return父类__new__出来的实例，或者直接是object的__new__出来的实例</li>
+<li>__init__有一个参数self，就是这个__new__返回的实例，__init__在__new__的基础上可以完成一些其它初始化的动作，__init__不需要返回值</li>
+<li>我们可以将类比作制造商，__new__方法就是前期的原材料购买环节，__init__方法就是在有原材料的基础上，加工，初始化商品环节。</li>
+<li></li>
+</ul>
+<hr>
+<ul>
+<li>单列模式</li>
+</ul>
+<hr>
+<ul>
+<li></li>
+</ul></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

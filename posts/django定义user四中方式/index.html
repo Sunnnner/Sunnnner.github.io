@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Django定义USER四中方式 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Django定义USER四中方式</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>03.09.2018</time>
+    <span>in</span>
+    
+      <a href="/categories/django">django</a>
+  </strong>
+  <span> • 23 words</span>
+  <span> • 1 minute read</span>
+  
+  
+</div>
+
+      <div class="content"><ul>
+<li>
+<p>设计user models</p>
+</li>
+<li>
+<p>django本身的auth_user 只包含了基本的信息包括用户名，密码，邮箱以及注册时间和最新的登录时间，但是这些字段很难满足我们的要求，有时我们想记录用户更多的信息，例如手机号等信息，这时就需要在auth_user 的基础上增加字段，django自定义User网上有四种方法。</p>
+</li>
+<li>
+<p>是官网上推荐的方法，就是增加一个表auth_profile，其中以auth_user 表中的id作为Forgein Key将两个表过关联起来，这样可以在auth_profile 中增加多个用户的信息。</p>
+</li>
+<li>
+<p>另外一种是修改django的源码，这种方法简单暴力直接，但是这种方法可移植性差，不利于多项目部署。</p>
+</li>
+<li>
+<p>继承django auth/models 中的User继续增加字段，这种方法需要修改setting中的AUTH_USER_MODEL=‘app.User’ app为你自定义的app，INSTALLED_APP中要包含Contenttypes和auth两个app，class meta中 db_table 要指定为auth_user, 如果要在admin中管理用户的话，需要将app_label 进行指定。而且要在admin中重新定义UserAdmin 将新添加的字段写在list_display和add_fields中。详见django.contrib.auth.admin中。</p>
+</li>
+<li>
+<p>重写User，也就是继承AbstractUser和Permissions两个类，其实django的User Model也是继承自这两个类，因此你可以做类似User的定义方法定义User。</p>
+</li>
+<li>
+<p>记录是否执行了迁移文件靠的是django_migrations这表</p>
+</li>
+</ul></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>python：面向对象 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">python：面向对象</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>12.07.2022</time>
+    <span>in</span>
+    
+      <a href="/categories/python">python</a>
+  </strong>
+  <span> • 57 words</span>
+  <span> • 1 minute read</span>
+  
+  
+</div>
+
+      <div class="content"><ul>
+<li>object oriented programming</li>
+<li>OOP面向对象程序设计</li>
+<li>java C#只支持面向对象编程</li>
+<li>python既支持面向过程编程也支持面向对象编程</li>
+</ul>
+<hr>
+<ul>
+<li>
+<h1 id="class--类名object">class  类名(object)</h1>
+</li>
+<li>
+<pre><code> 属性
+</code></pre>
+</li>
+<li>
+<pre><code> 方法或者行为
+</code></pre>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<h2 id="注意">注意</h2>
+</li>
+<li>
+<h3 id="类名首字母大写">类名首字母大写</h3>
+</li>
+<li>
+<h3 id="在类中每个方法中都要带self参数">在类中，每个方法中都要带Self参数</h3>
+</li>
+<li>
+<h3 id="如果在类里定义就必须有self不能忽略self代表自身self后面代表它的属性">如果在类里定义就必须有self不能忽略self代表自身self后面代表它的属性</h3>
+</li>
+<li>object表示该类是从那个类继承下来的，通常如果没有合适的继承类，就是用object类，这是所有类最终都会继承的类</li>
+<li>属性是动态添加到对象里面而不是类里</li>
+<li>
+<h1 id="如果想要调用另外类里面的属性就需要先把那个类实例化然后根据类属性的调用方法调用">如果想要调用另外类里面的属性就需要先把那个类实例化，然后根据类属性的调用方法调用</h1>
+</li>
+<li>
+<h1 id="对象属性self是在每一个对象建立的时候才会出现在对象里面的而不是类的属性">对象属性（self）是在==每一个对象建立的时候==才会出现在对象里面的==而不是类的属性==</h1>
+</li>
+</ul>
+<hr>
+<h1 id="self">self</h1>
+<hr>
+<ul>
+<li>从创建多个对昂引入Self</li>
+<li>某个对象调用其方法时，Python解释器会把==这个对象==作为第一个参数传递给self.</li>
+<li>通俗的话讲，就是==谁调用这个方法就是谁==。</li>
+<li>创建对象时一定小心不要交换位置更不要交叉调用</li>
+<li>参数的名字不一定叫self但是我们推荐使用self</li>
+<li></li>
+</ul>
+<hr>
+<ul>
+<li>
+<h1 id="类的__init__httpblogcsdnnetlangb2014articledetails54800016用法">类的<a href="http://blog.csdn.net/langb2014/article/details/54800016"><strong>init</strong></a>用法</h1>
+</li>
+</ul>
+<hr>
+<ul>
+<li>特点：</li>
+<li>1、实例创建成功后有python解释器来调用该方法，这个方法不用我们手动调用</li>
+<li>2、误区，认为__init__方法用来创建对象的，初始化对象的一些数据</li>
+<li>3、创建实例对象是用__new__方法创建的，使用__new__创建实例对象后要记得返回.</li>
+<li>4、！==注意==程序是从上到下执行</li>
+<li></li>
+</ul>
+<hr>
+<h1 id="__str__"><strong>str</strong></h1>
+<hr>
+<ul>
+<li>添加__str__方法，打印对象名的时候默认调用str方法</li>
+<li>def <strong>str</strong>(self):</li>
+<li>
+<pre><code>return '姓名'+self.name
+</code></pre>
+</li>
+<li></li>
+<li>对象打印出来的内同取决于：__str__中return出来的内容</li>
+<li>==最后别忘了打印str！！print（实例对象）==</li>
+</ul>
+<hr>
+<h1 id="面向过程和面向对象编程联系和区别">面向过程和面向对象编程联系和区别</h1>
+<hr>
+<ul>
+<li>
+<h3 id="全局变量">全局变量</h3>
+</li>
+<li>self属性是全局变量</li>
+<li>
+<h3 id="局部变量">局部变量</h3>
+</li>
+<li>方法中的变量和参数位置的变量均是局部变量</li>
+<li></li>
+</ul>
+<hr>
+<h2 id="--自定义类型">-# 自定义类型</h2>
+<ul>
+<li>自定义类型也是一种类型</li>
+<li>方法的参数可以接受任意类型——————》因此自定义类型可以作为参数传递</li>
+<li></li>
+</ul>
+<hr>
+<h1 id="set-get">set get</h1>
+<hr>
+<ul>
+<li>隐藏数据</li>
+<li>开发时我们不推荐对象.属性名=值</li>
+<li>//赋值的方法推荐set_xxx（self,参数）def</li>
+<li>好处：就是可以在函数体中实现对参数的验证</li>
+<li>取值的方法def</li>
+<li>get_xxx(self)  return别忘了</li>
+<li></li>
+</ul></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

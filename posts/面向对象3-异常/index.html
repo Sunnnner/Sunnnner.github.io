@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>python：面向对象-异常 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">python：面向对象-异常</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>12.07.2022</time>
+    <span>in</span>
+    
+      <a href="/categories/python">python</a>
+  </strong>
+  <span> • 79 words</span>
+  <span> • 1 minute read</span>
+  
+  
+</div>
+
+      <div class="content"><h1 id="__-name__的值就是__-main__">__ name__的值就是__ main__</h1>
+<ul>
+<li>if __ name <strong>==&quot;</strong> main__&quot;:</li>
+<li>判断name是不是main</li>
+<li>只有在自己使用的时候默认就是__main __</li>
+<li>验证是否在同一类运行</li>
+<li>往往在当前类中使用这个个判断</li>
+</ul>
+<hr>
+<ul>
+<li>
+<h1 id="异常">异常</h1>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<p>当python脚本发生异常时我们需要捕获处理它，否则程序会终止执行</p>
+</li>
+<li>
+<p>异常也是python对象，表示一个错误</p>
+</li>
+<li>
+<p>异常即使一个事件，该事件会在程序</p>
+</li>
+<li>
+<p>捕获异常的代码</p>
+</li>
+<li></li>
+<li>
+<pre><code>try:
+</code></pre>
+</li>
+<li>
+<pre><code>   可能发生异常的代码
+</code></pre>
+</li>
+<li>
+<pre><code>except：
+</code></pre>
+</li>
+<li>
+<pre><code>   发生异常时进入的代码部分
+</code></pre>
+</li>
+<li>
+<p>except捕获多个异常</p>
+</li>
+<li>
+<p>异常不精确的情况下我们允许存在多个except</p>
+</li>
+<li>
+<pre><code>  try ：
+      可能发生的异常
+  except[异常类型1]:
+       .。。。。
+  except[异常类型2]:
+       。。。。
+</code></pre>
+</li>
+<li>
+<p>异常的特点：</p>
+</li>
+<li>
+<p>1、异常并不是每次都会出现，出现的时候要知道通过except</p>
+</li>
+<li>
+<p>2、没有异常的情况下则except里面的代码则不执行</p>
+</li>
+<li>
+<p>3、一个try后面可以跟多个except</p>
+</li>
+<li>
+<p>4、except后面可以跟异常类型，是用来跟你的异常进行匹配的</p>
+</li>
+<li>
+<p>如果except后面不跟任何类型，必须放在最后否则就是语法错误</p>
+</li>
+<li></li>
+<li>
+<p>可以用元组来表示异常类型</p>
+</li>
+<li>
+<pre><code>except(异常1，异常2) as result
+</code></pre>
+</li>
+<li>
+<pre><code>print (&quot;%s&quot;%result)
+</code></pre>
+</li>
+<li>
+<pre><code>result保存的是异常的提示信息
+</code></pre>
+</li>
+<li>
+<pre><code>except FilrNotFoundError as result:
+</code></pre>
+</li>
+<li>
+<pre><code>except Exception as result:
+</code></pre>
+</li>
+<li>
+<p>except:等同于except Exception as result</p>
+</li>
+<li>
+<pre><code>Exception是所有错误的父类
+</code></pre>
+</li>
+<li></li>
+<li>
+<p>如果希望有异常则不执行某段代码，则可以将代码放到else里</p>
+</li>
+<li></li>
+<li>
+<pre><code>importt time   定时器
+</code></pre>
+</li>
+<li>
+<pre><code>time.sleep(2)
+</code></pre>
+</li>
+<li></li>
+<li>
+<p>try:可能有异常的代码</p>
+</li>
+<li>
+<p>except：有异常时才会执行的代码</p>
+</li>
+<li>
+<p>else：没有异常才会执行</p>
+</li>
+<li>
+<p>的代码</p>
+</li>
+<li>
+<p>finally：不管有没有异常都会执行的代码</p>
+</li>
+<li></li>
+</ul>
+<hr>
+<h2 id="try的嵌套">#try的嵌套</h2>
+<ul>
+<li>异常有传递性，里面有异常在外面的except也可以捕获到，把所有的捕获都放在外部</li>
+<li>函数在调用中也可以处理异常</li>
+<li></li>
+</ul>
+<hr>
+<h1 id="raise">raise</h1>
+<hr>
+<ul>
+<li>异常对象是python解释器产生的、</li>
+<li>python解释器把对象抛出来</li>
+<li>except负责接受对应的异常</li>
+<li>异常 ：系统异常，FileNotFONUDError&hellip;</li>
+<li>自定义异常：系统的不能马满足当前的需求，如何实现自定义类型</li>
+<li>Ovject-Booarexception&mdash;&gt;Exception&mdash;&gt;自定义异常</li>
+<li>使用raise抛出</li>
+<li></li>
+</ul></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

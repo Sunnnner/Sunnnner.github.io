@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Log BasicConfig函数 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Log BasicConfig函数</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>05.12.2019</time>
+    <span>in</span>
+    
+      <a href="/categories/python">python</a>
+  </strong>
+  <span> • 147 words</span>
+  <span> • 1 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0">内置函数</a>
+    </div>
+  
+</div>
+
+      <div class="content"><h1 id="loggingbasicconfig函数">logging.basicConfig函数</h1>
+<ul>
+<li>logging模块是Python内置标准模块，主要用于输出运行日志，可以设置输出日志的等级、日志保存路径，日志文件回滚等</li>
+</ul>
+<p>##相比Print优点：</p>
+<ul>
+<li>可以通过设置不同的日志等级，在release版本中只输出重要信息，而不必显示大量的调试信息；</li>
+<li>print将所有信息都输出到标准输出中，严重影响开发者从标准输出中查看其它数据；logging则可以由开发者决定将信息输出到什么地方，以及怎么输出；</li>
+<li>在python中，logging由logger，handler，filter，formater四个部分组成：</li>
+<li>logger是提供我们记录日志的方法；handler是让我们选择日志的输出地方，如：控制台，文件，邮件发送等，一个logger添加多个handler；filter是给用户提供更加细粒度的控制日志的输出内容；formater用户格式化输出日志的信息。</li>
+</ul>
+<h2 id="python中配置logging有三种方式">python中配置logging有三种方式</h2>
+<h3 id="第一种基础配置">第一种：基础配置，</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>logging<span style="color:#f92672">.</span>basicConfig(
+</span></span><span style="display:flex;"><span>    filename<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;config.log&#34;</span>,
+</span></span><span style="display:flex;"><span>    filemode<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;w&#34;</span>,
+</span></span><span style="display:flex;"><span>    format<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%(asctime)s</span><span style="color:#e6db74">-</span><span style="color:#e6db74">%(name)s</span><span style="color:#e6db74">-</span><span style="color:#e6db74">%(levelname)s</span><span style="color:#e6db74">-</span><span style="color:#e6db74">%(message)s</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>    level<span style="color:#f92672">=</span>logging<span style="color:#f92672">.</span>INFO)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>第二种<span style="color:#960050;background-color:#1e0010">：</span>使用配置文件的方式配置logging,使用<span style="color:#960050;background-color:#1e0010">`</span>fileConfig函数来读取配置文件
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fileConfig(
+</span></span><span style="display:flex;"><span>    filename,
+</span></span><span style="display:flex;"><span>    defaults<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>,
+</span></span><span style="display:flex;"><span>    disable_existing_loggers<span style="color:#f92672">=</span>Ture )<span style="color:#960050;background-color:#1e0010">`</span>
+</span></span><span style="display:flex;"><span>第三种<span style="color:#960050;background-color:#1e0010">：</span>使用一个字典方式来写配置信息<span style="color:#960050;background-color:#1e0010">，</span>然后使用dictConfig
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dictConfig(
+</span></span><span style="display:flex;"><span>    dict,
+</span></span><span style="display:flex;"><span>    defaults<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, 
+</span></span><span style="display:flex;"><span>    disable_existing_loggers<span style="color:#f92672">=</span>Ture )
+</span></span></code></pre></div><h2 id="日志level等级">日志Level等级</h2>
+<ul>
+<li>日志一共分成5个等级，从低到高分别是：DEBUG ,INFO ,WARNING ,ERROR, CRITICAL。</li>
+<li>DEBUG：详细的信息,通常只出现在诊断问题上</li>
+<li>INFO：确认一切按预期运行</li>
+<li>WARNING：一个迹象表明,一些意想不到的事情发生了,或表明一些问题在不久的将来(例如。磁盘空间低”)。这个软件还能按预期工作。</li>
+<li>ERROR：更严重的问题,软件没能执行一些功能</li>
+<li>CRITICAL：一个严重的错误,这表明程序本身可能无法继续运行</li>
+<li>这5个等级，也分别对应5种打日志的方法： debug 、info 、warning 、error、critical。默认的是WARNING，当在WARNING或之上时才被跟踪。</li>
+</ul>
+<h2 id="二日志输出可以输出在控制台和文件我选择的是输出在文件">二、日志输出：可以输出在控制台和文件，我选择的是输出在文件</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>StreamHandler<span style="color:#960050;background-color:#1e0010">：</span>logging<span style="color:#f92672">.</span>StreamHandler<span style="color:#960050;background-color:#1e0010">；</span>日志输出到流<span style="color:#960050;background-color:#1e0010">，</span>可以是sys<span style="color:#f92672">.</span>stderr<span style="color:#960050;background-color:#1e0010">，</span>sys<span style="color:#f92672">.</span>stdout或者文件
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>FileHandler<span style="color:#960050;background-color:#1e0010">：</span>logging<span style="color:#f92672">.</span>FileHandler<span style="color:#960050;background-color:#1e0010">；</span>日志输出到文件
+</span></span><span style="display:flex;"><span>BaseRotatingHandler<span style="color:#960050;background-color:#1e0010">：</span>logging<span style="color:#f92672">.</span>handlers<span style="color:#f92672">.</span>BaseRotatingHandler<span style="color:#960050;background-color:#1e0010">；</span>基本的日志回滚方式
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>RotatingHandler<span style="color:#960050;background-color:#1e0010">：</span>logging<span style="color:#f92672">.</span>handlers<span style="color:#f92672">.</span>RotatingHandler<span style="color:#960050;background-color:#1e0010">；</span>日志回滚方式<span style="color:#960050;background-color:#1e0010">，</span>支持日志文件最大数量和日志文件回滚
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>日志回滚的意思为<span style="color:#960050;background-color:#1e0010">：</span>比如日志文件是chat<span style="color:#f92672">.</span>log<span style="color:#960050;background-color:#1e0010">，</span>当chat<span style="color:#f92672">.</span>log达到指定的大小之后<span style="color:#960050;background-color:#1e0010">，</span>RotatingFileHandler自动把文件改名为chat<span style="color:#f92672">.</span>log<span style="color:#ae81ff">.1</span><span style="color:#960050;background-color:#1e0010">。</span>不过<span style="color:#960050;background-color:#1e0010">，</span>如果chat<span style="color:#f92672">.</span>log<span style="color:#ae81ff">.1</span>已经存在<span style="color:#960050;background-color:#1e0010">，</span>会先把chat<span style="color:#f92672">.</span>log<span style="color:#ae81ff">.1</span>重命名为chat<span style="color:#f92672">.</span>log<span style="color:#ae81ff">.2</span><span style="color:#960050;background-color:#1e0010">。</span>最后重新创建 chat<span style="color:#f92672">.</span>log<span style="color:#960050;background-color:#1e0010">，</span>继续输出日志信息<span style="color:#960050;background-color:#1e0010">。【</span>这样保证了chat<span style="color:#f92672">.</span>log里面是最新的日志<span style="color:#960050;background-color:#1e0010">】</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>TimeRotatingHandler<span style="color:#960050;background-color:#1e0010">：</span>logging<span style="color:#f92672">.</span>handlers<span style="color:#f92672">.</span>TimeRotatingHandler<span style="color:#960050;background-color:#1e0010">；</span>日志回滚方式<span style="color:#960050;background-color:#1e0010">，</span>在一定时间区域内回滚日志文件
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SocketHandler<span style="color:#960050;background-color:#1e0010">：</span>logging<span style="color:#f92672">.</span>handlers<span style="color:#f92672">.</span>SocketHandler<span style="color:#960050;background-color:#1e0010">；</span>远程输出日志到TCP<span style="color:#f92672">/</span>IP sockets
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DatagramHandler<span style="color:#960050;background-color:#1e0010">：</span>logging<span style="color:#f92672">.</span>handlers<span style="color:#f92672">.</span>DatagramHandler<span style="color:#960050;background-color:#1e0010">；</span>远程输出日志到UDP sockets
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SMTPHandler<span style="color:#960050;background-color:#1e0010">：</span>logging<span style="color:#f92672">.</span>handlers<span style="color:#f92672">.</span>SMTPHandler<span style="color:#960050;background-color:#1e0010">；</span>远程输出日志到邮件地址
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SysLogHandler<span style="color:#960050;background-color:#1e0010">：</span>logging<span style="color:#f92672">.</span>handlers<span style="color:#f92672">.</span>SysLogHandler<span style="color:#960050;background-color:#1e0010">；</span>日志输出到syslog
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NTEventLogHandler<span style="color:#960050;background-color:#1e0010">：</span>logging<span style="color:#f92672">.</span>handlers<span style="color:#f92672">.</span>NTEventLogHandler<span style="color:#960050;background-color:#1e0010">；</span>远程输出日志到Windows NT<span style="color:#f92672">/</span><span style="color:#ae81ff">2000</span><span style="color:#f92672">/</span>XP的事件日志
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>MemoryHandler<span style="color:#960050;background-color:#1e0010">：</span>logging<span style="color:#f92672">.</span>handlers<span style="color:#f92672">.</span>MemoryHandler<span style="color:#960050;background-color:#1e0010">；</span>日志输出到内存中的指定buffer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>HTTPHandler<span style="color:#960050;background-color:#1e0010">：</span>logging<span style="color:#f92672">.</span>handlers<span style="color:#f92672">.</span>HTTPHandler<span style="color:#960050;background-color:#1e0010">；</span>通过<span style="color:#960050;background-color:#1e0010">”</span>GET<span style="color:#960050;background-color:#1e0010">”</span>或者<span style="color:#960050;background-color:#1e0010">”</span>POST<span style="color:#960050;background-color:#1e0010">”</span>远程输出到HTTP服务器
+</span></span></code></pre></div><h2 id="三日志格式说明">三、日志格式说明</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>logging<span style="color:#f92672">.</span>basicConfig函数中<span style="color:#960050;background-color:#1e0010">，</span>可以指定日志的输出格式format<span style="color:#960050;background-color:#1e0010">，</span>这个参数可以输出很多有用的信息
+</span></span><span style="display:flex;"><span>logging<span style="color:#f92672">.</span>basicConfig函数各参数:
+</span></span><span style="display:flex;"><span>filename: 指定日志文件名
+</span></span><span style="display:flex;"><span>filemode: 和file函数意义相同<span style="color:#960050;background-color:#1e0010">，</span>指定日志文件的打开模式<span style="color:#960050;background-color:#1e0010">，</span><span style="color:#e6db74">&#39;w&#39;</span>或<span style="color:#e6db74">&#39;a&#39;</span>
+</span></span><span style="display:flex;"><span>format: 指定输出的格式和内容<span style="color:#960050;background-color:#1e0010">，</span>format可以输出很多有用信息<span style="color:#960050;background-color:#1e0010">，</span>如上例所示:
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">%</span>(levelno)s: 打印日志级别的数值
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">%</span>(levelname)s: 打印日志级别名称
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">%</span>(pathname)s: 打印当前执行程序的路径<span style="color:#960050;background-color:#1e0010">，</span>其实就是sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">%</span>(filename)s: 打印当前执行程序名
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">%</span>(funcName)s: 打印日志的当前函数
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">%</span>(lineno)d: 打印日志的当前行号
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">%</span>(asctime)s: 打印日志的时间
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">%</span>(thread)d: 打印线程ID
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">%</span>(threadName)s: 打印线程名称
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">%</span>(process)d: 打印进程ID
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">%</span>(message)s: 打印日志信息
+</span></span><span style="display:flex;"><span>datefmt: 指定时间格式<span style="color:#960050;background-color:#1e0010">，</span>同time<span style="color:#f92672">.</span>strftime()
+</span></span><span style="display:flex;"><span>level: 设置日志级别<span style="color:#960050;background-color:#1e0010">，</span>默认为logging<span style="color:#f92672">.</span>WARNING
+</span></span><span style="display:flex;"><span>stream: 指定将日志的输出流<span style="color:#960050;background-color:#1e0010">，</span>可以指定输出到sys<span style="color:#f92672">.</span>stderr,sys<span style="color:#f92672">.</span>stdout或者文件<span style="color:#960050;background-color:#1e0010">，</span>默认输出到sys<span style="color:#f92672">.</span>stderr<span style="color:#960050;background-color:#1e0010">，</span>当stream和filename同时指定时<span style="color:#960050;background-color:#1e0010">，</span>stream被忽略
+</span></span><span style="display:flex;"><span>logging打印信息函数<span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>logging<span style="color:#f92672">.</span>debug(<span style="color:#e6db74">&#39;This is debug message&#39;</span>)
+</span></span><span style="display:flex;"><span>logging<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#39;This is info message&#39;</span>)
+</span></span><span style="display:flex;"><span>logging<span style="color:#f92672">.</span>warning(<span style="color:#e6db74">&#39;This is warning message&#39;</span>)
+</span></span></code></pre></div><h2 id="初始化日志对象">初始化日志对象</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>logging<span style="color:#f92672">.</span>basicConfig(
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 日志级别</span>
+</span></span><span style="display:flex;"><span>    level <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</span>INFO,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 日志格式</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 时间、代码所在文件名、代码行号、日志级别名字、日志信息</span>
+</span></span><span style="display:flex;"><span>    format <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%(asctime)s</span><span style="color:#e6db74"> </span><span style="color:#e6db74">%(filename)s</span><span style="color:#e6db74">[line:</span><span style="color:#e6db74">%(lineno)d</span><span style="color:#e6db74">] </span><span style="color:#e6db74">%(levelname)s</span><span style="color:#e6db74"> </span><span style="color:#e6db74">%(message)s</span><span style="color:#e6db74">&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 打印日志的时间</span>
+</span></span><span style="display:flex;"><span>    datefmt <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%a</span><span style="color:#e6db74">, </span><span style="color:#e6db74">%d</span><span style="color:#e6db74"> %b %Y %H:%M:%S&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 日志文件存放的目录（目录必须存在）及日志文件名</span>
+</span></span><span style="display:flex;"><span>    filename <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;d:/report.log&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 打开日志文件的方式</span>
+</span></span><span style="display:flex;"><span>    filemode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;w&#39;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

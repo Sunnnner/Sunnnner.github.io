@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Ajax语法 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Ajax语法</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>02.06.2018</time>
+    <span>in</span>
+    
+      <a href="/categories/ajax">ajax</a>
+  </strong>
+  <span> • 83 words</span>
+  <span> • 1 minute read</span>
+  
+  
+</div>
+
+      <div class="content"><h1 id="ajax语法">Ajax语法</h1>
+<ul>
+<li>现在写ajax写的我很难受下面就是我在搜索的时候遇到的标签的意思</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;.show_prize&#39;</span>)<span style="color:#a6e22e">获取为show_pirze的标签</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">children</span><span style="color:#960050;background-color:#1e0010">（‘</span><span style="color:#a6e22e">em</span><span style="color:#960050;background-color:#1e0010">’）</span><span style="color:#a6e22e">获取子元素为em的标签</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">text</span><span style="color:#960050;background-color:#1e0010">（）</span><span style="color:#a6e22e">获取他的文本</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">val</span>() <span style="color:#a6e22e">获取他的值</span>
+</span></span><span style="display:flex;"><span>parseInt  <span style="color:#a6e22e">强制类型转换成整形</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">toFixed</span>(sun) <span style="color:#a6e22e">保留小数点后sun位</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">click</span><span style="color:#960050;background-color:#1e0010">（）</span><span style="color:#a6e22e">侦听点击事件</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">blur</span>()<span style="color:#a6e22e">当输入域失去焦点</span> (<span style="color:#a6e22e">blur</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">trim</span>()<span style="color:#a6e22e">去除两边空白</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">each</span>() <span style="color:#a6e22e">方法规定为每个匹配元素规定运行的函数</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">find</span>() <span style="color:#a6e22e">方法获得当前元素集合中每个元素的后代</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">通过选择器</span><span style="color:#960050;background-color:#1e0010">、</span><span style="color:#a6e22e">jQuery</span> <span style="color:#a6e22e">对象或元素来筛选</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#39;:checked&#39;</span>)<span style="color:#a6e22e">获取type标签的属性必须用</span><span style="color:#960050;background-color:#1e0010">“：”</span><span style="color:#a6e22e">来选择</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;b&#34;</span>).<span style="color:#a6e22e">parents</span>()<span style="color:#a6e22e">查找每个</span> <span style="color:#a6e22e">b</span> <span style="color:#a6e22e">元素的所有父元素</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">change事件改变</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">prop</span>() <span style="color:#a6e22e">方法设置或返回被选元素的属性和值</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">attr</span>()<span style="color:#a6e22e">attr</span>() <span style="color:#a6e22e">方法设置或返回被选元素的属性值</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">remove</span>()<span style="color:#a6e22e">移除对应的元素</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">ajaxSettings</span>.<span style="color:#66d9ef">async</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#75715e">//设置异步
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">ajaxSettings</span>.<span style="color:#66d9ef">async</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;<span style="color:#75715e">//设置同步
+</span></span></span></code></pre></div><h2 id="全选和全不选">全选和全不选</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;.settlements&#39;</span>).<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#39;:checkbox&#39;</span>).<span style="color:#a6e22e">change</span>(<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//获取全选checkbox的选中状态
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">is_checked</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>(<span style="color:#66d9ef">this</span>).<span style="color:#a6e22e">prop</span>(<span style="color:#e6db74">&#39;checked&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//便利所有商品对应的checkbox,设置checked属性和全选checkbox一致
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;.cart_list_td&#39;</span>).<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#39;:checkbox&#39;</span>).<span style="color:#a6e22e">each</span>(<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">$</span>(<span style="color:#66d9ef">this</span>).<span style="color:#a6e22e">prop</span>(<span style="color:#e6db74">&#39;checked&#39;</span>, <span style="color:#a6e22e">is_checked</span>)
+</span></span><span style="display:flex;"><span>            })
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 更新商品信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">update_total_price</span>()
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//商品对应的checkbox状态发生改变是，全选checkbox的改变
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;.cart_list_td&#39;</span>).<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#39;:checkbox&#39;</span>).<span style="color:#a6e22e">change</span>(<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//获取所有的商品对应的chackedbox的数目
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">all_len</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;.cart_list_td&#39;</span>).<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#39;:checkbox&#39;</span>).<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//获取所有被选中的CheckBox的数目
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">checked_len</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;.cart_list_td&#39;</span>).<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#39;:checked&#39;</span>).<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">checked_len</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">all_len</span>){
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;.settlements&#39;</span>).<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#39;:checkbox&#39;</span>).<span style="color:#a6e22e">prop</span>(<span style="color:#e6db74">&#39;checked&#39;</span>, <span style="color:#66d9ef">false</span>)
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;.settlements&#39;</span>).<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#39;:checkbox&#39;</span>).<span style="color:#a6e22e">prop</span>(<span style="color:#e6db74">&#39;checked&#39;</span>, <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 更新商品信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">update_total_price1</span>()
+</span></span><span style="display:flex;"><span>        })
+</span></span></code></pre></div></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

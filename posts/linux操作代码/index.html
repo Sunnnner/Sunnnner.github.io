@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Liunx编程-命令 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Liunx编程-命令</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>12.07.2022</time>
+    <span>in</span>
+    
+      <a href="/categories/linux">linux</a>
+  </strong>
+  <span> • 466 words</span>
+  <span> • 3 minute read</span>
+  
+  
+</div>
+
+      <div class="content"><ul>
+<li><code>pwd</code>显示当前目录 全称Print Working Directory</li>
+<li><code>ctrl+l</code>清屏假的清屏</li>
+<li>``</li>
+<li><code>ctrl+q</code>退出</li>
+<li><code>CTRL+-</code>调节字体大小</li>
+<li><code>ctrl+art+T</code>打开终端</li>
+<li><code>ctrl+shitf+T</code>多终端</li>
+<li><code>alt+1，23，4</code>切换窗口</li>
+<li><code>CTRL+D</code>关闭终端</li>
+<li><code>上下键</code>查看之前命令</li>
+<li><code>which</code>查看命令在那个目录</li>
+<li><code>ls -lh</code>查看当前访问权限</li>
+<li><code>ls -a</code>查看隐藏文件</li>
+<li><code> ls -l</code>以列表的方式列出</li>
+<li><code>ls -l -h</code>列表方式和大小也显示</li>
+<li><code>ls -a -h -l</code>列表方式文件大小所有的文件和目录都列出来</li>
+<li><code>ls -alh</code>简写</li>
+<li><code>r</code>读对文件而言，具有读取文件内容的权限；对目录来说，具有浏览目录的权限。</li>
+<li></li>
+<li><code>w</code>读写对文件而言，具有新增、修改文件内容的权限；对目录来说，具有删除、移动目录内文件的权限。</li>
+<li></li>
+<li><code>x</code>可执行  对文件而言，具有执行文件的权限；对目录来说该用户具有进入目录的权限。</li>
+<li><code>sudo -s</code>切换root账户</li>
+<li><code>mkdir</code>创建文件目录</li>
+<li><code>mkdir a/c/d -p</code>创建递归目录</li>
+<li><code>redir a/b/c -p</code>删除递归空目录</li>
+<li><code>rm 文件或者目录 -r</code>==通杀!!!!!!!!!!!!==</li>
+<li><code>touch</code>创建文件</li>
+<li><code>gedit</code>打开ubuntu的记事本</li>
+<li><code>rm</code>删除.文件名</li>
+<li><code>.\</code>当前目录</li>
+<li><code>.文件名</code>隐藏文件</li>
+<li><code>.目录名</code>隐藏目录</li>
+<li><code>tree</code>显示文件夹的树状结构图</li>
+<li><code>cd -</code>回调上次所在的目录</li>
+<li><code>-r</code>删除不了的后面加-r</li>
+<li><code>--help</code>获取内部shell帮助</li>
+</ul>
+<hr>
+<ul>
+<li><code>man</code>手册获得帮助信息</li>
+<li><code>b</code>回滚一瓶</li>
+<li><code>f</code>前滚一瓶</li>
+<li><code>q</code>推出</li>
+<li><code>h</code>列出所有功能键</li>
+<li><code>/word</code>搜索woed字符串</li>
+<li></li>
+</ul>
+<hr>
+<hr>
+<h3 id="通配符">通配符</h3>
+<hr>
+<ul>
+<li><code>*</code>文件代表文件名中所有字符</li>
+<li><code>ls te*</code>查找以te开头的文件</li>
+<li><code>ls *html</code>查找结尾为html的文件</li>
+<li><code>?</code>代表文件名中任意的一个字符</li>
+<li><code>ls ?.c</code>只找第一个字符任意，后缀为.c的文件</li>
+<li><code>ls a.?</code>只找中有3个字符，前2字符为a.最后一个字符任意的文件</li>
+<li><code>[]</code>【“和”】将字符组括起来，表示可以匹配字符组中的任意一个，‘-’用于表示字符范围</li>
+<li><code>[abc]</code>匹配a,b,c中的任意一个</li>
+<li><code>[a-f]</code>匹配从a到f范围内的任意一个字符</li>
+<li><code>ls[a-f]</code>找到a-f内的任意一个字符开头的文件</li>
+<li><code>ls [a-f]*</code>找到从a-f内的任意一个字符开头的文件</li>
+<li><code>ls a-f</code>吵着文件名为a-f的文件当&rsquo;-&lsquo;&lsquo;处于括号之外失去通配符的作用</li>
+<li><code>\</code>如果要使通配符作为普通字符使用，可以在其前面加上转义字符。“?”和“*”处于方括号内时不用使用转义字符就失去通配符的作用</li>
+<li><code>ls \a*</code>查找文件名为*a的文件</li>
+</ul>
+<hr>
+<h3 id="输出重定向命令">&gt;输出重定向命令</h3>
+<ul>
+<li><code>ls &gt;test.txt</code>test.txt如果不存在就创建存在则覆盖里面的内容</li>
+<li><code>ls /bin &gt;test.txt</code>将bin目录下的所有内容写入到test.txttest.txt如果不存在就创建存在则覆盖里面的内容</li>
+<li><code>ls /bin &gt;&gt;test.txt</code>将bin目录下的所有内容追加写入到test.txt</li>
+<li><code>cat feiji.py</code>显示feiji.py的所有内容</li>
+<li><code>cat test1.txt test2.txt &gt; test3.txt</code>将前两个重定向到test3然后cat test3显示</li>
+<li><code>tac</code>倒着显示内容与cat 相对</li>
+<li><code>head -2 文件名</code>打印文件前两行内容</li>
+<li><code>f</code>下屏</li>
+<li><code>b</code>上屏</li>
+<li><code>gedit feiji.py</code>使用gedit编辑工具显示：</li>
+<li>
+<h3 id="管道">管道</h3>
+</li>
+<li><code>ls -lah | more/cat</code>将lah显示的内容交给more或者cat显示</li>
+<li><code>;</code>多个命令用；隔开ls;ls -lah</li>
+<li>
+<h3 id="相对路径和相对路径">相对路径和相对路径</h3>
+</li>
+<li>绝对路径以/根目录开始</li>
+<li>相对路径就是..</li>
+<li></li>
+</ul>
+<hr>
+<h2 id="which查看命令的目录"><code>which</code>查看命令的目录</h2>
+<h3 id="grep文本中搜索">grep文本中搜索</h3>
+<ul>
+<li>搜索内容以正则表达式表示</li>
+<li></li>
+<li><code>grep &quot;^ntfs&quot; haha.txt</code>查找ntfs开头的内容</li>
+<li><code>grep -n &quot;^ntfs haha.txt&quot;</code>查找内容显示行</li>
+<li><code>grep -vni &quot;^ntfs&quot; haha.txt</code> 显示内容不是以ntfs并且显示行和忽略大小写</li>
+<li><code>grep &quot;s$&quot; haha.txt</code>以s结尾的内容</li>
+<li><code>grep -n &quot;s$&quot; haha.txt</code>显示行</li>
+<li><code>grep -n &quot;s&quot; haha.txt</code>查找haha里面包含s内容的行</li>
+<li>
+<h3 id="拷贝">拷贝</h3>
+</li>
+<li><code>cp /home/zhang/python.txt /home/zhang/test -r</code>将python.txt 拷到test目录下</li>
+<li><code>cp /home/zhang/python.txt ./r</code>将python.txt 拷到当前目录下</li>
+<li>
+<h3 id="mv移动文件和目录">mv移动文件和目录</h3>
+</li>
+<li><code>mv 文件名 移动的地方</code> 移动文件</li>
+<li><code>mv test test1</code>如果当前目录只有test文件test1目录不存在会把test目录名字修改程test1如果test1是文件就会报错如果test1是目录就会移动</li>
+<li>如果test1是文件test也是文件</li>
+<li>mv test test1 会改变名字并且会覆盖test1 的内容</li>
+<li>test1文件不存在就更改名字</li>
+</ul>
+<hr>
+<ul>
+<li>
+<h3 id="find">find</h3>
+</li>
+<li><code>find / -size +2M</code>查找根目录下大于2M的文件</li>
+<li><code>find / -name *.py</code>查找根目录下以.py文件结尾的文件</li>
+<li><code>find / -perm 0777</code>查看根目录下所有可读可写可执行的文件</li>
+</ul>
+<hr>
+<ul>
+<li>
+<h1 id="创建链接">创建链接</h1>
+</li>
+<li>创建软连接: <code>ln -s 1.txt 任意名字</code></li>
+<li><code>ln 1.txt + 任意名</code>字硬链接</li>
+<li>
+<h1 id="解压打包tar-归档管理">解压打包tar 归档管理</h1>
+</li>
+<li><code>-C</code> 指定目录</li>
+<li>
+<h3 id="tar-打包解压">.tar 打包解压</h3>
+</li>
+<li>打包命令 <code>tar -cvf test.tar *.txt</code></li>
+<li>解压   <code>tar -xv test.tar -C ./test2</code></li>
+<li></li>
+<li>
+<h3 id="targz-打包解压">.tar.gz 打包解压</h3>
+</li>
+<li>打包命令:<code>tar -zcvf test.tar.gz *.txt</code></li>
+<li>解包文件:<code>tar -zxvf test.tar.gz -C ./test</code></li>
+<li>
+<h3 id="targz2打包解压">.tar.gz2打包解压</h3>
+</li>
+<li>打包命令:<code>tar -jcvf test.tar.bz2 *.txt</code></li>
+<li>解包文件:<code>tar -jxvf test.tar.bz2 -C ./test</code></li>
+<li>
+<h3 id="gzip文件压缩解压">gzip文件压缩解压</h3>
+</li>
+<li><code>gzip -r 压缩所有子目录只能压缩tar</code> 的文件</li>
+<li><code>gzip -d 解压</code></li>
+<li>
+<h3 id="zipunzip文件压缩解压">zip、unzip文件压缩解压</h3>
+</li>
+<li>压缩文件：<code>zip [-r] 目标文件(没有扩展名) 源文</code>件</li>
+<li>-d 指定目录</li>
+<li>解压文件：<code>unzip -d 解压后目录文件 压缩文件</code></li>
+</ul>
+<hr>
+<ul>
+<li>
+<h1 id="进程管理">进程管理</h1>
+</li>
+<li>
+<h3 id="ps-查看进程"><code>ps</code> 查看进程</h3>
+</li>
+<li><code>-a</code> 显示终端上的所有进程，包括其他用户的进程</li>
+<li><code>-u</code> 显示进程的详细状态</li>
+<li><code>-x</code> 显示没有控制终端的进程</li>
+<li><code>-w</code> 显示加宽，以便显示更多的信息</li>
+<li><code>-r</code> 只前世正在运行的进程</li>
+<li><code>- ps -au</code> 查看进程</li>
+<li><code>ps -aux</code> 查看进程详细信息</li>
+<li></li>
+<li>
+<h3 id="top-按照一定的顺序排序显示所有进程">top 按照一定的顺序排序显示所有进程</h3>
+</li>
+<li><code>shift + p</code>按照cpu占有率排序</li>
+<li><code>shift +m</code> 按照内存占有率排序</li>
+<li><code>q</code>退出</li>
+<li></li>
+<li>
+<h3 id="htop">htop</h3>
+</li>
+<li><code>kill  pid</code> 杀死进程</li>
+<li><code>kill -9 pid</code> 强制杀</li>
+<li>
+<h3 id="rebootshutdowninit关机重启"><code>reboot、shutdown、init</code>关机重启</h3>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<h1 id="磁盘查看">磁盘查看</h1>
+</li>
+<li>
+<h3 id="df-检测磁盘空间默认字节"><code>df</code> 检测磁盘空间默认字节</h3>
+</li>
+<li><code>-a</code> 显示所有文件系统的磁盘使用情况</li>
+<li><code>-m</code> 以1024字节为单位显示</li>
+<li><code>-t</code> 显示各指定文件系统的磁盘空间使用情况</li>
+<li><code>-T</code> 显示文件系统</li>
+<li>
+<h3 id="du检测目录所占磁盘空间">du检测目录所占磁盘空间</h3>
+</li>
+<li><code>-a</code> 递归显示指定目录中各文件和子目录中文件占用的数据块</li>
+<li><code>-s</code> 显示指定文件或目录占用的数据块</li>
+<li><code>-b</code> 以字节为单位显示磁盘占用情况</li>
+<li><code>-l</code> 计算所有文件大小，对硬链接文件计算多次</li>
+<li>
+<h3 id="ifconfig查看或配置网卡信息">ifconfig查看或配置网卡信息</h3>
+</li>
+<li>修改ip地址命令 ：<code>sudo ifconfig ens33 192.168.1.108</code></li>
+<li>
+<h3 id="查看系统日期和时间">查看系统日期和时间</h3>
+</li>
+<li><code>date</code>显示或设置时间</li>
+<li><code>cal</code>命令用于查看当前日历，-y显示整年日历：查看2018年的日历 <code>cal -y 2018 </code></li>
+<li><code>date</code> &ldquo;+%y年%m月%d日&rdquo; 18年04月13日</li>
+<li><code>date</code> &ldquo;+%y年%<em>m月</em>%d日&quot;18年 4月_13日</li>
+</ul>
+<hr>
+<ul>
+<li>
+<h1 id="用户管理">用户管理</h1>
+</li>
+<li><code>id 用户名</code>判断用户是否存在</li>
+<li><code>whoami</code>查看当前用户</li>
+<li><code>who</code></li>
+<li><code>cat /etc/passwd</code>查看系统用户信息</li>
+<li><code>cat /etc/group</code>  <code>groups+ab</code>查看系统用户组信息</li>
+<li><code>useradd</code>添加用户账号</li>
+<li><code>useradd test -m</code>创建test用户，如果/home/test不存在，就自动创建,不指定默认也是属于test用户组</li>
+<li><code>useradd -d /home/abc abc-m</code>创建abc用户，如果/home/abc目录不存在，就自动创建这个目录，同时用户属于abc组</li>
+<li><code>useradd -d /home/a a -g test-m</code>创建一个用户名字叫a，主目录在/home/a，如果主目录不存在，就自动创建主目录，同时用户属于test组</li>
+<li><code>cat /etc/passwd</code>查看系统当前用户名</li>
+<li>切换用户 su+名字</li>
+<li>sudo passwd +用户名 设置密码</li>
+<li>userdel删除用户</li>
+<li>userdel -r abc(用户名) 删除用户，同时删除用户的家目录</li>
+<li>删除一个已经登陆过的test用户</li>
+<li>sudo vim /etc/passwd &mdash;&gt;找到test这个账号&ndash;&gt;删除这行配置Esc&mdash;？:保存推出&ndash;》删除家目录sudo rm test -r</li>
+<li>su 切换用户</li>
+<li>su 用户&mdash;》提示输入密码</li>
+<li>切换到test用户 su test &mdash;&gt;设置密码sudo passwd test&mdash;-&gt;exit</li>
+</ul>
+<hr>
+<ul>
+<li>查看用户组 cat /etc/group   groupmod   groups</li>
+<li>添加一个组  sudo groupadd haha</li>
+<li>删除haha组  sudo groupdel haha</li>
+<li>查haha再哪个组groups haha</li>
+<li>修改用户所在组  usermod</li>
+<li>吧账号test从test组修改成abc sudo usermod -g abc test</li>
+<li>把账号teest从abc 到test  sudo usermod -g test test</li>
+<li>普通用户添加sudo组 sudo usermod -a -G sudo 用户名</li>
+<li>usermod -g 与 -G的区别 -g用来制定这个用户默认的用户组 -G一般配合&rsquo;-a&rsquo;来完成向其它组添加</li>
+<li>gpasswd把账号从某组移除</li>
+<li>sudo gpasswd 组 -d 账号</li>
+</ul>
+<hr>
+<ul>
+<li>
+<h3 id="文件管理">文件管理</h3>
+</li>
+<li>把1.txt文件所属组（atguigu）修改成laowang这个组：</li>
+<li>sudo chgrp laowang 1.txt</li>
+<li>把1.txt所有者（atguigu）改成laowang所有</li>
+<li>sudo chown laowang 1.txt</li>
+<li>chmod修改文件权限（重点）</li>
+<li>字母法</li>
+<li>chmod u/g/o/a + /-/+ = rwx 文件</li>
+<li>数字法</li>
+<li>r:4 读</li>
+<li>w:2 写</li>
+<li>x:1 执行</li>
+<li>
+<ul>
+<li>: 0 没有任何权限</li>
+</ul>
+</li>
+<li>3：可写可执行</li>
+<li>5：可读可执行</li>
+<li>6： 可读可写</li>
+<li>7：可读可写可执行</li>
+<li></li>
+</ul></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

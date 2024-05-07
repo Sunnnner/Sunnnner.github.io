@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>python：面向对象-封装 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">python：面向对象-封装</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>12.07.2022</time>
+    <span>in</span>
+    
+      <a href="/categories/python">python</a>
+  </strong>
+  <span> • 119 words</span>
+  <span> • 1 minute read</span>
+  
+  
+</div>
+
+      <div class="content"><h1 id="类属性">类属性</h1>
+<ul>
+<li>类属性写在类下面</li>
+<li>0、类属性可以通过：</li>
+<li>
+<pre><code>类名.属性  或者  对象名.属性
+</code></pre>
+</li>
+<li>1、如何改变类属性的值</li>
+<li>
+<pre><code> 类的属性修改要通过类名.属性=新值来修改
+</code></pre>
+</li>
+<li>2、如果有多个对象，类属性有什么变化</li>
+</ul>
+<hr>
+<ul>
+<li>
+<h1 id="__-del__方法">__ del__()方法</h1>
+</li>
+</ul>
+<hr>
+<ul>
+<li>最后调用的方法 del</li>
+<li>在你执行完整个代码之后没有手动销毁的时候python解释器就会自动调用对象的__ del__</li>
+<li>python解释器 执行完毕的时候，有几个对象就会调用几遍__ del__</li>
+<li>手动销毁也会调用del</li>
+<li>有引用关系的时候p1=p3当你手动删除p1一个对象的时候</li>
+<li>获取空间有几个引用关系</li>
+<li>
+<pre><code>  import sys别忘了引用
+</code></pre>
+</li>
+<li>
+<pre><code>  count=sys.getrefcount(对象名)注意：工具本身也占一个引用
+</code></pre>
+</li>
+<li>
+<pre><code>  print(count)
+</code></pre>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<h1 id="面向对象的四大特征">面向对象的四大特征</h1>
+</li>
+</ul>
+<hr>
+<ul>
+<li>数据抽象 &ndash;&gt;表示世界中一类事物的特征,就是对象的属性.比如鸟有翅膀,羽毛等(类的属性)</li>
+<li>过程抽象 &ndash;&gt;表示世界中一类事物的行为,就是对象的行为.比如鸟会飞,会叫(类的方法)</li>
+<li>
+<h3 id="封装">封装</h3>
+</li>
+<li>用名字来区分私有（&quot;__&ldquo;两个下划线开头）与共有</li>
+<li>封装定义：定义私有的属性，通过公有set和get方法访问</li>
+<li>
+<h5 id="私有方法的使用">私有方法的使用</h5>
+</li>
+<li>定义方式：__方法名（self）</li>
+<li>只能在类内部访问，类的外部无法访问</li>
+<li>
+<h5 id="私有属性">私有属性</h5>
+</li>
+<li>特点：在属性名上的前面多了&rdquo;__&quot;&quot;</li>
+<li>在方法里面定义私有属性是self.__ 在外面使用时不能用类名.__调用只能用self.__调用</li>
+<li>
+<h4 id="set-get-结合私有使用">set get 结合私有使用</h4>
+</li>
+<li></li>
+</ul>
+<hr>
+<ul>
+<li>
+<h1 id="继承多层继承">继承，多层继承</h1>
+</li>
+</ul>
+<hr>
+<ul>
+<li>继承的产生</li>
+<li>子类可以继承父类的属性和方法，但是父类的私有属性不能被子类继承</li>
+<li>从上往下时传递继承</li>
+<li>###重写父类方法与调用父类方法</li>
+<li>==重写：发生在子类中，如果子类的方法与父类的方法名是相同的，则子类的方法会覆父类的方法==</li>
+<li>方法名相同参数的个数不同会发生覆盖，不管参数是否一致则子类调用的就是子类自己的对象</li>
+<li>
+<h3 id="子类中发生重写之后如何使用父类的方法">子类中发生重写之后，如何使用父类的方法？</h3>
+</li>
+<li>
+<pre><code>super().方法名()      第一种方法
+</code></pre>
+</li>
+<li>
+<pre><code>super并不是一个函数，是一个类名，形如super(B, self)事实上调用了super类的初始化函数，产生了一个super对象。
+</code></pre>
+</li>
+<li>
+<pre><code>super类的初始化函数并没有做什么特殊的操作，只是简单记录了类类型和具体实例；
+</code></pre>
+</li>
+<li>
+<pre><code>类名.对象名(self)    第二种方法
+</code></pre>
+</li>
+<li>
+<h3 id="要想调用自己的方法则通过self方法名参数如果有参数就要先定义">要想调用自己的方法则通过self.方法名(参数)==如果有参数就要先定义==</h3>
+</li>
+<li>
+<h3 id="多重继承">多重继承</h3>
+</li>
+<li>一个子类是允许存在多个父类</li>
+<li>一个子类可以多继承，因此继承了多个父类的属性和方法</li>
+<li>多继承当中照样支持重写动作</li>
+<li>查看某个类调用父类方法搜寻过程</li>
+<li>
+<pre><code> 类名.__ mro__  
+</code></pre>
+</li>
+<li>
+<pre><code> 搜寻顺序使用C3算法
+</code></pre>
+</li>
+<li>
+<pre><code> 算法是用广度优先的算法搜寻左侧
+</code></pre>
+</li>
+<li>
+<pre><code> python2中深度优先
+</code></pre>
+</li>
+<li>
+<pre><code> import inspect
+</code></pre>
+</li>
+<li>
+<pre><code> print(inspect.getmro(类名))
+</code></pre>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<h1 id="多态">多态</h1>
+</li>
+</ul>
+<hr>
+<ul>
+<li>多态依赖父子关系</li>
+<li>
+<pre><code>必须有继承了父类的子类才能算多态
+</code></pre>
+</li>
+<li>方法中的多态</li>
+<li>
+<pre><code>我可以接受任何参数进来
+</code></pre>
+</li>
+<li>
+<pre><code>变相的把你参数窗口这里进行标注继承父类的子类都可以进来
+</code></pre>
+</li>
+<li></li>
+</ul>
+<hr>
+<ul>
+<li>
+<h1 id="类方法的使用">类方法的使用</h1>
+</li>
+</ul>
+<hr>
+<ul>
+<li>类方法前面加</li>
+<li>
+<pre><code>@classmethod
+</code></pre>
+</li>
+<li>
+<pre><code>def 方法名(cls):必须有cls参数
+</code></pre>
+</li>
+<li>cls是当前类的对象，类模型也是占用内存空间的</li>
+<li>类方法的调用</li>
+<li>
+<pre><code>类名.类方法名()
+</code></pre>
+</li>
+<li>
+<pre><code>类的只能用类的
+</code></pre>
+</li>
+<li>实例化对象都时类构建出来的</li>
+<li>类模型也是一个占用内存对象，在创建对象之前就会在内存中创建类模型</li>
+<li>类对象产生的时候还有没类模型创建的对象，所以类方法中是不能使用对象的东西</li>
+</ul>
+<hr>
+<ul>
+<li>
+<h3 id="静态方法">静态方法</h3>
+</li>
+<li>
+<pre><code>@staicmethod
+</code></pre>
+</li>
+<li>
+<pre><code>静态方法调用跟类方法一样的调用
+</code></pre>
+</li>
+<li>方法可以不加self或者cls参数方法是没有参数的</li>
+<li>静态方法中可以使用类属性</li>
+<li>要想使用对象属性则必须要穿参，通过参数对象调用</li>
+<li>如果静态方法的参数是self的话，但是与类的普通方法中的self表示的意思是不一样的self在静态方法调用的时候必须传一个参数</li>
+<li></li>
+</ul>
+<hr>
+<h1 id="__-new__方法">__ new__方法</h1>
+<hr>
+<ul>
+<li>通常__ new__方法由python解释器完成，通常第一个调用</li>
+<li>
+<pre><code> __ new__(cls)cls表示你的类模型类对象
+</code></pre>
+</li>
+<li>
+<pre><code> 使用该方法创建当前实例对象，一般不重写，就算重写
+</code></pre>
+</li>
+<li>
+<pre><code> 也是调用父类的__ new__方法，注意：一定要返回创建的对象
+</code></pre>
+</li>
+<li>
+<pre><code> ，如果没有返回，__ init__方法将不会被python解释器调用
+</code></pre>
+</li>
+<li></li>
+</ul>
+<hr>
+<h1 id="__-call__参数方法">__ call__（参数）方法</h1>
+<hr>
+<ul>
+<li>对象当作方法使用的时候</li>
+<li>
+<pre><code>可以有参数
+</code></pre>
+</li>
+<li>
+<pre><code>text Text()
+</code></pre>
+</li>
+<li>
+<pre><code>text();默认就会找call
+</code></pre>
+</li>
+<li></li>
+</ul>
+<hr>
+<h1 id="新式类与经典类的区别">新式类与经典类的区别</h1>
+<hr>
+<pre><code>主要用于继承关系中查看上层父类是谁的
+类名.__ base__可以查看他的上一层父类是谁</code></pre></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Mysql查询结果输出到文件 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Mysql查询结果输出到文件</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>03.10.2019</time>
+    <span>in</span>
+    
+      <a href="/categories/mysql">mysql</a>
+  </strong>
+  <span> • 86 words</span>
+  <span> • 1 minute read</span>
+  
+  
+</div>
+
+      <div class="content"><h1 id="方法一">方法一：</h1>
+<pre><code>直接执行命令：
+`mysql&gt; select count(1) from table into outfile '/tmp/test.xls';`
+
+Query OK, 31 rows affected (0.00 sec)
+在目录/tmp/下会产生文件test.xls
+遇到的问题：
+mysql&gt; select count(1) from table into outfile '/data/test.xls';
+报错：
+ERROR 1 (HY000): Can’t create/write to file ‘/data/test.xls’ (Errcode: 13)
+可能原因：mysql没有向/data/下写的权限
+</code></pre>
+<h1 id="方法二">方法二：</h1>
+<pre><code>查询都自动写入文件：
+mysql&gt; pager cat &gt; /tmp/test.txt ;
+PAGER set to 'cat &gt; /tmp/test.txt'
+之后的所有查询结果都自动写入/tmp/test.txt’，并前后覆盖
+mysql&gt; select * from table ;
+30 rows in set (0.59 sec)
+在框口不再显示查询结果
+</code></pre>
+<h1 id="方法三">方法三：</h1>
+<pre><code>跳出mysql命令行
+`# mysql -h 127.0.0.1 -u root -p XXXX -P 3306 -e “select * from table” &gt; /tmp/test/txt``
+</code></pre></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

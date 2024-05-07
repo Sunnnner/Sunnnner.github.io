@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>数据库如何优化 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">数据库如何优化</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>04.02.2019</time>
+    <span>in</span>
+    
+      <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a>
+  </strong>
+  <span> • 230 words</span>
+  <span> • 2 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a>
+    </div>
+  
+</div>
+
+      <div class="content"><p>优化SQL语句</p>
+<p>通过添加索引进行优化</p>
+<p>优化Order by</p>
+<p>有两种方式如下：</p>
+<p>（1）索引优化：对by后的列添加索引，从而大达到优化的目的。</p>
+<p>（2）where+order by 的组合优化：通过where进行限制后在进行order by</p>
+<p>优化limit</p>
+<p>优化子查询</p>
+<p>2.优化数据库结构</p>
+<p>1、优化insert语句</p>
+<pre><code>  禁用索引，禁用唯一性检查，使用一条insert插入多条语句。
+</code></pre>
+<p>2、优化update语句</p>
+<pre><code>  使用一个update语句同时做多个更新。
+</code></pre>
+<p>3、优化delete语句</p>
+<pre><code>  删除一条记录的时间与索引的数量成正比。删除一个表的所有行，使用truncate table Tbname 而不要使用delete from table
+</code></pre>
+<p>Django如何优化</p>
+<p>1利用标准数据库优化技术：索引, Django建立实体的时候，支持给字段添加索引，具体参考Django.db.models.Field.db_index。</p>
+<p>2了解Django的QuerySets：QuerySets是有缓存的，一旦取出来，它就会在内存里呆上一段时间，尽量重用它</p>
+<p>3数据库的工作就交给数据库本身计算，别用Python处理：使用 filter and exclude 过滤不需要的记录，这两个是最常用语句，相当是SQL的where。使用annotate对数据库做聚合运算。不要用python语言对以上类型数据过滤筛选，同样的结果，python处理复杂度要高，而且效率不高， 白白浪费内存。使用原生的SQL语句：</p>
+<p>4如果需要就一次性取出你所需要的数据：</p>
+<p>单一动作（如：同一个页面）需要多次连接数据库时，最好一次性取出所有需要的数据，减少连接数据库次数。此类需求推荐使用QuerySet.select_related() 和 prefetch_related()。使用QuerySet.count()代替len(queryset),虽然这两个处理得出的结果是一样的，但前者性能优秀很多。同理判断记录存在时，QuerySet.exists()比if queryset实在强得太多了。</p>
+<p>5 懂减少数据库的连接数：</p>
+<p>使用 QuerySet.update() 和 delete()，这两个函数是能批处理多条记录的，适当使用它们事半功倍；如果可以，别一条条数据去update delete处理。</p>
+<p>使用 Redis 进行缓存</p>
+<p>使用异步 Worker 进行写库操作</p>
+<p>高并发问题</p>
+<p>：1，悲观锁；2，乐观锁</p>
+<p>使用场景：</p>
+<p>并发量高的时候使用悲观锁，</p>
+<p>缺点：加锁消耗资源</p>
+<p>并发量低的时候使用乐观锁，</p>
+<p>缺点：乐观锁循环耗费时间。
+秒杀问题,一件商品多人抢购如何处理</p>
+<p>获取第一位的数据其他人均不满足</p>
+<p>说一下事务四大特性和隔离级别</p>
+<p>ACID</p>
+<p>原子性（Atomicity） 要么全部完成，要么都不成功</p>
+<p>一致性(Consistency) 几个并行执行的事务，其执行结果必须与按照某一舒徐串执行的结果相一致</p>
+<p>隔离性(Isolation) 事务的执行不受其他事务的干扰，事务执行的中间结果对其他事务必须市透明的</p>
+<p>持久性(Durability) 对于任意已提交事务，系统必须保证该事务对数据库的改变不被丢失，即使数据库出现故障；</p>
+<p>隔离级别</p>
+<p>脏读 在一个事务处理过程里读取了另一个未提交的事务中的数据</p>
+<p>不可重复读 在对于数据库中的某个数据，一个事务范围内多次查询却返回了不同的数据值，</p>
+<p>虚读 是事务非独立执行时发生的一种现象
+　　
+现在来看看MySQL数据库为我们提供的四种隔离级别：</p>
+<p>　　① Serializable (串行化)：可避免脏读、不可重复读、幻读的发生。</p>
+<p>　　② Repeatable read (可重复读)：可避免脏读、不可重复读的发生。</p>
+<p>　　③ Read committed (读已提交)：可避免脏读的发生。</p>
+<p>　　④ Read uncommitted (读未提交)：最低级别，任何情况都无法保证。</p>
+<p>redis的数据类型和使用场景</p>
+<p>字符串(str)， 哈希(hash) 列表(list) 集合(set) 有序集合(zset)</p>
+<p>一万件商品如何按价格排序取前十个</p>
+<p>使用快速排序</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">partition</span>(A, p, r):
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> A[r]
+</span></span><span style="display:flex;"><span>i <span style="color:#f92672">=</span> p <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(p, r):
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> A[j] <span style="color:#f92672">&lt;=</span> x:
+</span></span><span style="display:flex;"><span>i <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>A[i], A[j] <span style="color:#f92672">=</span> A[j], A[i]
+</span></span><span style="display:flex;"><span>A[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>], A[r] <span style="color:#f92672">=</span> A[r], A[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">quickSort</span>(A, p, r):
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> p <span style="color:#f92672">&lt;</span> r:
+</span></span><span style="display:flex;"><span>q <span style="color:#f92672">=</span> partition(A, p, r)
+</span></span><span style="display:flex;"><span>quickSort(A, p, q <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>quickSort(A, q <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, r)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>A <span style="color:#f92672">=</span> [<span style="color:#960050;background-color:#1e0010">…</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>quickSort(A, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">9999</span>)
+</span></span><span style="display:flex;"><span>print(A[:<span style="color:#f92672">-</span><span style="color:#ae81ff">9</span>])
+</span></span></code></pre></div><p>redis考数据类型和使用场景,比如list啥时候用,</p>
+<p>redis 七个使用场景https://www.cnblogs.com/NiceCui/p/7794659.html</p>
+<p>还有MySQL有哪些数据库引擎,有什么区别</p>
+<p>ISAM：ISAM是一个定义明确且历经时间考验的数据表格管理方法，它在设计之时就考虑到数据库被查询的次数要远大于更新的次数</p>
+<p>MyISAM：MyISAM是MySQL的ISAM扩展格式和缺省的数据库引擎。</p>
+<p>InnoDB：InnoDB数据库引擎都是造就MySQL灵活性的技术的直接产品，这项技术就是MYSQL+API</p>
+<p>MEMORY: MEMORY是MySQL中一类特殊的存储引擎。它使用存储在内存中的内容来创建表，而且数据全部放在内存中。</p>
+<p>InnoDB：支持事务处理，支持外键，支持崩溃修复能力和并发控制。</p>
+<p>MyISAM：插入数据快，空间和内存使用比较低。</p>
+<p>MEMORY：所有的数据都在内存中，数据的处理速度快，但是安全性不高</p>
+<p><a href="https://blog.csdn.net/t146lla128xx0x/article/details/78737290">https://blog.csdn.net/t146lla128xx0x/article/details/78737290</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>[<span style="color:#960050;background-color:#1e0010">“</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">”</span>,<span style="color:#960050;background-color:#1e0010">”</span><span style="color:#ae81ff">2</span><span style="color:#960050;background-color:#1e0010">”</span>,<span style="color:#960050;background-color:#1e0010">”</span><span style="color:#ae81ff">10</span><span style="color:#960050;background-color:#1e0010">”</span>],列表里是字符型数值,如何按数字大小给列表排序
+</span></span><span style="display:flex;"><span>list1 <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> [<span style="color:#960050;background-color:#1e0010">“</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">”</span>,<span style="color:#960050;background-color:#1e0010">”</span><span style="color:#ae81ff">2</span><span style="color:#960050;background-color:#1e0010">”</span>,<span style="color:#960050;background-color:#1e0010">”</span><span style="color:#ae81ff">10</span><span style="color:#960050;background-color:#1e0010">”</span>]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> a:
+</span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> int(i)
+</span></span><span style="display:flex;"><span>list1<span style="color:#f92672">.</span>append(b)
+</span></span><span style="display:flex;"><span>print(sorted(list1, reverse<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>))
+</span></span></code></pre></div><p>Python2和3的区别</p>
+<p>print不再是语句，而是函数</p>
+<p>在Python 3中，没有旧式类，只有新式类</p>
+<p>原来1/2（两个整数相除）结果是0，现在是0.5了</p>
+<p>新的字符串格式化方法format取代%</p>
+<p>xrange重命名为range</p>
+<p>!=取代 &lt; &gt;</p>
+<p>long重命名为int</p>
+<p>except Exception, e变成except (Exception) as e</p>
+<p>exec变成函数</p>
+<p>爬虫好像问scrapy和scrapy_redis有什么区别</p>
+<p>还有scrapy爬虫的执行流程,当场手写</p>
+<p>看完我说的你在百度django和爬虫的面试题</p>
+<p>RESTfromework问得也挺多</p>
+<p>apiview和viewset有啥关系</p>
+<p>问rest是啥</p></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>
