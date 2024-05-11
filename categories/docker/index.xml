@@ -6,8 +6,15 @@
     <description>Recent content in Docker on 学无止境</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 11 Apr 2023 15:46:40 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 11 May 2024 16:09:03 +0800</lastBuildDate>
     <atom:link href="https://sunnnner.github.io/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>新版docker Compose文件编写</title>
+      <link>https://sunnnner.github.io/posts/docker/%E6%96%B0%E7%89%88docker-compose%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99/</link>
+      <pubDate>Sat, 11 May 2024 16:09:03 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/docker/%E6%96%B0%E7%89%88docker-compose%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99/</guid>
+      <description></description>
+    </item>
     <item>
       <title>docker如何部署rudedesktop中继服务器</title>
       <link>https://sunnnner.github.io/posts/docker/docker%E9%83%A8%E7%BD%B2rust-desktop%E4%B8%AD%E7%BB%A7%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>

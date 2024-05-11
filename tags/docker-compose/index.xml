@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker-Compose on 学无止境</title>
+    <link>https://sunnnner.github.io/tags/docker-compose/</link>
+    <description>Recent content in Docker-Compose on 学无止境</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 11 May 2024 16:09:03 +0800</lastBuildDate>
+    <atom:link href="https://sunnnner.github.io/tags/docker-compose/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>新版docker Compose文件编写</title>
+      <link>https://sunnnner.github.io/posts/docker/%E6%96%B0%E7%89%88docker-compose%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99/</link>
+      <pubDate>Sat, 11 May 2024 16:09:03 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/docker/%E6%96%B0%E7%89%88docker-compose%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
