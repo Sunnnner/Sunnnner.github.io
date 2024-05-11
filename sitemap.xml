@@ -2,28 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://sunnnner.github.io/categories/</loc>
-    <lastmod>2024-05-09T14:04:05+08:00</lastmod>
+    <loc>https://sunnnner.github.io/tags/actix-web/</loc>
+    <lastmod>2024-05-11T10:17:42+08:00</lastmod>
   </url><url>
-    <loc>https://sunnnner.github.io/tags/http/</loc>
-    <lastmod>2024-05-09T14:04:05+08:00</lastmod>
+    <loc>https://sunnnner.github.io/categories/</loc>
+    <lastmod>2024-05-11T10:17:42+08:00</lastmod>
   </url><url>
     <loc>https://sunnnner.github.io/posts/</loc>
+    <lastmod>2024-05-11T10:17:42+08:00</lastmod>
+  </url><url>
+    <loc>https://sunnnner.github.io/tags/</loc>
+    <lastmod>2024-05-11T10:17:42+08:00</lastmod>
+  </url><url>
+    <loc>https://sunnnner.github.io/tags/tauri/</loc>
+    <lastmod>2024-05-11T10:17:42+08:00</lastmod>
+  </url><url>
+    <loc>https://sunnnner.github.io/categories/tauri/</loc>
+    <lastmod>2024-05-11T10:17:42+08:00</lastmod>
+  </url><url>
+    <loc>https://sunnnner.github.io/posts/tauri%E5%A6%82%E4%BD%95%E4%B8%8Eactix-web%E7%BB%93%E5%90%88/</loc>
+    <lastmod>2024-05-11T10:17:42+08:00</lastmod>
+  </url><url>
+    <loc>https://sunnnner.github.io/</loc>
+    <lastmod>2024-05-11T10:17:42+08:00</lastmod>
+  </url><url>
+    <loc>https://sunnnner.github.io/tags/http/</loc>
     <lastmod>2024-05-09T14:04:05+08:00</lastmod>
   </url><url>
     <loc>https://sunnnner.github.io/tags/reqwest/</loc>
     <lastmod>2024-05-09T14:04:05+08:00</lastmod>
   </url><url>
-    <loc>https://sunnnner.github.io/tags/</loc>
-    <lastmod>2024-05-09T14:04:05+08:00</lastmod>
-  </url><url>
-    <loc>https://sunnnner.github.io/categories/tauri/</loc>
-    <lastmod>2024-05-09T14:04:05+08:00</lastmod>
-  </url><url>
     <loc>https://sunnnner.github.io/posts/tauri-http%E8%BF%9E%E6%8E%A5%E6%B1%A0/</loc>
-    <lastmod>2024-05-09T14:04:05+08:00</lastmod>
-  </url><url>
-    <loc>https://sunnnner.github.io/</loc>
     <lastmod>2024-05-09T14:04:05+08:00</lastmod>
   </url><url>
     <loc>https://sunnnner.github.io/categories/chatgpt/</loc>

@@ -1,25 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tauri on 学无止境</title>
-    <link>https://sunnnner.github.io/categories/tauri/</link>
-    <description>Recent content in Tauri on 学无止境</description>
+    <title>Actix-Web on 学无止境</title>
+    <link>https://sunnnner.github.io/tags/actix-web/</link>
+    <description>Recent content in Actix-Web on 学无止境</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 11 May 2024 10:17:42 +0800</lastBuildDate>
-    <atom:link href="https://sunnnner.github.io/categories/tauri/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://sunnnner.github.io/tags/actix-web/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tauri如何与actix Web结合</title>
       <link>https://sunnnner.github.io/posts/tauri%E5%A6%82%E4%BD%95%E4%B8%8Eactix-web%E7%BB%93%E5%90%88/</link>
       <pubDate>Sat, 11 May 2024 10:17:42 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/tauri%E5%A6%82%E4%BD%95%E4%B8%8Eactix-web%E7%BB%93%E5%90%88/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tauri Http连接池</title>
-      <link>https://sunnnner.github.io/posts/tauri-http%E8%BF%9E%E6%8E%A5%E6%B1%A0/</link>
-      <pubDate>Thu, 09 May 2024 14:04:05 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/tauri-http%E8%BF%9E%E6%8E%A5%E6%B1%A0/</guid>
       <description></description>
     </item>
   </channel>
