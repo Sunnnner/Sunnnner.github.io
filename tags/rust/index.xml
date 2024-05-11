@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rust on 学无止境</title>
+    <link>https://sunnnner.github.io/tags/rust/</link>
+    <description>Recent content in Rust on 学无止境</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 11 Apr 2023 15:46:40 +0800</lastBuildDate>
+    <atom:link href="https://sunnnner.github.io/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>docker如何部署rudedesktop中继服务器</title>
+      <link>https://sunnnner.github.io/posts/docker/docker%E9%83%A8%E7%BD%B2rust-desktop%E4%B8%AD%E7%BB%A7%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <pubDate>Tue, 11 Apr 2023 15:46:40 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/docker/docker%E9%83%A8%E7%BD%B2rust-desktop%E4%B8%AD%E7%BB%A7%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <description>使用docker run --rm --entrypoint /usr/bin/rustdesk-utils rustdesk/rustdesk-server-s6:latest genkeypair 生成秘钥&#xA;docker-compose.yml&#xA;version: &amp;#39;3&amp;#39; services: rustdesk-server: container_name: rustdesk-server ports: - 21115:21115 - 21116:21116 - 21116:21116/udp - 21117:21117 - 21118:21118 - 21119:21119 image: rustdesk/rustdesk-server-s6:latest environment: - &amp;#34;RELAY=rustdesk.example.com:21117&amp;#34; - &amp;#34;ENCRYPTED_ONLY=1&amp;#34; - &amp;#34;DB_URL=/db/db_v2.sqlite3&amp;#34; volumes: - ./db:/db restart: unless-stopped secrets: - key_pub - key_priv secrets: key_pub: file: secrets/id_ed25519.pub key_priv: file: secrets/id_ed25519 or version: &amp;#39;3&amp;#39; services: rustdesk-server: container_name: rustdesk-server ports: - 21115:21115 - 21116:21116 - 21116:21116/udp - 21117:21117 - 21118:21118 - 21119:21119 image: rustdesk/rustdesk-server-s6:latest environment: - &amp;#34;RELAY=rustdesk.</description>
+    </item>
+  </channel>
+</rss>

@@ -10,9 +10,9 @@
     <atom:link href="https://sunnnner.github.io/categories/api/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>RESTful_API设计指南</title>
-      <link>https://sunnnner.github.io/posts/restful_api%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97/</link>
+      <link>https://sunnnner.github.io/posts/restful/restful_api%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97/</link>
       <pubDate>Thu, 12 Sep 2019 11:43:08 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/restful_api%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97/</guid>
+      <guid>https://sunnnner.github.io/posts/restful/restful_api%E8%AE%BE%E8%AE%A1%E6%8C%87%E5%8D%97/</guid>
       <description>&lt;blockquote&gt;&#xA;&lt;p&gt;网络应用程序，分为前端和后端两个部分， 当前的发展趋势， 就是前段设备层出不穷&#xA;因此，必须有一种统一的机制，方便不同的前端设备与后端进行通信， 这导致API架构的流行， &amp;gt; 甚至出现APIfirst的设计思想。&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
     </item>
   </channel>

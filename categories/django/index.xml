@@ -6,97 +6,97 @@
     <description>Recent content in Django on 学无止境</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 May 2024 14:18:11 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 11 May 2024 11:56:12 +0800</lastBuildDate>
     <atom:link href="https://sunnnner.github.io/categories/django/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Django Admin Permissions控制</title>
-      <link>https://sunnnner.github.io/posts/django-admin-permissions%E6%8E%A7%E5%88%B6/</link>
+      <link>https://sunnnner.github.io/posts/django/django-admin-permissions%E6%8E%A7%E5%88%B6/</link>
       <pubDate>Tue, 24 Aug 2021 09:26:52 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/django-admin-permissions%E6%8E%A7%E5%88%B6/</guid>
+      <guid>https://sunnnner.github.io/posts/django/django-admin-permissions%E6%8E%A7%E5%88%B6/</guid>
       <description></description>
     </item>
     <item>
       <title>Django Orm聚合分组知识</title>
-      <link>https://sunnnner.github.io/posts/django-orm%E8%81%9A%E5%90%88%E5%88%86%E7%BB%84%E7%9F%A5%E8%AF%86/</link>
+      <link>https://sunnnner.github.io/posts/django/django-orm%E8%81%9A%E5%90%88%E5%88%86%E7%BB%84%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Thu, 12 Aug 2021 16:19:36 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/django-orm%E8%81%9A%E5%90%88%E5%88%86%E7%BB%84%E7%9F%A5%E8%AF%86/</guid>
+      <guid>https://sunnnner.github.io/posts/django/django-orm%E8%81%9A%E5%90%88%E5%88%86%E7%BB%84%E7%9F%A5%E8%AF%86/</guid>
       <description></description>
     </item>
     <item>
       <title>Django文件压缩</title>
-      <link>https://sunnnner.github.io/posts/django%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9/</link>
+      <link>https://sunnnner.github.io/posts/django/django%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9/</link>
       <pubDate>Fri, 11 Oct 2019 15:28:02 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/django%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9/</guid>
+      <guid>https://sunnnner.github.io/posts/django/django%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9/</guid>
       <description></description>
     </item>
     <item>
       <title>静态文件的含义以及配置</title>
-      <link>https://sunnnner.github.io/posts/%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AE/</link>
+      <link>https://sunnnner.github.io/posts/django/%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Thu, 10 Oct 2019 15:27:14 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AE/</guid>
+      <guid>https://sunnnner.github.io/posts/django/%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AE/</guid>
       <description></description>
     </item>
     <item>
       <title>Django Minio开发过程</title>
-      <link>https://sunnnner.github.io/posts/django-minio%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B/</link>
+      <link>https://sunnnner.github.io/posts/django/django-minio%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B/</link>
       <pubDate>Sun, 06 Oct 2019 14:17:12 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/django-minio%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B/</guid>
+      <guid>https://sunnnner.github.io/posts/django/django-minio%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B/</guid>
       <description></description>
     </item>
     <item>
       <title>JWT</title>
-      <link>https://sunnnner.github.io/posts/jwt/</link>
+      <link>https://sunnnner.github.io/posts/jwt/jwt/</link>
       <pubDate>Wed, 02 Oct 2019 14:08:17 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/jwt/</guid>
+      <guid>https://sunnnner.github.io/posts/jwt/jwt/</guid>
       <description></description>
     </item>
     <item>
       <title>Django_rest_framework</title>
-      <link>https://sunnnner.github.io/posts/django_rest_framework/</link>
+      <link>https://sunnnner.github.io/posts/django/drf/django_rest_framework/</link>
       <pubDate>Sun, 08 Sep 2019 11:37:47 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/django_rest_framework/</guid>
+      <guid>https://sunnnner.github.io/posts/django/drf/django_rest_framework/</guid>
       <description></description>
     </item>
     <item>
       <title>Django中的FBV和CBV</title>
-      <link>https://sunnnner.github.io/posts/django%E4%B8%AD%E7%9A%84fbv%E5%92%8Ccbv/</link>
+      <link>https://sunnnner.github.io/posts/django/django%E4%B8%AD%E7%9A%84fbv%E5%92%8Ccbv/</link>
       <pubDate>Thu, 05 Sep 2019 11:34:25 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/django%E4%B8%AD%E7%9A%84fbv%E5%92%8Ccbv/</guid>
+      <guid>https://sunnnner.github.io/posts/django/django%E4%B8%AD%E7%9A%84fbv%E5%92%8Ccbv/</guid>
       <description></description>
     </item>
     <item>
       <title>Django定义USER四中方式</title>
-      <link>https://sunnnner.github.io/posts/django%E5%AE%9A%E4%B9%89user%E5%9B%9B%E4%B8%AD%E6%96%B9%E5%BC%8F/</link>
+      <link>https://sunnnner.github.io/posts/django/django%E5%AE%9A%E4%B9%89user%E5%9B%9B%E4%B8%AD%E6%96%B9%E5%BC%8F/</link>
       <pubDate>Mon, 03 Sep 2018 10:30:05 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/django%E5%AE%9A%E4%B9%89user%E5%9B%9B%E4%B8%AD%E6%96%B9%E5%BC%8F/</guid>
+      <guid>https://sunnnner.github.io/posts/django/django%E5%AE%9A%E4%B9%89user%E5%9B%9B%E4%B8%AD%E6%96%B9%E5%BC%8F/</guid>
       <description></description>
     </item>
     <item>
       <title>Celery任务队列</title>
-      <link>https://sunnnner.github.io/posts/celery%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97/</link>
+      <link>https://sunnnner.github.io/posts/celery/celery%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97/</link>
       <pubDate>Sun, 02 Sep 2018 10:29:21 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/celery%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97/</guid>
+      <guid>https://sunnnner.github.io/posts/celery/celery%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97/</guid>
       <description></description>
     </item>
     <item>
       <title>Django Redis配置</title>
-      <link>https://sunnnner.github.io/posts/django-redis%E9%85%8D%E7%BD%AE/</link>
+      <link>https://sunnnner.github.io/posts/django/django-redis%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Fri, 01 Jun 2018 10:20:47 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/django-redis%E9%85%8D%E7%BD%AE/</guid>
+      <guid>https://sunnnner.github.io/posts/django/django-redis%E9%85%8D%E7%BD%AE/</guid>
       <description></description>
     </item>
     <item>
       <title>Django用户模块</title>
-      <link>https://sunnnner.github.io/posts/django%E7%94%A8%E6%88%B7%E6%A8%A1%E5%9D%97/</link>
+      <link>https://sunnnner.github.io/posts/django/django%E7%94%A8%E6%88%B7%E6%A8%A1%E5%9D%97/</link>
       <pubDate>Fri, 01 Jun 2018 10:15:16 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/django%E7%94%A8%E6%88%B7%E6%A8%A1%E5%9D%97/</guid>
+      <guid>https://sunnnner.github.io/posts/django/django%E7%94%A8%E6%88%B7%E6%A8%A1%E5%9D%97/</guid>
       <description></description>
     </item>
     <item>
       <title>页面开发</title>
-      <link>https://sunnnner.github.io/posts/blog-%E5%95%86%E5%93%81%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E5%BC%80%E5%8F%91/</link>
+      <link>https://sunnnner.github.io/posts/django/blog-%E5%95%86%E5%93%81%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E5%BC%80%E5%8F%91/</link>
       <pubDate>Thu, 31 May 2018 18:47:29 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/blog-%E5%95%86%E5%93%81%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E5%BC%80%E5%8F%91/</guid>
+      <guid>https://sunnnner.github.io/posts/django/blog-%E5%95%86%E5%93%81%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E5%BC%80%E5%8F%91/</guid>
       <description></description>
     </item>
   </channel>

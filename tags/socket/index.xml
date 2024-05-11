@@ -6,20 +6,20 @@
     <description>Recent content in Socket on 学无止境</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 May 2024 14:18:11 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 12 Jul 2022 14:37:29 +0800</lastBuildDate>
     <atom:link href="https://sunnnner.github.io/tags/socket/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>网络概念与UDP编程</title>
-      <link>https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C%E6%A6%82%E5%BF%B5%E5%92%8Cudp%E7%BC%96%E7%A8%8B/</link>
+      <link>https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E6%A6%82%E5%BF%B5%E5%92%8Cudp%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C%E6%A6%82%E5%BF%B5%E5%92%8Cudp%E7%BC%96%E7%A8%8B/</guid>
+      <guid>https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E6%A6%82%E5%BF%B5%E5%92%8Cudp%E7%BC%96%E7%A8%8B/</guid>
       <description>&lt;h1 id=&#34;什么网络通信&#34;&gt;什么网络通信&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;网络的定义&lt;/li&gt;&#xA;&lt;li&gt;在电的系统中，由若干元件组成的用来使电信号按一定要求传输的电路或这种电路的部分，叫网络。&lt;/li&gt;&#xA;&lt;li&gt;现在一般指“三网”：电信网络、有线电视网络、计算机网络。狭义的含义即因特网。抽象意义上的网络。比如城市网络、交通网络、交际网络等。&lt;/li&gt;&#xA;&lt;li&gt;⽹际层也称为：⽹络层&lt;/li&gt;&#xA;&lt;li&gt;⽹络接⼝层也称为：链路层&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Pysocket</title>
-      <link>https://sunnnner.github.io/posts/pysocket/</link>
+      <link>https://sunnnner.github.io/posts/python/%E6%A8%A1%E5%9D%97/pysocket/</link>
       <pubDate>Thu, 10 Mar 2022 15:46:40 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/pysocket/</guid>
+      <guid>https://sunnnner.github.io/posts/python/%E6%A8%A1%E5%9D%97/pysocket/</guid>
       <description></description>
     </item>
   </channel>

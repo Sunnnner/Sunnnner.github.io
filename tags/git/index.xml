@@ -6,20 +6,27 @@
     <description>Recent content in Git on 学无止境</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Jul 2021 14:37:29 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 13 Dec 2023 11:44:52 +0800</lastBuildDate>
     <atom:link href="https://sunnnner.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Git Submodule更新主仓库</title>
+      <link>https://sunnnner.github.io/posts/git/%E8%BF%9B%E9%98%B6/git-submodule%E6%9B%B4%E6%96%B0%E4%B8%BB%E4%BB%93%E5%BA%93/</link>
+      <pubDate>Wed, 13 Dec 2023 11:44:52 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/git/%E8%BF%9B%E9%98%B6/git-submodule%E6%9B%B4%E6%96%B0%E4%B8%BB%E4%BB%93%E5%BA%93/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>git基础</title>
-      <link>https://sunnnner.github.io/posts/git%E5%9F%BA%E7%A1%80/</link>
+      <link>https://sunnnner.github.io/posts/git/%E5%9F%BA%E7%A1%80/git%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Mon, 12 Jul 2021 14:37:29 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/git%E5%9F%BA%E7%A1%80/</guid>
+      <guid>https://sunnnner.github.io/posts/git/%E5%9F%BA%E7%A1%80/git%E5%9F%BA%E7%A1%80/</guid>
       <description></description>
     </item>
     <item>
       <title>Git加速</title>
-      <link>https://sunnnner.github.io/posts/git%E5%8A%A0%E9%80%9F/</link>
+      <link>https://sunnnner.github.io/posts/git/%E8%BF%9B%E9%98%B6/git%E5%8A%A0%E9%80%9F/</link>
       <pubDate>Sat, 12 Oct 2019 15:29:07 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/git%E5%8A%A0%E9%80%9F/</guid>
+      <guid>https://sunnnner.github.io/posts/git/%E8%BF%9B%E9%98%B6/git%E5%8A%A0%E9%80%9F/</guid>
       <description></description>
     </item>
   </channel>

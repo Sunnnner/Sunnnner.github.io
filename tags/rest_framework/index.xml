@@ -6,13 +6,13 @@
     <description>Recent content in Rest_framework on 学无止境</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 May 2024 14:18:11 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 11 May 2024 11:56:12 +0800</lastBuildDate>
     <atom:link href="https://sunnnner.github.io/tags/rest_framework/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Django_rest_framework</title>
-      <link>https://sunnnner.github.io/posts/django_rest_framework/</link>
+      <link>https://sunnnner.github.io/posts/django/drf/django_rest_framework/</link>
       <pubDate>Sun, 08 Sep 2019 11:37:47 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/django_rest_framework/</guid>
+      <guid>https://sunnnner.github.io/posts/django/drf/django_rest_framework/</guid>
       <description></description>
     </item>
   </channel>

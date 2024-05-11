@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Django_rest_framework | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Django_rest_framework</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>08.09.2019</time>
+    <span>in</span>
+    
+      <a href="/categories/django">django</a>
+  </strong>
+  <span> • 97 words</span>
+  <span> • 1 minute read</span>
+  
+    <div>
+      Last updated on
+      <time>11.05.2024</time>
+    </div>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/rest_framework">rest_framework</a>
+    </div>
+  
+</div>
+
+      <div class="content"><p>为什么要使用Django_rest_framework
+能自动生成restful规范的API</p>
+<pre><code>代码简介 并且开发速度快
+</code></pre>
+<p>Django_rest_framework框架有什么组件
+序列化组件：serializers 对queryset序列化及对请求数据格式校验</p>
+<pre><code>路由组件：routers 进行路由开发
+
+视图组件： ModelViewSet 帮助开发者提供了一些类。 并在类中提供了多个方法
+
+认证组件： 写一个类并注册到选线类（authentication_classes）， 再类的authticate方法中编写认证逻辑
+
+权限组件：写一个类并注册到权限类（permission_classes）, 在类中的has_permission方法中编写认证逻辑
+
+频率限制： 写一个类并注册到频率类（throttle_classes）, 在类中的allow_request/wait方法中编写认证逻辑
+
+解析器 选择对数据解析的类， 在解析类中注册(parser_classes)
+
+渲染器 定义数据如何渲染到页面上， 在渲染器类中注册(render_classes)
+
+分页 对获取到的数据进行分页处理 pagination_class
+
+版本 版本控制用来在不同的客户端使用不同的行为
+
+在URL中设置version参数， 用户请求时候传入参数， 在request.version中获取版本, 根据版本不同，做不同处理
+</code></pre>
+<p>django rest framework框架的认证流程
+用户请求走进来进入APIView， 初始化了默认的认证方式</p>
+<pre><code>进入APIView.dispatch()方法， initial方法调用了request.user
+
+如果我们配置了认证类， 走我们自己认证类中的authentication方法
+</code></pre>
+<p>django rest framework如何实现的用户访问频率控制
+使用ip/用户账户作为建， 每次访问时间作为值， 构造一个字典数据， 存起来， 每次访问对时间列表进行判断</p>
+<pre><code>把没有访问的超时的删掉。 在计算列表剩余的元素就能做到频率限制了
+
+匿名账户， 使用IP控制， 但是无法完全控制， 因为用户可以更换代理IP
+
+登陆用户使用账号控制，但是如果有很多账号，也无法限制
+</code></pre>
+<p>如何实现用户登陆认证
+cookice session</p>
+<pre><code>token 登陆成功后生成的加密字符串
+
+JWT： json wed token 缩写， 他讲用户信息加密到token中 服务器不保存任何用户信息， 服务器通过使用保存的密匙来验证token的正确性
+</code></pre>
+<p>rest_framework序列化组件的作用,以及一些外键关系的钩子方法</p>
+<pre><code>作用：帮助我们序列化数据
+```python
+1.choices  get_字段名_display
+2.ForeignKey source=orm 操作
+3.ManyToManyFiled  SerializerMethodField()
+                    def get_字段名():
+                    return 自定义
+```
+</code></pre>
+<p>PV 和 UV</p>
+<pre><code>pv :页面访问量打开一次算一次刷新也算
+
+uv ： 独立访问数， 一台电脑算一个访客
+</code></pre></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

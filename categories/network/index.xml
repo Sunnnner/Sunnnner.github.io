@@ -10,30 +10,30 @@
     <atom:link href="https://sunnnner.github.io/categories/network/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>TCP编程</title>
-      <link>https://sunnnner.github.io/posts/tcp%E7%BC%96%E7%A8%8B/</link>
+      <link>https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C/tcp%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Tue, 12 Jul 2022 14:37:53 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/tcp%E7%BC%96%E7%A8%8B/</guid>
+      <guid>https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C/tcp%E7%BC%96%E7%A8%8B/</guid>
       <description>&lt;p&gt;ip.addr 过滤ip地址&#xA;udp.port 过滤端口&lt;/p&gt;</description>
     </item>
     <item>
       <title>WAP服务器</title>
-      <link>https://sunnnner.github.io/posts/wap%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <link>https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C/wap%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
       <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/wap%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <guid>https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C/wap%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;网络层复习&#34;&gt;网络层复习&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;应用层：解决要传递什么数据&lt;/li&gt;&#xA;&lt;li&gt;传输层：解决如何传递数据，使用udp,tcp理解位快递公司&lt;/li&gt;&#xA;&lt;li&gt;网络层：定位目标的ip地址&lt;/li&gt;&#xA;&lt;li&gt;链路层：使用工具进行传输&lt;/li&gt;&#xA;&lt;li&gt;建立链接的三次握手&lt;/li&gt;&#xA;&lt;li&gt;数据传输&lt;/li&gt;&#xA;&lt;li&gt;断开链接的四次挥手&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>什么是跨域及解决办法</title>
-      <link>https://sunnnner.github.io/posts/%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link>
+      <link>https://sunnnner.github.io/posts/django/%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link>
       <pubDate>Mon, 09 Sep 2019 11:39:55 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</guid>
+      <guid>https://sunnnner.github.io/posts/django/%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</guid>
       <description></description>
     </item>
     <item>
       <title>什么是RPC</title>
-      <link>https://sunnnner.github.io/posts/%E4%BB%80%E4%B9%88%E6%98%AFrpc/</link>
+      <link>https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C/%E4%BB%80%E4%B9%88%E6%98%AFrpc/</link>
       <pubDate>Sat, 07 Sep 2019 11:36:55 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/%E4%BB%80%E4%B9%88%E6%98%AFrpc/</guid>
+      <guid>https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C/%E4%BB%80%E4%B9%88%E6%98%AFrpc/</guid>
       <description></description>
     </item>
   </channel>

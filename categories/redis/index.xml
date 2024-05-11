@@ -10,9 +10,9 @@
     <atom:link href="https://sunnnner.github.io/categories/redis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Redis配置</title>
-      <link>https://sunnnner.github.io/posts/redis%E9%85%8D%E7%BD%AE/</link>
+      <link>https://sunnnner.github.io/posts/redis/redis%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Thu, 31 May 2018 18:53:17 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/redis%E9%85%8D%E7%BD%AE/</guid>
+      <guid>https://sunnnner.github.io/posts/redis/redis%E9%85%8D%E7%BD%AE/</guid>
       <description></description>
     </item>
   </channel>

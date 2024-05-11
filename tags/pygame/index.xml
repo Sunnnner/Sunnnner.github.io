@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pygame on 学无止境</title>
+    <link>https://sunnnner.github.io/tags/pygame/</link>
+    <description>Recent content in Pygame on 学无止境</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 12 Jul 2022 14:37:29 +0800</lastBuildDate>
+    <atom:link href="https://sunnnner.github.io/tags/pygame/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>pygame</title>
+      <link>https://sunnnner.github.io/posts/python/%E6%A8%A1%E5%9D%97/pygame%E6%A8%A1%E5%9D%97%E5%BA%94%E7%94%A8/</link>
+      <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/python/%E6%A8%A1%E5%9D%97/pygame%E6%A8%A1%E5%9D%97%E5%BA%94%E7%94%A8/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;pygame&#34;&gt;pygame&lt;/h1&gt;&#xA;&lt;hr&gt;</description>
+    </item>
+  </channel>
+</rss>

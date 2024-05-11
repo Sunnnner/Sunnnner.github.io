@@ -10,9 +10,9 @@
     <atom:link href="https://sunnnner.github.io/tags/actix-web/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tauri如何与actix Web结合</title>
-      <link>https://sunnnner.github.io/posts/rust/tauri/tauri%E5%A6%82%E4%BD%95%E4%B8%8Eactix-web%E7%BB%93%E5%90%88/</link>
+      <link>https://sunnnner.github.io/posts/rust/%E6%A1%86%E6%9E%B6/tauri/tauri%E5%A6%82%E4%BD%95%E4%B8%8Eactix-web%E7%BB%93%E5%90%88/</link>
       <pubDate>Sat, 11 May 2024 10:17:42 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/rust/tauri/tauri%E5%A6%82%E4%BD%95%E4%B8%8Eactix-web%E7%BB%93%E5%90%88/</guid>
+      <guid>https://sunnnner.github.io/posts/rust/%E6%A1%86%E6%9E%B6/tauri/tauri%E5%A6%82%E4%BD%95%E4%B8%8Eactix-web%E7%BB%93%E5%90%88/</guid>
       <description></description>
     </item>
   </channel>

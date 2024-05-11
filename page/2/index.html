@@ -67,8 +67,8 @@
 		
 		
 			<article class="summary">
-  <a href="https://sunnnner.github.io/posts/liunx-%E7%BA%BF%E7%A8%8B/">
-    <h1 class="title">Liunx编程-python线程</h1>
+  <a href="https://sunnnner.github.io/posts/python/%E8%BF%9B%E9%98%B6/%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+    <h1 class="title">函数进行单元测试</h1>
     
   </a>
   
@@ -87,18 +87,115 @@
 <div class="post-meta">
   <strong>
     <span>Posted on</span>
-    <time>12.07.2022</time>
+    <time>12.04.2023</time>
     <span>in</span>
     
       <a href="/categories/python">python</a>
   </strong>
- <span> • 124 words</span>
+ <span> • 118 words</span>
  <span> • 1 minute read</span>
   
     <div>
       <span>Tags:</span>
       
-        <a href="/tags/%E7%BA%BF%E7%A8%8B">线程</a>
+        <a href="/tags/test">test</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p>单个函数进行测试 示例 def delRepeat(data, key): &#34;&#34;&#34;Return delete repeat dict &gt;&gt;&gt; delRepeat([{&#34;id&#34;: 1, &#34;value&#34;: 2}, {&#34;id&#34;: 1, &#34;value&#34;: 2}, {&#34;id&#34;: 2, &#34;value&#34;: 3}], &#34;id&#34;) [{&#39;id&#39;: 1, &#39;value&#39;: 2}, {&#39;id&#39;: 2, &#39;value&#39;: 3}] &#34;&#34;&#34; new_data = [] values = [] for d in data: if d[key] not in values: new_data.append(d) values.append(d[key]) return new_data 执行 python3 -m doctest xxx.py 若无错误提示则通过
+方式二
+def delRepeat(data, key): &#34;&#34;&#34;Return delete repeat dict &#34;&#34;&#34; new_data = [] values = [] for d in data: if d[key] not in values: new_data.</p>
+    
+      <a href="https://sunnnner.github.io/posts/python/%E8%BF%9B%E9%98%B6/%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://sunnnner.github.io/posts/docker/docker%E9%83%A8%E7%BD%B2rust-desktop%E4%B8%AD%E7%BB%A7%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+    <h1 class="title">docker如何部署rudedesktop中继服务器</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>11.04.2023</time>
+    <span>in</span>
+    
+      <a href="/categories/docker">docker</a>
+  </strong>
+ <span> • 92 words</span>
+ <span> • 1 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/rust">rust</a>, 
+        <a href="/tags/desktop">desktop</a>
+    </div>
+  
+</div>
+
+  <div class="content">
+    <p>使用docker run --rm --entrypoint /usr/bin/rustdesk-utils rustdesk/rustdesk-server-s6:latest genkeypair 生成秘钥
+docker-compose.yml
+version: &#39;3&#39; services: rustdesk-server: container_name: rustdesk-server ports: - 21115:21115 - 21116:21116 - 21116:21116/udp - 21117:21117 - 21118:21118 - 21119:21119 image: rustdesk/rustdesk-server-s6:latest environment: - &#34;RELAY=rustdesk.example.com:21117&#34; - &#34;ENCRYPTED_ONLY=1&#34; - &#34;DB_URL=/db/db_v2.sqlite3&#34; volumes: - ./db:/db restart: unless-stopped secrets: - key_pub - key_priv secrets: key_pub: file: secrets/id_ed25519.pub key_priv: file: secrets/id_ed25519 or version: &#39;3&#39; services: rustdesk-server: container_name: rustdesk-server ports: - 21115:21115 - 21116:21116 - 21116:21116/udp - 21117:21117 - 21118:21118 - 21119:21119 image: rustdesk/rustdesk-server-s6:latest environment: - &#34;RELAY=rustdesk.</p>
+    
+      <a href="https://sunnnner.github.io/posts/docker/docker%E9%83%A8%E7%BD%B2rust-desktop%E4%B8%AD%E7%BB%A7%E6%9C%8D%E5%8A%A1%E5%99%A8/">Read more...</a>
+    
+  </div>
+</article>
+
+		
+			<article class="summary">
+  <a href="https://sunnnner.github.io/posts/python/%E8%BF%9B%E9%98%B6/%E5%88%97%E8%A1%A8%E5%AD%97%E5%85%B8%E5%8E%BB%E9%87%8D%E6%B1%82%E5%92%8C/">
+    <h1 class="title">列表字典去重求和</h1>
+    
+  </a>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>11.03.2023</time>
+    <span>in</span>
+    
+      <a href="/categories/python">python</a>
+  </strong>
+ <span> • 40 words</span>
+ <span> • 1 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/list">list</a>
     </div>
   
 </div>
@@ -106,15 +203,15 @@
   <div class="content">
     <p></p>
     
-      <a href="https://sunnnner.github.io/posts/liunx-%E7%BA%BF%E7%A8%8B/">Read more...</a>
+      <a href="https://sunnnner.github.io/posts/python/%E8%BF%9B%E9%98%B6/%E5%88%97%E8%A1%A8%E5%AD%97%E5%85%B8%E5%8E%BB%E9%87%8D%E6%B1%82%E5%92%8C/">Read more...</a>
     
   </div>
 </article>
 
 		
 			<article class="summary">
-  <a href="https://sunnnner.github.io/posts/liunx%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B/">
-    <h1 class="title">Liunx编程-python进程</h1>
+  <a href="https://sunnnner.github.io/posts/python/%E6%A8%A1%E5%9D%97/python%E8%8E%AB%E6%9D%BF%E5%9D%97mako%E8%AF%AD%E6%B3%95/">
+    <h1 class="title">Python模板库mako语法</h1>
     
   </a>
   
@@ -133,18 +230,18 @@
 <div class="post-meta">
   <strong>
     <span>Posted on</span>
-    <time>12.07.2022</time>
+    <time>10.03.2023</time>
     <span>in</span>
     
       <a href="/categories/python">python</a>
   </strong>
- <span> • 181 words</span>
+ <span> • 32 words</span>
  <span> • 1 minute read</span>
   
     <div>
       <span>Tags:</span>
       
-        <a href="/tags/%E8%BF%9B%E7%A8%8B">进程</a>
+        <a href="/tags/mako">mako</a>
     </div>
   
 </div>
@@ -152,15 +249,15 @@
   <div class="content">
     <p></p>
     
-      <a href="https://sunnnner.github.io/posts/liunx%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B/">Read more...</a>
+      <a href="https://sunnnner.github.io/posts/python/%E6%A8%A1%E5%9D%97/python%E8%8E%AB%E6%9D%BF%E5%9D%97mako%E8%AF%AD%E6%B3%95/">Read more...</a>
     
   </div>
 </article>
 
 		
 			<article class="summary">
-  <a href="https://sunnnner.github.io/posts/linux%E6%93%8D%E4%BD%9C%E4%BB%A3%E7%A0%81/">
-    <h1 class="title">Liunx编程-命令</h1>
+  <a href="https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C/tcp%E7%BC%96%E7%A8%8B/">
+    <h1 class="title">TCP编程</h1>
     
   </a>
   
@@ -182,97 +279,24 @@
     <time>12.07.2022</time>
     <span>in</span>
     
-      <a href="/categories/linux">linux</a>
+      <a href="/categories/network">network</a>
   </strong>
- <span> • 466 words</span>
- <span> • 3 minute read</span>
+ <span> • 27 words</span>
+ <span> • 1 minute read</span>
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/tcp">tcp</a>
+    </div>
   
 </div>
 
   <div class="content">
-    <p></p>
+    <p><p>ip.addr 过滤ip地址
+udp.port 过滤端口</p></p>
     
-      <a href="https://sunnnner.github.io/posts/linux%E6%93%8D%E4%BD%9C%E4%BB%A3%E7%A0%81/">Read more...</a>
-    
-  </div>
-</article>
-
-		
-			<article class="summary">
-  <a href="https://sunnnner.github.io/posts/mongodb%E5%9F%BA%E7%A1%80/">
-    <h1 class="title">mongodb基础</h1>
-    
-  </a>
-  
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="post-meta">
-  <strong>
-    <span>Posted on</span>
-    <time>12.07.2022</time>
-    <span>in</span>
-    
-      <a href="/categories/mongodb">mongodb</a>
-  </strong>
- <span> • 340 words</span>
- <span> • 2 minute read</span>
-  
-</div>
-
-  <div class="content">
-    <p></p>
-    
-      <a href="https://sunnnner.github.io/posts/mongodb%E5%9F%BA%E7%A1%80/">Read more...</a>
-    
-  </div>
-</article>
-
-		
-			<article class="summary">
-  <a href="https://sunnnner.github.io/posts/mysql/">
-    <h1 class="title">Mysql安装</h1>
-    
-  </a>
-  
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="post-meta">
-  <strong>
-    <span>Posted on</span>
-    <time>12.07.2022</time>
-    <span>in</span>
-    
-      <a href="/categories/mysql">mysql</a>
-  </strong>
- <span> • 373 words</span>
- <span> • 2 minute read</span>
-  
-</div>
-
-  <div class="content">
-    <p><hr></p>
-    
-      <a href="https://sunnnner.github.io/posts/mysql/">Read more...</a>
+      <a href="https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C/tcp%E7%BC%96%E7%A8%8B/">Read more...</a>
     
   </div>
 </article>
@@ -282,7 +306,7 @@
   
     <a href="/">Previous Page</a>
   
-  2 of 24
+  2 of 25
   
     <a href="/page/3/">Next Page</a>
   

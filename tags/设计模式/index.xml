@@ -10,23 +10,23 @@
     <atom:link href="https://sunnnner.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python装饰器</title>
-      <link>https://sunnnner.github.io/posts/python%E8%A3%85%E9%A5%B0%E5%99%A8/</link>
+      <link>https://sunnnner.github.io/posts/python/%E8%BF%9B%E9%98%B6/python%E8%A3%85%E9%A5%B0%E5%99%A8/</link>
       <pubDate>Fri, 07 Sep 2018 10:35:21 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/python%E8%A3%85%E9%A5%B0%E5%99%A8/</guid>
+      <guid>https://sunnnner.github.io/posts/python/%E8%BF%9B%E9%98%B6/python%E8%A3%85%E9%A5%B0%E5%99%A8/</guid>
       <description></description>
     </item>
     <item>
       <title>Python工厂模式</title>
-      <link>https://sunnnner.github.io/posts/python%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/python%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Thu, 06 Sep 2018 10:34:03 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/python%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/python%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</guid>
       <description></description>
     </item>
     <item>
       <title>Python单例</title>
-      <link>https://sunnnner.github.io/posts/python%E5%8D%95%E4%BE%8B/</link>
+      <link>https://sunnnner.github.io/posts/python/%E5%9F%BA%E7%A1%80/python%E5%8D%95%E4%BE%8B/</link>
       <pubDate>Wed, 05 Sep 2018 10:32:39 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/python%E5%8D%95%E4%BE%8B/</guid>
+      <guid>https://sunnnner.github.io/posts/python/%E5%9F%BA%E7%A1%80/python%E5%8D%95%E4%BE%8B/</guid>
       <description></description>
     </item>
   </channel>
