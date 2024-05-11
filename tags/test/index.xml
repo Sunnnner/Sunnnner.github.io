@@ -13,7 +13,7 @@
       <link>https://sunnnner.github.io/posts/python/%E8%BF%9B%E9%98%B6/%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/</link>
       <pubDate>Wed, 12 Apr 2023 15:46:40 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/python/%E8%BF%9B%E9%98%B6/%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/</guid>
-      <description>单个函数进行测试 示例 def delRepeat(data, key): &amp;#34;&amp;#34;&amp;#34;Return delete repeat dict &amp;gt;&amp;gt;&amp;gt; delRepeat([{&amp;#34;id&amp;#34;: 1, &amp;#34;value&amp;#34;: 2}, {&amp;#34;id&amp;#34;: 1, &amp;#34;value&amp;#34;: 2}, {&amp;#34;id&amp;#34;: 2, &amp;#34;value&amp;#34;: 3}], &amp;#34;id&amp;#34;) [{&amp;#39;id&amp;#39;: 1, &amp;#39;value&amp;#39;: 2}, {&amp;#39;id&amp;#39;: 2, &amp;#39;value&amp;#39;: 3}] &amp;#34;&amp;#34;&amp;#34; new_data = [] values = [] for d in data: if d[key] not in values: new_data.append(d) values.append(d[key]) return new_data 执行 python3 -m doctest xxx.py 若无错误提示则通过&#xA;方式二&#xA;def delRepeat(data, key): &amp;#34;&amp;#34;&amp;#34;Return delete repeat dict &amp;#34;&amp;#34;&amp;#34; new_data = [] values = [] for d in data: if d[key] not in values: new_data.</description>
+      <description></description>
     </item>
   </channel>
 </rss>

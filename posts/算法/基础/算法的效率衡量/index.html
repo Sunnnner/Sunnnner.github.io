@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>算法效率 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">算法效率</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>16.04.2023</time>
+    <span>in</span>
+    
+      <a href="/categories/%E7%AE%97%E6%B3%95">算法</a>
+  </strong>
+  <span> • 69 words</span>
+  <span> • 1 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>
+    </div>
+  
+</div>
+
+      <div class="content"><h1 id="执行时间反应算法效率">执行时间反应算法效率</h1>
+<ul>
+<li>实现算法程序的执行时间可以反应出算法的效率，即算法的优劣</li>
+</ul>
+<h1 id="单靠时间值绝对可信吗">单靠时间值绝对可信吗</h1>
+<ul>
+<li>单纯依靠时间来比较算法的优劣并不一定是客观准确的！</li>
+</ul>
+<h1 id="时间复杂读与大o记法">时间复杂读与“大O记法”</h1>
+<ul>
+<li>“大O记法” 对于单调的整数函数F，如果存在一个整数函数G和实常数 C &gt; 0,使得对于充分大的N总有F(n) &lt; c*g(n), 就说函数G是F的一个渐进函数（忽略常数），记为f(n)=O(g(n))， 也就是说，在趋向无穷的极限意义下，函数f的增长速度受到函数g的约束，亦即函数f与函数g的特征相似。</li>
+<li>时间复杂度：假设存在函数g，使得算法A处理规模为N的问题示例所用时间为T(n)=O(g(n)), 则称O(g(n))为算法A的渐进时间复杂度，简称时间复杂度，记为T(n).</li>
+</ul>
+<h1 id="最坏时间复杂度">最坏时间复杂度</h1>
+<ul>
+<li>分析算法，最优时间复杂度（算法完成工作最少需要多少基本操作）</li>
+<li>最坏时间复杂度（算法完成工作最多需要多少基本操作）</li>
+<li>平均时间复杂度（算法完成工作平均需要多少基本操作）</li>
+<li>我们主要关注最坏时间复杂度</li>
+</ul>
+<h1 id="时间复杂度的几条基本计算规则">时间复杂度的几条基本计算规则</h1>
+<ul>
+<li>基本操作，即只有常数项，认为其时间复杂度为O(1)</li>
+<li>顺序结构，时间复杂度按加法进行计算</li>
+<li>循环结构，时间复杂度按乘法进行计算</li>
+<li>分支结构，时间复杂取最大值</li>
+<li>判断一个算法的效率时，往往只需要关注操纵数量的最高次项，其他次要项和常数项可以忽略</li>
+<li>在没有特殊说明时，我们所分析的算法的时间复杂度都是指最坏时间复杂度。</li>
+</ul>
+<h1 id="常见时间复杂度">常见时间复杂度</h1>
+<ul>
+<li>2n+3 &mdash;&ndash;&gt; O(n)</li>
+<li>3n^2+2n+1   &mdash;&ndash;&gt; O(n^2)</li>
+<li>5log2n+20  &mdash;-&gt; O(logn)</li>
+<li>2n+3nlog2n+19 &mdash;-&gt;(nlogn)</li>
+<li>6n^3 + 2n^2 + 3n +4  &mdash;-&gt;(O(n^3))</li>
+<li>2^n &mdash;-&gt;(O(2^n))</li>
+<li>注意，经常将log2n(以2为底的对数)简写成logn</li>
+</ul>
+<h1 id="常见时间复杂度之间的关系">常见时间复杂度之间的关系</h1>
+<ul>
+<li>所消耗的时间从小到大</li>
+<li>O(1) &lt; O(logn) &lt; O(n) &lt; O(nlogn) &lt; O(n2) &lt; O(n3) &lt; O(2n) &lt; O(n!) &lt; O(nn)</li>
+</ul></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

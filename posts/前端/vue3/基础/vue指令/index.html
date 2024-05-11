@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>vue指令 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">vue指令</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>19.04.2023</time>
+    <span>in</span>
+    
+      <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>
+  </strong>
+  <span> • 133 words</span>
+  <span> • 1 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/vue">vue</a>
+    </div>
+  
+</div>
+
+      <div class="content"><ul>
+<li>使用工具初始化vue项目</li>
+<li>npm</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># npm 6.+</span>
+</span></span><span style="display:flex;"><span>npm init vite@latest demoprojectname --template vue
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># npm 7.+</span>
+</span></span><span style="display:flex;"><span>- npm init vite@latest demoprojectname -- --template vue
+</span></span></code></pre></div><ul>
+<li>yarn</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>yarn create vite project_name --template vue
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cd project_name
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>yarn 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>yarn dev
+</span></span></code></pre></div><ul>
+<li><code>v-bind</code> 将这个元素节点的<code>title</code>attribute和当前活跃实例的<code>message</code>property保持一致</li>
+<li>to对象的点击</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">template</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span>&gt;&lt;<span style="color:#f92672">button</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;change&#34;</span>&gt;&lt;/<span style="color:#f92672">button</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span>&gt;{{ <span style="color:#a6e22e">state</span>}} &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">script</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> {<span style="color:#a6e22e">toRef</span> <span style="color:#a6e22e">reactive</span>} <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;vue&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">reactive</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">count</span>: <span style="color:#66d9ef">1</span>,
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">state</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">toRef</span>(<span style="color:#a6e22e">data</span>, <span style="color:#e6db74">&#39;count&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">change</span> <span style="color:#f92672">=</span> () <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">value</span><span style="color:#f92672">++</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>
+<p>上面的代码代表响应式刷新</p>
+</li>
+<li>
+<p><code>computed</code> 计算属性就是当依赖的属性的值发生变化的时候，才会触发它的更改，如果依赖的值不变，则使用缓存中的属性值</p>
+</li>
+<li>
+<p><code>reduce</code>与<code>reduceRight</code> 数组归并方法， 这两个方法都会迭代数组中的所有项，并在此基础上构建一个返回值。reduce从第一到最后，reduceRight从最后到第一</p>
+</li>
+<li>
+<p>reduce接受四个参数<code>reduce((prev,next) =&gt; {return prev + (netx)}, 0)</code> prev代表当前计算所得的值，next代表下一个值, 默认返回0</p>
+</li>
+<li>
+<p><code>watch</code>监听函数可以获取改变后的值与改变前的值</p>
+</li>
+<li>
+<p><code>watchEffect</code> 立即执行传入的一个函数，同时响应式追踪其依赖，并在其依赖变更的时候重新运行该函数，非惰性，会默认执行一次</p>
+</li>
+<li>
+<p><code>watchEffect</code> 清除副作用，可以处理你的逻辑例如防抖动</p>
+</li>
+</ul>
+<h4 id="父子组件传参">父子组件传参</h4>
+<ul>
+<li>父组件通过<code>v-bind</code>绑定一个数据，然后子组件通过<code>defineProps</code>接受过来的值</li>
+<li>父组件绑定值后面跟随的参数<code>:xx</code>一定要与子组件<code>defineProps</code>中定义的值一致</li>
+<li>父组件向子组件使用bind一类的函数进行传参</li>
+<li>子组件向父组件传参使用defindxxx一类的默认函数</li>
+</ul>
+<h4 id="动态组件">动态组件</h4>
+<ul>
+<li>vue 中style中的<code>scoped</code> 是为了避免css样式之间的污染，当一个style标签拥有<code>scoped</code>这个属性的时候，他的css样式只作用于当前组件，通过设置该属性，使组件之间的样式不互相污染</li>
+<li>在一个style中书写样式我们可以使用<code>@xxx</code>来了表示公有属性</li>
+<li>在同一组类型样式中<code>&amp;</code>代表当前类型样式名称</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#f92672">style</span> <span style="color:#f92672">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;less&#34;</span> <span style="color:#f92672">scoped</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    @<span style="color:#66d9ef">border</span><span style="color:#f92672">:</span> #ccc
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">card</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">border</span><span style="color:#f92672">:</span> <span style="color:#f92672">1px</span> <span style="color:#f92672">solid</span> @<span style="color:#66d9ef">border</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&amp;</span>:<span style="color:#a6e22e">hover</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">box-shadow</span>: <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span> <span style="color:#f92672">@</span><span style="color:#66d9ef">border</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&amp;</span><span style="color:#f92672">-content</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">10</span> px;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/</span><span style="color:#f92672">style</span><span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><ul>
+<li>普通函数与箭头函数：普通函数中的this指向是动态的，箭头函数中的this是静态的</li>
+<li>css 中组件不能铺满全屏的原因是因为<code>margin</code>边框数据太大我们改成<code>-8px -8px auto</code>就可以了</li>
+</ul></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

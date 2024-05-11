@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>python性能分析与数据结构 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">python性能分析与数据结构</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>17.04.2023</time>
+    <span>in</span>
+    
+      <a href="/categories/python">python</a>
+  </strong>
+  <span> • 73 words</span>
+  <span> • 1 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>
+    </div>
+  
+</div>
+
+      <div class="content"><ul>
+<li><input checked="" disabled="" type="checkbox"> 测试pop操作，pop最后一个元素的效率远远高于pop的第一个元素</li>
+</ul>
+<ol>
+<li>数据结构</li>
+</ol>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 数据结构只是静态的描述了数据元素之间的关系。</li>
+<li><input checked="" disabled="" type="checkbox"> 高效的程序需要在数据结构的基础上设计和选择算法。</li>
+</ul>
+<h5 id="程序--数据结构--算法">程序 = 数据结构 + 算法</h5>
+<h5 id="总结算法是为了解决实际问题而设计的数据结构是算法需要处理的问题载体">总结：算法是为了解决实际问题而设计的，数据结构是算法需要处理的问题载体</h5>
+<ol>
+<li>抽象数据类型(Abstract Data Type)</li>
+</ol>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 抽象数据类型(ADT)的含义是指一个数学模型以及定义在此数学模型上的一组操作。即把数据类型和数据类型上的运算捆在一起，进行封装。引入抽象数据类型的目的是把数据类型的表示和数据类型上运算的实现与这些数据类型和运算在程序中的引用隔开，使它们相互独立。</li>
+<li>最常用的数据运算有五种：
+<ul>
+<li>插入</li>
+<li>删除</li>
+<li>修改</li>
+<li>查找</li>
+<li>排序</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>顺序表</li>
+</ol>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 顺序表，将元素顺序地存放在一块连续的存储区里，元素间的顺序关系由它们的存储顺序自然表示。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>逻辑地址</th>
+<th>元素存储</th>
+<th>物理地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>e0</td>
+<td>l0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>e1</td>
+<td>l0+1*c</td>
+</tr>
+<tr>
+<td>2</td>
+<td>e2</td>
+<td>l0+2*c</td>
+</tr>
+<tr>
+<td>3</td>
+<td>e3</td>
+<td>l0+3*c</td>
+</tr>
+<tr>
+<td>···</td>
+<td>···</td>
+<td>···</td>
+</tr>
+<tr>
+<td>n-1</td>
+<td>en-1</td>
+<td>l0+(n-1)*c</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>逻辑地址</th>
+<th>物理地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>l0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>l0+1*c</td>
+</tr>
+<tr>
+<td>2</td>
+<td>l0+2*c</td>
+</tr>
+<tr>
+<td>3</td>
+<td>l0+3*c</td>
+</tr>
+<tr>
+<td>···</td>
+<td>···</td>
+</tr>
+<tr>
+<td>n-1</td>
+<td>l0+(n-1)*c</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph LR
+A--&gt;e0
+</code></pre><pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph LR
+A--&gt;e1
+</code></pre><pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph LR
+A--&gt;e2
+</code></pre><pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph LR
+A--&gt;e3
+</code></pre><pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph LR
+A--&gt;en-1
+</code></pre><ul>
+<li><input checked="" disabled="" type="checkbox"> 链表，将元素存放在通过链接构造起来的一系列存储块中。</li>
+</ul></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

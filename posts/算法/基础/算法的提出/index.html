@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>算法的提出 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">算法的提出</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>15.04.2023</time>
+    <span>in</span>
+    
+      <a href="/categories/%E7%AE%97%E6%B3%95">算法</a>
+  </strong>
+  <span> • 86 words</span>
+  <span> • 1 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>
+    </div>
+  
+</div>
+
+      <div class="content"><p>import time
+start_time = time.time()</p>
+<pre><code># 注意三层循环
+for a in range(0, 1001):
+    for b in range(0, 1001):
+        for c in range(0, 1001):
+            if a**2 + b**2 == c**2:
+                print(&quot;a, b, c %d %d %d&quot; % (a,b,c))
+end_time= time.time()
+print('elapsed:%f' % (end_time - start_time))
+print('complete')
+</code></pre>
+<p>运行卡运行慢</p>
+<h1 id="算法的提出">算法的提出</h1>
+<h3 id="算法的概念">算法的概念</h3>
+<ul>
+<li>算法是计算处理信息的本质，因为计算机程序本质上是一个算法来告诉计算机确切的步骤来执行一个指定的任务。一般的，当算法在处理信息时，会从输入设备或数据的存储地址读取数据， 把结果写入输出设备或某个存储地址供以后再调用。</li>
+</ul>
+<h3 id="算法是独立存在的一种解决问题的方法和思想">算法是独立存在的一种解决问题的方法和思想</h3>
+<ul>
+<li>对于算法而言，实现的语言并不重要，重要的是思想</li>
+<li>算法可以有不同的语言描述实现版本</li>
+</ul>
+<h1 id="算法的五大特性">算法的五大特性</h1>
+<ul>
+<li>输入：算法具有0个或多个输入</li>
+<li>输出：算法至少有1个或多个输出</li>
+<li>有穷性：算法在有限的步骤之后会自动结束而不会无线循环，并且每一个步骤可以在可接受的时间内完成</li>
+<li>确定性：算法中的每一步都有确定的含义，不会出现二义性</li>
+<li>可行性：算法的每一步都是可行的，也就是说每一步都能够执行有限的次数完成</li>
+</ul>
+<pre tabindex="0"><code>第二次常识两层循环
+# 两层循环
+for a in range(0, 1001):
+    for b in range(0, 1001-a):
+        c = 1000-a-b
+        if a**2 + b**2 == c**2:
+            print(a,b,c)
+end_time = time.time()
+print(end_time-start_time)
+print(&#39;ok&#39;)
+</code></pre></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>
