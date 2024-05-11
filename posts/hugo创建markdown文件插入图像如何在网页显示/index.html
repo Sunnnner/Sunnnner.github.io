@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content=""
+  />
+  
+    
+      <title>Hugo创建markdown文件插入图像如何在网页显示 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://rustcc.com.cn"><b>GPT</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Hugo创建markdown文件插入图像如何在网页显示</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>10.11.2023</time>
+    <span>in</span>
+    
+      <a href="/categories/hugo">hugo</a>
+  </strong>
+  <span> • 33 words</span>
+  <span> • 1 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/hugo">hugo</a>, 
+        <a href="/tags/markdown">markdown</a>
+    </div>
+  
+</div>
+
+      <div class="content"><ul>
+<li><a href="#%E6%91%98%E8%A6%81">摘要</a>
+<ul>
+<li><a href="##%E4%BA%8B%E5%AE%9E">事实</a></li>
+<li><a href="##%E6%AD%A5%E9%AA%A4">步骤</a></li>
+<li><a href="##%E5%8F%82%E8%80%83">参考</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="摘要">摘要</h1>
+<p>这篇文章介绍了在Hugo博客中如何引用本地图片，提供了两种选择：使用 图床 或使用 本地图片，并详细说明了使用本地图片的操作步骤。</p>
+<h2 id="事实">事实</h2>
+<ul>
+<li>📁 Hugo博客的根目录包含一个static目录，用于存放静态文件，如图片、CSS和JS文件。</li>
+<li>📦 执行hugo命令时，会将static目录下的子目录或文件复制到public目录，以供网站展示。</li>
+<li>🖼️ 要在markdown文章中引用本地图片，需要将图片放置在static目录下的img子目录中。</li>
+<li>📝 在markdown文件中，可以按照指定格式引用图片，例如：<code>![图片名称](/test/图片文件名.png)</code></li>
+<li>🚀 执行hugo命令并启动hugo server后，可以在本地预览文章中的图片。</li>
+</ul>
+<h2 id="步骤">步骤</h2>
+<ol>
+<li>在Hugo博客的根目录下创建一个static目录。</li>
+<li>在static目录下创建一个test子目录，用于存放图片文件。</li>
+<li>将图片文件放置在test子目录中。</li>
+<li>在markdown文件中引用图片，例如：<code>![图片名称](/test/图片文件名.png)</code></li>
+<li>执行hugo命令并启动hugo server，查看文章中的图片是否正常显示。</li>
+</ol>
+<h3 id="预览">预览</h3>
+<hr>
+<p><img src="%22/test/image.png%22" alt="alt text">
+<img src="%22/test/image-1.png%22" alt="alt text"></p>
+<h3 id="引用">引用</h3>
+<hr>
+<p><img src="%22/test/image.png%22" alt="alt text"></p>
+<h1 id="参考">参考</h1>
+<ul>
+<li><a href="https://www.gohugo.org/">Hugo中文文档</a></li>
+<li><a href="https://jincheng9.github.io/post/hugo-add-img/">Hugo如何在markdown里引用本地图片</a></li>
+</ul></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2024
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    Built with
+    <a href="http://www.gohugo.io/">Hugo</a>,
+    using the theme
+    <a href="https://gitlab.com/ian-s-mcb/smigle-hugo-theme">smigle</a>,
+    which was influenced by the theme
+    <a href="https://github.com/sumnerevans/smol">smol</a>.
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>
