@@ -10,16 +10,16 @@
     <atom:link href="https://sunnnner.github.io/categories/tauri/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tauri如何与actix Web结合</title>
-      <link>https://sunnnner.github.io/posts/tauri%E5%A6%82%E4%BD%95%E4%B8%8Eactix-web%E7%BB%93%E5%90%88/</link>
+      <link>https://sunnnner.github.io/posts/rust/tauri/tauri%E5%A6%82%E4%BD%95%E4%B8%8Eactix-web%E7%BB%93%E5%90%88/</link>
       <pubDate>Sat, 11 May 2024 10:17:42 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/tauri%E5%A6%82%E4%BD%95%E4%B8%8Eactix-web%E7%BB%93%E5%90%88/</guid>
+      <guid>https://sunnnner.github.io/posts/rust/tauri/tauri%E5%A6%82%E4%BD%95%E4%B8%8Eactix-web%E7%BB%93%E5%90%88/</guid>
       <description></description>
     </item>
     <item>
       <title>Tauri Http连接池</title>
-      <link>https://sunnnner.github.io/posts/tauri-http%E8%BF%9E%E6%8E%A5%E6%B1%A0/</link>
+      <link>https://sunnnner.github.io/posts/rust/tauri/tauri-http%E8%BF%9E%E6%8E%A5%E6%B1%A0/</link>
       <pubDate>Thu, 09 May 2024 14:04:05 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/tauri-http%E8%BF%9E%E6%8E%A5%E6%B1%A0/</guid>
+      <guid>https://sunnnner.github.io/posts/rust/tauri/tauri-http%E8%BF%9E%E6%8E%A5%E6%B1%A0/</guid>
       <description></description>
     </item>
   </channel>
