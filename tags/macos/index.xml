@@ -6,8 +6,15 @@
     <description>Recent content in Macos on 学无止境</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Sep 2019 11:24:14 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 14 May 2024 16:29:30 +0800</lastBuildDate>
     <atom:link href="https://sunnnner.github.io/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Macos查看docker存储位置</title>
+      <link>https://sunnnner.github.io/posts/docker/macos%E6%9F%A5%E7%9C%8Bdocker%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE/</link>
+      <pubDate>Tue, 14 May 2024 16:29:30 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/docker/macos%E6%9F%A5%E7%9C%8Bdocker%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE/</guid>
+      <description></description>
+    </item>
     <item>
       <title>修改macos自带Python版本（尽量不要修改）</title>
       <link>https://sunnnner.github.io/posts/python/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/%E4%BF%AE%E6%94%B9macos%E8%87%AA%E5%B8%A6python%E7%89%88%E6%9C%AC%E5%B0%BD%E9%87%8F%E4%B8%8D%E8%A6%81%E4%BF%AE%E6%94%B9/</link>

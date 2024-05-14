@@ -9,7 +9,7 @@
   />
   
     
-      <title>Macos | 学无止境</title>
+      <title>Macos查看docker存储位置 | 学无止境</title>
     
   
   <link rel="stylesheet" href="/css/reset.css"/>
@@ -62,38 +62,43 @@
 
       <div id="content">
         
-  <main id="tags">
-    <h1>Tag: Macos</h1>
+  <main>
+    <article>
+      <h1 class="title">Macos查看docker存储位置</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>14.05.2024</time>
+    <span>in</span>
     
-  <h3>2024</h3>
-  <ul id="postsByDate">
-    
-      <li>
-        <div class="date">
-          May 14
-        </div>
-        <div class="title">
-          <a href="/posts/docker/macos%E6%9F%A5%E7%9C%8Bdocker%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE/">Macos查看docker存储位置</a>
-        </div>
-      </li>
-    
-  </ul>
+      <a href="/categories/docker">docker</a>
+  </strong>
+  <span> • 25 words</span>
+  <span> • 1 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/macos">macos</a>
+    </div>
+  
+</div>
 
-  <h3>2019</h3>
-  <ul id="postsByDate">
-    
-      <li>
-        <div class="date">
-          Sep 2
-        </div>
-        <div class="title">
-          <a href="/posts/python/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/%E4%BF%AE%E6%94%B9macos%E8%87%AA%E5%B8%A6python%E7%89%88%E6%9C%AC%E5%B0%BD%E9%87%8F%E4%B8%8D%E8%A6%81%E4%BF%AE%E6%94%B9/">修改macos自带Python版本（尽量不要修改）</a>
-        </div>
-      </li>
-    
-  </ul>
-
-
+      <div class="content"><h2 id="原因">原因</h2>
+<ul>
+<li>docker 在macos上是通过虚拟机运行的，所以docker的存储位置不是在macos上, 而是在虚拟机中。</li>
+</ul>
+<h2 id="macos查看docker存储位置">Macos查看docker存储位置</h2>
+<ul>
+<li>命令<code>stty -echo -icanon &amp;&amp; nc -U ~/Library/Containers/com.docker.docker/Data/debug-shell.sock &amp;&amp; stty sane</code></li>
+</ul>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://gist.github.com/BretFisher/5e1a0c7bcca4c735e716abf62afad389">Getting a Shell in the Docker Desktop Mac VM</a></li>
+</ul></div>
+    </article>
   </main>
 
       </div>

@@ -6,8 +6,15 @@
     <description>Recent content on 学无止境</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 May 2024 16:09:03 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 14 May 2024 16:29:30 +0800</lastBuildDate>
     <atom:link href="https://sunnnner.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Macos查看docker存储位置</title>
+      <link>https://sunnnner.github.io/posts/docker/macos%E6%9F%A5%E7%9C%8Bdocker%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE/</link>
+      <pubDate>Tue, 14 May 2024 16:29:30 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/docker/macos%E6%9F%A5%E7%9C%8Bdocker%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE/</guid>
+      <description></description>
+    </item>
     <item>
       <title>新版docker Compose文件编写</title>
       <link>https://sunnnner.github.io/posts/docker/%E6%96%B0%E7%89%88docker-compose%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99/</link>
