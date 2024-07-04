@@ -3,24 +3,30 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://sunnnner.github.io/categories/</loc>
-    <lastmod>2024-07-01T16:51:17+08:00</lastmod>
+    <lastmod>2024-07-04T13:49:59+08:00</lastmod>
   </url><url>
     <loc>https://sunnnner.github.io/posts/</loc>
-    <lastmod>2024-07-01T16:51:17+08:00</lastmod>
+    <lastmod>2024-07-04T13:49:59+08:00</lastmod>
   </url><url>
     <loc>https://sunnnner.github.io/categories/rust/</loc>
-    <lastmod>2024-07-01T16:51:17+08:00</lastmod>
+    <lastmod>2024-07-04T13:49:59+08:00</lastmod>
+  </url><url>
+    <loc>https://sunnnner.github.io/tags/</loc>
+    <lastmod>2024-07-04T13:49:59+08:00</lastmod>
+  </url><url>
+    <loc>https://sunnnner.github.io/tags/tauri/</loc>
+    <lastmod>2024-07-04T13:49:59+08:00</lastmod>
+  </url><url>
+    <loc>https://sunnnner.github.io/posts/rust/%E6%A1%86%E6%9E%B6/tauri/tauri%E4%BF%AE%E5%A4%8Dhttp%E8%B7%A8%E5%9F%9Fcors%E9%94%99%E8%AF%AF/</loc>
+    <lastmod>2024-07-04T13:49:59+08:00</lastmod>
+  </url><url>
+    <loc>https://sunnnner.github.io/</loc>
+    <lastmod>2024-07-04T13:49:59+08:00</lastmod>
   </url><url>
     <loc>https://sunnnner.github.io/tags/rust-analyzer/</loc>
     <lastmod>2024-07-01T16:51:17+08:00</lastmod>
   </url><url>
-    <loc>https://sunnnner.github.io/tags/</loc>
-    <lastmod>2024-07-01T16:51:17+08:00</lastmod>
-  </url><url>
     <loc>https://sunnnner.github.io/posts/rust/%E5%9F%BA%E7%A1%80/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3rust_analyzer-can-not-load-sysroot/</loc>
-    <lastmod>2024-07-01T16:51:17+08:00</lastmod>
-  </url><url>
-    <loc>https://sunnnner.github.io/</loc>
     <lastmod>2024-07-01T16:51:17+08:00</lastmod>
   </url><url>
     <loc>https://sunnnner.github.io/categories/docker/</loc>
@@ -45,9 +51,6 @@
     <lastmod>2024-05-11T16:09:03+08:00</lastmod>
   </url><url>
     <loc>https://sunnnner.github.io/tags/actix-web/</loc>
-    <lastmod>2024-05-11T10:17:42+08:00</lastmod>
-  </url><url>
-    <loc>https://sunnnner.github.io/tags/tauri/</loc>
     <lastmod>2024-05-11T10:17:42+08:00</lastmod>
   </url><url>
     <loc>https://sunnnner.github.io/categories/tauri/</loc>
