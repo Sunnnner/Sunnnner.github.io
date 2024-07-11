@@ -83,7 +83,7 @@
     
       <a href="/categories/rust">rust</a>
   </strong>
-  <span> • 9 words</span>
+  <span> • 29 words</span>
   <span> • 1 minute read</span>
   
   
@@ -97,6 +97,7 @@
 
       <div class="content"><ul>
 <li>修改<code>tauri.conf.json &gt; tauri &gt; security &gt; dangerousUseHttpScheme = true</code>重新打包之后可以访问http任意链接</li>
+<li>csp设置: <code>default-src blob: data: filesystem: ws: wss: http: https: tauri: asset: 'unsafe-eval' 'unsafe-inline' 'self'; script-src blob: 'unsafe-inline' 'unsafe-hashes' 'self';</code> 每个命令之间使用<code>;</code>相隔.</li>
 </ul></div>
     </article>
   </main>
