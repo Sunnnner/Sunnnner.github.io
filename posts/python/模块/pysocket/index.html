@@ -97,34 +97,34 @@
 
       <div class="content"><p>2-1 套接字。面向连接的套接字和无连接套接字之间的区别是什么？</p>
 <table>
-<thead>
-<tr>
-<th>面向连接的套接字</th>
-<th>无连接的套接字</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>在通信之前必须建立连接</td>
-<td>在通信之前不需要建立连接</td>
-</tr>
-<tr>
-<td>序列化的，可靠的不重复的数据交付</td>
-<td>无法保证顺序性，可靠性或重复性，减少以一定的开销</td>
-</tr>
-<tr>
-<td>没有记录边界</td>
-<td>保存了记录边界</td>
-</tr>
-<tr>
-<td>每条信息可以拆分成多个片段，并且每一个消息片段都能确保到达目的地，然后将他么按顺序组合在一起。</td>
-<td>消息是以整体发送的。</td>
-</tr>
-<tr>
-<td>传输控制协议(TCP)</td>
-<td>用户数据协议(UDP)</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">面向连接的套接字</th>
+          <th style="text-align: left">无连接的套接字</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">在通信之前必须建立连接</td>
+          <td style="text-align: left">在通信之前不需要建立连接</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">序列化的，可靠的不重复的数据交付</td>
+          <td style="text-align: left">无法保证顺序性，可靠性或重复性，减少以一定的开销</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">没有记录边界</td>
+          <td style="text-align: left">保存了记录边界</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">每条信息可以拆分成多个片段，并且每一个消息片段都能确保到达目的地，然后将他么按顺序组合在一起。</td>
+          <td style="text-align: left">消息是以整体发送的。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">传输控制协议(TCP)</td>
+          <td style="text-align: left">用户数据协议(UDP)</td>
+      </tr>
+  </tbody>
 </table>
 <p>2-2 客户端/服务器架构。用自己的话描述这个术语的意思，并给出几个例子。
 1、服务器就是一系列硬件或软件，为一个或多个客户端（服务的用户）提供所需的“服务”。其存在的目的就是等待客户端的请求，并响应他们（提供服务），然后等待更多的请求。</p>

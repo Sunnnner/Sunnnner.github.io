@@ -6,8 +6,15 @@
     <description>Recent content on 学无止境</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 Jul 2024 13:49:59 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 11 Oct 2024 15:16:05 +0800</lastBuildDate>
     <atom:link href="https://sunnnner.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker Frp内网穿透教程</title>
+      <link>https://sunnnner.github.io/posts/docker/docker-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Fri, 11 Oct 2024 15:16:05 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/docker/docker-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Tauri修复http跨域cors错误</title>
       <link>https://sunnnner.github.io/posts/rust/%E6%A1%86%E6%9E%B6/tauri/tauri%E4%BF%AE%E5%A4%8Dhttp%E8%B7%A8%E5%9F%9Fcors%E9%94%99%E8%AF%AF/</link>
@@ -20,7 +27,7 @@
       <link>https://sunnnner.github.io/posts/rust/%E5%9F%BA%E7%A1%80/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3rust_analyzer-can-not-load-sysroot/</link>
       <pubDate>Mon, 01 Jul 2024 16:51:17 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/rust/%E5%9F%BA%E7%A1%80/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3rust_analyzer-can-not-load-sysroot/</guid>
-      <description>通过运行以下命令进行安装：rust-src rustup component add rust-src restart vscode rust-analyzer </description>
+      <description>&lt;h1 id=&#34;通过运行以下命令进行安装rust-src&#34;&gt;通过运行以下命令进行安装：rust-src&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;rustup component add rust-src&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;restart vscode rust-analyzer&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>微信定时自动发送消息</title>
@@ -965,7 +972,7 @@
       <link>https://sunnnner.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://sunnnner.github.io/about/</guid>
-      <description></description>
+      <description>&lt;p&gt;&lt;img src=&#34;%22/img/about.png%22&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>外链</title>

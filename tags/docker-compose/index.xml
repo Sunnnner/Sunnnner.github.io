@@ -6,8 +6,15 @@
     <description>Recent content in Docker-Compose on 学无止境</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 May 2024 16:09:03 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 11 Oct 2024 15:16:05 +0800</lastBuildDate>
     <atom:link href="https://sunnnner.github.io/tags/docker-compose/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker Frp内网穿透教程</title>
+      <link>https://sunnnner.github.io/posts/docker/docker-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Fri, 11 Oct 2024 15:16:05 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/docker/docker-frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/</guid>
+      <description></description>
+    </item>
     <item>
       <title>新版docker Compose文件编写</title>
       <link>https://sunnnner.github.io/posts/docker/%E6%96%B0%E7%89%88docker-compose%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99/</link>

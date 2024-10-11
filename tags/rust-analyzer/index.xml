@@ -13,7 +13,7 @@
       <link>https://sunnnner.github.io/posts/rust/%E5%9F%BA%E7%A1%80/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3rust_analyzer-can-not-load-sysroot/</link>
       <pubDate>Mon, 01 Jul 2024 16:51:17 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/rust/%E5%9F%BA%E7%A1%80/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3rust_analyzer-can-not-load-sysroot/</guid>
-      <description>通过运行以下命令进行安装：rust-src rustup component add rust-src restart vscode rust-analyzer </description>
+      <description>&lt;h1 id=&#34;通过运行以下命令进行安装rust-src&#34;&gt;通过运行以下命令进行安装：rust-src&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;rustup component add rust-src&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;restart vscode rust-analyzer&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
   </channel>
 </rss>
