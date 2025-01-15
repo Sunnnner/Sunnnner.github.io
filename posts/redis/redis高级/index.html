@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="学无止境,hugo,python,go,java,linux,mysql,redis,nginx,git,github,linux,mysql,redis,nginx,git,github,微服务,个人博客"
+  />
+  
+    
+      <title>Redis高级操作 | 学无止境</title>
+    
+  
+  <link rel="stylesheet" href="/css/reset.css"/>
+  <link rel="stylesheet" href="/css/font.css"/>
+  <link rel="stylesheet" href="/css/smigle.css"/>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body>
+    <div id="root">
+      <header>
+  <div id="brand">
+    <a class="icon-link" href="https://sunnnner.github.io/">
+      <img
+        class="icon"
+        src="/images/brandIcon.svg"
+      />
+    </a>
+    <div class="text">
+      <a href="https://sunnnner.github.io/"><h1>学无止境</h1></a>
+      <h3>少年辛苦终身事,莫向光阴惰寸功。——唐·杜荀鹤《题弟侄书堂》</h3>
+    </div>
+  </div>
+  <nav>
+    
+      
+        
+        <a href="/posts/"><b>主页</b></a>
+      
+         | 
+        <a href="/categories/"><b>类别</b></a>
+      
+         | 
+        <a href="/tags/"><b>标签</b></a>
+      
+         | 
+        <a href="https://freegpt.rustcc.com.cn"><b>GPT-1</b></a>
+      
+         | 
+        <a href="https://vip.rustcc.com.cn"><b>GPT-2</b></a>
+      
+         | 
+        <a href="https://ai.rustcc.com.cn"><b>GPT-3</b></a>
+      
+         | 
+        <a href="https://status.rustcc.com.cn/status/api"><b>网站状态</b></a>
+      
+    
+  </nav>
+  <hr />
+</header>
+
+      <div id="content">
+        
+  <main>
+    <article>
+      <h1 class="title">Redis高级操作</h1>
+      
+      <div class="post-meta">
+  <strong>
+    <span>Posted on</span>
+    <time>15.01.2025</time>
+    <span>in</span>
+    
+      <a href="/categories/redis">redis</a>
+  </strong>
+  <span> • 209 words</span>
+  <span> • 1 minute read</span>
+  
+  
+    <div>
+      <span>Tags:</span>
+      
+        <a href="/tags/redis">redis</a>
+    </div>
+  
+</div>
+
+      <div class="content"><h1 id="redis高级特性指南">Redis高级特性指南</h1>
+<h2 id="一发布订阅pubsub模式">一、发布订阅(Pub/Sub)模式</h2>
+<h3 id="11-概述">1.1 概述</h3>
+<p>Redis发布订阅(pub/sub)是一种消息通信模式:</p>
+<ul>
+<li>发送者(pub)发送消息</li>
+<li>订阅者(sub)接收消息</li>
+<li>支持多个频道(channel)</li>
+</ul>
+<h3 id="12-消息格式">1.2 消息格式</h3>
+<p>消息包含三个部分:</p>
+<ol>
+<li>
+<p>消息类型:</p>
+<ul>
+<li>subscribe: 订阅成功</li>
+<li>unsubscribe: 取消订阅</li>
+<li>message: 接收到消息</li>
+</ul>
+</li>
+<li>
+<p>频道名称</p>
+</li>
+<li>
+<p>具体消息内容</p>
+</li>
+</ol>
+<h3 id="13-基本命令">1.3 基本命令</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 订阅频道</span>
+</span></span><span style="display:flex;"><span>subscribe channel <span style="color:#f92672">[</span>channel ...<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 订阅模式(支持通配符)</span>
+</span></span><span style="display:flex;"><span>psubscribe pattern <span style="color:#f92672">[</span>pattern ...<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 发布消息</span>
+</span></span><span style="display:flex;"><span>publish channel message
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 退订频道</span>
+</span></span><span style="display:flex;"><span>unsubscribe <span style="color:#f92672">[</span>channel ...<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 退订模式</span>
+</span></span><span style="display:flex;"><span>punsubscribe <span style="color:#f92672">[</span>pattern ...<span style="color:#f92672">]</span>
+</span></span></code></pre></div><h3 id="14-使用示例">1.4 使用示例</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 终端1:订阅频道</span>
+</span></span><span style="display:flex;"><span>redis-cli
+</span></span><span style="display:flex;"><span>&gt; subscribe chat1
+</span></span><span style="display:flex;"><span>Reading messages... <span style="color:#f92672">(</span>press Ctrl-C to quit<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 终端2:发布消息</span>
+</span></span><span style="display:flex;"><span>redis-cli
+</span></span><span style="display:flex;"><span>&gt; publish chat1 <span style="color:#e6db74">&#34;Hello World&#34;</span>
+</span></span></code></pre></div><h2 id="二主从复制">二、主从复制</h2>
+<h3 id="21-概述">2.1 概述</h3>
+<p>主从复制允许从服务器(slave)从主服务器(master)同步数据,实现备份和读写分离。</p>
+<h3 id="22-特点">2.2 特点</h3>
+<ul>
+<li>一个主服务器可以有多个从服务器</li>
+<li>从服务器可以连接其他从服务器</li>
+<li>主从复制不会阻塞主服务器</li>
+<li>提供数据备份和读写分离能力</li>
+</ul>
+<h3 id="23-配置步骤">2.3 配置步骤</h3>
+<h4 id="231-主服务器配置">2.3.1 主服务器配置</h4>
+<ol>
+<li>编辑配置文件:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo vim /etc/redis/redis.conf
+</span></span></code></pre></div><ol>
+<li>设置主服务器IP:</li>
+</ol>
+<pre tabindex="0"><code class="language-conf" data-lang="conf">bind 192.168.1.10
+</code></pre><ol>
+<li>重启Redis服务:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo service redis restart
+</span></span></code></pre></div><h4 id="232-从服务器配置">2.3.2 从服务器配置</h4>
+<ol>
+<li>编辑配置文件:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo vim /etc/redis/redis.conf
+</span></span></code></pre></div><ol>
+<li>添加主从配置:</li>
+</ol>
+<pre tabindex="0"><code class="language-conf" data-lang="conf">bind 192.168.1.11
+slaveof 192.168.1.10 6379
+</code></pre><ol>
+<li>重启Redis服务:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo service redis restart
+</span></span></code></pre></div><h3 id="24-主从复制验证">2.4 主从复制验证</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 在主服务器上写入数据</span>
+</span></span><span style="display:flex;"><span>set key1 value1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 在从服务器上读取数据</span>
+</span></span><span style="display:flex;"><span>get key1
+</span></span></code></pre></div><h2 id="三持久化机制">三、持久化机制</h2>
+<h3 id="31-rdb持久化">3.1 RDB持久化</h3>
+<p>RDB持久化通过快照的方式保存数据库状态。</p>
+<h4 id="311-触发方式">3.1.1 触发方式</h4>
+<ol>
+<li>手动触发:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 同步保存</span>
+</span></span><span style="display:flex;"><span>save
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 异步保存</span>
+</span></span><span style="display:flex;"><span>bgsave
+</span></span></code></pre></div><ol>
+<li>自动触发:</li>
+</ol>
+<pre tabindex="0"><code class="language-conf" data-lang="conf"># redis.conf配置
+save 900 1      # 900秒内有1个改动
+save 300 10     # 300秒内有10个改动
+save 60 10000   # 60秒内有10000个改动
+</code></pre><h3 id="32-aof持久化">3.2 AOF持久化</h3>
+<p>AOF持久化记录服务器执行的所有写操作。</p>
+<h4 id="321-配置aof">3.2.1 配置AOF</h4>
+<pre tabindex="0"><code class="language-conf" data-lang="conf"># redis.conf
+appendonly yes
+appendfilename &#34;appendonly.aof&#34;
+
+# 同步策略
+appendfsync always    # 每次写入都同步
+appendfsync everysec  # 每秒同步一次
+appendfsync no       # 操作系统决定同步时机
+</code></pre><h3 id="33-持久化最佳实践">3.3 持久化最佳实践</h3>
+<ol>
+<li>同时使用RDB和AOF</li>
+<li>RDB用于备份</li>
+<li>AOF用于保证数据安全性</li>
+<li>定期对AOF文件进行重写</li>
+<li>根据实际需求调整同步策略</li>
+</ol>
+<h2 id="四常见问题与解决方案">四、常见问题与解决方案</h2>
+<h3 id="41-主从复制常见问题">4.1 主从复制常见问题</h3>
+<ol>
+<li>复制延迟
+<ul>
+<li>监控主从延迟时间</li>
+<li>合理设置网络带宽</li>
+</ul>
+</li>
+<li>数据不一致
+<ul>
+<li>定期检查主从数据</li>
+<li>配置适当的同步策略</li>
+</ul>
+</li>
+</ol>
+<h3 id="42-持久化注意事项">4.2 持久化注意事项</h3>
+<ol>
+<li>RDB可能丢失最后一次快照后的数据</li>
+<li>AOF文件会比RDB文件大</li>
+<li>AOF重写可能消耗系统资源</li>
+<li>建议定期备份持久化文件</li>
+</ol>
+<h2 id="五性能优化建议">五、性能优化建议</h2>
+<ol>
+<li>合理配置持久化策略</li>
+<li>适当调整主从同步频率</li>
+<li>控制AOF文件大小</li>
+<li>监控系统资源使用情况</li>
+<li>定期清理无用数据</li>
+</ol></div>
+    </article>
+  </main>
+
+      </div>
+      <footer>
+  <hr />
+  
+  <p class="copyright">
+    Copyright © 2025
+    <a href="https://sunnnner.github.io/"><strong>Blog Author</strong></a>.
+    This work is licensed under the
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+  </p>
+  <p class="builtWith">
+    备案号:
+    <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2022023134号-1</a>
+  </p>
+</footer>
+
+    </div>
+  </body>
+</html>

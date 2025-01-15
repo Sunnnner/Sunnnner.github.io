@@ -6,8 +6,15 @@
     <description>Recent content in Posts on 学无止境</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Jan 2025 09:58:57 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jan 2025 16:13:30 +0800</lastBuildDate>
     <atom:link href="https://sunnnner.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Redis高级操作</title>
+      <link>https://sunnnner.github.io/posts/redis/redis%E9%AB%98%E7%BA%A7/</link>
+      <pubDate>Wed, 15 Jan 2025 16:13:30 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/redis/redis%E9%AB%98%E7%BA%A7/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Redis操作</title>
       <link>https://sunnnner.github.io/posts/redis/redis%E6%93%8D%E4%BD%9C/</link>
