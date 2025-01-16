@@ -71,8 +71,8 @@
     
       <a href="/categories/django">django</a>
   </strong>
-  <span> • 9 words</span>
-  <span> • 1 minute read</span>
+  <span> • 243 words</span>
+  <span> • 2 minute read</span>
   
   
     <div>
@@ -83,12 +83,154 @@
   
 </div>
 
-      <div class="content"><h1 id="celery-简介">celery 简介</h1>
-<h2 id="任务队列">任务队列</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>1.任务队列是一种在线程或机器间分发的任务的机制
-</span></span><span style="display:flex;"><span>2.消息队列的输入是工作的一个单元，称为任务，独立的职程（Worker）进程持续监视队列中是否有需要处理的新任务。
-</span></span><span style="display:flex;"><span>3.Celery 用消息通信，通常使用中间人（Broker）在客户端和职程间斡旋。这个过程从客户端向队列添加消息开始，之后中间人把消息派送给职程
-</span></span><span style="display:flex;"><span>4.Celery 系统可包含多个职程和中间人，以此获得高可用性和横向扩展能力。
+      <div class="content"><h1 id="celery-分布式任务队列详解">Celery 分布式任务队列详解</h1>
+<h2 id="基本概念">基本概念</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 任务队列定义
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 在线程或机器间分发任务的机制
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 异步处理框架
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 支持实时处理和任务调度
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 可用于减轻Web应用的负载
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 核心组件
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Broker（消息中间件）
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> Redis
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> RabbitMQ
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> 负责任务的存储和分发
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Worker（工作进程）
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> 监控和执行任务
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> 可横向扩展
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> 支持并发执行
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Backend（结果存储）
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> Redis
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> MongoDB
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> MySQL
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> 存储任务执行结果
+</span></span></code></pre></div><h2 id="工作流程">工作流程</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 任务发布
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 客户端发送任务到Broker
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 任务包含执行参数和元数据
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 支持即时执行和定时执行
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 任务派发
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Broker将任务分发给Worker
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 支持负载均衡
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 保证任务不丢失
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> 任务执行
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Worker执行具体任务
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 支持重试机制
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 异常处理
+</span></span></code></pre></div><h2 id="特性和优势">特性和优势</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 高可用性
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 水平扩展能力
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 故障转移
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 任务持久化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 工作进程池
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 任务管理
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 任务优先级
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 任务调度
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 任务撤销
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 任务超时控制
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> 监控和管理
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Flower监控工具
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 任务进度跟踪
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 性能监控
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 错误追踪
+</span></span></code></pre></div><h2 id="常见使用场景">常见使用场景</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 异步任务处理
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 邮件发送
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 图片处理
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 数据统计
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 报表生成
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 定时任务
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 数据备份
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 定期清理
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 周期性数据更新
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 计划任务执行
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> 流程处理
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 工作流编排
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 任务链
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 并行任务处理
+</span></span></code></pre></div><h2 id="配置和使用">配置和使用</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 基础配置
+</span></span><span style="display:flex;"><span>```python
+</span></span><span style="display:flex;"><span>from celery import Celery
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 创建Celery实例
+</span></span><span style="display:flex;"><span>app = Celery(&#39;tasks&#39;,
+</span></span><span style="display:flex;"><span>             broker=&#39;redis://localhost:6379/0&#39;,
+</span></span><span style="display:flex;"><span>             backend=&#39;redis://localhost:6379/1&#39;)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 任务定义
+</span></span><span style="display:flex;"><span>@app.task
+</span></span><span style="display:flex;"><span>def add(x, y):
+</span></span><span style="display:flex;"><span>    return x + y
+</span></span></code></pre></div><ol start="2">
+<li>常用配置项</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>app<span style="color:#f92672">.</span>conf<span style="color:#f92672">.</span>update(
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 任务序列化格式</span>
+</span></span><span style="display:flex;"><span>    task_serializer<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;json&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 结果序列化格式</span>
+</span></span><span style="display:flex;"><span>    result_serializer<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;json&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 接受的内容类型</span>
+</span></span><span style="display:flex;"><span>    accept_content<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;json&#39;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 时区设置</span>
+</span></span><span style="display:flex;"><span>    timezone<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Asia/Shanghai&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 是否使用UTC</span>
+</span></span><span style="display:flex;"><span>    enable_utc<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><ol start="3">
+<li>任务执行</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 异步执行</span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> add<span style="color:#f92672">.</span>delay(<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 获取结果</span>
+</span></span><span style="display:flex;"><span>result<span style="color:#f92672">.</span>get(timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span></code></pre></div><pre tabindex="0"><code>
+## 最佳实践
+```markdown
+1. 性能优化
+- 合理设置并发数
+- 使用任务池
+- 选择适合的序列化方式
+- 配置任务超时
+
+2. 可靠性保证
+- 配置重试机制
+- 实现幂等性
+- 做好异常处理
+- 任务状态跟踪
+
+3. 开发建议
+- 任务函数要简单明确
+- 避免任务间相互依赖
+- 合理使用任务绑定
+- 做好日志记录
+</code></pre><h2 id="常见问题处理">常见问题处理</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 任务堆积
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 增加Worker数量
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 优化任务执行时间
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 实现任务优先级
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 监控队列长度
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 资源消耗
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 限制并发数量
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 合理设置预取值
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 监控内存使用
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 定期清理过期结果
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> 错误处理
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 完善重试机制
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 设置死信队列
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 异常通知机制
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 任务结果持久化
 </span></span></code></pre></div></div>
     </article>
   </main>
