@@ -71,8 +71,8 @@
     
       <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a>
   </strong>
-  <span> • 45 words</span>
-  <span> • 1 minute read</span>
+  <span> • 263 words</span>
+  <span> • 2 minute read</span>
   
   
     <div>
@@ -83,41 +83,137 @@
   
 </div>
 
-      <div class="content"><h2 id="redis-数据库优化">redis 数据库优化</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>尽量使用短的key 不要忘了见key识意
-</span></span><span style="display:flex;"><span>避免使用keys * 这条命令是阻塞就是操作这条命令的时候就不能操作其他的命令
-</span></span><span style="display:flex;"><span>保存数据之前先压缩一次
-</span></span><span style="display:flex;"><span>设置key的有效期，使其自动销毁
-</span></span><span style="display:flex;"><span>选择回收策略，Redis的实例空间被装满之后，会尝试回收一部分数据。
-</span></span><span style="display:flex;"><span>尽可能的使用哈希存储
-</span></span><span style="display:flex;"><span>一次性添加多条数据的时候可以使用管道进行存储
-</span></span><span style="display:flex;"><span>Redis的系统优化
-</span></span><span style="display:flex;"><span>修改Linux中TCP的最大容纳的数量
-</span></span><span style="display:flex;"><span>修改Linux中内核的分配策略
-</span></span><span style="display:flex;"><span>关闭 THP （连续的物理内存巨大的页面）
-</span></span></code></pre></div><h2 id="redis-的性能优化总结">redis 的性能优化总结</h2>
-<p>根据业务需要选择合适的数据类型，并为不同的应用场景设置响应的紧凑的存储参数</p>
-<p>当业务场景不需要数据持久化时， 关闭所有的持久化方式可以或得最佳的性能以及最大的内存使用量</p>
-<p>如果需要使用持久化根据是否可以容忍重启丢失部分数据在快照方式与语句追加方式之间选择其一，不</p>
-<p>要使用虚拟内存以及diskstore方式</p>
-<p>不要让你的Redis所在机器物理内存使用超过实际内存总量的3/5</p>
-<h2 id="mysql-数据库优化">mysql 数据库优化</h2>
-<p>sql 语句优化</p>
-<p>索引优化</p>
-<p>避免查询时的全盘扫描</p>
-<p>增加缓存</p>
-<p>读写分离</p>
-<p>分区</p>
-<p>分布式数据库（垂直分割）</p>
-<p>水平切分</p>
-<h2 id="mongodb-数据库优化">MongoDB 数据库优化</h2>
-<p>mongodb可以通过profile来监控数据，进行优化。</p>
-<p>索引优化</p>
-<p>数据库设计优化</p>
-<pre><code>1、完全分离（范式化设计）
-2、完全内嵌（反范式化设计）
-3、部分内嵌（折中方案）
-</code></pre></div>
+      <div class="content"><h2 id="redis-数据库优化">Redis 数据库优化</h2>
+<h3 id="数据结构优化">数据结构优化</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> Key设计优化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用简短但有意义的key命名，遵循统一命名规范
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 避免特别长的key，会占用更多内存
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 推荐使用 &#34;业务:表:id&#34; 的格式，如 &#34;user:profile:1001&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 数据结构选择
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> String: 适用于简单的键值对存储
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Hash: 适用于存储对象，节省内存
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> List: 适用于消息队列、最新N个数据
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Set: 适用于去重、随机访问
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Sorted Set: 适用于排行榜、优先级队列
+</span></span></code></pre></div><h3 id="命令使用优化">命令使用优化</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 避免危险命令
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 禁用 KEYS * 命令，使用 SCAN 替代
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 避免 FLUSHALL、FLUSHDB 等危险命令
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 大量数据操作时使用 HSCAN、SSCAN、ZSCAN 等
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 批量操作优化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用 Pipeline 批量操作提升性能
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> MSET、MGET 代替多次 SET、GET
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> HMSET、HMGET 批量操作hash
+</span></span></code></pre></div><h3 id="内存优化">内存优化</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 内存管理
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 设置 maxmemory 限制内存使用
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 配置合适的淘汰策略(如 allkeys-lru、volatile-lru)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 及时清理过期数据
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 压缩数据后再存储
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 数据压缩
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用 ZIPLIST 压缩编码
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 开启压缩算法 (redis.conf: rdbcompression yes)
+</span></span></code></pre></div><h3 id="持久化优化">持久化优化</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> RDB优化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 合理配置备份频率
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 根据数据量设置合适的备份时间点
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 可以关闭AOF只使用RDB以提升性能
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> AOF优化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 选择合适的fsync策略 (always/everysec/no)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 定期执行BGREWRITEAOF重写AOF文件
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 配置rewrite触发机制
+</span></span></code></pre></div><h2 id="mysql-数据库优化">MySQL 数据库优化</h2>
+<h3 id="sql语句优化">SQL语句优化</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> SELECT语句优化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 只查询需要的字段，避免SELECT *
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用LIMIT限制结果集
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用索引覆盖查询
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 避免使用SELECT DISTINCT
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 优化子查询，尽量使用JOIN
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> WHERE子句优化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 避免对字段进行函数运算
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 避免隐式类型转换
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用IN代替OR
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 范围查询优化
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> JOIN优化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 小表驱动大表
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用INNER JOIN代替LEFT JOIN
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 控制JOIN表的数量
+</span></span></code></pre></div><h3 id="索引优化">索引优化</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 索引设计原则
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 频繁查询的字段建立索引
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 主键选择高效索引列
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 常用WHERE条件字段建索引
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> ORDER BY、GROUP BY字段建索引
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 字符串字段建前缀索引
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 索引使用规范
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 避免索引失效情况
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 控制索引数量
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 及时更新索引统计信息
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 定期检查索引使用情况
+</span></span></code></pre></div><h3 id="架构优化">架构优化</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 读写分离
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 主库负责写操作
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 从库负责读操作
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用中间件实现自动切换
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 分库分表
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 垂直分库：按业务拆分
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 水平分库：按数据量拆分
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 设计合理的分片键
+</span></span></code></pre></div><h2 id="mongodb-数据库优化">MongoDB 数据库优化</h2>
+<h3 id="性能监控与分析">性能监控与分析</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 性能监控工具
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用profile进行性能分析
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> mongostat监控实例状态
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> mongotop监控集合级别的统计
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 慢查询分析
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 设置慢查询阈值
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 定期分析慢查询日志
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 优化慢查询语句
+</span></span></code></pre></div><h3 id="索引优化-1">索引优化</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 索引策略
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 为常用查询创建索引
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 创建复合索引
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 避免过多索引
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 定期评估索引使用情况
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 索引类型选择
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 单字段索引
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 复合索引
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 多键索引
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 地理空间索引
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 文本索引
+</span></span></code></pre></div><h3 id="数据模型优化">数据模型优化</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> Schema设计
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 根据访问模式设计文档结构
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 权衡范式化和反范式化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 合理使用嵌入式文档
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 控制文档大小
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 集合设计
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 避免过大的集合
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用capped集合
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 合理设计分片键
+</span></span></code></pre></div><h3 id="系统配置优化">系统配置优化</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 硬件优化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用SSD存储
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 增加系统内存
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 优化磁盘RAID配置
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 系统参数优化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 调整系统文件描述符限制
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 优化内存管理参数
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 配置合适的日志级别
+</span></span></code></pre></div></div>
     </article>
   </main>
 

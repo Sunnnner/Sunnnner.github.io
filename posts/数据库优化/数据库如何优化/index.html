@@ -71,7 +71,7 @@
     
       <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a>
   </strong>
-  <span> • 230 words</span>
+  <span> • 335 words</span>
   <span> • 2 minute read</span>
   
   
@@ -83,117 +83,193 @@
   
 </div>
 
-      <div class="content"><p>优化SQL语句</p>
-<p>通过添加索引进行优化</p>
-<p>优化Order by</p>
-<p>有两种方式如下：</p>
-<p>（1）索引优化：对by后的列添加索引，从而大达到优化的目的。</p>
-<p>（2）where+order by 的组合优化：通过where进行限制后在进行order by</p>
-<p>优化limit</p>
-<p>优化子查询</p>
-<p>2.优化数据库结构</p>
-<p>1、优化insert语句</p>
-<pre><code>  禁用索引，禁用唯一性检查，使用一条insert插入多条语句。
-</code></pre>
-<p>2、优化update语句</p>
-<pre><code>  使用一个update语句同时做多个更新。
-</code></pre>
-<p>3、优化delete语句</p>
-<pre><code>  删除一条记录的时间与索引的数量成正比。删除一个表的所有行，使用truncate table Tbname 而不要使用delete from table
-</code></pre>
-<p>Django如何优化</p>
-<p>1利用标准数据库优化技术：索引, Django建立实体的时候，支持给字段添加索引，具体参考Django.db.models.Field.db_index。</p>
-<p>2了解Django的QuerySets：QuerySets是有缓存的，一旦取出来，它就会在内存里呆上一段时间，尽量重用它</p>
-<p>3数据库的工作就交给数据库本身计算，别用Python处理：使用 filter and exclude 过滤不需要的记录，这两个是最常用语句，相当是SQL的where。使用annotate对数据库做聚合运算。不要用python语言对以上类型数据过滤筛选，同样的结果，python处理复杂度要高，而且效率不高， 白白浪费内存。使用原生的SQL语句：</p>
-<p>4如果需要就一次性取出你所需要的数据：</p>
-<p>单一动作（如：同一个页面）需要多次连接数据库时，最好一次性取出所有需要的数据，减少连接数据库次数。此类需求推荐使用QuerySet.select_related() 和 prefetch_related()。使用QuerySet.count()代替len(queryset),虽然这两个处理得出的结果是一样的，但前者性能优秀很多。同理判断记录存在时，QuerySet.exists()比if queryset实在强得太多了。</p>
-<p>5 懂减少数据库的连接数：</p>
-<p>使用 QuerySet.update() 和 delete()，这两个函数是能批处理多条记录的，适当使用它们事半功倍；如果可以，别一条条数据去update delete处理。</p>
-<p>使用 Redis 进行缓存</p>
-<p>使用异步 Worker 进行写库操作</p>
-<p>高并发问题</p>
-<p>1，悲观锁；2，乐观锁</p>
-<p>使用场景：
-并发量高的时候使用悲观锁，</p>
-<p>缺点：加锁消耗资源</p>
-<p>并发量低的时候使用乐观锁，</p>
-<p>缺点：乐观锁循环耗费时间。
-秒杀问题,一件商品多人抢购如何处理</p>
-<p>获取第一位的数据其他人均不满足</p>
-<p>说一下事务四大特性和隔离级别</p>
-<p>ACID</p>
-<p>原子性（Atomicity） 要么全部完成，要么都不成功</p>
-<p>一致性(Consistency) 几个并行执行的事务，其执行结果必须与按照某一舒徐串执行的结果相一致</p>
-<p>隔离性(Isolation) 事务的执行不受其他事务的干扰，事务执行的中间结果对其他事务必须市透明的</p>
-<p>持久性(Durability) 对于任意已提交事务，系统必须保证该事务对数据库的改变不被丢失，即使数据库出现故障；</p>
-<p>隔离级别</p>
-<p>脏读 在一个事务处理过程里读取了另一个未提交的事务中的数据</p>
-<p>不可重复读 在对于数据库中的某个数据，一个事务范围内多次查询却返回了不同的数据值，</p>
-<p>虚读 是事务非独立执行时发生的一种现象
-　　
-现在来看看MySQL数据库为我们提供的四种隔离级别：</p>
-<p>　　① Serializable (串行化)：可避免脏读、不可重复读、幻读的发生。</p>
-<p>　　② Repeatable read (可重复读)：可避免脏读、不可重复读的发生。</p>
-<p>　　③ Read committed (读已提交)：可避免脏读的发生。</p>
-<p>　　④ Read uncommitted (读未提交)：最低级别，任何情况都无法保证。</p>
-<p>redis的数据类型和使用场景</p>
-<p>字符串(str)， 哈希(hash) 列表(list) 集合(set) 有序集合(zset)</p>
-<p>一万件商品如何按价格排序取前十个</p>
-<p>使用快速排序</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">partition</span>(A, p, r):
-</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> A[r]
-</span></span><span style="display:flex;"><span>i <span style="color:#f92672">=</span> p <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(p, r):
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> A[j] <span style="color:#f92672">&lt;=</span> x:
-</span></span><span style="display:flex;"><span>i <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>A[i], A[j] <span style="color:#f92672">=</span> A[j], A[i]
-</span></span><span style="display:flex;"><span>A[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>], A[r] <span style="color:#f92672">=</span> A[r], A[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+      <div class="content"><h2 id="mysql优化详解">MySQL优化详解</h2>
+<h3 id="sql语句优化">SQL语句优化</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> SELECT语句优化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 避免SELECT *，只查询必要字段
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用EXPLAIN分析SQL执行计划
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 合理使用索引
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 优化子查询，尽可能使用JOIN
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用LIMIT限制结果集大小
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">quickSort</span>(A, p, r):
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> p <span style="color:#f92672">&lt;</span> r:
-</span></span><span style="display:flex;"><span>q <span style="color:#f92672">=</span> partition(A, p, r)
-</span></span><span style="display:flex;"><span>quickSort(A, p, q <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>quickSort(A, q <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, r)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> ORDER BY优化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 索引优化：
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> 为ORDER BY字段创建索引
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> 使用覆盖索引
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> 确保索引字段顺序与ORDER BY一致
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> WHERE + ORDER BY组合优化：
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> 先进行WHERE过滤，减少排序数据量
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> 使用索引进行排序
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> 避免filesort
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>A <span style="color:#f92672">=</span> [<span style="color:#960050;background-color:#1e0010">…</span>]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> INSERT优化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 批量插入替代单条插入
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 临时禁用索引
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 关闭唯一性检查
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用LOAD DATA INFILE批量导入
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 预处理语句批处理
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>quickSort(A, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">9999</span>)
-</span></span><span style="display:flex;"><span>print(A[:<span style="color:#f92672">-</span><span style="color:#ae81ff">9</span>])
-</span></span></code></pre></div><p>redis考数据类型和使用场景,比如list啥时候用,</p>
-<p>redis 七个使用场景https://www.cnblogs.com/NiceCui/p/7794659.html</p>
-<p>还有MySQL有哪些数据库引擎,有什么区别</p>
-<p>ISAM：ISAM是一个定义明确且历经时间考验的数据表格管理方法，它在设计之时就考虑到数据库被查询的次数要远大于更新的次数</p>
-<p>MyISAM：MyISAM是MySQL的ISAM扩展格式和缺省的数据库引擎。</p>
-<p>InnoDB：InnoDB数据库引擎都是造就MySQL灵活性的技术的直接产品，这项技术就是MYSQL+API</p>
-<p>MEMORY: MEMORY是MySQL中一类特殊的存储引擎。它使用存储在内存中的内容来创建表，而且数据全部放在内存中。</p>
-<p>InnoDB：支持事务处理，支持外键，支持崩溃修复能力和并发控制。</p>
-<p>MyISAM：插入数据快，空间和内存使用比较低。</p>
-<p>MEMORY：所有的数据都在内存中，数据的处理速度快，但是安全性不高</p>
-<p><a href="https://blog.csdn.net/t146lla128xx0x/article/details/78737290">https://blog.csdn.net/t146lla128xx0x/article/details/78737290</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>[<span style="color:#960050;background-color:#1e0010">“</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">”</span>,<span style="color:#960050;background-color:#1e0010">”</span><span style="color:#ae81ff">2</span><span style="color:#960050;background-color:#1e0010">”</span>,<span style="color:#960050;background-color:#1e0010">”</span><span style="color:#ae81ff">10</span><span style="color:#960050;background-color:#1e0010">”</span>],列表里是字符型数值,如何按数字大小给列表排序
-</span></span><span style="display:flex;"><span>list1 <span style="color:#f92672">=</span> []
-</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> [<span style="color:#960050;background-color:#1e0010">“</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">”</span>,<span style="color:#960050;background-color:#1e0010">”</span><span style="color:#ae81ff">2</span><span style="color:#960050;background-color:#1e0010">”</span>,<span style="color:#960050;background-color:#1e0010">”</span><span style="color:#ae81ff">10</span><span style="color:#960050;background-color:#1e0010">”</span>]
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> a:
-</span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> int(i)
-</span></span><span style="display:flex;"><span>list1<span style="color:#f92672">.</span>append(b)
-</span></span><span style="display:flex;"><span>print(sorted(list1, reverse<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>))
-</span></span></code></pre></div><p>Python2和3的区别</p>
-<p>print不再是语句，而是函数</p>
-<p>在Python 3中，没有旧式类，只有新式类</p>
-<p>原来1/2（两个整数相除）结果是0，现在是0.5了</p>
-<p>新的字符串格式化方法format取代%</p>
-<p>xrange重命名为range</p>
-<p>!=取代 &lt; &gt;</p>
-<p>long重命名为int</p>
-<p>except Exception, e变成except (Exception) as e</p>
-<p>exec变成函数</p>
-<p>爬虫好像问scrapy和scrapy_redis有什么区别</p>
-<p>还有scrapy爬虫的执行流程,当场手写</p>
-<p>看完我说的你在百度django和爬虫的面试题</p>
-<p>RESTfromework问得也挺多</p>
-<p>apiview和viewset有啥关系</p>
-<p>问rest是啥</p></div>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">4.</span> UPDATE和DELETE优化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 根据索引字段更新
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 批量更新替代循环单条更新
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用TRUNCATE替代DELETE FROM
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 合理使用事务
+</span></span></code></pre></div><h3 id="数据库结构优化">数据库结构优化</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 表结构优化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 选择合适的数据类型
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用UNSIGNED存储非负数
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用TIMESTAMP替代DATETIME
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 合理设计字段长度
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 适当冗余字段避免JOIN
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 索引优化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 主键使用自增ID
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 常用查询字段建立索引
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 避免索引过多
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 定期维护索引统计信息
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 删除无用索引
+</span></span></code></pre></div><h2 id="django性能优化">Django性能优化</h2>
+<h3 id="查询优化">查询优化</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> QuerySet优化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 利用查询集缓存
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用select_related()和prefetch_related()减少查询
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用值查询(values()和values_list())
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用批量操作(bulk_create, bulk_update)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 适当使用迭代器
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 数据库操作优化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用F()和Q()对象优化查询
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 合理使用filter和exclude
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用exists()替代count()和len()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用update()替代save()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 适当使用原生SQL
+</span></span></code></pre></div><h3 id="缓存优化">缓存优化</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> Redis缓存策略
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 缓存常用数据
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用缓存版本控制
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 设置合理的过期时间
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 实现缓存预热
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 防止缓存穿透和雪崩
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 其他缓存优化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 使用本地内存缓存
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 模板片段缓存
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 会话缓存
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 静态文件缓存
+</span></span></code></pre></div><h2 id="高并发处理">高并发处理</h2>
+<h3 id="锁机制">锁机制</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 悲观锁
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 适用于并发量大的场景
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 实现方式：
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> SELECT ... FOR UPDATE
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> 表级锁
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> 行级锁
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 乐观锁
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 适用于并发冲突少的场景
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 实现方式：
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> 版本号机制
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> CAS算法
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">*</span> 时间戳
+</span></span></code></pre></div><h3 id="秒杀系统设计">秒杀系统设计</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 架构设计
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 前端限流
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Redis缓存
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 消息队列
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 异步处理
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 分布式锁
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 优化策略
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 系统预热
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 动静分离
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 库存预扣减
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 防刷限制
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 降级策略
+</span></span></code></pre></div><h2 id="redis使用场景">Redis使用场景</h2>
+<h3 id="数据类型应用">数据类型应用</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> String
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 缓存对象
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 计数器
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 分布式锁
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 共享session
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> Hash
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 存储对象
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 购物车
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 用户信息
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> List
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 消息队列
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 最新N条数据
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 任务队列
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">4.</span> Set
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 去重
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 好友关系
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 黑名单
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">5.</span> Sorted Set
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 排行榜
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 权重排名
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 延时队列
+</span></span></code></pre></div><h3 id="高级特性应用">高级特性应用</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 事务
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> MULTI/EXEC/WATCH
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 原子性操作
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 乐观锁实现
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 发布订阅
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 消息通知
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 实时聊天
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 任务派发
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> 持久化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> RDB快照
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> AOF日志
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 混合持久化
+</span></span></code></pre></div><h2 id="mysql存储引擎">MySQL存储引擎</h2>
+<h3 id="innodb">InnoDB</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 特性
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 支持事务(ACID)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 行级锁
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 外键约束
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> MVCC多版本并发控制
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 聚集索引
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 适用场景
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 需要事务支持
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 高并发系统
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 数据一致性要求高
+</span></span></code></pre></div><h3 id="myisam">MyISAM</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 特性
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 表级锁
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 全文索引支持
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 压缩表支持
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 较高的查询性能
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 适用场景
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 读密集型应用
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 无事务需求
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 低并发系统
+</span></span></code></pre></div><h2 id="python2和3主要区别">Python2和3主要区别</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 语法变化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> print函数化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 字符串默认Unicode
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 除法运算符改变
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 异常语法改变
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 标准库变化
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> urllib重组
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> queue替代Queue
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> configparser替代ConfigParser
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> pickle优化
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> 内置功能
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> range替代xrange
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> map/filter返回迭代器
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 字典视图对象
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 移除cmp函数
+</span></span></code></pre></div></div>
     </article>
   </main>
 
