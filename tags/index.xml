@@ -6,8 +6,22 @@
     <description>Recent content in Tags on 学无止境</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Jan 2025 16:13:30 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jan 2025 16:14:01 +0800</lastBuildDate>
     <atom:link href="https://sunnnner.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git</title>
+      <link>https://sunnnner.github.io/tags/git/</link>
+      <pubDate>Thu, 16 Jan 2025 16:14:01 +0800</pubDate>
+      <guid>https://sunnnner.github.io/tags/git/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://sunnnner.github.io/tags/python/</link>
+      <pubDate>Thu, 16 Jan 2025 16:14:01 +0800</pubDate>
+      <guid>https://sunnnner.github.io/tags/python/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Redis</title>
       <link>https://sunnnner.github.io/tags/redis/</link>
@@ -83,13 +97,6 @@
       <link>https://sunnnner.github.io/tags/reqwest/</link>
       <pubDate>Thu, 09 May 2024 14:04:05 +0800</pubDate>
       <guid>https://sunnnner.github.io/tags/reqwest/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Git</title>
-      <link>https://sunnnner.github.io/tags/git/</link>
-      <pubDate>Wed, 13 Dec 2023 11:44:52 +0800</pubDate>
-      <guid>https://sunnnner.github.io/tags/git/</guid>
       <description></description>
     </item>
     <item>

@@ -6,8 +6,15 @@
     <description>Recent content on 学无止境</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Jan 2025 16:13:30 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jan 2025 16:14:01 +0800</lastBuildDate>
     <atom:link href="https://sunnnner.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python代码审查的Git Hook实现指南</title>
+      <link>https://sunnnner.github.io/posts/python/%E8%BF%9B%E9%98%B6/python%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E7%9A%84git-hook%E5%AE%9E%E7%8E%B0%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Thu, 16 Jan 2025 16:14:01 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/python/%E8%BF%9B%E9%98%B6/python%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E7%9A%84git-hook%E5%AE%9E%E7%8E%B0%E6%8C%87%E5%8D%97/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Redis高级操作</title>
       <link>https://sunnnner.github.io/posts/redis/redis%E9%AB%98%E7%BA%A7/</link>
