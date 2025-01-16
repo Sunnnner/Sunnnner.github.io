@@ -9,7 +9,7 @@
   />
   
     
-      <title>生成器、迭代器、闭包、装饰器 | 学无止境</title>
+      <title>Python高级特性：生成器、迭代器、闭包与装饰器 | 学无止境</title>
     
   
   <link rel="stylesheet" href="/css/reset.css"/>
@@ -61,7 +61,7 @@
         
   <main>
     <article>
-      <h1 class="title">生成器、迭代器、闭包、装饰器</h1>
+      <h1 class="title">Python高级特性：生成器、迭代器、闭包与装饰器</h1>
       
       <div class="post-meta">
   <strong>
@@ -71,346 +71,214 @@
     
       <a href="/categories/python">python</a>
   </strong>
-  <span> • 210 words</span>
-  <span> • 1 minute read</span>
+  <span> • 447 words</span>
+  <span> • 3 minute read</span>
   
   
 </div>
 
-      <div class="content"><h1 id="生成器">生成器</h1>
-<hr>
-<ul>
-<li>在python中，这种一边循环一边计算的机制，称为生成器generator</li>
-<li>列表推导式</li>
-<li>generator=（x for x in range()）</li>
-<li>next（生成器对象）&mdash;》返回当前指针指向的元素</li>
-<li>如果使用next方法获取元素的话，取到最后一个元素的时候就会报错（stopIteration）</li>
-<li>生成器获取元素的两种方式：</li>
-<li>
-<pre><code> 1、next(generstor)--&gt;返回元素
-</code></pre>
-</li>
-<li>
-<pre><code> 2、for x in gen
-</code></pre>
-</li>
-<li>
-<pre><code>     print(x)
-</code></pre>
-</li>
-<li>区别：for in 到头不会报异常</li>
-<li>
-<pre><code>next到头会包异常stopIteration
-</code></pre>
-</li>
-<li>创建生成器方法2&mdash;在函数中yield</li>
-<li>函数生成追著名的斐波拉契数列</li>
-<li>
-<pre><code> def fibonacci(num):
-</code></pre>
-</li>
-<li>
-<pre><code>      a,b=0,1
-</code></pre>
-</li>
-<li>
-<pre><code>      i=0
-</code></pre>
-</li>
-<li>
-<pre><code>      while i&lt;num:
-</code></pre>
-</li>
-<li>
-<pre><code>          a,b=b,(a+b)
-</code></pre>
-</li>
-<li>
-<pre><code>          i+=1
-</code></pre>
-</li>
-<li>
-<pre><code>          print(b)
-</code></pre>
-</li>
-<li>
-<pre><code>  fibonacci(10)
-</code></pre>
-</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h3 id="使用yield变成生成器">使用yield变成生成器</h3>
-</li>
-<li>
-<pre><code> def fibonacci(num):
-     a,b=0,1
-  	i=0
-  	while i&lt;num:
-  	yield b
-  	a,b=b,(a+b)
-  	i+=1
-  	#print(b)
- f=fibonacci(10)
- print(f)
-</code></pre>
-</li>
-<li>yield b</li>
-<li>1：准备生成器</li>
-<li>2，将B存放到生成器</li>
-<li>3.返回有b元素的生成器</li>
-<li>4，返回就暂停</li>
-<li>yield产生生成器，使用Next拨动指针</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h3 id="常用方法">常用方法</h3>
-</li>
-<li>next()同send(None)</li>
-<li>如果需要向你的函数中传递参数则使用send(&ldquo;参数&rdquo;)</li>
-<li>f.__ next__()也能调用</li>
-<li>注意：使用send的时候不能第一次传递参数但第一次可以传递None，也可以先调用next或者.__ next__（）后再调用send方法</li>
-<li>==注意捕获异常==</li>
-<li>
-<h4 id="多任务的生成器">多任务的生成器</h4>
-</li>
-<li>多任务的生成器</li>
-<li>
-<h4 id="生成器好处">生成器好处</h4>
-</li>
-<li>a.节约内存</li>
-<li>b.迭代到下一次的调用时，所使用的参数都是第一次所保留下的，即是说，在整个所有函数调用的参数都是第一次所调用时保留下的，而不是新创建的</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="迭代器">迭代器</h1>
-</li>
-</ul>
-<hr>
-<ul>
-<li>可以被next()函数调用并不断返回下一个值的对象称为迭代器：Iterator。</li>
-<li>迭代器只能往前</li>
-<li>
-<h4 id="可迭代对象">可迭代对象</h4>
-</li>
-<li>直接作用与for循环的数据类型有一下集中。</li>
-<li>一类时几何数据类型，如List、tuple、dictionary、set、str等</li>
-<li>
-<h4 id="用判断isinstance判断是否可以迭代">用判断isinstance()判断是否可以迭代</h4>
-</li>
-<li>1.判断是否是某种类型</li>
-<li>isinstance(变量，str,list,dic,set,tuple)</li>
-<li>导包</li>
-<li>
-<pre><code>from collections from Iterator
-</code></pre>
-</li>
-<li>
-<pre><code>print(isinstance(list1,Iterable))
-</code></pre>
-</li>
-<li>
-<pre><code>判断是否为迭代类型
-</code></pre>
-</li>
-<li>
-<pre><code>from collections from Iterator
-</code></pre>
-</li>
-<li>
-<pre><code>isinstance (str,Iterator)
-</code></pre>
-</li>
-<li>
-<pre><code>==判断是不是迭代器==
-</code></pre>
-</li>
-<li>
-<h4 id="使用iter函数把iterable变成迭代器">使用iter()函数把Iterable变成迭代器</h4>
-</li>
-<li>生成器都是Iterator(迭代器)对象，但lit,dict.str虽然是Iterable（可迭代的）,却不是迭代器</li>
-<li>
-<pre><code>print(isinstance(iter(str),Iterator))
-</code></pre>
-</li>
-<li>
-<pre><code>it = iter(ss)
-</code></pre>
-</li>
-<li>
-<pre><code>print(next(it))
-</code></pre>
-</li>
-<li>
-<pre><code>print(if.__next__())
-</code></pre>
-</li>
-<li>总结：</li>
-<li>凡是可作用于 for 循环的对象都是 Iterable 类型；</li>
-<li>凡是可作用于 next() 函数的对象都是 Iterator 类型；</li>
-<li>集合数据类型如 list 、 dict 、 str 等是 Iterable 但不是 Iterator ，不过可以通过 iter() 函数获得一个 Iterator 对象</li>
-</ul>
-<hr>
-<h1 id="闭包">闭包</h1>
-<hr>
-<ul>
-<li>闭包函数必须有内嵌函数</li>
-<li>内嵌函数需要引用该嵌套函数上一级namespace中的变量</li>
-<li>闭包函数必须返回内嵌函数</li>
-<li>通过这三点就可以创建一个闭包</li>
-<li>•	Python装饰器就是使用了闭包。</li>
-<li>闭包的好处，使代码变得简洁。</li>
-<li>
-<h4 id="内部函数对外部函数作用域里变量的引用">内部函数对外部函数作用域里变量的引用</h4>
-</li>
-<li>如果内嵌函数i想使用外侧函数的变量就使用nonlocal</li>
-<li>对于不可变类型使用Nonlocal</li>
-<li>1.当内嵌函数内部要修改外侧函数的不可变类型的值需要在内嵌函数中添加nonlocal</li>
-<li>可变类型的nonlocal是可加可不加</li>
-<li></li>
-</ul>
-<hr>
-<h1 id="装饰器">装饰器</h1>
-<hr>
-<ul>
-<li>理解成：丰富一个原有函数，使用装饰器</li>
-<li>依赖的是闭包</li>
-<li>@xxx</li>
-<li>发现有一个”标记&quot;@xxx</li>
-<li>自动将@x&rsquo;x&rsquo;x下方紧挨这的函数作为参数传递给xxx函数，</li>
-<li>xxx函数收到参数，则进入函数体执行</li>
-<li>最后装饰器返回的结果最后给了@xxx下面的函数，如果想看装时后的效果直接调用@xxx下面的函数就行了</li>
-<li>@函数名是python的以中国语法糖</li>
-<li>
-<h4 id="装饰器decorator功能-统计方法的执行">装饰器（decorator）功能-统计方法的执行</h4>
-</li>
-<li>time.time() 返回当前时间的时间戳（1970纪元后经过的浮点秒数</li>
-<li></li>
-</ul>
-<hr>
-<hr>
-<ul>
-<li>
-<h4 id="装饰器示例">装饰器示例</h4>
-</li>
-<li>无参数的函数：</li>
-<li>有参数的函数不要忘记穿参如果是不定长参数需要加*解包</li>
-<li>装饰器带参数，在原有装饰器的基础上</li>
-<li>类装饰器</li>
-<li>装饰器函数其实是这样一个接口约束，它必须接受一个callable对象作为参数，然后返回一个callable对象。在python中一般callable对象都是函数，但也有例外，只要摸个对象重写了__ caa__方法，那么这个对象就是callable的。</li>
-<li>__ call__</li>
-<li>多次装饰</li>
-<li>如果函数要进行多次装饰，则里最近的首先进行装饰</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="动态语言">动态语言</h1>
-</li>
-</ul>
-<hr>
-<ul>
-<li>
-<p>动态添加</p>
-</li>
-<li></li>
-<li>
-<p>import types</p>
-</li>
-<li>
-<p>types.MethodType(函数，对象)</p>
-</li>
-<li></li>
-<li>
-<h4 id="运行过程中删除">运行过程中删除</h4>
-</li>
-<li>
-<p>del 对象.属性名</p>
-</li>
-<li>
-<p>delattr(对象，‘属性名’)</p>
-</li>
-<li>
-<h4 id="使用__slots__限制添加实例属性和实例方法但类属性和类方法和静态方法可以添加">使用__slots__限制添加实例属性和实例方法，但类属性和类方法和静态方法可以添加</h4>
-</li>
-<li>
-<p>_slots__定义的属性仅对当前类实例起作用，对继承的子类是不起作用的</p>
-</li>
-<li>
-<p>不限制类的属性或者方法（静态方法）</p>
-</li>
-<li>
-<p>只能限制对象的属性或者方法</p>
-</li>
-<li>
-<p>_slots__只是对当前类起作用，但是不会影响子类</p>
-</li>
-<li></li>
-</ul>
-<hr>
-<h1 id="元类">元类</h1>
-<hr>
-<ul>
-<li>在大多数编程语言中，<strong>类就是一组用来描述如何生成一个对象的代码段</strong>。++在Python中这一点仍然成立：++</li>
-<li>判断类中有没有属性</li>
-<li>hasattr(类名，属性名)</li>
-<li><strong>动态的创建类</strong></li>
-<li>类同样也是一种对象，也就是类对象。只要你使用关键字class，Python解释器在执行的时候就会创建一个对象。</li>
-<li>
+      <div class="content"><h2 id="1-生成器generator">1. 生成器（Generator）</h2>
+<h3 id="11-生成器概念">1.1 生成器概念</h3>
+<p>生成器是Python中一种特殊的迭代器，它可以让我们以一种更优雅的方式构造迭代器。生成器不会一次性生成所有数据，而是在需要时才生成数据，这样可以节省内存空间。</p>
+<h3 id="12-创建生成器的方法">1.2 创建生成器的方法</h3>
+<h4 id="121-使用生成器表达式">1.2.1 使用生成器表达式</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 列表推导式</span>
+</span></span><span style="display:flex;"><span>numbers <span style="color:#f92672">=</span> [x <span style="color:#f92672">*</span> x <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>)]  <span style="color:#75715e"># 创建列表</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 生成器表达式</span>
+</span></span><span style="display:flex;"><span>generator <span style="color:#f92672">=</span> (x <span style="color:#f92672">*</span> x <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>))  <span style="color:#75715e"># 创建生成器</span>
+</span></span></code></pre></div><h4 id="122-使用yield关键字">1.2.2 使用yield关键字</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fibonacci</span>(num):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;生成斐波那契数列的生成器&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    a, b <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(num):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> b
+</span></span><span style="display:flex;"><span>        a, b <span style="color:#f92672">=</span> b, a <span style="color:#f92672">+</span> b
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 使用生成器</span>
+</span></span><span style="display:flex;"><span>fib <span style="color:#f92672">=</span> fibonacci(<span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> num <span style="color:#f92672">in</span> fib:
+</span></span><span style="display:flex;"><span>    print(num)
+</span></span></code></pre></div><h3 id="13-生成器的特性与方法">1.3 生成器的特性与方法</h3>
+<h4 id="131-next方法">1.3.1 next()方法</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>generator <span style="color:#f92672">=</span> (x <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>print(next(generator))  <span style="color:#75715e"># 0</span>
+</span></span><span style="display:flex;"><span>print(next(generator))  <span style="color:#75715e"># 1</span>
+</span></span><span style="display:flex;"><span>print(next(generator))  <span style="color:#75715e"># 2</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># print(next(generator))  # StopIteration</span>
+</span></span></code></pre></div><h4 id="132-send方法">1.3.2 send()方法</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">counter</span>():
+</span></span><span style="display:flex;"><span>    i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        value <span style="color:#f92672">=</span> <span style="color:#66d9ef">yield</span> i
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> value <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            i <span style="color:#f92672">=</span> value
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>c <span style="color:#f92672">=</span> counter()
+</span></span><span style="display:flex;"><span>print(next(c))      <span style="color:#75715e"># 0</span>
+</span></span><span style="display:flex;"><span>print(c<span style="color:#f92672">.</span>send(<span style="color:#ae81ff">10</span>))   <span style="color:#75715e"># 10</span>
+</span></span><span style="display:flex;"><span>print(next(c))      <span style="color:#75715e"># 11</span>
+</span></span></code></pre></div><h3 id="14-生成器的优势">1.4 生成器的优势</h3>
 <ol>
-<li>你可以将它赋值给一个变量</li>
+<li>内存效率：按需生成数据</li>
+<li>代码简洁：比迭代器的实现更简单</li>
+<li>状态保存：保存上次运行状态</li>
 </ol>
-</li>
-</ul>
-<ol start="2">
-<li>你可以拷贝它</li>
-<li>你可以为它增加属性</li>
-<li>你可以将它作为函数参数进行传递</li>
+<h2 id="2-迭代器iterator">2. 迭代器（Iterator）</h2>
+<h3 id="21-迭代器概念">2.1 迭代器概念</h3>
+<p>迭代器是一个可以记住遍历位置的对象，它必须实现<code>__iter__()</code>和<code>__next__()</code>方法。</p>
+<h3 id="22-可迭代对象与迭代器的区别">2.2 可迭代对象与迭代器的区别</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> collections.abc <span style="color:#f92672">import</span> Iterable, Iterator
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 可迭代对象示例</span>
+</span></span><span style="display:flex;"><span>print(isinstance([], Iterable))    <span style="color:#75715e"># True</span>
+</span></span><span style="display:flex;"><span>print(isinstance({}, Iterable))    <span style="color:#75715e"># True</span>
+</span></span><span style="display:flex;"><span>print(isinstance(<span style="color:#e6db74">&#39;abc&#39;</span>, Iterable)) <span style="color:#75715e"># True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 转换为迭代器</span>
+</span></span><span style="display:flex;"><span>lst <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>iter_lst <span style="color:#f92672">=</span> iter(lst)
+</span></span><span style="display:flex;"><span>print(isinstance(iter_lst, Iterator))  <span style="color:#75715e"># True</span>
+</span></span></code></pre></div><h3 id="23-自定义迭代器">2.3 自定义迭代器</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CountDown</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, start):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>start <span style="color:#f92672">=</span> start
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __iter__(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __next__(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>start <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">StopIteration</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>start <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>start <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 使用自定义迭代器</span>
+</span></span><span style="display:flex;"><span>counter <span style="color:#f92672">=</span> CountDown(<span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> num <span style="color:#f92672">in</span> counter:
+</span></span><span style="display:flex;"><span>    print(num)  <span style="color:#75715e"># 5, 4, 3, 2, 1</span>
+</span></span></code></pre></div><h2 id="3-闭包closure">3. 闭包（Closure）</h2>
+<h3 id="31-闭包的定义">3.1 闭包的定义</h3>
+<p>闭包是指延伸了作用域的函数，它可以访问定义函数时存在的非局部变量。</p>
+<h3 id="32-闭包的条件">3.2 闭包的条件</h3>
+<ol>
+<li>必须有内嵌函数</li>
+<li>内嵌函数必须引用外部函数的变量</li>
+<li>外部函数必须返回内嵌函数</li>
 </ol>
+<h3 id="33-闭包示例">3.3 闭包示例</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">make_averager</span>():
+</span></span><span style="display:flex;"><span>    count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    total <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">averager</span>(new_value):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">nonlocal</span> count, total
+</span></span><span style="display:flex;"><span>        count <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        total <span style="color:#f92672">+=</span> new_value
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> total <span style="color:#f92672">/</span> count
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> averager
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>avg <span style="color:#f92672">=</span> make_averager()
+</span></span><span style="display:flex;"><span>print(avg(<span style="color:#ae81ff">10</span>))  <span style="color:#75715e"># 10.0</span>
+</span></span><span style="display:flex;"><span>print(avg(<span style="color:#ae81ff">20</span>))  <span style="color:#75715e"># 15.0</span>
+</span></span><span style="display:flex;"><span>print(avg(<span style="color:#ae81ff">30</span>))  <span style="color:#75715e"># 20.0</span>
+</span></span></code></pre></div><h3 id="34-闭包中的变量作用域">3.4 闭包中的变量作用域</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">outer</span>(x):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">inner</span>():
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">nonlocal</span> x  <span style="color:#75715e"># 使用nonlocal关键字修改外部变量</span>
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> x
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> inner
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>counter <span style="color:#f92672">=</span> outer(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>print(counter())  <span style="color:#75715e"># 1</span>
+</span></span><span style="display:flex;"><span>print(counter())  <span style="color:#75715e"># 2</span>
+</span></span></code></pre></div><h2 id="4-装饰器decorator">4. 装饰器（Decorator）</h2>
+<h3 id="41-装饰器基础">4.1 装饰器基础</h3>
+<p>装饰器是可调用的对象，它接收一个函数作为参数并返回一个函数，用于增强函数功能。</p>
+<h3 id="42-简单装饰器">4.2 简单装饰器</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> functools
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">timer</span>(func):
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@functools.wraps</span>(func)  <span style="color:#75715e"># 保留原函数的元信息</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">wrapper</span>(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+</span></span><span style="display:flex;"><span>        start <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+</span></span><span style="display:flex;"><span>        result <span style="color:#f92672">=</span> func(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
+</span></span><span style="display:flex;"><span>        end <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Function </span><span style="color:#e6db74">{</span>func<span style="color:#f92672">.</span>__name__<span style="color:#e6db74">}</span><span style="color:#e6db74"> took </span><span style="color:#e6db74">{</span>end<span style="color:#f92672">-</span>start<span style="color:#e6db74">}</span><span style="color:#e6db74"> seconds&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> wrapper
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@timer</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">slow_function</span>(n):
+</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(n)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> n
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>slow_function(<span style="color:#ae81ff">1</span>)  <span style="color:#75715e"># Function slow_function took 1.0 seconds</span>
+</span></span></code></pre></div><h3 id="43-带参数的装饰器">4.3 带参数的装饰器</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">repeat</span>(times):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decorator</span>(func):
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">@functools.wraps</span>(func)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">wrapper</span>(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(times):
+</span></span><span style="display:flex;"><span>                result <span style="color:#f92672">=</span> func(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> result
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> wrapper
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> decorator
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@repeat</span>(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">greet</span>(name):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Hello, </span><span style="color:#e6db74">{</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>greet(<span style="color:#e6db74">&#34;World&#34;</span>)  <span style="color:#75715e"># 打印三次 Hello, World</span>
+</span></span></code></pre></div><h3 id="44-类装饰器">4.4 类装饰器</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Singleton</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, cls):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_cls <span style="color:#f92672">=</span> cls
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __call__(self, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>_instance <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>_instance <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>_cls(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_instance
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Singleton</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Database</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;数据库连接创建&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 测试单例模式</span>
+</span></span><span style="display:flex;"><span>db1 <span style="color:#f92672">=</span> Database()
+</span></span><span style="display:flex;"><span>db2 <span style="color:#f92672">=</span> Database()
+</span></span><span style="display:flex;"><span>print(db1 <span style="color:#f92672">is</span> db2)  <span style="color:#75715e"># True</span>
+</span></span></code></pre></div><h2 id="5-最佳实践与注意事项">5. 最佳实践与注意事项</h2>
+<h3 id="51-生成器最佳实践">5.1 生成器最佳实践</h3>
 <ul>
-<li>因为类也是对象，有可以在运行时动态的创建它们，就像其他任何对象一样。首先，可以在函数中创建类，使用class关键字即可。</li>
-<li><strong>当你使用class关键字时，Python解释器自动创建这个对象。</strong></li>
-<li>
-<h4 id="使用type创建类">使用type创建类</h4>
-</li>
-<li><strong>type还有一种完全不同的功能，动态的创建类。</strong></li>
-<li><strong>type可以像这样工作：</strong></li>
-<li><strong>type(类名, 由父类名称组成的元组（针对继承的情况，可以为空），包含属性的字典（名称和值）)</strong></li>
-<li>
-<h4 id="使用type创建带有属性的类">使用type创建带有属性的类</h4>
-</li>
-<li>type的第2个参数，元组中是父类的名字，而不是字符串。
-添加的属性是类属性，并不是实例属性。</li>
-<li>
-<h4 id="使用type创建带有方法的类">使用type创建带有方法的类</h4>
-</li>
-<li>如果创建实例函数调用动态静态方法要加self</li>
-<li>
-<h4 id="到底什么是元类">到底什么是元类</h4>
-</li>
-<li>type就是元类</li>
-<li>元类就是创建类这种对象的东西，type就是python的内奸元类，当然了，你也可以创建自己的元类</li>
+<li>处理大数据集时优先使用生成器</li>
+<li>注意捕获StopIteration异常</li>
+<li>合理使用send()方法进行双向通信</li>
 </ul>
-<hr>
+<h3 id="52-迭代器使用建议">5.2 迭代器使用建议</h3>
 <ul>
-<li>
-<h1 id="__-metaclass__属性">__ metaclass__属性</h1>
-</li>
+<li>优先使用for循环而不是手动调用next()</li>
+<li>实现自定义迭代器时记得同时实现__iter__和__next__方法</li>
+<li>注意处理迭代完成的情况</li>
 </ul>
-<hr>
+<h3 id="53-闭包使用技巧">5.3 闭包使用技巧</h3>
 <ul>
-<li>可以创建一个类的东西</li>
-<li>def aa(参数一：类名，2：父类，3：属性)</li>
-<li>return type(1，类名2，父类，3，新属性)</li>
-<li>
-<h4 id="自定义元类">自定义元类</h4>
-</li>
-<li>拦截类的创建</li>
-<li>修改类</li>
-<li>返回修改之后的类</li>
+<li>谨慎使用nonlocal关键字</li>
+<li>注意闭包占用的内存资源</li>
+<li>合理利用闭包实现数据隐藏</li>
+</ul>
+<h3 id="54-装饰器编写原则">5.4 装饰器编写原则</h3>
+<ul>
+<li>保持装饰器的通用性</li>
+<li>使用functools.wraps保留原函数信息</li>
+<li>考虑装饰器的性能影响</li>
 </ul></div>
     </article>
   </main>
