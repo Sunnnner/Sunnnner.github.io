@@ -86,13 +86,6 @@
       <description>&lt;hr&gt;&#xA;&lt;h3 id=&#34;函数&#34;&gt;函数&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;1、常使用的模块&lt;/li&gt;&#xA;&lt;li&gt;2、模块的代码比较多&lt;/li&gt;&#xA;&lt;li&gt;3、具有独立功能的代码块组织为一个小模块，这就是函数&lt;/li&gt;&#xA;&lt;li&gt;4、函数的优点：提高代码的复用性，提高代码的可维护性&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
-      <title>python：面向对象</title>
-      <link>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</link>
-      <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</guid>
-      <description>&lt;ul&gt;&#xA;&lt;li&gt;object oriented programming&lt;/li&gt;&#xA;&lt;li&gt;OOP面向对象程序设计&lt;/li&gt;&#xA;&lt;li&gt;java C#只支持面向对象编程&lt;/li&gt;&#xA;&lt;li&gt;python既支持面向过程编程也支持面向对象编程&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
-    </item>
-    <item>
       <title>python：面向对象-封装</title>
       <link>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A12--%E5%B0%81%E8%A3%85/</link>
       <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
@@ -105,13 +98,6 @@
       <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A13-%E5%BC%82%E5%B8%B8/</guid>
       <description>&lt;h1 id=&#34;__-name__的值就是__-main__&#34;&gt;__ name__的值就是__ main__&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;if __ name &lt;strong&gt;==&amp;quot;&lt;/strong&gt; main__&amp;quot;:&lt;/li&gt;&#xA;&lt;li&gt;判断name是不是main&lt;/li&gt;&#xA;&lt;li&gt;只有在自己使用的时候默认就是__main __&lt;/li&gt;&#xA;&lt;li&gt;验证是否在同一类运行&lt;/li&gt;&#xA;&lt;li&gt;往往在当前类中使用这个个判断&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>python：面向对象-设计模式</title>
-      <link>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
-      <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
-      <description>&lt;h1 id=&#34;设计模式&#34;&gt;设计模式&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;设计模式是高成次的方案，并不关心具体的实现细节&lt;/li&gt;&#xA;&lt;li&gt;比如算法和数据结构和网页。对应正在尝试解决问题，何种算法和数据结构最优，则是由软件工程师自己把握。&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>python元祖与字典</title>
@@ -147,6 +133,20 @@
       <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/python/%E5%9F%BA%E7%A1%80/%E6%A8%A1%E5%9D%97/</guid>
       <description></description>
+    </item>
+    <item>
+      <title>Python设计模式详解</title>
+      <link>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <description>&lt;h1 id=&#34;设计模式&#34;&gt;设计模式&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;设计模式是高成次的方案，并不关心具体的实现细节&lt;/li&gt;&#xA;&lt;li&gt;比如算法和数据结构和网页。对应正在尝试解决问题，何种算法和数据结构最优，则是由软件工程师自己把握。&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Python面向对象编程详解</title>
+      <link>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</link>
+      <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</guid>
+      <description>&lt;ul&gt;&#xA;&lt;li&gt;object oriented programming&lt;/li&gt;&#xA;&lt;li&gt;OOP面向对象程序设计&lt;/li&gt;&#xA;&lt;li&gt;java C#只支持面向对象编程&lt;/li&gt;&#xA;&lt;li&gt;python既支持面向过程编程也支持面向对象编程&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Python高级特性：对象比较、拷贝机制与作用域</title>

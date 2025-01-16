@@ -9,7 +9,7 @@
   />
   
     
-      <title>python：面向对象-设计模式 | 学无止境</title>
+      <title>Python设计模式详解 | 学无止境</title>
     
   
   <link rel="stylesheet" href="/css/reset.css"/>
@@ -61,7 +61,7 @@
         
   <main>
     <article>
-      <h1 class="title">python：面向对象-设计模式</h1>
+      <h1 class="title">Python设计模式详解</h1>
       
       <div class="post-meta">
   <strong>
@@ -71,8 +71,8 @@
     
       <a href="/categories/python">python</a>
   </strong>
-  <span> • 22 words</span>
-  <span> • 1 minute read</span>
+  <span> • 406 words</span>
+  <span> • 2 minute read</span>
   
   
 </div>
@@ -83,40 +83,241 @@
 <li>设计模式是高成次的方案，并不关心具体的实现细节</li>
 <li>比如算法和数据结构和网页。对应正在尝试解决问题，何种算法和数据结构最优，则是由软件工程师自己把握。</li>
 </ul>
-<hr>
-<h1 id="简单工厂模式">简单工厂模式</h1>
-<hr>
+<h2 id="1-设计模式概述">1. 设计模式概述</h2>
+<h3 id="11-什么是设计模式">1.1 什么是设计模式</h3>
+<p>设计模式是软件开发过程中的最佳实践方案，它是经过多年验证的、可重用的解决方案。设计模式主要关注：</p>
 <ul>
-<li>使用工厂模式场景：</li>
-<li>1 要不断的创建车的子类对象，</li>
-<li>2 需要一个工厂统一负责管理子类</li>
-<li>实质是</li>
-<li>
-<h3 id="工厂方法模式">工厂方法模式</h3>
-</li>
-<li>1简单工厂模式：</li>
-<li>有一个工厂同意管理子类对象，如果在添加子类，则需要改变工厂</li>
-<li>2工厂方法模式：</li>
-<li>一个子类类型对应一个工厂，好处：不会影响整体的使用</li>
-<li></li>
+<li>代码的可重用性</li>
+<li>可维护性</li>
+<li>可读性</li>
+<li>稳健的面向对象设计</li>
 </ul>
-<hr>
-<h2 id="__-new__方法">__ new__方法</h2>
+<h3 id="12-设计模式的重要性">1.2 设计模式的重要性</h3>
 <ul>
-<li>__new__至少要有一个参数cls，代表要实例化的类，此参数在实例化时由Python解释器自动提供</li>
-<li>__new__必须要有返回值，返回实例化出来的实例，这点在自己实现__new__时要特别注意，可以return父类__new__出来的实例，或者直接是object的__new__出来的实例</li>
-<li>__init__有一个参数self，就是这个__new__返回的实例，__init__在__new__的基础上可以完成一些其它初始化的动作，__init__不需要返回值</li>
-<li>我们可以将类比作制造商，__new__方法就是前期的原材料购买环节，__init__方法就是在有原材料的基础上，加工，初始化商品环节。</li>
-<li></li>
+<li>提供标准化的解决方案</li>
+<li>便于团队沟通</li>
+<li>提高代码质量</li>
+<li>降低维护成本</li>
 </ul>
-<hr>
+<h2 id="2-工厂模式">2. 工厂模式</h2>
+<h3 id="21-简单工厂模式">2.1 简单工厂模式</h3>
+<h4 id="211-基本概念">2.1.1 基本概念</h4>
+<p>简单工厂模式通过一个工厂类统一管理对象的创建过程。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 产品基类</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Vehicle</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">drive</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 具体产品</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Car</span>(Vehicle):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">drive</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Car is driving&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Truck</span>(Vehicle):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">drive</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Truck is driving&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 简单工厂</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">VehicleFactory</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@staticmethod</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_vehicle</span>(vehicle_type):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> vehicle_type <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;car&#34;</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> Car()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> vehicle_type <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;truck&#34;</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> Truck()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Unknown vehicle type: </span><span style="color:#e6db74">{</span>vehicle_type<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 使用示例</span>
+</span></span><span style="display:flex;"><span>factory <span style="color:#f92672">=</span> VehicleFactory()
+</span></span><span style="display:flex;"><span>car <span style="color:#f92672">=</span> factory<span style="color:#f92672">.</span>create_vehicle(<span style="color:#e6db74">&#34;car&#34;</span>)
+</span></span><span style="display:flex;"><span>print(car<span style="color:#f92672">.</span>drive())  <span style="color:#75715e"># 输出: Car is driving</span>
+</span></span></code></pre></div><h4 id="212-优缺点">2.1.2 优缺点</h4>
+<p>优点：</p>
 <ul>
-<li>单列模式</li>
+<li>封装对象创建过程</li>
+<li>客户端与具体实现解耦</li>
 </ul>
-<hr>
+<p>缺点：</p>
 <ul>
-<li></li>
-</ul></div>
+<li>违反开闭原则，添加新产品需要修改工厂类</li>
+<li>工厂类职责过重</li>
+</ul>
+<h3 id="22-工厂方法模式">2.2 工厂方法模式</h3>
+<h4 id="221-基本概念">2.2.1 基本概念</h4>
+<p>工厂方法模式为每个产品提供一个专门的工厂类。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 抽象工厂接口</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">VehicleFactory</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_vehicle</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 具体工厂</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CarFactory</span>(VehicleFactory):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_vehicle</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Car()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TruckFactory</span>(VehicleFactory):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_vehicle</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Truck()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 使用示例</span>
+</span></span><span style="display:flex;"><span>car_factory <span style="color:#f92672">=</span> CarFactory()
+</span></span><span style="display:flex;"><span>car <span style="color:#f92672">=</span> car_factory<span style="color:#f92672">.</span>create_vehicle()
+</span></span><span style="display:flex;"><span>print(car<span style="color:#f92672">.</span>drive())
+</span></span></code></pre></div><h4 id="222-优缺点">2.2.2 优缺点</h4>
+<p>优点：</p>
+<ul>
+<li>符合开闭原则</li>
+<li>更好的扩展性</li>
+<li>解耦性更强</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>类的数量增多</li>
+<li>系统复杂度增加</li>
+</ul>
+<h2 id="3-__new__方法详解">3. __new__方法详解</h2>
+<h3 id="31-基本概念">3.1 基本概念</h3>
+<p><code>__new__</code>是Python中创建对象的特殊方法，它在<code>__init__</code>之前被调用。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomClass</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __new__(cls, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;1. 调用__new__方法&#34;</span>)
+</span></span><span style="display:flex;"><span>        instance <span style="color:#f92672">=</span> super()<span style="color:#f92672">.</span>__new__(cls)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> instance
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, value):
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;2. 调用__init__方法&#34;</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>value <span style="color:#f92672">=</span> value
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建实例</span>
+</span></span><span style="display:flex;"><span>obj <span style="color:#f92672">=</span> CustomClass(<span style="color:#ae81ff">42</span>)
+</span></span></code></pre></div><h3 id="32-__new__方法的特点">3.2 __new__方法的特点</h3>
+<ol>
+<li>必须有cls参数</li>
+<li>必须返回一个实例</li>
+<li>在对象创建过程中最先被调用</li>
+</ol>
+<h3 id="33-实际应用场景">3.3 实际应用场景</h3>
+<h4 id="331-单例模式实现">3.3.1 单例模式实现</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Singleton</span>:
+</span></span><span style="display:flex;"><span>    _instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __new__(cls):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> cls<span style="color:#f92672">.</span>_instance <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            cls<span style="color:#f92672">.</span>_instance <span style="color:#f92672">=</span> super()<span style="color:#f92672">.</span>__new__(cls)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> cls<span style="color:#f92672">.</span>_instance
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 初始化代码</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">pass</span>
+</span></span></code></pre></div><h4 id="332-不可变类型">3.3.2 不可变类型</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Immutable</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __new__(cls, value):
+</span></span><span style="display:flex;"><span>        instance <span style="color:#f92672">=</span> super()<span style="color:#f92672">.</span>__new__(cls)
+</span></span><span style="display:flex;"><span>        instance<span style="color:#f92672">.</span>_value <span style="color:#f92672">=</span> value
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> instance
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@property</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">value</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_value
+</span></span></code></pre></div><h2 id="4-单例模式">4. 单例模式</h2>
+<h3 id="41-实现方式">4.1 实现方式</h3>
+<h4 id="411-使用__new__方法">4.1.1 使用__new__方法</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Singleton</span>:
+</span></span><span style="display:flex;"><span>    _instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __new__(cls):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> cls<span style="color:#f92672">.</span>_instance <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            cls<span style="color:#f92672">.</span>_instance <span style="color:#f92672">=</span> super()<span style="color:#f92672">.</span>__new__(cls)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> cls<span style="color:#f92672">.</span>_instance
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 测试</span>
+</span></span><span style="display:flex;"><span>s1 <span style="color:#f92672">=</span> Singleton()
+</span></span><span style="display:flex;"><span>s2 <span style="color:#f92672">=</span> Singleton()
+</span></span><span style="display:flex;"><span>print(s1 <span style="color:#f92672">is</span> s2)  <span style="color:#75715e"># True</span>
+</span></span></code></pre></div><h4 id="412-使用装饰器">4.1.2 使用装饰器</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">singleton</span>(cls):
+</span></span><span style="display:flex;"><span>    _instances <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_instance</span>(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> cls <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> _instances:
+</span></span><span style="display:flex;"><span>            _instances[cls] <span style="color:#f92672">=</span> cls(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> _instances[cls]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> get_instance
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@singleton</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Database</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>connected <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">connect</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> self<span style="color:#f92672">.</span>connected:
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 模拟数据库连接</span>
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>connected <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Database connected&#34;</span>
+</span></span></code></pre></div><h3 id="42-单例模式的应用场景">4.2 单例模式的应用场景</h3>
+<ol>
+<li>数据库连接池</li>
+<li>配置管理器</li>
+<li>日志管理器</li>
+<li>缓存管理</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 配置管理器示例</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConfigManager</span>:
+</span></span><span style="display:flex;"><span>    _instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>    _config <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __new__(cls):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> cls<span style="color:#f92672">.</span>_instance <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            cls<span style="color:#f92672">.</span>_instance <span style="color:#f92672">=</span> super()<span style="color:#f92672">.</span>__new__(cls)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> cls<span style="color:#f92672">.</span>_instance
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_config</span>(self, filename):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 模拟加载配置文件</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_config <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;database&#39;</span>: <span style="color:#e6db74">&#39;mysql://localhost:3306&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;debug&#39;</span>: <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_config</span>(self, key):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_config<span style="color:#f92672">.</span>get(key)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 使用示例</span>
+</span></span><span style="display:flex;"><span>config <span style="color:#f92672">=</span> ConfigManager()
+</span></span><span style="display:flex;"><span>config<span style="color:#f92672">.</span>load_config(<span style="color:#e6db74">&#39;config.ini&#39;</span>)
+</span></span><span style="display:flex;"><span>print(config<span style="color:#f92672">.</span>get_config(<span style="color:#e6db74">&#39;database&#39;</span>))
+</span></span></code></pre></div><h3 id="43-最佳实践建议">4.3 最佳实践建议</h3>
+<ol>
+<li>注意线程安全</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> threading
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThreadSafeSingleton</span>:
+</span></span><span style="display:flex;"><span>    _instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>    _lock <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Lock()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __new__(cls):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> cls<span style="color:#f92672">.</span>_instance <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">with</span> cls<span style="color:#f92672">.</span>_lock:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> cls<span style="color:#f92672">.</span>_instance <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>                    cls<span style="color:#f92672">.</span>_instance <span style="color:#f92672">=</span> super()<span style="color:#f92672">.</span>__new__(cls)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> cls<span style="color:#f92672">.</span>_instance
+</span></span></code></pre></div><ol start="2">
+<li>考虑序列化问题</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pickle
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SingletonWithPickle</span>:
+</span></span><span style="display:flex;"><span>    _instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __new__(cls):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> cls<span style="color:#f92672">.</span>_instance <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            cls<span style="color:#f92672">.</span>_instance <span style="color:#f92672">=</span> super()<span style="color:#f92672">.</span>__new__(cls)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> cls<span style="color:#f92672">.</span>_instance
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__reduce__</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>__class__, ()
+</span></span></code></pre></div></div>
     </article>
   </main>
 
