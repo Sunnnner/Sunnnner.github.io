@@ -86,13 +86,6 @@
       <description>&lt;hr&gt;&#xA;&lt;h3 id=&#34;函数&#34;&gt;函数&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;1、常使用的模块&lt;/li&gt;&#xA;&lt;li&gt;2、模块的代码比较多&lt;/li&gt;&#xA;&lt;li&gt;3、具有独立功能的代码块组织为一个小模块，这就是函数&lt;/li&gt;&#xA;&lt;li&gt;4、函数的优点：提高代码的复用性，提高代码的可维护性&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
-      <title>python：垃圾回收</title>
-      <link>https://sunnnner.github.io/posts/python/%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%86%85%E5%BB%BA%E5%B1%9E%E6%80%A7%E5%92%8C%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0/</link>
-      <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/python/%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%86%85%E5%BB%BA%E5%B1%9E%E6%80%A7%E5%92%8C%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0/</guid>
-      <description>&lt;h1 id=&#34;垃圾回收&#34;&gt;垃圾回收&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;GC(Garbage collection)垃圾回收&lt;/li&gt;&#xA;&lt;li&gt;python采用的是引用计数机制为主，标记-2清楚和分代收集（隔代回收，分代回收）两种机制&#xA;为辅的策略&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
-    </item>
-    <item>
       <title>python：面向对象</title>
       <link>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</link>
       <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
@@ -126,6 +119,13 @@
       <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/python/%E5%9F%BA%E7%A1%80/%E5%85%83%E7%A5%96%E4%B8%8E%E5%AD%97%E5%85%B8/</guid>
       <description>&lt;h1 id=&#34;元祖&#34;&gt;元祖&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;tuple（）&lt;/code&gt;定义元组&lt;/li&gt;&#xA;&lt;li&gt;元组中存放的数据可以使int,str list diec&lt;/li&gt;&#xA;&lt;li&gt;读取元组的值使用下标&lt;/li&gt;&#xA;&lt;li&gt;元组的修改和删除是不支持的&lt;/li&gt;&#xA;&lt;li&gt;但是列表支持修改a[0]=99元组不允许删除部分：remove pop del元组不能使用&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Python内存管理与垃圾回收机制详解</title>
+      <link>https://sunnnner.github.io/posts/python/%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%86%85%E5%BB%BA%E5%B1%9E%E6%80%A7%E5%92%8C%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/python/%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%86%85%E5%BB%BA%E5%B1%9E%E6%80%A7%E5%92%8C%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0/</guid>
+      <description>&lt;h1 id=&#34;垃圾回收&#34;&gt;垃圾回收&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;GC(Garbage collection)垃圾回收&lt;/li&gt;&#xA;&lt;li&gt;python采用的是引用计数机制为主，标记-2清楚和分代收集（隔代回收，分代回收）两种机制&#xA;为辅的策略&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>python判断语句</title>
