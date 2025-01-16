@@ -9,7 +9,7 @@
   />
   
     
-      <title>python：面向对象-封装 | 学无止境</title>
+      <title>Python面向对象高级特性详解 | 学无止境</title>
     
   
   <link rel="stylesheet" href="/css/reset.css"/>
@@ -61,7 +61,7 @@
         
   <main>
     <article>
-      <h1 class="title">python：面向对象-封装</h1>
+      <h1 class="title">Python面向对象高级特性详解</h1>
       
       <div class="post-meta">
   <strong>
@@ -71,8 +71,8 @@
     
       <a href="/categories/python">python</a>
   </strong>
-  <span> • 119 words</span>
-  <span> • 1 minute read</span>
+  <span> • 445 words</span>
+  <span> • 3 minute read</span>
   
   
 </div>
@@ -92,253 +92,221 @@
 </li>
 <li>2、如果有多个对象，类属性有什么变化</li>
 </ul>
-<hr>
-<ul>
-<li>
-<h1 id="__-del__方法">__ del__()方法</h1>
-</li>
-</ul>
-<hr>
-<ul>
-<li>最后调用的方法 del</li>
-<li>在你执行完整个代码之后没有手动销毁的时候python解释器就会自动调用对象的__ del__</li>
-<li>python解释器 执行完毕的时候，有几个对象就会调用几遍__ del__</li>
-<li>手动销毁也会调用del</li>
-<li>有引用关系的时候p1=p3当你手动删除p1一个对象的时候</li>
-<li>获取空间有几个引用关系</li>
-<li>
-<pre><code>  import sys别忘了引用
-</code></pre>
-</li>
-<li>
-<pre><code>  count=sys.getrefcount(对象名)注意：工具本身也占一个引用
-</code></pre>
-</li>
-<li>
-<pre><code>  print(count)
-</code></pre>
-</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="面向对象的四大特征">面向对象的四大特征</h1>
-</li>
-</ul>
-<hr>
-<ul>
-<li>数据抽象 &ndash;&gt;表示世界中一类事物的特征,就是对象的属性.比如鸟有翅膀,羽毛等(类的属性)</li>
-<li>过程抽象 &ndash;&gt;表示世界中一类事物的行为,就是对象的行为.比如鸟会飞,会叫(类的方法)</li>
-<li>
-<h3 id="封装">封装</h3>
-</li>
-<li>用名字来区分私有（&quot;__&ldquo;两个下划线开头）与共有</li>
-<li>封装定义：定义私有的属性，通过公有set和get方法访问</li>
-<li>
-<h5 id="私有方法的使用">私有方法的使用</h5>
-</li>
-<li>定义方式：__方法名（self）</li>
-<li>只能在类内部访问，类的外部无法访问</li>
-<li>
-<h5 id="私有属性">私有属性</h5>
-</li>
-<li>特点：在属性名上的前面多了&rdquo;__&quot;&quot;</li>
-<li>在方法里面定义私有属性是self.__ 在外面使用时不能用类名.__调用只能用self.__调用</li>
-<li>
-<h4 id="set-get-结合私有使用">set get 结合私有使用</h4>
-</li>
-<li></li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="继承多层继承">继承，多层继承</h1>
-</li>
-</ul>
-<hr>
-<ul>
-<li>继承的产生</li>
-<li>子类可以继承父类的属性和方法，但是父类的私有属性不能被子类继承</li>
-<li>从上往下时传递继承</li>
-<li>###重写父类方法与调用父类方法</li>
-<li>==重写：发生在子类中，如果子类的方法与父类的方法名是相同的，则子类的方法会覆父类的方法==</li>
-<li>方法名相同参数的个数不同会发生覆盖，不管参数是否一致则子类调用的就是子类自己的对象</li>
-<li>
-<h3 id="子类中发生重写之后如何使用父类的方法">子类中发生重写之后，如何使用父类的方法？</h3>
-</li>
-<li>
-<pre><code>super().方法名()      第一种方法
-</code></pre>
-</li>
-<li>
-<pre><code>super并不是一个函数，是一个类名，形如super(B, self)事实上调用了super类的初始化函数，产生了一个super对象。
-</code></pre>
-</li>
-<li>
-<pre><code>super类的初始化函数并没有做什么特殊的操作，只是简单记录了类类型和具体实例；
-</code></pre>
-</li>
-<li>
-<pre><code>类名.对象名(self)    第二种方法
-</code></pre>
-</li>
-<li>
-<h3 id="要想调用自己的方法则通过self方法名参数如果有参数就要先定义">要想调用自己的方法则通过self.方法名(参数)==如果有参数就要先定义==</h3>
-</li>
-<li>
-<h3 id="多重继承">多重继承</h3>
-</li>
-<li>一个子类是允许存在多个父类</li>
-<li>一个子类可以多继承，因此继承了多个父类的属性和方法</li>
-<li>多继承当中照样支持重写动作</li>
-<li>查看某个类调用父类方法搜寻过程</li>
-<li>
-<pre><code> 类名.__ mro__  
-</code></pre>
-</li>
-<li>
-<pre><code> 搜寻顺序使用C3算法
-</code></pre>
-</li>
-<li>
-<pre><code> 算法是用广度优先的算法搜寻左侧
-</code></pre>
-</li>
-<li>
-<pre><code> python2中深度优先
-</code></pre>
-</li>
-<li>
-<pre><code> import inspect
-</code></pre>
-</li>
-<li>
-<pre><code> print(inspect.getmro(类名))
-</code></pre>
-</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="多态">多态</h1>
-</li>
-</ul>
-<hr>
-<ul>
-<li>多态依赖父子关系</li>
-<li>
-<pre><code>必须有继承了父类的子类才能算多态
-</code></pre>
-</li>
-<li>方法中的多态</li>
-<li>
-<pre><code>我可以接受任何参数进来
-</code></pre>
-</li>
-<li>
-<pre><code>变相的把你参数窗口这里进行标注继承父类的子类都可以进来
-</code></pre>
-</li>
-<li></li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="类方法的使用">类方法的使用</h1>
-</li>
-</ul>
-<hr>
-<ul>
-<li>类方法前面加</li>
-<li>
-<pre><code>@classmethod
-</code></pre>
-</li>
-<li>
-<pre><code>def 方法名(cls):必须有cls参数
-</code></pre>
-</li>
-<li>cls是当前类的对象，类模型也是占用内存空间的</li>
-<li>类方法的调用</li>
-<li>
-<pre><code>类名.类方法名()
-</code></pre>
-</li>
-<li>
-<pre><code>类的只能用类的
-</code></pre>
-</li>
-<li>实例化对象都时类构建出来的</li>
-<li>类模型也是一个占用内存对象，在创建对象之前就会在内存中创建类模型</li>
-<li>类对象产生的时候还有没类模型创建的对象，所以类方法中是不能使用对象的东西</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h3 id="静态方法">静态方法</h3>
-</li>
-<li>
-<pre><code>@staicmethod
-</code></pre>
-</li>
-<li>
-<pre><code>静态方法调用跟类方法一样的调用
-</code></pre>
-</li>
-<li>方法可以不加self或者cls参数方法是没有参数的</li>
-<li>静态方法中可以使用类属性</li>
-<li>要想使用对象属性则必须要穿参，通过参数对象调用</li>
-<li>如果静态方法的参数是self的话，但是与类的普通方法中的self表示的意思是不一样的self在静态方法调用的时候必须传一个参数</li>
-<li></li>
-</ul>
-<hr>
-<h1 id="__-new__方法">__ new__方法</h1>
-<hr>
-<ul>
-<li>通常__ new__方法由python解释器完成，通常第一个调用</li>
-<li>
-<pre><code> __ new__(cls)cls表示你的类模型类对象
-</code></pre>
-</li>
-<li>
-<pre><code> 使用该方法创建当前实例对象，一般不重写，就算重写
-</code></pre>
-</li>
-<li>
-<pre><code> 也是调用父类的__ new__方法，注意：一定要返回创建的对象
-</code></pre>
-</li>
-<li>
-<pre><code> ，如果没有返回，__ init__方法将不会被python解释器调用
-</code></pre>
-</li>
-<li></li>
-</ul>
-<hr>
-<h1 id="__-call__参数方法">__ call__（参数）方法</h1>
-<hr>
-<ul>
-<li>对象当作方法使用的时候</li>
-<li>
-<pre><code>可以有参数
-</code></pre>
-</li>
-<li>
-<pre><code>text Text()
-</code></pre>
-</li>
-<li>
-<pre><code>text();默认就会找call
-</code></pre>
-</li>
-<li></li>
-</ul>
-<hr>
-<h1 id="新式类与经典类的区别">新式类与经典类的区别</h1>
-<hr>
-<pre><code>主要用于继承关系中查看上层父类是谁的
-类名.__ base__可以查看他的上一层父类是谁
-</code></pre></div>
+<h2 id="1-对象生命周期方法">1. 对象生命周期方法</h2>
+<h3 id="11-__del__方法">1.1 __del__方法</h3>
+<p><code>__del__</code>方法是对象的析构方法，在对象被销毁时调用。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ResourceManager</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, name):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> name
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74"> 资源被创建&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __del__(self):
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74"> 资源被销毁&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 清理资源的代码</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 示例使用</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_resource</span>():
+</span></span><span style="display:flex;"><span>    r <span style="color:#f92672">=</span> ResourceManager(<span style="color:#e6db74">&#34;测试资源&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 当r离开作用域时，__del__会被调用</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>test_resource()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 输出:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 测试资源 资源被创建</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 测试资源 资源被销毁</span>
+</span></span></code></pre></div><h3 id="12-引用计数管理">1.2 引用计数管理</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Counter</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, value):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>value <span style="color:#f92672">=</span> value
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 检查对象引用计数</span>
+</span></span><span style="display:flex;"><span>obj <span style="color:#f92672">=</span> Counter(<span style="color:#ae81ff">42</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;引用计数: </span><span style="color:#e6db74">{</span>sys<span style="color:#f92672">.</span>getrefcount(obj) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)  <span style="color:#75715e"># 减1是因为getrefcount本身会创建一个临时引用</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建新引用</span>
+</span></span><span style="display:flex;"><span>obj2 <span style="color:#f92672">=</span> obj
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;新增引用后计数: </span><span style="color:#e6db74">{</span>sys<span style="color:#f92672">.</span>getrefcount(obj) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h2 id="2-面向对象的四大特征">2. 面向对象的四大特征</h2>
+<h3 id="21-封装encapsulation">2.1 封装（Encapsulation）</h3>
+<h4 id="211-私有属性和方法">2.1.1 私有属性和方法</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BankAccount</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>__balance <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>  <span style="color:#75715e"># 私有属性</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__validate_amount</span>(self, amount):  <span style="color:#75715e"># 私有方法</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> amount <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">deposit</span>(self, amount):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>__validate_amount(amount):
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>__balance <span style="color:#f92672">+=</span> amount
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_balance</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>__balance
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 使用示例</span>
+</span></span><span style="display:flex;"><span>account <span style="color:#f92672">=</span> BankAccount()
+</span></span><span style="display:flex;"><span>account<span style="color:#f92672">.</span>deposit(<span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>print(account<span style="color:#f92672">.</span>get_balance())  <span style="color:#75715e"># 100</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># print(account.__balance)  # AttributeError</span>
+</span></span></code></pre></div><h4 id="212-属性访问器property">2.1.2 属性访问器（Property）</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>__age <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@property</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">age</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>__age
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@age.setter</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">age</span>(self, value):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&lt;=</span> value <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">150</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>__age <span style="color:#f92672">=</span> value
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;Invalid age&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>person <span style="color:#f92672">=</span> Person()
+</span></span><span style="display:flex;"><span>person<span style="color:#f92672">.</span>age <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span>  <span style="color:#75715e"># 使用setter</span>
+</span></span><span style="display:flex;"><span>print(person<span style="color:#f92672">.</span>age)  <span style="color:#75715e"># 使用getter</span>
+</span></span></code></pre></div><h3 id="22-继承inheritance">2.2 继承（Inheritance）</h3>
+<h4 id="221-基本继承">2.2.1 基本继承</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Animal</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, name):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> name
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">speak</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Dog</span>(Animal):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">speak</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74"> says Woof!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cat</span>(Animal):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">speak</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74"> says Meow!&#34;</span>
+</span></span></code></pre></div><h4 id="222-方法重写和super">2.2.2 方法重写和super()</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Vehicle</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, brand):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>brand <span style="color:#f92672">=</span> brand
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">start</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>brand<span style="color:#e6db74">}</span><span style="color:#e6db74"> vehicle is starting&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Car</span>(Vehicle):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, brand, model):
+</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span>__init__(brand)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>model <span style="color:#f92672">=</span> model
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">start</span>(self):
+</span></span><span style="display:flex;"><span>        base_start <span style="color:#f92672">=</span> super()<span style="color:#f92672">.</span>start()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>base_start<span style="color:#e6db74">}</span><span style="color:#e6db74"> with </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>model<span style="color:#e6db74">}</span><span style="color:#e6db74"> model&#34;</span>
+</span></span></code></pre></div><h4 id="223-多重继承">2.2.3 多重继承</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Flying</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fly</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Flying high!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Swimming</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">swim</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Swimming deep!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Duck</span>(Flying, Swimming):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, name):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> name
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">move</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74"> can </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>fly()<span style="color:#e6db74">}</span><span style="color:#e6db74"> and </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>swim()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看方法解析顺序</span>
+</span></span><span style="display:flex;"><span>print(Duck<span style="color:#f92672">.</span>__mro__)
+</span></span></code></pre></div><h3 id="23-多态polymorphism">2.3 多态（Polymorphism）</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">animal_sound</span>(animal):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> animal<span style="color:#f92672">.</span>speak()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 多态使用示例</span>
+</span></span><span style="display:flex;"><span>dog <span style="color:#f92672">=</span> Dog(<span style="color:#e6db74">&#34;Buddy&#34;</span>)
+</span></span><span style="display:flex;"><span>cat <span style="color:#f92672">=</span> Cat(<span style="color:#e6db74">&#34;Whiskers&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(animal_sound(dog))  <span style="color:#75715e"># Buddy says Woof!</span>
+</span></span><span style="display:flex;"><span>print(animal_sound(cat))  <span style="color:#75715e"># Whiskers says Meow!</span>
+</span></span></code></pre></div><h2 id="3-类方法和静态方法">3. 类方法和静态方法</h2>
+<h3 id="31-类方法">3.1 类方法</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DateUtil</span>:
+</span></span><span style="display:flex;"><span>    date_format <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@classmethod</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">parse_date</span>(cls, date_string):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;解析日期字符串&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">import</span> datetime
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> datetime<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>strptime(date_string, cls<span style="color:#f92672">.</span>date_format)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@classmethod</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">change_format</span>(cls, new_format):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;修改日期格式&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        cls<span style="color:#f92672">.</span>date_format <span style="color:#f92672">=</span> new_format
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 使用类方法</span>
+</span></span><span style="display:flex;"><span>date <span style="color:#f92672">=</span> DateUtil<span style="color:#f92672">.</span>parse_date(<span style="color:#e6db74">&#34;2023-01-01&#34;</span>)
+</span></span></code></pre></div><h3 id="32-静态方法">3.2 静态方法</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MathUtil</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@staticmethod</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_even</span>(number):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> number <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@staticmethod</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_prime</span>(number):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> number <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>, int(number <span style="color:#f92672">**</span> <span style="color:#ae81ff">0.5</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> number <span style="color:#f92672">%</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 使用静态方法</span>
+</span></span><span style="display:flex;"><span>print(MathUtil<span style="color:#f92672">.</span>is_even(<span style="color:#ae81ff">4</span>))  <span style="color:#75715e"># True</span>
+</span></span><span style="display:flex;"><span>print(MathUtil<span style="color:#f92672">.</span>is_prime(<span style="color:#ae81ff">7</span>))  <span style="color:#75715e"># True</span>
+</span></span></code></pre></div><h2 id="4-特殊方法">4. 特殊方法</h2>
+<h3 id="41-__call__方法">4.1 __call__方法</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Multiplier</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, factor):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>factor <span style="color:#f92672">=</span> factor
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __call__(self, value):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>factor <span style="color:#f92672">*</span> value
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 使用可调用对象</span>
+</span></span><span style="display:flex;"><span>double <span style="color:#f92672">=</span> Multiplier(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>print(double(<span style="color:#ae81ff">5</span>))  <span style="color:#75715e"># 10</span>
+</span></span></code></pre></div><h3 id="42-新式类与经典类">4.2 新式类与经典类</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Python 3中所有类都是新式类</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NewStyleClass</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看基类</span>
+</span></span><span style="display:flex;"><span>print(NewStyleClass<span style="color:#f92672">.</span>__bases__)  <span style="color:#75715e"># (&lt;class &#39;object&#39;&gt;,)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 方法解析顺序</span>
+</span></span><span style="display:flex;"><span>print(NewStyleClass<span style="color:#f92672">.</span>__mro__)
+</span></span></code></pre></div><h2 id="5-最佳实践建议">5. 最佳实践建议</h2>
+<h3 id="51-封装使用建议">5.1 封装使用建议</h3>
+<ol>
+<li>始终使用私有属性来保护数据</li>
+<li>提供公共的访问器方法</li>
+<li>使用property装饰器来控制属性访问</li>
+</ol>
+<h3 id="52-继承使用建议">5.2 继承使用建议</h3>
+<ol>
+<li>优先使用组合而不是继承</li>
+<li>避免深层继承结构</li>
+<li>明确使用super()调用父类方法</li>
+</ol>
+<h3 id="53-方法选择建议">5.3 方法选择建议</h3>
+<ol>
+<li>实例方法：需要访问实例状态时使用</li>
+<li>类方法：需要访问类状态时使用</li>
+<li>静态方法：不需要访问实例或类状态时使用</li>
+</ol></div>
     </article>
   </main>
 

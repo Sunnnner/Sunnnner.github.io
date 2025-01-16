@@ -205,6 +205,13 @@
       <description>&lt;p&gt;ip.addr 过滤ip地址&#xA;udp.port 过滤端口&lt;/p&gt;</description>
     </item>
     <item>
+      <title> Python异常处理机制详解</title>
+      <link>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A13-%E5%BC%82%E5%B8%B8/</link>
+      <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A13-%E5%BC%82%E5%B8%B8/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Liunx编程-python线程</title>
       <link>https://sunnnner.github.io/posts/linux/liunx-%E7%BA%BF%E7%A8%8B/</link>
       <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
@@ -282,20 +289,6 @@
       <description>&lt;hr&gt;&#xA;&lt;h3 id=&#34;函数&#34;&gt;函数&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;1、常使用的模块&lt;/li&gt;&#xA;&lt;li&gt;2、模块的代码比较多&lt;/li&gt;&#xA;&lt;li&gt;3、具有独立功能的代码块组织为一个小模块，这就是函数&lt;/li&gt;&#xA;&lt;li&gt;4、函数的优点：提高代码的复用性，提高代码的可维护性&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
-      <title>python：面向对象-封装</title>
-      <link>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A12--%E5%B0%81%E8%A3%85/</link>
-      <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A12--%E5%B0%81%E8%A3%85/</guid>
-      <description>&lt;h1 id=&#34;类属性&#34;&gt;类属性&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类属性写在类下面&lt;/li&gt;&#xA;&lt;li&gt;0、类属性可以通过：&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;pre&gt;&lt;code&gt;类名.属性  或者  对象名.属性&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;1、如何改变类属性的值&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;pre&gt;&lt;code&gt; 类的属性修改要通过类名.属性=新值来修改&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;2、如果有多个对象，类属性有什么变化&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>python：面向对象-异常</title>
-      <link>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A13-%E5%BC%82%E5%B8%B8/</link>
-      <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A13-%E5%BC%82%E5%B8%B8/</guid>
-      <description>&lt;h1 id=&#34;__-name__的值就是__-main__&#34;&gt;__ name__的值就是__ main__&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;if __ name &lt;strong&gt;==&amp;quot;&lt;/strong&gt; main__&amp;quot;:&lt;/li&gt;&#xA;&lt;li&gt;判断name是不是main&lt;/li&gt;&#xA;&lt;li&gt;只有在自己使用的时候默认就是__main __&lt;/li&gt;&#xA;&lt;li&gt;验证是否在同一类运行&lt;/li&gt;&#xA;&lt;li&gt;往往在当前类中使用这个个判断&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
-    </item>
-    <item>
       <title>python元祖与字典</title>
       <link>https://sunnnner.github.io/posts/python/%E5%9F%BA%E7%A1%80/%E5%85%83%E7%A5%96%E4%B8%8E%E5%AD%97%E5%85%B8/</link>
       <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
@@ -343,6 +336,13 @@
       <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</guid>
       <description>&lt;ul&gt;&#xA;&lt;li&gt;object oriented programming&lt;/li&gt;&#xA;&lt;li&gt;OOP面向对象程序设计&lt;/li&gt;&#xA;&lt;li&gt;java C#只支持面向对象编程&lt;/li&gt;&#xA;&lt;li&gt;python既支持面向过程编程也支持面向对象编程&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Python面向对象高级特性详解</title>
+      <link>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A12--%E5%B0%81%E8%A3%85/</link>
+      <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A12--%E5%B0%81%E8%A3%85/</guid>
+      <description>&lt;h1 id=&#34;类属性&#34;&gt;类属性&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;类属性写在类下面&lt;/li&gt;&#xA;&lt;li&gt;0、类属性可以通过：&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;pre&gt;&lt;code&gt;类名.属性  或者  对象名.属性&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;1、如何改变类属性的值&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;pre&gt;&lt;code&gt; 类的属性修改要通过类名.属性=新值来修改&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;2、如果有多个对象，类属性有什么变化&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Python高级特性：对象比较、拷贝机制与作用域</title>
@@ -394,7 +394,7 @@
       <description>&lt;h1 id=&#34;什么网络通信&#34;&gt;什么网络通信&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;网络的定义&lt;/li&gt;&#xA;&lt;li&gt;在电的系统中，由若干元件组成的用来使电信号按一定要求传输的电路或这种电路的部分，叫网络。&lt;/li&gt;&#xA;&lt;li&gt;现在一般指“三网”：电信网络、有线电视网络、计算机网络。狭义的含义即因特网。抽象意义上的网络。比如城市网络、交通网络、交际网络等。&lt;/li&gt;&#xA;&lt;li&gt;⽹际层也称为：⽹络层&lt;/li&gt;&#xA;&lt;li&gt;⽹络接⼝层也称为：链路层&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
-      <title>计算机基础</title>
+      <title>计算机存储单位与Python字符串操作详解</title>
       <link>https://sunnnner.github.io/posts/python/%E5%9F%BA%E7%A1%80/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E5%88%97%E8%A1%A8/</link>
       <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/python/%E5%9F%BA%E7%A1%80/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E5%88%97%E8%A1%A8/</guid>
@@ -891,7 +891,7 @@
       <description></description>
     </item>
     <item>
-      <title>Python工厂模式</title>
+      <title>设计模式与MVC架构详解&#34;</title>
       <link>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/python%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Thu, 06 Sep 2018 10:34:03 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/python/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/python%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</guid>

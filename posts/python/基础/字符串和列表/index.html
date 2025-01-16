@@ -9,7 +9,7 @@
   />
   
     
-      <title>计算机基础 | 学无止境</title>
+      <title>计算机存储单位与Python字符串操作详解 | 学无止境</title>
     
   
   <link rel="stylesheet" href="/css/reset.css"/>
@@ -61,7 +61,7 @@
         
   <main>
     <article>
-      <h1 class="title">计算机基础</h1>
+      <h1 class="title">计算机存储单位与Python字符串操作详解</h1>
       
       <div class="post-meta">
   <strong>
@@ -71,182 +71,167 @@
     
       <a href="/categories/python">python</a>
   </strong>
-  <span> • 164 words</span>
-  <span> • 1 minute read</span>
+  <span> • 416 words</span>
+  <span> • 2 minute read</span>
   
   
 </div>
 
-      <div class="content"><h1 id="计算机中的储存单位">计算机中的储存单位</h1>
-<hr>
-<ul>
-<li><code>sys.getsizeof</code>python在sys没款中提供函数sizeof来计算python对象的大小</li>
-<li>以字节（byte）为单位返回对象大小</li>
-<li>数据存储是以10进制表示，数据传输是以2进制表示，所以1KB不等于1000B</li>
-<li>1kb=1024b;1m=1024kb=1024*1024b</li>
-<li>其中1024=210</li>
-<li>==1B（byte，字节）=8bit(二进制)==</li>
-<li>1kb(kibibyte 千字节)=1024B=2^10b</li>
-<li>1Mb(mebibyte兆字节，百万字节简称兆)=1024KB=2^20B</li>
-<li>1GB(Gigabyte 吉字节十亿字节又称千兆)=1024MB=2^30b</li>
-<li>1TB（terabyte万亿字节太字节）=1024GB=2^40b</li>
-<li>1EB(Exabyte佰壹壹字节拍字节)=1024GB=2^50B</li>
-<li>1EB（Exabyte，百亿亿字节，艾字节）=1024PB= 2^60 B</li>
-<li>1ZB（Zettabyte，十万亿亿字节，泽字节）= 1024EB= 2^70 B</li>
-<li>1YB（Yottabyte，一亿亿亿字节，尧字节）= 1024ZB= 2^80 B</li>
-<li>1BB（Brontobyte，一千亿亿亿字节）= 1024YB= 2^90 B</li>
-<li>1NB（NonaByte，一百万亿亿亿字节） = 1024 BB = 2^100 B</li>
-<li>1DB（DoggaByte，十亿亿亿亿字节） = 1024 NB = 2^110 B</li>
-<li>一个字节的最大值为255</li>
-<li>int在python2（24字节）与python3（28字节）中式不一样的长度</li>
-<li>一个字节可代表一个字元(A<del>Z)、数字(0</del>9)、或符号(,.?!%&amp;+-*/)</li>
-<li>每个中文字则须要两bytes</li>
-<li>1 Byte = 8 Bits</li>
-<li>1 KB = 1024 Bytes</li>
-<li>Kbps中的含义是：每秒能够传递多少次1024个二进制位数</li>
-<li>B/S的含义就是：每秒传递多少字节数据</li>
-<li>KB/S的含义就是每秒传输多少千字节数据，也就是多少KB数据</li>
-<li>实际应用中网速大约要减去30%的网络损耗</li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="函数">函数</h1>
-</li>
-</ul>
-<hr>
-<ul>
-<li>python中==Len（）==方法返回对象（字符，列表。元组，字典等）长度或者项目的个数</li>
-<li>python中字符串也可以拼接单数数字++会相加++</li>
-<li>
-<h1 id="format的使用">format（）的使用</h1>
-</li>
-<li>通过对象的下标进行替换，也可以通过对象的关键字进行查找替换</li>
-<li>list是一个列表list(1，2，3)format(list)可以通过下标来进行映射替换</li>
-<li>切片是指对操作的对象截取其中一部分的操作</li>
-<li>==切片的语法：[起始:结束:步长]==注意：选取的区间是左闭右开型包含起始位置但不包含结束位置不写就是默认为1</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="逆序面试题">逆序（面试题）</h1>
-</li>
-</ul>
-<hr>
-<ul>
-<li>name[0:]顺序</li>
-<li>name[-1:]最后一个</li>
-<li>name[-1:0]空</li>
-<li>name[-1:0:-1]从后置前不包括第一个</li>
-<li>name[-1::1]从后到前</li>
-<li>name[::-1]逆序</li>
-<li>==小节==</li>
-<li>[:] 提取从开头（默认位置0）到结尾（默认位置-1）的整个字符串</li>
-<li>[start:] 从start 提取到结尾</li>
-<li>[:end] 从开头提取到end - 1</li>
-<li>[start:end] 从start 提取到end - 1</li>
-<li>[start&#x1f51a;step] 从start 提取到end - 1，每step 个字符提取一个</li>
-<li>[::-1]逆序</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="字符串中常见的函数">字符串中常见的函数</h1>
-</li>
-</ul>
-<hr>
-<ul>
-<li>！# 必须掌握下面的函数</li>
-<li><code>.find（str）</code>检测 str 是否包含在 mystr中，如果是返回开始的索引值，否则返回-1</li>
-<li>====find====是从左往右==rfind==是从右往左</li>
-<li>==find(str,start,end)==</li>
-<li><code>.index(str,start,end)</code>与find作用一样只不过找不到会报错</li>
-<li><code>.rindex</code>从右往左查找</li>
-<li><code>.replace</code>替换但是不会改变替换的本身需要重新赋值给本身才会改变</li>
-<li><code>split</code>以 str 为分隔符切片 mystr，如果maxsplit有指定值，则仅分隔 maxsplit 个子字符串</li>
-<li>==mystr.split(str=&quot; &ldquo;, maxsplit)== str代表以什么进行切割==分隔符不会保留==maxsplit代表切割次数切割过后形成一个列表</li>
-<li>切割产生一个新的对象列表</li>
-<li><code>partition</code>把对象以XX分割为三部分前，自身，后</li>
-<li>分隔符依然会保留分割后产生一个新的元组</li>
-<li><code>rpartition</code>从右面开始</li>
-<li><code>splitlines</code>返回一个列表如果里面有换行符会自动切割</li>
-<li><code>startswith</code>检查字符串是否以什么什么开头是返回true不是返回false</li>
-<li><code>endswith</code>检查字符串是否以什么什么结尾</li>
-<li><code>lower</code>将所有大写转换为小写   列表不能使用</li>
-<li><code>upper</code>将小写转换为大写  列表不能使用</li>
-<li><code>lstrip</code>删除左边的空白字符</li>
-<li><code>rstrip</code>删除末端的空白字符</li>
-<li><code>strip</code>删除左右两端的空白字符</li>
-<li><code>count(str,strat,end)</code>返回一个数在某个区间出现的次数</li>
-<li></li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="判断">判断</h1>
-</li>
-</ul>
-<hr>
-<ul>
-<li><code>isalpha</code>判断是否连续为字母是true不是false</li>
-<li><code>isdigit</code>判断是否全部为数字是返回true否为false</li>
-<li><code>isalnum</code>如果字符都是字母或者数字则返回true否为false</li>
-<li><code>isspace</code>判断是否只包含空格如果是返回true</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="扩展字符串函数">扩展字符串函数</h1>
-</li>
-<li></li>
-</ul>
-<hr>
-<ul>
-<li><code>str.join(mystr)</code>如果Mystr为字符串就会在每个字符的后面添加上str</li>
-<li>如果为列表元组字典则在里面每个元素的后面添加上str</li>
-<li><code>.capitalize</code>把字符串的首字母大写</li>
-<li><code>title</code>把字符串的每个单词的首字母大写</li>
-<li><code>ljust（参数宽度）</code>左对齐</li>
-<li><code>rjust（参数宽度）</code>右对齐</li>
-<li><code>center（参数宽度）</code>居中</li>
-<li><code>append</code>向列表后面添加元素（原来的）.append(要添加的)</li>
-<li><code>extend</code>将一个列表中的元素逐一添加到列表中</li>
-<li><code>insert(下标，插入的元素)</code>在指定下标出插入元素</li>
-<li>！注意：append直接修改元列表append插入的是一个列表</li>
-<li>extend插入是合并</li>
-<li><code>dle</code>根据下标进行删除</li>
-<li><code>pop</code>删除尾部</li>
-<li><code>remove</code>根据元素的值进行删除注意：如果有两个数据则删除前一个数据</li>
-<li>
-<h1 id="查找列表下标的同时要先进行列表的遍历然后可以用下表进行修改元素内容">查找列表下标的同时要先进行列表的遍历然后可以用下表进行修改元素内容</h1>
-</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="查找方法">查找方法</h1>
-</li>
-</ul>
-<hr>
-<ul>
-<li>in(存在)</li>
-<li>not in(不存在)</li>
-<li></li>
-</ul>
-<hr>
-<h1 id="排序">排序</h1>
-<hr>
-<ul>
-<li><code>sort</code>将列表从小到大排序改变原列表</li>
-<li><code>reverse=Ture</code>可改为倒叙从大到小改变原列表</li>
-<li></li>
-<li></li>
-</ul></div>
+      <div class="content"><h2 id="1-计算机存储单位">1. 计算机存储单位</h2>
+<h3 id="11-基本存储单位">1.1 基本存储单位</h3>
+<ol>
+<li>比特(bit)：计算机存储的最小单位</li>
+<li>字节(Byte)：1 Byte = 8 bits</li>
+</ol>
+<h3 id="12-存储单位换算表">1.2 存储单位换算表</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 存储单位换算关系</span>
+</span></span><span style="display:flex;"><span>storage_units <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;1 Byte&#34;</span>: <span style="color:#e6db74">&#34;8 bits&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;1 KB&#34;</span>: <span style="color:#e6db74">&#34;1,024 Bytes = 2^10 Bytes&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;1 MB&#34;</span>: <span style="color:#e6db74">&#34;1,024 KB = 2^20 Bytes&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;1 GB&#34;</span>: <span style="color:#e6db74">&#34;1,024 MB = 2^30 Bytes&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;1 TB&#34;</span>: <span style="color:#e6db74">&#34;1,024 GB = 2^40 Bytes&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;1 PB&#34;</span>: <span style="color:#e6db74">&#34;1,024 TB = 2^50 Bytes&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;1 EB&#34;</span>: <span style="color:#e6db74">&#34;1,024 PB = 2^60 Bytes&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;1 ZB&#34;</span>: <span style="color:#e6db74">&#34;1,024 EB = 2^70 Bytes&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;1 YB&#34;</span>: <span style="color:#e6db74">&#34;1,024 ZB = 2^80 Bytes&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;1 BB&#34;</span>: <span style="color:#e6db74">&#34;1,024 YB = 2^90 Bytes&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;1 NB&#34;</span>: <span style="color:#e6db74">&#34;1,024 BB = 2^100 Bytes&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;1 DB&#34;</span>: <span style="color:#e6db74">&#34;1,024 NB = 2^110 Bytes&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="13-数据传输速率">1.3 数据传输速率</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 常见网络速率单位换算</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">bandwidth_calculator</span>(speed, unit<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Mbps&#39;</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;计算不同单位的网络速率&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> unit <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;Mbps&#39;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;KB/s&#39;</span>: speed <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">8</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;MB/s&#39;</span>: speed <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">8</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">1024</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;实际速率&#39;</span>: <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;约 </span><span style="color:#e6db74">{</span>speed <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.7</span><span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">Mbps (考虑30%网络损耗)&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 示例使用</span>
+</span></span><span style="display:flex;"><span>print(bandwidth_calculator(<span style="color:#ae81ff">100</span>))  <span style="color:#75715e"># 计算100Mbps的实际传输速率</span>
+</span></span></code></pre></div><h3 id="14-python中的对象大小计算">1.4 Python中的对象大小计算</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 计算不同类型对象的大小</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">show_object_size</span>():
+</span></span><span style="display:flex;"><span>    objects <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;integer&#39;</span>: <span style="color:#ae81ff">42</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;string&#39;</span>: <span style="color:#e6db74">&#34;Hello&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;list&#39;</span>: [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;dict&#39;</span>: {<span style="color:#e6db74">&#39;a&#39;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;b&#39;</span>: <span style="color:#ae81ff">2</span>}
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> name, obj <span style="color:#f92672">in</span> objects<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>sys<span style="color:#f92672">.</span>getsizeof(obj)<span style="color:#e6db74">}</span><span style="color:#e6db74"> bytes&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>show_object_size()
+</span></span></code></pre></div><h2 id="2-python字符串操作">2. Python字符串操作</h2>
+<h3 id="21-基本字符串操作">2.1 基本字符串操作</h3>
+<h4 id="211-字符串长度">2.1.1 字符串长度</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 使用len()函数</span>
+</span></span><span style="display:flex;"><span>text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello, World!&#34;</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;字符串长度: </span><span style="color:#e6db74">{</span>len(text)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)  <span style="color:#75715e"># 13</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 中文字符串</span>
+</span></span><span style="display:flex;"><span>chinese_text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;你好，世界&#34;</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;中文字符串长度: </span><span style="color:#e6db74">{</span>len(chinese_text)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)  <span style="color:#75715e"># 5</span>
+</span></span></code></pre></div><h4 id="212-字符串格式化">2.1.2 字符串格式化</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># format()方法使用示例</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1. 位置参数</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(<span style="color:#e6db74">&#34;Hello&#34;</span>, <span style="color:#e6db74">&#34;World&#34;</span>))  <span style="color:#75715e"># Hello World</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. 索引参数</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(<span style="color:#e6db74">&#34;World&#34;</span>, <span style="color:#e6db74">&#34;Hello&#34;</span>))  <span style="color:#75715e"># Hello World</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3. 关键字参数</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{greeting}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{name}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(greeting<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Hello&#34;</span>, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;World&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 4. f-string (Python 3.6+)</span>
+</span></span><span style="display:flex;"><span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;World&#34;</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Hello </span><span style="color:#e6db74">{</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h3 id="22-字符串切片操作">2.2 字符串切片操作</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Python Programming&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 基本切片操作</span>
+</span></span><span style="display:flex;"><span>print(text[<span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">6</span>])      <span style="color:#75715e"># Python</span>
+</span></span><span style="display:flex;"><span>print(text[<span style="color:#f92672">-</span><span style="color:#ae81ff">11</span>:])     <span style="color:#75715e"># Programming</span>
+</span></span><span style="display:flex;"><span>print(text[::<span style="color:#ae81ff">2</span>])      <span style="color:#75715e"># Pto rgamn</span>
+</span></span><span style="display:flex;"><span>print(text[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])     <span style="color:#75715e"># gnimmargorP nohtyP</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 常用切片模式</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">string_slicing_examples</span>(text):
+</span></span><span style="display:flex;"><span>    examples <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;完整字符串&#39;</span>: text[:],
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;前半部分&#39;</span>: text[:len(text)<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;后半部分&#39;</span>: text[len(text)<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>:],
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;隔一个取一个&#39;</span>: text[::<span style="color:#ae81ff">2</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;反转&#39;</span>: text[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> examples
+</span></span></code></pre></div><h3 id="23-字符串查找与替换">2.3 字符串查找与替换</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">string_search_examples</span>():
+</span></span><span style="display:flex;"><span>    text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Python Programming Language&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># find方法</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#39;gram&#39; 的位置: </span><span style="color:#e6db74">{</span>text<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;gram&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)  <span style="color:#75715e"># 8</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#39;Java&#39; 的位置: </span><span style="color:#e6db74">{</span>text<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;Java&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)  <span style="color:#75715e"># -1</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># index方法</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        position <span style="color:#f92672">=</span> text<span style="color:#f92672">.</span>index(<span style="color:#e6db74">&#39;gram&#39;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;找到 &#39;gram&#39; 在位置: </span><span style="color:#e6db74">{</span>position<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ValueError</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;未找到指定字符串: </span><span style="color:#e6db74">{</span>e<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># replace方法</span>
+</span></span><span style="display:flex;"><span>    new_text <span style="color:#f92672">=</span> text<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;Python&#39;</span>, <span style="color:#e6db74">&#39;Java&#39;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;替换后: </span><span style="color:#e6db74">{</span>new_text<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h3 id="24-字符串分割与合并">2.4 字符串分割与合并</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">string_split_join_examples</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 分割示例</span>
+</span></span><span style="display:flex;"><span>    text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Python,Java,C++,JavaScript&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># split</span>
+</span></span><span style="display:flex;"><span>    languages <span style="color:#f92672">=</span> text<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;,&#39;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;分割后的列表: </span><span style="color:#e6db74">{</span>languages<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># partition</span>
+</span></span><span style="display:flex;"><span>    before, sep, after <span style="color:#f92672">=</span> text<span style="color:#f92672">.</span>partition(<span style="color:#e6db74">&#39;,&#39;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;分区结果: </span><span style="color:#e6db74">{</span>before<span style="color:#e6db74">}</span><span style="color:#e6db74"> | </span><span style="color:#e6db74">{</span>sep<span style="color:#e6db74">}</span><span style="color:#e6db74"> | </span><span style="color:#e6db74">{</span>after<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># join</span>
+</span></span><span style="display:flex;"><span>    new_text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; -&gt; &#39;</span><span style="color:#f92672">.</span>join(languages)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;合并后: </span><span style="color:#e6db74">{</span>new_text<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h3 id="25-字符串判断方法">2.5 字符串判断方法</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">string_validation</span>():
+</span></span><span style="display:flex;"><span>    tests <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;abc&#39;</span>: str<span style="color:#f92672">.</span>isalpha,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;123&#39;</span>: str<span style="color:#f92672">.</span>isdigit,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;abc123&#39;</span>: str<span style="color:#f92672">.</span>isalnum,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;   &#39;</span>: str<span style="color:#f92672">.</span>isspace,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;Hello World&#39;</span>: str<span style="color:#f92672">.</span>title
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> text, test_func <span style="color:#f92672">in</span> tests<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>text<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>test_func(text)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><h3 id="26-字符串修改和格式化">2.6 字符串修改和格式化</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">string_modification</span>():
+</span></span><span style="display:flex;"><span>    text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; Python Programming &#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 去除空格</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;左侧去空格: &#39;</span><span style="color:#e6db74">{</span>text<span style="color:#f92672">.</span>lstrip()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;右侧去空格: &#39;</span><span style="color:#e6db74">{</span>text<span style="color:#f92672">.</span>rstrip()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;两侧去空格: &#39;</span><span style="color:#e6db74">{</span>text<span style="color:#f92672">.</span>strip()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 大小写转换</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;全部大写: </span><span style="color:#e6db74">{</span>text<span style="color:#f92672">.</span>upper()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;全部小写: </span><span style="color:#e6db74">{</span>text<span style="color:#f92672">.</span>lower()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;首字母大写: </span><span style="color:#e6db74">{</span>text<span style="color:#f92672">.</span>capitalize()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;标题格式: </span><span style="color:#e6db74">{</span>text<span style="color:#f92672">.</span>title()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div></div>
     </article>
   </main>
 
