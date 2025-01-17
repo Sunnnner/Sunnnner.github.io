@@ -9,7 +9,7 @@
   />
   
     
-      <title>Liunx编程-python线程 | 学无止境</title>
+      <title>Python多线程编程指南 | 学无止境</title>
     
   
   <link rel="stylesheet" href="/css/reset.css"/>
@@ -61,7 +61,7 @@
         
   <main>
     <article>
-      <h1 class="title">Liunx编程-python线程</h1>
+      <h1 class="title">Python多线程编程指南</h1>
       
       <div class="post-meta">
   <strong>
@@ -71,242 +71,224 @@
     
       <a href="/categories/python">python</a>
   </strong>
-  <span> • 124 words</span>
-  <span> • 1 minute read</span>
+  <span> • 326 words</span>
+  <span> • 2 minute read</span>
   
   
     <div>
       <span>Tags:</span>
       
-        <a href="/tags/%E7%BA%BF%E7%A8%8B">线程</a>
+        <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>
     </div>
   
 </div>
 
-      <div class="content"><h1 id="多线程">多线程</h1>
-<hr>
-<h3 id="线程的定义">线程的定义</h3>
+      <div class="content"><h2 id="1-基础概念">1. 基础概念</h2>
+<h3 id="11-进程与线程">1.1 进程与线程</h3>
 <ul>
-<li>进程是系统进行资源分配和调度的一个独立单位，进程是资源分配的单位，线程是cpu调度的单位。</li>
-<li>.线程是进程的一个实体,是CPU调度和分派的基本单位,它是比进程更小的能独立运行的基本单位.线程自己基本上不拥有系统资源,只拥有一点在运行中必不可少的资源(如程序计数器,一组寄存器和栈),但是它可与同属一个进程的其他的线程共享进程所拥有的全部资源.</li>
-<li>线程包含再进程中</li>
+<li><strong>进程</strong>: 系统资源分配和调度的基本单位</li>
+<li><strong>线程</strong>: CPU调度的最小单位，是进程的执行实体</li>
+<li><strong>关系</strong>:
+<ul>
+<li>一个进程可以包含多个线程</li>
+<li>线程共享进程的资源</li>
+<li>线程拥有自己的栈空间和寄存器</li>
 </ul>
-<h3 id="进程和线程的关系">进程和线程的关系</h3>
-<ul>
-<li>进程中第一个线程是主线程，主线程可以创建其他线程；其他线程也可以创建线程，线程之间是平等的；进程有父进程和子进程，独立的内存空间，唯一的标识符：pid。</li>
-<li>python的thread模块是比较底层的模块，python的threading模块是对thread做了一些包装的，可以更加方便的创建线程.</li>
-</ul>
-<hr>
-<h1 id="使用threading模块的thread创建线程">使用threading模块的Thread创建线程</h1>
-<hr>
-<ul>
-<li>
-<h3 id="单线程执行--主线程中执行">单线程执行&ndash;主线程中执行</h3>
-</li>
-<li>from threading import Thread</li>
-<li>t1 = Thread(target=play,args=(&ldquo;play&rdquo;,))</li>
-<li>只要子线程还没有执行完任务，主线程就不会销毁</li>
-<li>
-<h3 id="thread类说明">Thread类说明</h3>
-</li>
-<li>
-<ol>
-<li>可以明显看出使用了多线程并发的操作，花费时间要短很多。</li>
-</ol>
-</li>
-<li>
-<ol start="2">
-<li>创建好的线程，需要调用start()方法来启动。</li>
-</ol>
-</li>
-<li>
-<ol start="3">
-<li>在不同子线程中打印当前进程都是同一个进程，父进程也是同一个。</li>
-</ol>
-</li>
-<li>
-<ol start="4">
-<li>主线程会等待所有的子线程结束后才结束；也可以使用join()实现让其他线程（没有调用start的显示）和主线程等待当前子线程执行完毕，才往下执行。</li>
-</ol>
-</li>
-<li>
-<h3 id="使用-threadingenumerate查看线程数量">使用 threading.enumerate()查看线程数量</h3>
-</li>
-<li></li>
-</ul>
-<hr>
-<h1 id="自定义threadingthread子类实现多线程">自定义threading.Thread子类实现多线程</h1>
-<hr>
-<ul>
-<li>自定义的线程，注意：</li>
-<li>1.自定义的线程类必须继承Thread</li>
-<li>2.如果有__init__方法，注意调用：super().__ init__()</li>
-<li>3.必须重写run方法，因为只要start()默认调用run()</li>
-<li>不传 name 默认就有自动生成名字:Thread-1Thread -2..</li>
-<li>如果不想使用默认的名字则setName</li>
-<li>两种设置线程名字的方式</li>
-<li>1.再初始化的时候船体参数设置</li>
-<li>2.通过set Name设置</li>
-<li>.threading.currentThread(): 获取线程名字</li>
-<li>threading.enumerate(): 返回一个包含正在运行的线程的数量【list】。正在运行指线程启动后、结束前，不包括启动前和终止后的线程。</li>
-<li>threading.activeCount():返回正在运行的线程数量，与len(threading.enumerate())有相同的结果。</li>
-<li>Thread(group=None, target=None, name=None, args=(), kwargs={})</li>
-<li>group: 线程组，目前还没有实现，库引用中提示必须是None</li>
-<li>target: 要执行的方法；</li>
-<li>　　name: 线程名；</li>
-<li>　　args/kwargs: 要传入方法的参数。</li>
-<li>　get/setName(name)：获取/设置线程名。</li>
-<li>　</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="多线程之间共享全局变量">多线程之间共享全局变量</h1>
 </li>
 </ul>
-<hr>
+<h3 id="12-python线程特点">1.2 Python线程特点</h3>
 <ul>
-<li>全局变量线程共享</li>
-<li></li>
+<li>主线程是进程的第一个线程</li>
+<li>使用threading模块创建和管理线程</li>
+<li>受GIL(全局解释器锁)影响</li>
 </ul>
-<hr>
-<h1 id="多线程安全和同步的概念">多线程安全和同步的概念</h1>
-<hr>
+<h2 id="2-线程创建和管理">2. 线程创建和管理</h2>
+<h3 id="21-使用thread类创建线程">2.1 使用Thread类创建线程</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> threading <span style="color:#f92672">import</span> Thread
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 方法1：传入目标函数</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">task</span>():
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Thread task&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>thread <span style="color:#f92672">=</span> Thread(target<span style="color:#f92672">=</span>task)
+</span></span><span style="display:flex;"><span>thread<span style="color:#f92672">.</span>start()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 方法2：传入带参数的函数</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">task_with_args</span>(name):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Thread </span><span style="color:#e6db74">{</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>thread <span style="color:#f92672">=</span> Thread(target<span style="color:#f92672">=</span>task_with_args, args<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;Thread-1&#34;</span>,))
+</span></span><span style="display:flex;"><span>thread<span style="color:#f92672">.</span>start()
+</span></span></code></pre></div><h3 id="22-继承thread类创建线程">2.2 继承Thread类创建线程</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyThread</span>(Thread):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, name<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> name
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>(self):
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Thread </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74"> is running&#34;</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>thread <span style="color:#f92672">=</span> MyThread(<span style="color:#e6db74">&#34;Custom-Thread&#34;</span>)
+</span></span><span style="display:flex;"><span>thread<span style="color:#f92672">.</span>start()
+</span></span></code></pre></div><h3 id="23-线程管理方法">2.3 线程管理方法</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 获取当前线程</span>
+</span></span><span style="display:flex;"><span>current <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>current_thread()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 获取线程名</span>
+</span></span><span style="display:flex;"><span>name <span style="color:#f92672">=</span> thread<span style="color:#f92672">.</span>getName()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 设置线程名</span>
+</span></span><span style="display:flex;"><span>thread<span style="color:#f92672">.</span>setName(<span style="color:#e6db74">&#34;New-Name&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 获取活动线程数</span>
+</span></span><span style="display:flex;"><span>count <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>active_count()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 获取所有活动线程</span>
+</span></span><span style="display:flex;"><span>threads <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>enumerate()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 等待线程结束</span>
+</span></span><span style="display:flex;"><span>thread<span style="color:#f92672">.</span>join()
+</span></span></code></pre></div><h2 id="3-线程同步机制">3. 线程同步机制</h2>
+<h3 id="31-互斥锁lock">3.1 互斥锁(Lock)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> threading <span style="color:#f92672">import</span> Lock
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建锁</span>
+</span></span><span style="display:flex;"><span>mutex <span style="color:#f92672">=</span> Lock()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">safe_task</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 获取锁</span>
+</span></span><span style="display:flex;"><span>    mutex<span style="color:#f92672">.</span>acquire()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 临界区代码</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">finally</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 释放锁</span>
+</span></span><span style="display:flex;"><span>        mutex<span style="color:#f92672">.</span>release()
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 使用with语句（推荐）</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">safe_task_with</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> mutex:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 临界区代码</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">pass</span>
+</span></span></code></pre></div><h3 id="32-线程安全队列queue">3.2 线程安全队列(Queue)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> queue <span style="color:#f92672">import</span> Queue
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建线程安全队列</span>
+</span></span><span style="display:flex;"><span>q <span style="color:#f92672">=</span> Queue(maxsize<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 生产者</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">producer</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        item <span style="color:#f92672">=</span> produce_item()
+</span></span><span style="display:flex;"><span>        q<span style="color:#f92672">.</span>put(item)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 消费者</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">consumer</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        item <span style="color:#f92672">=</span> q<span style="color:#f92672">.</span>get()
+</span></span><span style="display:flex;"><span>        process_item(item)
+</span></span><span style="display:flex;"><span>        q<span style="color:#f92672">.</span>task_done()
+</span></span></code></pre></div><h2 id="4-线程数据隔离">4. 线程数据隔离</h2>
+<h3 id="41-使用threadinglocal">4.1 使用threading.local()</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> threading
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建线程本地存储</span>
+</span></span><span style="display:flex;"><span>local_data <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>local()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">worker</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 每个线程都有独立的存储空间</span>
+</span></span><span style="display:flex;"><span>    local_data<span style="color:#f92672">.</span>x <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 修改本地数据不会影响其他线程</span>
+</span></span><span style="display:flex;"><span>    local_data<span style="color:#f92672">.</span>x <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><h2 id="5-线程同步模式">5. 线程同步模式</h2>
+<h3 id="51-生产者-消费者模式">5.1 生产者-消费者模式</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> threading <span style="color:#f92672">import</span> Thread, Event
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> queue <span style="color:#f92672">import</span> Queue
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Producer</span>(Thread):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, queue):
+</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>queue <span style="color:#f92672">=</span> queue
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>            item <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>produce_item()
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>queue<span style="color:#f92672">.</span>put(item)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Consumer</span>(Thread):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, queue):
+</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>queue <span style="color:#f92672">=</span> queue
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>            item <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>queue<span style="color:#f92672">.</span>get()
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>process_item(item)
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>queue<span style="color:#f92672">.</span>task_done()
+</span></span></code></pre></div><h2 id="6-注意事项和最佳实践">6. 注意事项和最佳实践</h2>
+<h3 id="61-gil的影响">6.1 GIL的影响</h3>
 <ul>
-<li>
-<h3 id="多线程线程安全问题">多线程线程安全问题</h3>
-</li>
-<li>操作功效数据的代码是由多句组成</li>
-<li>拿到执行权，从停留的地方开始执行进而另一个线程抢到执行权，然后从另一个线程手里接过结果A:1-60;B：1-100；</li>
-<li>A：60-120_&mdash;&ndash;&gt;B:120-&hellip;..</li>
-<li>两个线程共享一个数量</li>
-<li>由于GIL（全局解释器）的存在我们要把测试的数据设置的大一点才能够使原来的GIL的锁不管用</li>
-<li>threading.current_thread()</li>
-<li>获取当前线程的名字</li>
-<li>t_name=thread.getName()</li>
-<li>解决线程安全问题：</li>
-<li>1.控制执行顺序</li>
-<li></li>
+<li>Python的GIL限制了多线程在CPU密集型任务上的性能</li>
+<li>IO密集型任务仍然可以从多线程中受益</li>
+<li>考虑使用多进程来绕过GIL限制</li>
 </ul>
-<hr>
+<h3 id="62-死锁预防">6.2 死锁预防</h3>
 <ul>
-<li>
-<h1 id="互斥锁">互斥锁</h1>
-</li>
+<li>避免循环等待</li>
+<li>使用超时机制</li>
+<li>按固定顺序获取锁</li>
+<li>使用with语句自动释放锁</li>
 </ul>
-<hr>
+<h3 id="63-性能优化">6.3 性能优化</h3>
 <ul>
-<li>
-<h3 id="互斥锁概念">互斥锁概念</h3>
-</li>
-<li>1.当多个线程几乎同时修改某一个共享数据的时候，需要进行同步控制。</li>
-<li>线程同步能够保证多个线程安全访问竞争资源，最简单的同步机制是引入互斥锁</li>
-<li>互斥锁为资源引入一个状态：锁定/非锁定。</li>
-<li>4.某个线程要更改共享数据时，先将其锁定，此时资源的状态为“锁定”，其他线程不能更改；直到该线程释放资源，将资源的状态变成“非锁定”，其他的线程才能再次锁定该资源。互斥锁保证了每次只有一个线程进行写入操作，从而保证了多线程情况下数据的正确性。</li>
-<li>threading模块中定义了Lock类，可以方便的处理锁定：</li>
-<li>其中，锁定方法acquire[əˈkwaɪə(r)]可以有一个blocking参数。</li>
-<li>如果设定blocking为True，则当前线程会堵塞，直到获取到这个锁为止（如果没有指定，那么默认为True）</li>
-<li>如果设定blocking为False，则当前线程不会堵塞</li>
-<li>
-<h3 id="使用互斥锁解决线程安全问题">使用互斥锁解决线程安全问题</h3>
-</li>
-<li>创建互斥锁</li>
-<li>from threading import Lock</li>
-<li>
-<pre><code>创建：mutex=Lock()
-</code></pre>
-</li>
-<li>
-<pre><code>上锁mutex.acquire()
-</code></pre>
-</li>
-<li>
-<pre><code>释放锁mutex.release()
-</code></pre>
-</li>
-<li>好处：</li>
-<li>确保了某段关键代码只能由一个线程从头到尾完整的执行</li>
-<li>坏处：</li>
-<li>组织了多线程的并发执行，包含锁的某段代码实际上只能以单线程模式执行，效率就大大的下降了，由于可以存在多个锁，不同的线程持有不同的锁，并试图获取对方持有的锁时，可能会造成死锁。</li>
-<li></li>
+<li>合理设置线程数量</li>
+<li>避免过多的线程同步操作</li>
+<li>使用线程池管理线程</li>
+<li>考虑使用异步IO替代多线程</li>
 </ul>
-<hr>
-<h1 id="多进程之间非共享局部空间的数据">多进程之间非共享局部空间的数据</h1>
-<hr>
+<h3 id="64-调试技巧">6.4 调试技巧</h3>
 <ul>
-<li>多线程中类属性是共享的</li>
-<li>而实例属性是非共享的</li>
-<li></li>
+<li>使用logging模块记录线程活动</li>
+<li>设置线程名便于调试</li>
+<li>使用threading.current_thread()确定当前线程</li>
+<li>使用threading.enumerate()监控活动线程</li>
 </ul>
-<hr>
-<ul>
-<li>#死锁</li>
-</ul>
-<hr>
-<ul>
-<li></li>
-</ul>
-<hr>
-<h1 id="线程同步的综合应用">线程同步的综合应用</h1>
-<hr>
-<ul>
-<li>
-<h3 id="多个线程同步">多个线程同步</h3>
-</li>
-<li>•	可以使用互斥锁完成多个任务，有序的进行工作，这就是线程的同步</li>
-<li></li>
-</ul>
-<hr>
-<h1 id="生产者与消费者模式">生产者与消费者模式</h1>
-<hr>
-<p>from queue import Queue</p>
-<ul>
-<li>Queue&mdash;-FIFO先进先出</li>
-<li>Stack&mdash;-FILO/LIFO</li>
-<li></li>
-</ul>
-<hr>
-<h1 id="threadinglocal">threading.local()</h1>
-<hr>
-<ul>
-<li>在多线程环境下，每个线程都有自己的数据。一个线程使用自己的局部变量比使用全局变量好，因为局部变量只有线程自己能看见，不会影响其他线程，而全局变量的修改必须加锁</li>
-<li>
-<h3 id="使用函数传参的方法-传递参数">使用函数传参的方法-传递参数</h3>
-</li>
-<li></li>
-<li>
-<h3 id="使用全局字典的方法-传递参数">使用全局字典的方法-传递参数</h3>
-</li>
-<li></li>
-<li>
-<h3 id="使用全局threadinglocal的方法">使用全局threading.local()的方法</h3>
-</li>
-<li>创建全局THreadlocal对象</li>
-<li>local_school=threading.local()</li>
-<li>一个threading.local()变量虽然是全局变量，但每个线程都只能读写自己线程的独立副本，互不干扰。threading.local()解决了参数在一个线程中各个函数之间互相传递的问题</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="同步和异步">同步和异步</h1>
-</li>
-</ul>
-<hr>
-<ul>
-<li>同步就是阻塞</li>
-<li>异步就是非阻塞</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="gil问题">GIL问题</h1>
-</li>
-</ul>
-<hr>
-<ul>
-<li>单核单线程死循环，占满CPU</li>
-<li></li>
-</ul></div>
+<h2 id="7-示例应用">7. 示例应用</h2>
+<h3 id="71-并发下载器">7.1 并发下载器</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> threading
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> queue <span style="color:#f92672">import</span> Queue
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DownloadWorker</span>(Thread):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, queue):
+</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>queue <span style="color:#f92672">=</span> queue
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>            url <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>queue<span style="color:#f92672">.</span>get()
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>                self<span style="color:#f92672">.</span>download_file(url)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">finally</span>:
+</span></span><span style="display:flex;"><span>                self<span style="color:#f92672">.</span>queue<span style="color:#f92672">.</span>task_done()
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">download_file</span>(self, url):
+</span></span><span style="display:flex;"><span>        response <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 处理下载内容</span>
+</span></span></code></pre></div><h3 id="72-线程池实现">7.2 线程池实现</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> concurrent.futures <span style="color:#f92672">import</span> ThreadPoolExecutor
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">process_item</span>(item):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 处理单个任务</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建线程池</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> ThreadPoolExecutor(max_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>) <span style="color:#66d9ef">as</span> executor:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 提交任务</span>
+</span></span><span style="display:flex;"><span>    future <span style="color:#f92672">=</span> executor<span style="color:#f92672">.</span>submit(process_item, item)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 获取结果</span>
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> future<span style="color:#f92672">.</span>result()
+</span></span></code></pre></div></div>
     </article>
   </main>
 

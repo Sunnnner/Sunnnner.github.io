@@ -6,7 +6,7 @@
     <description>Recent content in Posts on 学无止境</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 16 Jan 2025 16:14:01 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jan 2025 17:41:50 +0800</lastBuildDate>
     <atom:link href="https://sunnnner.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python代码审查的Git Hook实现指南</title>
@@ -100,7 +100,7 @@
       <description></description>
     </item>
     <item>
-      <title>Git Submodule更新主仓库</title>
+      <title>Git 子模块（Submodule）管理指南</title>
       <link>https://sunnnner.github.io/posts/git/%E8%BF%9B%E9%98%B6/git-submodule%E6%9B%B4%E6%96%B0%E4%B8%BB%E4%BB%93%E5%BA%93/</link>
       <pubDate>Wed, 13 Dec 2023 11:44:52 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/git/%E8%BF%9B%E9%98%B6/git-submodule%E6%9B%B4%E6%96%B0%E4%B8%BB%E4%BB%93%E5%BA%93/</guid>
@@ -198,11 +198,18 @@
       <description></description>
     </item>
     <item>
-      <title>TCP编程</title>
+      <title>网络协议与抓包分析</title>
       <link>https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C/tcp%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Tue, 12 Jul 2022 14:37:53 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C/tcp%E7%BC%96%E7%A8%8B/</guid>
-      <description>&lt;p&gt;ip.addr 过滤ip地址&#xA;udp.port 过滤端口&lt;/p&gt;</description>
+      <description></description>
+    </item>
+    <item>
+      <title> MongoDB 完全指南</title>
+      <link>https://sunnnner.github.io/posts/mongodb/%E5%9F%BA%E7%A1%80/mongodb%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/mongodb/%E5%9F%BA%E7%A1%80/mongodb%E5%9F%BA%E7%A1%80/</guid>
+      <description></description>
     </item>
     <item>
       <title> Python异常处理机制详解</title>
@@ -212,53 +219,32 @@
       <description></description>
     </item>
     <item>
-      <title>Liunx编程-python线程</title>
-      <link>https://sunnnner.github.io/posts/linux/liunx-%E7%BA%BF%E7%A8%8B/</link>
-      <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/linux/liunx-%E7%BA%BF%E7%A8%8B/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Liunx编程-python进程</title>
-      <link>https://sunnnner.github.io/posts/linux/liunx%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B/</link>
-      <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/linux/liunx%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Liunx编程-命令</title>
+      <title>Linux 命令速查手册</title>
       <link>https://sunnnner.github.io/posts/linux/linux%E6%93%8D%E4%BD%9C%E4%BB%A3%E7%A0%81/</link>
       <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/linux/linux%E6%93%8D%E4%BD%9C%E4%BB%A3%E7%A0%81/</guid>
       <description></description>
     </item>
     <item>
-      <title>mongodb基础</title>
-      <link>https://sunnnner.github.io/posts/mongodb/%E5%9F%BA%E7%A1%80/mongodb%E5%9F%BA%E7%A1%80/</link>
+      <title>MySQL关系查询与高级特性指南</title>
+      <link>https://sunnnner.github.io/posts/mysql/mysql%E9%AB%98%E7%BA%A7/</link>
       <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/mongodb/%E5%9F%BA%E7%A1%80/mongodb%E5%9F%BA%E7%A1%80/</guid>
-      <description></description>
+      <guid>https://sunnnner.github.io/posts/mysql/mysql%E9%AB%98%E7%BA%A7/</guid>
+      <description>&lt;hr&gt;</description>
     </item>
     <item>
-      <title>Mysql安装</title>
+      <title>MySQL数据库管理指南</title>
       <link>https://sunnnner.github.io/posts/mysql/mysql/</link>
       <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/mysql/mysql/</guid>
       <description>&lt;hr&gt;</description>
     </item>
     <item>
-      <title>mysql查询</title>
+      <title>MySQL查询语句指南</title>
       <link>https://sunnnner.github.io/posts/mysql/mysql%E6%9F%A5%E8%AF%A2/</link>
       <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/mysql/mysql%E6%9F%A5%E8%AF%A2/</guid>
       <description></description>
-    </item>
-    <item>
-      <title>Mysql高级</title>
-      <link>https://sunnnner.github.io/posts/mysql/mysql%E9%AB%98%E7%BA%A7/</link>
-      <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
-      <guid>https://sunnnner.github.io/posts/mysql/mysql%E9%AB%98%E7%BA%A7/</guid>
-      <description>&lt;hr&gt;</description>
     </item>
     <item>
       <title>pygame</title>
@@ -268,7 +254,7 @@
       <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;pygame&#34;&gt;pygame&lt;/h1&gt;&#xA;&lt;hr&gt;</description>
     </item>
     <item>
-      <title>pymsql基础</title>
+      <title>PyMySQL 数据库操作指南</title>
       <link>https://sunnnner.github.io/posts/mysql/pymysql%E9%93%BE%E6%8E%A5/</link>
       <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/mysql/pymysql%E9%93%BE%E6%8E%A5/</guid>
@@ -308,6 +294,20 @@
       <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/python/%E5%9F%BA%E7%A1%80/%E5%88%A4%E6%96%AD%E8%AF%AD%E5%8F%A5%E4%B8%8E%E5%BE%AA%E7%8E%AF/</guid>
       <description>&lt;h1 id=&#34;if判断语句&#34;&gt;if判断语句&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;if 要判断的条件：&lt;/li&gt;&#xA;&lt;li&gt;条件成立时，要做的事情&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Python多线程编程指南</title>
+      <link>https://sunnnner.github.io/posts/linux/liunx-%E7%BA%BF%E7%A8%8B/</link>
+      <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/linux/liunx-%E7%BA%BF%E7%A8%8B/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python多进程编程指南</title>
+      <link>https://sunnnner.github.io/posts/linux/liunx%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B/</link>
+      <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
+      <guid>https://sunnnner.github.io/posts/linux/liunx%E7%BC%96%E7%A8%8B-%E8%BF%9B%E7%A8%8B/</guid>
+      <description></description>
     </item>
     <item>
       <title>python字符串</title>
@@ -359,7 +359,7 @@
       <description></description>
     </item>
     <item>
-      <title>ubuntu安装中文环境</title>
+      <title>Ubuntu 命令行中文环境配置指南</title>
       <link>https://sunnnner.github.io/posts/linux/%E4%B9%8C%E7%8F%AD%E5%9B%BE%E5%91%BD%E4%BB%A4%E7%AC%A6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E7%8E%AF%E5%A2%83/</link>
       <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/linux/%E4%B9%8C%E7%8F%AD%E5%9B%BE%E5%91%BD%E4%BB%A4%E7%AC%A6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E7%8E%AF%E5%A2%83/</guid>
@@ -391,7 +391,7 @@
       <link>https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E6%A6%82%E5%BF%B5%E5%92%8Cudp%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E6%A6%82%E5%BF%B5%E5%92%8Cudp%E7%BC%96%E7%A8%8B/</guid>
-      <description>&lt;h1 id=&#34;什么网络通信&#34;&gt;什么网络通信&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;网络的定义&lt;/li&gt;&#xA;&lt;li&gt;在电的系统中，由若干元件组成的用来使电信号按一定要求传输的电路或这种电路的部分，叫网络。&lt;/li&gt;&#xA;&lt;li&gt;现在一般指“三网”：电信网络、有线电视网络、计算机网络。狭义的含义即因特网。抽象意义上的网络。比如城市网络、交通网络、交际网络等。&lt;/li&gt;&#xA;&lt;li&gt;⽹际层也称为：⽹络层&lt;/li&gt;&#xA;&lt;li&gt;⽹络接⼝层也称为：链路层&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+      <description>&lt;h2 id=&#34;1-网络基础概念&#34;&gt;1. 网络基础概念&lt;/h2&gt;&#xA;&lt;h3 id=&#34;11-网络定义&#34;&gt;1.1 网络定义&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;电路网络：由电子元件组成的信号传输系统&lt;/li&gt;&#xA;&lt;li&gt;三大网络：&#xA;&lt;ol&gt;&#xA;&lt;li&gt;电信网络&lt;/li&gt;&#xA;&lt;li&gt;有线电视网络&lt;/li&gt;&#xA;&lt;li&gt;计算机网络（互联网）&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;12-网络层次&#34;&gt;1.2 网络层次&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#xA;网络体系结构：&#xA;- 应用层&#xA;- 传输层&#xA;- 网际层（网络层）&#xA;- 网络接口层（链路层）&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;2-本地服务器配置&#34;&gt;2. 本地服务器配置&lt;/h2&gt;&#xA;&lt;h3 id=&#34;21-快速启动http服务&#34;&gt;2.1 快速启动HTTP服务&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#xA;# Python 2&#xA;python -m SimpleHTTPServer 8080&#xA;&#xA;# Python 3&#xA;python -m http.server 8080&#xA;&#xA;# 访问地址&#xA;http://127.0.0.1:8080  # 本机回环地址&#xA;http://localhost:8080   # 本机域名&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;3-socket编程基础&#34;&gt;3. Socket编程基础&lt;/h2&gt;&#xA;&lt;h3 id=&#34;31-socket类型&#34;&gt;3.1 Socket类型&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#xA;import socket&#xA;&#xA;# 创建Socket对象&#xA;# 本地进程通信&#xA;unix_socket = socket.socket(socket.AF_UNIX)&#xA;&#xA;# 网络通信&#xA;inet_socket = socket.socket(socket.AF_INET)&#xA;&#xA;# 协议类型&#xA;tcp_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # TCP协议&#xA;udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)   # UDP协议&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;32-socket地址族&#34;&gt;3.2 Socket地址族&lt;/h3&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;地址族&lt;/th&gt;&#xA;          &lt;th&gt;说明&lt;/th&gt;&#xA;          &lt;th&gt;用途&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;AF_UNIX&lt;/td&gt;&#xA;          &lt;td&gt;本地通信&lt;/td&gt;&#xA;          &lt;td&gt;同一台计算机进程间通信&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;AF_INET&lt;/td&gt;&#xA;          &lt;td&gt;IPv4网络&lt;/td&gt;&#xA;          &lt;td&gt;互联网通信&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;AF_INET6&lt;/td&gt;&#xA;          &lt;td&gt;IPv6网络&lt;/td&gt;&#xA;          &lt;td&gt;下一代互联网通信&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;4-udp通信&#34;&gt;4. UDP通信&lt;/h2&gt;&#xA;&lt;h3 id=&#34;41-udp特点&#34;&gt;4.1 UDP特点&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;无连接通信协议&lt;/li&gt;&#xA;&lt;li&gt;支持广播发送&lt;/li&gt;&#xA;&lt;li&gt;数据包大小限制（64KB）&lt;/li&gt;&#xA;&lt;li&gt;不保证可靠传输&lt;/li&gt;&#xA;&lt;li&gt;不保证数据顺序&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;42-基本udp通信示例&#34;&gt;4.2 基本UDP通信示例&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#xA;import socket&#xA;&#xA;# 创建UDP Socket&#xA;udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)&#xA;&#xA;# 绑定本地地址和端口&#xA;local_addr = (&amp;#39;&amp;#39;, 8888)  # 空字符串表示本机所有IP&#xA;udp_socket.bind(local_addr)&#xA;&#xA;# 发送数据&#xA;target_addr = (&amp;#39;192.168.1.100&amp;#39;, 8888)&#xA;message = &amp;#34;Hello, UDP!&amp;#34;&#xA;udp_socket.sendto(message.encode(&amp;#39;utf-8&amp;#39;), target_addr)&#xA;&#xA;# 接收数据&#xA;while True:&#xA;    data, addr = udp_socket.recvfrom(1024)  # 缓冲区大小1024字节&#xA;    print(f&amp;#34;从{addr}接收到: {data.decode(&amp;#39;utf-8&amp;#39;)}&amp;#34;)&#xA;&#xA;# 关闭Socket&#xA;udp_socket.close()&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;43-端口绑定&#34;&gt;4.3 端口绑定&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#xA;# 服务端绑定固定端口&#xA;server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)&#xA;server_socket.bind((&amp;#39;&amp;#39;, 80))  # 绑定80端口&#xA;&#xA;# 客户端使用随机端口&#xA;client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)&#xA;# 系统自动分配端口&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;5-通信模式&#34;&gt;5. 通信模式&lt;/h2&gt;&#xA;&lt;h3 id=&#34;51-通信方式对比&#34;&gt;5.1 通信方式对比&lt;/h3&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;模式&lt;/th&gt;&#xA;          &lt;th&gt;特点&lt;/th&gt;&#xA;          &lt;th&gt;类比&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;单工&lt;/td&gt;&#xA;          &lt;td&gt;单向传输&lt;/td&gt;&#xA;          &lt;td&gt;广播&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;半双工&lt;/td&gt;&#xA;          &lt;td&gt;双向交替传输&lt;/td&gt;&#xA;          &lt;td&gt;对讲机&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;全双工&lt;/td&gt;&#xA;          &lt;td&gt;双向同时传输&lt;/td&gt;&#xA;          &lt;td&gt;电话&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h3 id=&#34;52-数据编解码&#34;&gt;5.2 数据编解码&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#xA;# 发送数据编码&#xA;message = &amp;#34;你好&amp;#34;&#xA;encoded_data = message.encode(&amp;#39;utf-8&amp;#39;)&#xA;&#xA;# 接收数据解码&#xA;decoded_data = received_data.decode(&amp;#39;utf-8&amp;#39;)&#xA;&#xA;# 支持的编码&#xA;encodings = [&amp;#39;utf-8&amp;#39;, &amp;#39;gb2312&amp;#39;, &amp;#39;ascii&amp;#39;]&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;6-最佳实践&#34;&gt;6. 最佳实践&lt;/h2&gt;&#xA;&lt;h3 id=&#34;61-socket编程建议&#34;&gt;6.1 Socket编程建议&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;始终使用 with 语句管理socket&lt;/li&gt;&#xA;&lt;li&gt;设置适当的超时时间&lt;/li&gt;&#xA;&lt;li&gt;正确处理异常&lt;/li&gt;&#xA;&lt;li&gt;及时关闭不用的socket&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;62-示例代码&#34;&gt;6.2 示例代码&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#xA;import socket&#xA;&#xA;def create_udp_server(host=&amp;#39;&amp;#39;, port=8888):&#xA;    with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as server:&#xA;        server.bind((host, port))&#xA;        server.settimeout(60)  # 60秒超时&#xA;        try:&#xA;            while True:&#xA;                data, addr = server.recvfrom(1024)&#xA;                if not data:&#xA;                    break&#xA;                # 处理数据&#xA;                process_data(data, addr)&#xA;        except socket.timeout:&#xA;            print(&amp;#34;服务器超时&amp;#34;)&#xA;        except Exception as e:&#xA;            print(f&amp;#34;发生错误: {e}&amp;#34;)&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;63-安全建议&#34;&gt;6.3 安全建议&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;验证数据来源&lt;/li&gt;&#xA;&lt;li&gt;限制数据包大小&lt;/li&gt;&#xA;&lt;li&gt;实现超时机制&lt;/li&gt;&#xA;&lt;li&gt;做好错误处理&lt;/li&gt;&#xA;&lt;li&gt;考虑加密传输&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
     <item>
       <title>计算机存储单位与Python字符串操作详解</title>
@@ -478,7 +478,7 @@
       <description>&lt;h1 id=&#34;ubuntu2004-lts编译-python371httpswwwpythonorgdownloadsreleasepython-371&#34;&gt;ubuntu20.04 LTS编译 &lt;a href=&#34;https://www.python.org/downloads/release/python-371/&#34;&gt;python3.7.1&lt;/a&gt;&lt;/h1&gt;</description>
     </item>
     <item>
-      <title>git基础</title>
+      <title>Git 使用指南</title>
       <link>https://sunnnner.github.io/posts/git/%E5%9F%BA%E7%A1%80/git%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Mon, 12 Jul 2021 14:37:29 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/git/%E5%9F%BA%E7%A1%80/git%E5%9F%BA%E7%A1%80/</guid>
@@ -527,7 +527,7 @@
       <description></description>
     </item>
     <item>
-      <title>Log BasicConfig函数</title>
+      <title>Python Logging 完整指南</title>
       <link>https://sunnnner.github.io/posts/django/log-basicconfig%E5%87%BD%E6%95%B0/</link>
       <pubDate>Thu, 05 Dec 2019 15:40:17 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/django/log-basicconfig%E5%87%BD%E6%95%B0/</guid>
@@ -555,7 +555,7 @@
       <description></description>
     </item>
     <item>
-      <title>Github Page自定义域名开启https</title>
+      <title>GitHub Pages HTTPS 配置指南</title>
       <link>https://sunnnner.github.io/posts/git/%E8%BF%9B%E9%98%B6/github-page%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%BC%80%E5%90%AFhttps/</link>
       <pubDate>Sun, 03 Nov 2019 15:36:46 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/git/%E8%BF%9B%E9%98%B6/github-page%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%BC%80%E5%90%AFhttps/</guid>
@@ -569,7 +569,7 @@
       <description></description>
     </item>
     <item>
-      <title>Docker添加root权限省去sudo</title>
+      <title>Docker 用户权限配置指南</title>
       <link>https://sunnnner.github.io/posts/docker/docker%E6%B7%BB%E5%8A%A0root%E6%9D%83%E9%99%90%E7%9C%81%E5%8E%BBsudo/</link>
       <pubDate>Fri, 01 Nov 2019 15:35:30 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/docker/docker%E6%B7%BB%E5%8A%A0root%E6%9D%83%E9%99%90%E7%9C%81%E5%8E%BBsudo/</guid>
@@ -611,7 +611,7 @@
       <description></description>
     </item>
     <item>
-      <title>静态文件的含义以及配置</title>
+      <title>Django静态文件的含义以及配置</title>
       <link>https://sunnnner.github.io/posts/django/%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Thu, 10 Oct 2019 15:27:14 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/django/%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%AB%E4%B9%89%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AE/</guid>
@@ -625,7 +625,7 @@
       <description></description>
     </item>
     <item>
-      <title>Docker操作</title>
+      <title>Docker &amp; Docker Compose 使用指南</title>
       <link>https://sunnnner.github.io/posts/docker/docker%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Tue, 08 Oct 2019 14:19:00 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/docker/docker%E6%93%8D%E4%BD%9C/</guid>
@@ -646,7 +646,7 @@
       <description></description>
     </item>
     <item>
-      <title>Mysql查询结果输出到文件</title>
+      <title>MySQL数据导出指南</title>
       <link>https://sunnnner.github.io/posts/mysql/mysql%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C%E8%BE%93%E5%87%BA%E5%88%B0%E6%96%87%E4%BB%B6/</link>
       <pubDate>Thu, 03 Oct 2019 14:13:04 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/mysql/mysql%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C%E8%BE%93%E5%87%BA%E5%88%B0%E6%96%87%E4%BB%B6/</guid>
@@ -692,7 +692,7 @@
       <link>https://sunnnner.github.io/posts/django/%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link>
       <pubDate>Mon, 09 Sep 2019 11:39:55 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/django/%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</guid>
-      <description></description>
+      <description>&lt;h2 id=&#34;1-跨域基础概念&#34;&gt;1. 跨域基础概念&lt;/h2&gt;&#xA;&lt;h3 id=&#34;11-什么是跨域&#34;&gt;1.1 什么是跨域&lt;/h3&gt;&#xA;&lt;p&gt;浏览器出于安全考虑，对不同源的请求进行限制，这就是同源策略。&lt;/p&gt;&#xA;&lt;h3 id=&#34;12-同源策略要求&#34;&gt;1.2 同源策略要求&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;协议相同（http/https）&lt;/li&gt;&#xA;&lt;li&gt;域名相同&lt;/li&gt;&#xA;&lt;li&gt;端口相同&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;2-jsonp跨域方案&#34;&gt;2. JSONP跨域方案&lt;/h2&gt;&#xA;&lt;h3 id=&#34;21-基本原理&#34;&gt;2.1 基本原理&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;JSONP利用&lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt;标签不受同源策略限制的特性&lt;/li&gt;&#xA;&lt;li&gt;通过函数调用的方式包装JSON数据&lt;/li&gt;&#xA;&lt;li&gt;需要服务端配合返回特定格式的数据&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;22-实现示例&#34;&gt;2.2 实现示例&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#xA;// 客户端实现&#xA;function jsonp(url, callback) {&#xA;    const script = document.createElement(&amp;#39;script&amp;#39;);&#xA;    script.src = `${url}?callback=${callback}`;&#xA;    document.body.appendChild(script);&#xA;    &#xA;    // 请求完成后删除script标签&#xA;    script.onload = function() {&#xA;        document.body.removeChild(script);&#xA;    };&#xA;}&#xA;&#xA;// 服务端实现（Python示例）&#xA;def jsonp_view(request):&#xA;    callback = request.GET.get(&amp;#39;callback&amp;#39;)&#xA;    data = {&amp;#39;name&amp;#39;: &amp;#39;test&amp;#39;, &amp;#39;value&amp;#39;: 123}&#xA;    return HttpResponse(f&amp;#39;{callback}({json.dumps(data)})&amp;#39;)&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;23-jsonp限制&#34;&gt;2.3 JSONP限制&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;只支持GET请求&lt;/li&gt;&#xA;&lt;li&gt;需要服务器配合&lt;/li&gt;&#xA;&lt;li&gt;错误处理能力有限&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;3-cors跨域方案&#34;&gt;3. CORS跨域方案&lt;/h2&gt;&#xA;&lt;h3 id=&#34;31-基本概念&#34;&gt;3.1 基本概念&lt;/h3&gt;&#xA;&lt;p&gt;CORS（Cross-Origin Resource Sharing）是W3C标准的跨域解决方案。&lt;/p&gt;&#xA;&lt;h3 id=&#34;32-请求类型&#34;&gt;3.2 请求类型&lt;/h3&gt;&#xA;&lt;h4 id=&#34;简单请求&#34;&gt;简单请求&lt;/h4&gt;&#xA;&lt;p&gt;满足以下条件的请求：&lt;/p&gt;</description>
     </item>
     <item>
       <title>Django_rest_framework</title>
@@ -709,11 +709,11 @@
       <description></description>
     </item>
     <item>
-      <title>Restful规范</title>
+      <title>RESTful API 设计指南</title>
       <link>https://sunnnner.github.io/posts/restful/restful%E8%A7%84%E8%8C%83/</link>
       <pubDate>Fri, 06 Sep 2019 11:36:12 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/restful/restful%E8%A7%84%E8%8C%83/</guid>
-      <description>&lt;p&gt;restful 只是一种软件架构风格或者说是一种设计风格，它只是给我们提供了一个设计的原则和约束的条件，主要用于客户端与服务端的交互&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;1-什么是restful&#34;&gt;1. 什么是RESTful&lt;/h2&gt;&#xA;&lt;p&gt;RESTful是一种软件架构风格，主要用于规范客户端与服务端的交互。它不是标准，而是一套设计原则和约束条件，帮助我们创建更优雅的API接口。&lt;/p&gt;&#xA;&lt;h2 id=&#34;2-核心原则&#34;&gt;2. 核心原则&lt;/h2&gt;&#xA;&lt;h3 id=&#34;21-面向资源&#34;&gt;2.1 面向资源&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;使用名词表示资源&lt;/li&gt;&#xA;&lt;li&gt;URL中避免使用动词&lt;/li&gt;&#xA;&lt;li&gt;资源应该是名词的复数形式&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#xA;# 好的例子&#xA;GET /api/v1/users          # 获取用户列表&#xA;GET /api/v1/users/123      # 获取特定用户&#xA;POST /api/v1/users         # 创建用户&#xA;&#xA;# 不好的例子&#xA;GET /api/v1/getUsers&#xA;POST /api/v1/createUser&#xA;PUT /api/v1/updateUser&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;22-http方法&#34;&gt;2.2 HTTP方法&lt;/h3&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;方法&lt;/th&gt;&#xA;          &lt;th&gt;用途&lt;/th&gt;&#xA;          &lt;th&gt;特点&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;GET&lt;/td&gt;&#xA;          &lt;td&gt;获取资源&lt;/td&gt;&#xA;          &lt;td&gt;安全且幂等&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;POST&lt;/td&gt;&#xA;          &lt;td&gt;创建资源&lt;/td&gt;&#xA;          &lt;td&gt;非幂等&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;PUT&lt;/td&gt;&#xA;          &lt;td&gt;更新资源（完整）&lt;/td&gt;&#xA;          &lt;td&gt;幂等&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;DELETE&lt;/td&gt;&#xA;          &lt;td&gt;删除资源&lt;/td&gt;&#xA;          &lt;td&gt;幂等&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;PATCH&lt;/td&gt;&#xA;          &lt;td&gt;更新资源（部分）&lt;/td&gt;&#xA;          &lt;td&gt;幂等&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;3-设计规范&#34;&gt;3. 设计规范&lt;/h2&gt;&#xA;&lt;h3 id=&#34;31-url设计&#34;&gt;3.1 URL设计&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#xA;# 版本号&#xA;/api/v1/resources&#xA;&#xA;# 资源层级&#xA;/api/v1/users/{user_id}/orders/{order_id}&#xA;&#xA;# 过滤、排序、分页&#xA;/api/v1/users?page=2&amp;amp;size=10&#xA;/api/v1/products?sort=price_desc&#xA;/api/v1/orders?status=pending&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;32-安全性&#34;&gt;3.2 安全性&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;使用HTTPS协议&lt;/li&gt;&#xA;&lt;li&gt;实现身份认证&lt;/li&gt;&#xA;&lt;li&gt;使用OAuth2等授权机制&lt;/li&gt;&#xA;&lt;li&gt;实施速率限制&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;33-状态码使用&#34;&gt;3.3 状态码使用&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#xA;# 常用状态码&#xA;200 OK              # 请求成功&#xA;201 Created         # 创建成功&#xA;204 No Content      # 删除成功&#xA;400 Bad Request     # 请求错误&#xA;401 Unauthorized    # 未授权&#xA;403 Forbidden       # 禁止访问&#xA;404 Not Found       # 资源不存在&#xA;500 Server Error    # 服务器错误&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;34-响应格式&#34;&gt;3.4 响应格式&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#xA;# 成功响应&#xA;{&#xA;    &amp;#34;status&amp;#34;: &amp;#34;success&amp;#34;,&#xA;    &amp;#34;data&amp;#34;: {&#xA;        &amp;#34;id&amp;#34;: 1,&#xA;        &amp;#34;name&amp;#34;: &amp;#34;John Doe&amp;#34;,&#xA;        &amp;#34;email&amp;#34;: &amp;#34;john@example.com&amp;#34;&#xA;    },&#xA;    &amp;#34;links&amp;#34;: {&#xA;        &amp;#34;self&amp;#34;: &amp;#34;/api/v1/users/1&amp;#34;,&#xA;        &amp;#34;orders&amp;#34;: &amp;#34;/api/v1/users/1/orders&amp;#34;&#xA;    }&#xA;}&#xA;&#xA;# 错误响应&#xA;{&#xA;    &amp;#34;status&amp;#34;: &amp;#34;error&amp;#34;,&#xA;    &amp;#34;code&amp;#34;: &amp;#34;USER_NOT_FOUND&amp;#34;,&#xA;    &amp;#34;message&amp;#34;: &amp;#34;User with id 1 not found&amp;#34;,&#xA;    &amp;#34;documentation_url&amp;#34;: &amp;#34;/api/docs#errors&amp;#34;&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;4-最佳实践&#34;&gt;4. 最佳实践&lt;/h2&gt;&#xA;&lt;h3 id=&#34;41-版本控制&#34;&gt;4.1 版本控制&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#xA;# URL中的版本号&#xA;/api/v1/users&#xA;&#xA;# Header中的版本号&#xA;Accept: application/vnd.company.api+json;version=1&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;42-hateoas&#34;&gt;4.2 HATEOAS&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#xA;{&#xA;    &amp;#34;data&amp;#34;: {&#xA;        &amp;#34;id&amp;#34;: 123,&#xA;        &amp;#34;status&amp;#34;: &amp;#34;pending&amp;#34;&#xA;    },&#xA;    &amp;#34;_links&amp;#34;: {&#xA;        &amp;#34;self&amp;#34;: &amp;#34;/api/v1/orders/123&amp;#34;,&#xA;        &amp;#34;cancel&amp;#34;: &amp;#34;/api/v1/orders/123/cancel&amp;#34;,&#xA;        &amp;#34;payment&amp;#34;: &amp;#34;/api/v1/orders/123/payment&amp;#34;&#xA;    }&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;43-查询参数规范&#34;&gt;4.3 查询参数规范&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#xA;# 分页&#xA;/api/v1/users?page=2&amp;amp;per_page=100&#xA;&#xA;# 过滤&#xA;/api/v1/users?status=active&amp;amp;role=admin&#xA;&#xA;# 排序&#xA;/api/v1/users?sort=created_at:desc&#xA;&#xA;# 字段选择&#xA;/api/v1/users?fields=id,name,email&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;5-文档和测试&#34;&gt;5. 文档和测试&lt;/h2&gt;&#xA;&lt;h3 id=&#34;51-api文档&#34;&gt;5.1 API文档&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;使用OpenAPI/Swagger&lt;/li&gt;&#xA;&lt;li&gt;提供详细的参数说明&lt;/li&gt;&#xA;&lt;li&gt;包含请求和响应示例&lt;/li&gt;&#xA;&lt;li&gt;说明错误处理机制&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;52-测试建议&#34;&gt;5.2 测试建议&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;编写完整的单元测试&lt;/li&gt;&#xA;&lt;li&gt;进行集成测试&lt;/li&gt;&#xA;&lt;li&gt;性能测试&lt;/li&gt;&#xA;&lt;li&gt;安全性测试&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;6-注意事项&#34;&gt;6. 注意事项&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;保持API的简单性和一致性&lt;/li&gt;&#xA;&lt;li&gt;正确处理错误情况&lt;/li&gt;&#xA;&lt;li&gt;实现适当的缓存机制&lt;/li&gt;&#xA;&lt;li&gt;考虑向后兼容性&lt;/li&gt;&#xA;&lt;li&gt;提供充分的文档说明&lt;/li&gt;&#xA;&lt;li&gt;实现合适的监控机制&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
     <item>
       <title>Django中的FBV和CBV</title>
@@ -814,14 +814,14 @@
       <description></description>
     </item>
     <item>
-      <title>Session&#43;cookie和使用tocken有什么区别</title>
+      <title>Session&#43;cookie和使用token有什么区别</title>
       <link>https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C/session&#43;cookie%E5%92%8C%E4%BD%BF%E7%94%A8tocken%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/</link>
       <pubDate>Sun, 03 Feb 2019 10:51:26 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C/session&#43;cookie%E5%92%8C%E4%BD%BF%E7%94%A8tocken%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/</guid>
-      <description>&lt;p&gt;cookie数据存放在客户的浏览器上，session数据放在服务器上。&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;1-基本概念对比&#34;&gt;1. 基本概念对比&lt;/h2&gt;&#xA;&lt;h3 id=&#34;11-存储位置&#34;&gt;1.1 存储位置&lt;/h3&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;机制&lt;/th&gt;&#xA;          &lt;th&gt;存储位置&lt;/th&gt;&#xA;          &lt;th&gt;安全性&lt;/th&gt;&#xA;          &lt;th&gt;性能影响&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Cookie&lt;/td&gt;&#xA;          &lt;td&gt;客户端浏览器&lt;/td&gt;&#xA;          &lt;td&gt;低&lt;/td&gt;&#xA;          &lt;td&gt;低&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Session&lt;/td&gt;&#xA;          &lt;td&gt;服务器&lt;/td&gt;&#xA;          &lt;td&gt;高&lt;/td&gt;&#xA;          &lt;td&gt;高&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Token&lt;/td&gt;&#xA;          &lt;td&gt;客户端&lt;/td&gt;&#xA;          &lt;td&gt;高&lt;/td&gt;&#xA;          &lt;td&gt;低&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h3 id=&#34;12-工作原理&#34;&gt;1.2 工作原理&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#xA;&#xA;# Cookie工作流程&#xA;1. 服务器发送Cookie&#xA;Set-Cookie: user=john; expires=Sat, 31 Dec 2023 23:59:59 GMT&#xA;&#xA;2. 浏览器存储Cookie&#xA;&#xA;3. 后续请求自动携带Cookie&#xA;Cookie: user=john&#xA;&#xA;# Session工作流程&#xA;1. 用户登录&#xA;2. 服务器创建Session并生成SessionID&#xA;3. 将SessionID通过Cookie发送给客户端&#xA;4. 客户端请求时携带SessionID&#xA;5. 服务器验证SessionID并返回数据&#xA;&#xA;# Token工作流程&#xA;1. 用户登录后服务器生成Token&#xA;2. 客户端存储Token&#xA;3. 请求时在Header中携带Token&#xA;Authorization: Bearer &amp;lt;token&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;2-特点比较&#34;&gt;2. 特点比较&lt;/h2&gt;&#xA;&lt;h3 id=&#34;21-cookie&#34;&gt;2.1 Cookie&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;优点：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;减轻服务器负担&lt;/li&gt;&#xA;&lt;li&gt;实现简单&lt;/li&gt;&#xA;&lt;li&gt;支持浏览器原生&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;缺点：&lt;/p&gt;</description>
     </item>
     <item>
-      <title>线程进程协程</title>
+      <title>进程、线程与协程的深入理解</title>
       <link>https://sunnnner.github.io/posts/linux/%E7%BA%BF%E7%A8%8B%E8%BF%9B%E7%A8%8B%E5%8D%8F%E7%A8%8B/</link>
       <pubDate>Sat, 02 Feb 2019 10:46:49 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/linux/%E7%BA%BF%E7%A8%8B%E8%BF%9B%E7%A8%8B%E5%8D%8F%E7%A8%8B/</guid>

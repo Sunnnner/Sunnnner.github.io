@@ -71,8 +71,8 @@
     
       <a href="/categories/python">python</a>
   </strong>
-  <span> • 84 words</span>
-  <span> • 1 minute read</span>
+  <span> • 288 words</span>
+  <span> • 2 minute read</span>
   
   
     <div>
@@ -83,113 +83,221 @@
   
 </div>
 
-      <div class="content"><h1 id="单进程tcp服务器">单进程tcp服务器</h1>
+      <div class="content"><h2 id="1-tcp服务器实现方案">1. TCP服务器实现方案</h2>
+<h3 id="11-基础tcp服务器阻塞模式">1.1 基础TCP服务器（阻塞模式）</h3>
+<pre tabindex="0"><code>
+import socket
+
+def create_tcp_server(host=&#39;127.0.0.1&#39;, port=8888):
+    # 创建TCP套接字
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    
+    # 设置端口重用
+    server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    
+    # 绑定地址
+    server_socket.bind((host, port))
+    
+    # 开始监听
+    server_socket.listen(5)
+    
+    return server_socket
+</code></pre><h3 id="12-非阻塞模式">1.2 非阻塞模式</h3>
+<pre tabindex="0"><code>
+# 设置非阻塞模式
+server_socket.setblocking(False)
+
+try:
+    client_socket, client_addr = server_socket.accept()
+except BlockingIOError:
+    pass  # 没有新连接时继续执行
+</code></pre><h3 id="13-select模式">1.3 Select模式</h3>
+<pre tabindex="0"><code>
+import select
+
+# 创建监听列表
+inputs = [server_socket]
+outputs = []
+
+while True:
+    readable, writable, exceptional = select.select(inputs, outputs, inputs)
+    
+    for sock in readable:
+        if sock is server_socket:
+            client_socket, client_addr = sock.accept()
+            inputs.append(client_socket)
+        else:
+            try:
+                data = sock.recv(1024)
+                if data:
+                    # 处理数据
+                    pass
+                else:
+                    inputs.remove(sock)
+                    sock.close()
+            except Exception:
+                inputs.remove(sock)
+                sock.close()
+</code></pre><h3 id="14-poll模式">1.4 Poll模式</h3>
+<pre tabindex="0"><code>
+import select
+
+# 创建poll对象
+poll_obj = select.poll()
+
+# 注册服务器套接字
+poll_obj.register(server_socket.fileno(), select.POLLIN)
+
+while True:
+    events = poll_obj.poll()
+    for fd, event in events:
+        if fd == server_socket.fileno():
+            client_socket, client_addr = server_socket.accept()
+            poll_obj.register(client_socket.fileno(), select.POLLIN)
+</code></pre><h3 id="15-epoll模式">1.5 Epoll模式</h3>
+<pre tabindex="0"><code>
+import select
+
+# 创建epoll对象
+epoll = select.epoll()
+
+# 注册服务器套接字
+epoll.register(server_socket.fileno(), select.EPOLLIN)
+
+while True:
+    events = epoll.poll()
+    for fd, event in events:
+        if fd == server_socket.fileno():
+            client_socket, client_addr = server_socket.accept()
+            epoll.register(client_socket.fileno(), select.EPOLLIN)
+</code></pre><h2 id="2-io多路复用对比">2. IO多路复用对比</h2>
+<table>
+  <thead>
+      <tr>
+          <th>特性</th>
+          <th>Select</th>
+          <th>Poll</th>
+          <th>Epoll</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>连接数限制</td>
+          <td>1024</td>
+          <td>无限制</td>
+          <td>无限制</td>
+      </tr>
+      <tr>
+          <td>检测方式</td>
+          <td>轮询</td>
+          <td>轮询</td>
+          <td>事件通知</td>
+      </tr>
+      <tr>
+          <td>效率</td>
+          <td>低</td>
+          <td>中</td>
+          <td>高</td>
+      </tr>
+      <tr>
+          <td>系统支持</td>
+          <td>全平台</td>
+          <td>Linux</td>
+          <td>Linux</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="3-文件描述符">3. 文件描述符</h2>
+<h3 id="31-基本概念">3.1 基本概念</h3>
 <ul>
-<li>SOCK_STREAM tcp服务器</li>
-<li>bind绑定端口号</li>
-<li>设置正常情况推出的服务器下端口可以重用</li>
-<li>
-<pre><code>socket.setsockopt(SOL_SOCKET,SO_REUSEADDR,1)
-</code></pre>
-</li>
-<li>accept() 阻塞 socket.accept()</li>
-<li>sever_socket.setblocking(False) #设置false不阻塞当前accept()不会阻塞</li>
-<li>但是没有客户端访问的时候就会报错</li>
-<li>由客户端不会报错</li>
-<li>#设置正常情况退出的服务器下,端口可以重用</li>
-<li>server_socket.setsockopt(SOL_SOCKET,SO_REUSEADDR,1)设置再bind后面</li>
-<li>接收数据recv</li>
-<li>new_socket.setblocking(False)设置recv不阻塞</li>
-<li>recv是一个阻塞方法</li>
-<li>单进程tcp服务器就是阻塞服务器</li>
-<li>
-<h3 id="setblockingfalse设置不阻塞">setblocking(FALSE)设置不阻塞</h3>
-</li>
-<li></li>
-</ul>
-<hr>
-<h1 id="单进程tcp服务器-非阻塞模式">单进程tcp服务器-非阻塞模式</h1>
-<hr>
-<h1 id="单进程tcp服务器select版">单进程tcp服务器select版</h1>
-<ul>
-<li>select返回的是列表</li>
-<li>select.select()unix底层筛选功能，得到有请求的服务器并返回到一个列表然后遍历这个列表得到请求的数据</li>
-<li>
-<pre><code>import sys
-</code></pre>
-</li>
-<li>
-<pre><code>sys.stdin #读取键盘内容 输入流in---&gt;read
-</code></pre>
-</li>
-<li>
-<pre><code>sys.stdout #out  ---&gt;write
-</code></pre>
-</li>
-<li>
-<pre><code>sys.stderr 
-</code></pre>
-</li>
-<li></li>
-</ul>
-<hr>
-<ul>
-<li>poll解决套接字上线的问题</li>
-<li>poll解决了套接字有上限的问题，效率和select一样，都是轮询方式。</li>
-<li>select &ndash;&gt;最多1024个套接字&ndash;&gt;采用轮询方式进程检测套接字是否可以接收等</li>
-<li>poll &ndash;&gt;解决了支持套接字上线问题&ndash;&gt;采用轮询方式进程检测</li>
-<li>epoll&ndash;&gt;解决支持上限问题&ndash;&gt;采用的是事件通知</li>
-</ul>
-<hr>
-<h1 id="单进程tcp服务器-epoll版">单进程tcp服务器-epoll版</h1>
-<hr>
-<ul>
-<li>select 和poll都是轮询检测方式，效率比较低，epoll采用的事件通知机制，这个时候epoll效率原高于select和poll</li>
-<li>epoll的优点</li>
-<li>没有最大并发链接的限制，能打开的FD（指的是文件描述符，通俗的理解就是套接字对应的数字编号）的上限远大于1024</li>
-<li>效率提升，不是轮询的方式，不会随着FD数目的增加效率下降，只有活跃可用的FD才会调用callback函数，即epoll最大的有点就在于它只管你“活跃”的链接，而跟链接总数无关，因此再世纪的网络环境中，epoll的小康v就会远远高于select和poll</li>
-<li>epoll采用的是事件通知机制</li>
-<li>文件描述符：</li>
-<li>linux内核（kernel）利用文件描述符（file descriptor）来访问文件</li>
 <li>文件描述符是非负整数</li>
-<li>文件描述符在形式上是一个非负整数</li>
-<li>实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表</li>
-<li>但是文件描述符这一概念往往只适用于UNIX、Linux这样的操作系统。Window没有</li>
-<li>sys.stdin.fileno()</li>
-<li>习惯上，标准输入（standard input）的文件描述符是 0</li>
-<li>sys.stdout.fileno()</li>
-<li>标准输出（standard output）是 1</li>
-<li>sys.stderr.fileno()</li>
-<li>标准错误（standard error）是 2</li>
-<li>新建立的文件都有文件描述符</li>
+<li>是内核维护的文件记录表索引</li>
+<li>Linux/Unix特有概念</li>
 </ul>
-<hr>
+<h3 id="32-标准文件描述符">3.2 标准文件描述符</h3>
+<pre tabindex="0"><code>
+import sys
+
+# 标准输入
+stdin_fd = sys.stdin.fileno()  # 0
+
+# 标准输出
+stdout_fd = sys.stdout.fileno()  # 1
+
+# 标准错误
+stderr_fd = sys.stderr.fileno()  # 2
+</code></pre><h2 id="4-协程">4. 协程</h2>
+<h3 id="41-基本概念">4.1 基本概念</h3>
 <ul>
-<li>
-<h1 id="多任务实现--协程">多任务实现&ndash;协程</h1>
-</li>
+<li>微线程/纤程</li>
+<li>用户态的轻量级线程</li>
+<li>程序员自主控制的并发单元</li>
 </ul>
-<hr>
-<ul>
-<li>协程，又程微线程，纤程，英文名：coroutine</li>
-<li>而协程的操作则是程序员指定的，在python中通过yield，人为的实现并发处理。</li>
-<li>协程存在的意义：</li>
-<li>协程，则只使用一个线程，分解一个线程成为多个“微线程”，在一个线程中规定某个代码块的执行顺序。</li>
-<li>协程的应用场景：当程序中存在大量不需要CPU的操作时（IO）。</li>
-<li>首先我们得知道协程是啥？协程其实比线程更小的执行单元。 为啥说他是一个执行单元，因为他自带CPU上下文。</li>
-<li>协程和线程差异：</li>
-<li>线程切换非常耗性能</li>
-<li>但是协程的切换只是单纯的操作CPU的上下文，所以一秒钟切换个上百万次系统都抗的住。</li>
-<li>协程的问题-协程程序员自己调度</li>
-<li>让需要执行的协程更多的获得CPU时间才是问题的关键。</li>
-<li>
-<h3 id="计算密集型和io密集型">计算密集型和IO密集型</h3>
-</li>
-<li>计算密集型&ndash;&gt;例如for循环里嵌套10层for循环&ndash;&gt;占大量的cpu资源&ndash;&gt;解决方案&ndash;&gt;使用多进程不能用多线程（多线程中有个全局锁GIL）</li>
-<li>IO密集型-&gt;需要网络功能，大量的事件等待网络数据的到来&ndash;&gt;多线程、协成</li>
-<li>尽量不要再协程里面做IO密集型操作</li>
-<li></li>
-</ul></div>
+<h3 id="42-特点对比">4.2 特点对比</h3>
+<table>
+  <thead>
+      <tr>
+          <th>特性</th>
+          <th>线程</th>
+          <th>协程</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>切换成本</td>
+          <td>高</td>
+          <td>低</td>
+      </tr>
+      <tr>
+          <td>调度方式</td>
+          <td>系统调度</td>
+          <td>用户调度</td>
+      </tr>
+      <tr>
+          <td>并发性能</td>
+          <td>中</td>
+          <td>高</td>
+      </tr>
+      <tr>
+          <td>编程复杂度</td>
+          <td>中</td>
+          <td>较高</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="43-适用场景">4.3 适用场景</h3>
+<pre tabindex="0"><code>
+# IO密集型任务
+async def io_task():
+    await asyncio.sleep(1)
+    # IO操作
+
+# 计算密集型任务（不推荐）
+def cpu_task():
+    for i in range(1000000):
+        # 计算操作
+        pass
+</code></pre><h3 id="44-最佳实践">4.4 最佳实践</h3>
+<ol>
+<li>IO密集型任务优先使用协程</li>
+<li>计算密集型任务使用多进程</li>
+<li>避免协程中包含阻塞操作</li>
+<li>合理设计协程调度策略</li>
+</ol>
+<h2 id="5-性能优化建议">5. 性能优化建议</h2>
+<h3 id="51-网络服务器">5.1 网络服务器</h3>
+<ol>
+<li>使用适合的IO多路复用机制</li>
+<li>合理设置缓冲区大小</li>
+<li>实现超时机制</li>
+<li>做好错误处理</li>
+</ol>
+<h3 id="52-并发处理">5.2 并发处理</h3>
+<ol>
+<li>IO密集型：协程 &gt; 多线程 &gt; 多进程</li>
+<li>CPU密集型：多进程 &gt; 多线程 &gt; 协程</li>
+<li>混合场景：考虑多进程+协程的方案</li>
+</ol></div>
     </article>
   </main>
 

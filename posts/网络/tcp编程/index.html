@@ -9,7 +9,7 @@
   />
   
     
-      <title>TCP编程 | 学无止境</title>
+      <title>网络协议与抓包分析 | 学无止境</title>
     
   
   <link rel="stylesheet" href="/css/reset.css"/>
@@ -61,7 +61,7 @@
         
   <main>
     <article>
-      <h1 class="title">TCP编程</h1>
+      <h1 class="title">网络协议与抓包分析</h1>
       
       <div class="post-meta">
   <strong>
@@ -71,8 +71,8 @@
     
       <a href="/categories/network">network</a>
   </strong>
-  <span> • 27 words</span>
-  <span> • 1 minute read</span>
+  <span> • 291 words</span>
+  <span> • 2 minute read</span>
   
   
     <div>
@@ -83,60 +83,221 @@
   
 </div>
 
-      <div class="content"><p>ip.addr 过滤ip地址
-udp.port 过滤端口</p>
-<hr>
-<h1 id="tftp简单文件传输协议">TFTP(简单文件传输协议)</h1>
-<hr>
-<ul>
-<li>BS 浏览器/服务器模式</li>
-<li>CS 客户端/服务器模式</li>
-<li></li>
-</ul>
-<h3 id="关于下载和上传">关于下载和上传</h3>
-<ul>
-<li>上传是读本地写远程</li>
-<li>下载是读远程写本地</li>
-<li></li>
-</ul>
-<hr>
-<h2 id="tcp相关介绍">tcp相关介绍</h2>
-<ul>
-<li>tcp-&gt;传输控制协议</li>
-<li>udp-&gt;用户数据报协议</li>
-<li>tcp和udp区别：</li>
-<li>TCP面向连接&mdash;UDP面向无连接</li>
-<li>TCP首部20字节&mdash;UDP首部8字节</li>
-<li>TCP只能点对点通信&mdash;UDP可以实现一对一，一对多，多对一，多对多通信</li>
-<li>TCP使用字节流传输&mdash;UDP使用报文传输</li>
-<li>TCP提供可靠，==稳定的传输（三次握手，数据确认机制，重传机制，拥塞控制）==，由于这些导致TCP传输效率低，速度慢（各种机制+每次连接都会消耗CPU，内存等资源）&mdash;UDP提供不可靠，不稳定的传输（网络不好容易丢包），但传输效率高，速度快</li>
-<li>tcp服务器创建流程</li>
-<li>
+      <div class="content"><h2 id="1-网络抓包基础">1. 网络抓包基础</h2>
+<h3 id="11-wireshark过滤器">1.1 Wireshark过滤器</h3>
+<pre tabindex="0"><code>
+
+# IP地址过滤
+ip.addr == 192.168.1.1
+ip.src == 192.168.1.1    # 源IP
+ip.dst == 192.168.1.1    # 目标IP
+
+# 端口过滤
+udp.port == 53
+tcp.port == 80
+tcp.srcport == 80        # 源端口
+tcp.dstport == 80        # 目标端口
+
+# 组合过滤
+ip.addr == 192.168.1.1 and tcp.port == 80
+</code></pre><h2 id="2-网络架构模式">2. 网络架构模式</h2>
+<h3 id="21-常见架构模式对比">2.1 常见架构模式对比</h3>
+<table>
+  <thead>
+      <tr>
+          <th>模式</th>
+          <th>特点</th>
+          <th>应用场景</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>BS (Browser/Server)</td>
+          <td>基于浏览器，跨平台，维护方便</td>
+          <td>Web应用</td>
+      </tr>
+      <tr>
+          <td>CS (Client/Server)</td>
+          <td>性能好，体验佳，需要安装</td>
+          <td>桌面应用</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="22-数据传输方向">2.2 数据传输方向</h3>
+<pre tabindex="0"><code>
+
+# 上传操作
+本地(读取) -&gt; 远程(写入)
+
+# 下载操作
+远程(读取) -&gt; 本地(写入)
+</code></pre><h2 id="3-tcp-vs-udp">3. TCP vs UDP</h2>
+<h3 id="31-基本特征对比">3.1 基本特征对比</h3>
+<table>
+  <thead>
+      <tr>
+          <th>特性</th>
+          <th>TCP</th>
+          <th>UDP</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>连接方式</td>
+          <td>面向连接</td>
+          <td>无连接</td>
+      </tr>
+      <tr>
+          <td>首部大小</td>
+          <td>20字节</td>
+          <td>8字节</td>
+      </tr>
+      <tr>
+          <td>通信模式</td>
+          <td>点对点</td>
+          <td>一对一/一对多/多对多</td>
+      </tr>
+      <tr>
+          <td>传输方式</td>
+          <td>字节流</td>
+          <td>数据报</td>
+      </tr>
+      <tr>
+          <td>可靠性</td>
+          <td>高</td>
+          <td>低</td>
+      </tr>
+      <tr>
+          <td>传输速度</td>
+          <td>慢</td>
+          <td>快</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="32-tcp可靠传输机制">3.2 TCP可靠传输机制</h3>
 <ol>
-<li>socket创建一个套接字</li>
+<li>三次握手</li>
+<li>数据确认</li>
+<li>重传机制</li>
+<li>拥塞控制</li>
 </ol>
-</li>
-<li>
-<ol start="2">
-<li>bind绑定ip和port</li>
+<h3 id="33-tcp服务器实现">3.3 TCP服务器实现</h3>
+<pre tabindex="0"><code>
+
+import socket
+
+def create_tcp_server(host=&#39;0.0.0.0&#39;, port=8888):
+    # 1. 创建套接字
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    
+    # 2. 绑定地址
+    server_socket.bind((host, port))
+    
+    # 3. 开启监听
+    server_socket.listen(5)
+    
+    while True:
+        try:
+            # 4. 等待连接
+            client_socket, client_addr = server_socket.accept()
+            
+            # 5. 数据收发
+            while True:
+                # 接收数据
+                data = client_socket.recv(1024)
+                if not data:
+                    break
+                    
+                # 发送数据
+                client_socket.send(data)
+                
+        except Exception as e:
+            print(f&#34;Error: {e}&#34;)
+        finally:
+            # 关闭客户端连接
+            client_socket.close()
+    
+    # 关闭服务器
+    server_socket.close()
+</code></pre><h2 id="4-tftp-简单文件传输协议">4. TFTP (简单文件传输协议)</h2>
+<h3 id="41-特点">4.1 特点</h3>
+<ol>
+<li>简单的文件传输协议</li>
+<li>基于UDP协议</li>
+<li>支持上传和下载</li>
+<li>无认证机制</li>
 </ol>
-</li>
-<li>
-<ol start="3">
-<li>listen使套接字变为可以被动链接</li>
+<h3 id="42-基本操作">4.2 基本操作</h3>
+<pre tabindex="0"><code>
+
+# TFTP客户端示例
+from tftpy import TftpClient
+
+def tftp_download(server, filename):
+    client = TftpClient(server, 69)
+    client.download(filename, filename)
+
+def tftp_upload(server, filename):
+    client = TftpClient(server, 69)
+    client.upload(filename, filename)
+</code></pre><h2 id="5-网络编程最佳实践">5. 网络编程最佳实践</h2>
+<h3 id="51-tcp服务器优化">5.1 TCP服务器优化</h3>
+<ol>
+<li>使用非阻塞IO</li>
+<li>实现超时机制</li>
+<li>错误处理</li>
+<li>资源管理</li>
 </ol>
-</li>
-<li>
-<ol start="4">
-<li>accept等待客户端的链接</li>
+<pre tabindex="0"><code>
+
+import socket
+import select
+
+def optimized_tcp_server(host=&#39;0.0.0.0&#39;, port=8888):
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.setblocking(False)
+    server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    server.bind((host, port))
+    server.listen(5)
+    
+    inputs = [server]
+    outputs = []
+    
+    while inputs:
+        readable, writable, exceptional = select.select(inputs, outputs, inputs)
+        # 处理可读socket
+        for sock in readable:
+            if sock is server:
+                client, addr = sock.accept()
+                client.setblocking(False)
+                inputs.append(client)
+            else:
+                try:
+                    data = sock.recv(1024)
+                    if data:
+                        # 处理数据
+                        pass
+                    else:
+                        inputs.remove(sock)
+                        sock.close()
+                except Exception:
+                    inputs.remove(sock)
+                    sock.close()
+</code></pre><h3 id="52-安全建议">5.2 安全建议</h3>
+<ol>
+<li>输入验证</li>
+<li>超时控制</li>
+<li>资源限制</li>
+<li>错误处理</li>
+<li>日志记录</li>
 </ol>
-</li>
-<li>
-<ol start="5">
-<li>recv/send接收发送数据</li>
-</ol>
-</li>
-</ul></div>
+<h3 id="53-性能优化">5.3 性能优化</h3>
+<ol>
+<li>使用连接池</li>
+<li>实现缓存机制</li>
+<li>合理的缓冲区大小</li>
+<li>异步处理</li>
+</ol></div>
     </article>
   </main>
 

@@ -9,11 +9,11 @@
     <lastBuildDate>Tue, 12 Jul 2022 14:37:53 +0800</lastBuildDate>
     <atom:link href="https://sunnnner.github.io/categories/network/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>TCP编程</title>
+      <title>网络协议与抓包分析</title>
       <link>https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C/tcp%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Tue, 12 Jul 2022 14:37:53 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C/tcp%E7%BC%96%E7%A8%8B/</guid>
-      <description>&lt;p&gt;ip.addr 过滤ip地址&#xA;udp.port 过滤端口&lt;/p&gt;</description>
+      <description></description>
     </item>
     <item>
       <title>WAP服务器</title>
@@ -27,7 +27,7 @@
       <link>https://sunnnner.github.io/posts/django/%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link>
       <pubDate>Mon, 09 Sep 2019 11:39:55 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/django/%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</guid>
-      <description></description>
+      <description>&lt;h2 id=&#34;1-跨域基础概念&#34;&gt;1. 跨域基础概念&lt;/h2&gt;&#xA;&lt;h3 id=&#34;11-什么是跨域&#34;&gt;1.1 什么是跨域&lt;/h3&gt;&#xA;&lt;p&gt;浏览器出于安全考虑，对不同源的请求进行限制，这就是同源策略。&lt;/p&gt;&#xA;&lt;h3 id=&#34;12-同源策略要求&#34;&gt;1.2 同源策略要求&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;协议相同（http/https）&lt;/li&gt;&#xA;&lt;li&gt;域名相同&lt;/li&gt;&#xA;&lt;li&gt;端口相同&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;2-jsonp跨域方案&#34;&gt;2. JSONP跨域方案&lt;/h2&gt;&#xA;&lt;h3 id=&#34;21-基本原理&#34;&gt;2.1 基本原理&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;JSONP利用&lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt;标签不受同源策略限制的特性&lt;/li&gt;&#xA;&lt;li&gt;通过函数调用的方式包装JSON数据&lt;/li&gt;&#xA;&lt;li&gt;需要服务端配合返回特定格式的数据&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;22-实现示例&#34;&gt;2.2 实现示例&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#xA;// 客户端实现&#xA;function jsonp(url, callback) {&#xA;    const script = document.createElement(&amp;#39;script&amp;#39;);&#xA;    script.src = `${url}?callback=${callback}`;&#xA;    document.body.appendChild(script);&#xA;    &#xA;    // 请求完成后删除script标签&#xA;    script.onload = function() {&#xA;        document.body.removeChild(script);&#xA;    };&#xA;}&#xA;&#xA;// 服务端实现（Python示例）&#xA;def jsonp_view(request):&#xA;    callback = request.GET.get(&amp;#39;callback&amp;#39;)&#xA;    data = {&amp;#39;name&amp;#39;: &amp;#39;test&amp;#39;, &amp;#39;value&amp;#39;: 123}&#xA;    return HttpResponse(f&amp;#39;{callback}({json.dumps(data)})&amp;#39;)&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;23-jsonp限制&#34;&gt;2.3 JSONP限制&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;只支持GET请求&lt;/li&gt;&#xA;&lt;li&gt;需要服务器配合&lt;/li&gt;&#xA;&lt;li&gt;错误处理能力有限&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;3-cors跨域方案&#34;&gt;3. CORS跨域方案&lt;/h2&gt;&#xA;&lt;h3 id=&#34;31-基本概念&#34;&gt;3.1 基本概念&lt;/h3&gt;&#xA;&lt;p&gt;CORS（Cross-Origin Resource Sharing）是W3C标准的跨域解决方案。&lt;/p&gt;&#xA;&lt;h3 id=&#34;32-请求类型&#34;&gt;3.2 请求类型&lt;/h3&gt;&#xA;&lt;h4 id=&#34;简单请求&#34;&gt;简单请求&lt;/h4&gt;&#xA;&lt;p&gt;满足以下条件的请求：&lt;/p&gt;</description>
     </item>
     <item>
       <title>什么是RPC</title>

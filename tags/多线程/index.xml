@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>线程 on 学无止境</title>
-    <link>https://sunnnner.github.io/tags/%E7%BA%BF%E7%A8%8B/</link>
-    <description>Recent content in 线程 on 学无止境</description>
+    <title>多线程 on 学无止境</title>
+    <link>https://sunnnner.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
+    <description>Recent content in 多线程 on 学无止境</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 12 Jul 2022 14:37:29 +0800</lastBuildDate>
-    <atom:link href="https://sunnnner.github.io/tags/%E7%BA%BF%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://sunnnner.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Liunx编程-python线程</title>
+      <title>Python多线程编程指南</title>
       <link>https://sunnnner.github.io/posts/linux/liunx-%E7%BA%BF%E7%A8%8B/</link>
       <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/linux/liunx-%E7%BA%BF%E7%A8%8B/</guid>

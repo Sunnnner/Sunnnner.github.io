@@ -9,7 +9,7 @@
     <lastBuildDate>Tue, 12 Jul 2022 14:37:29 +0800</lastBuildDate>
     <atom:link href="https://sunnnner.github.io/tags/pymysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>pymsql基础</title>
+      <title>PyMySQL 数据库操作指南</title>
       <link>https://sunnnner.github.io/posts/mysql/pymysql%E9%93%BE%E6%8E%A5/</link>
       <pubDate>Tue, 12 Jul 2022 14:37:29 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/mysql/pymysql%E9%93%BE%E6%8E%A5/</guid>

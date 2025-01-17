@@ -9,7 +9,7 @@
   />
   
     
-      <title>Mysql安装 | 学无止境</title>
+      <title>MySQL数据库管理指南 | 学无止境</title>
     
   
   <link rel="stylesheet" href="/css/reset.css"/>
@@ -61,7 +61,7 @@
         
   <main>
     <article>
-      <h1 class="title">Mysql安装</h1>
+      <h1 class="title">MySQL数据库管理指南</h1>
       
       <div class="post-meta">
   <strong>
@@ -71,187 +71,166 @@
     
       <a href="/categories/mysql">mysql</a>
   </strong>
-  <span> • 373 words</span>
+  <span> • 328 words</span>
   <span> • 2 minute read</span>
   
     <div>
       Last updated on
-      <time>11.05.2024</time>
+      <time>17.01.2025</time>
     </div>
   
   
 </div>
 
       <div class="content"><hr>
-<h1 id="安装数据库">安装数据库</h1>
-<ul>
-<li>
-<p><code>sudo apt-get install mysql-server </code></p>
-</li>
-<li>
-<p><code>show databases</code> 查看数据</p>
-</li>
-<li>
-<p>安装mysql-client</p>
-</li>
-<li>
-<p><code>sudo apt -get install mysql-client</code></p>
-</li>
-<li>
-<p>如无法下载</p>
-</li>
-<li>
-<p><code>sudo apt-get install updata</code></p>
-</li>
-<li>
-<p>检查书否安装成功</p>
-</li>
-<li>
-<p><code>dudo netstat -tap | grap mysql </code></p>
-</li>
-<li>
-<p>登陆</p>
-</li>
-<li>
-<p><code>mysql -u root -p</code></p>
-</li>
-<li>
-<p>或者直接跟密码<code>mysql -u roo -p12345</code></p>
-</li>
-<li>
-<p>启动</p>
-</li>
-<li>
-<p><code>service mysql start</code></p>
-</li>
-<li>
-<p><code>sudo /etc/init.d/mysql start</code></p>
-</li>
-<li>
-<p>关闭</p>
-</li>
-<li>
-<p><code>service mysql stop</code>或者  <code>mysqladmin -u root -p shutdown</code></p>
-</li>
-<li>
-<p><code>sudo netstat -tap | grep mysql </code></p>
-</li>
-<li>
-<p>重启</p>
-</li>
-<li>
-<p><code>service mysql restart</code>或者 <code>sudo /etc/init.d/ mysql restart</code></p>
-</li>
-<li>
-<p>进入数据库</p>
-</li>
-<li>
-<p><code>mysql -u root -p</code></p>
-</li>
-<li>
-<p>推出mysql</p>
-</li>
-<li>
-<p><code>quit;quit exit;exit ctrl+d</code></p>
-</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="使用navicat-for-mysql连接mysql服务器">使用Navicat for Mysql连接mysql服务器</h1>
-</li>
-<li>使用mysql这个数据库选择数据库<code>use+数据库名字</code>  <code>use mysql;</code></li>
-<li>查看mysql 的数据库  <code>show databases</code></li>
-<li>把当前数据库所有的标列出来<code>show tables</code></li>
-<li>查看某个表的结构<code>desc xx</code></li>
-<li>查看某个表的所有数据<code>select * from xxx</code></li>
-<li>查看某一天数据的信息 :<code>select * from xxx where id/name/xxx/=xx</code></li>
-<li></li>
-<li>在mysql这个数据库中查找user这个表中的user和host字段<code>select user,host from user;</code></li>
-<li>创建用户<code>grant all privileges on *.* to 用户名@&quot;%&quot; identified by &quot;密码&quot; with grant option</code></li>
-<li><code>grant all privileges on *.* to white@&quot;%&quot; identified by &quot;12345&quot; with grant option; </code></li>
-<li>grant是授权命令，其中afu是我们连接用的用户名、”123456″是连接密码，用户名后面的“%”通用符表示允许各host操作。</li>
-<li>查询select user,host from user;</li>
-<li>刷新数据库账户权限 <code>flush privileges;</code></li>
-<li>重新查询 <code>select user,host from user;</code></li>
-<li>删除id 为13的student的信息  <code>delent from student where id = 13</code></li>
-<li>删除用户：<code>delete from user where user = &quot;用户名&quot;and host = &quot;xxx&quot; </code></li>
-<li>修改id 为1的数据的名字为郭靖:<code>update student set name = '郭靖' where id = 1;</code></li>
-<li>增加一条数据<code>insert into student(id,name) values(0,王迪);</code>id=0默认最后</li>
-<li>重新查询：<code>select user,host from user</code></li>
-<li></li>
-</ul>
-<hr>
-<ul>
-<li>
-<h3 id="表的操作">表的操作</h3>
-</li>
-<li>使用某个数据库 use xxx</li>
-<li>列出所有标show tables</li>
-<li>创建数据表create table tab_name(
-id int(10)  auto_increment primary key not null,
-name varchar(40),
-pwd varchar(40)
-) charset=utf8;</li>
-<li></li>
-<li>删除数据表 drop table xxx</li>
-<li>查看当前使用的数据库：select database();</li>
-<li>显示数据表的结构   desc xxx或者 describe xxx  或者 show colu</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="数据库操作">数据库操作</h1>
-</li>
-<li>显示那些数据库  show databases;</li>
-<li>切换数据库 use xxx;</li>
-<li>显示数据库中所有的表 show tables</li>
-<li>列出表的结构 desc xxx</li>
-<li>查看当前选择选中的数据库：select database();</li>
-<li>删除数据库 drop database xxx</li>
-<li>创建新的数据库 create database xxx  指定编码charset=utf8</li>
-<li>修改密码mysqladmin -u 用户名 -p旧密码 password 新密码;</li>
-<li>1.推出数据库</li>
-<li>2.执行Linux命令：mysqladmin -u 用户名 -p旧密码 password 新密码</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="表的操作-1">表的操作</h1>
-</li>
-<li>创建数据表</li>
-<li>create table student(</li>
-<li>id int(11) auto_increment primary key not null,</li>
-<li>name varchar(40) default null,</li>
-<li>idDelete bit(1) default 0</li>
-<li>)charset=utf8</li>
-<li>删除表  drop table xxx</li>
-<li>显示表的结构 desc xxx</li>
-<li>查询表的里面所有的数据  select * from xxx</li>
-<li>插入数据：insert into xxx() vslues(),(0,&quot;&quot;),(0,&quot;&quot;)</li>
-<li>删除名字为“张三&quot;delete from students where name = &ldquo;张三&rdquo;</li>
-<li>删除所有数据 delete from students;</li>
-<li>在表中添加一个字段 alter table tab_name add address varchar(20);</li>
-<li>删除表中的字段: alter table tab_name drop address;</li>
-<li>(了解)把某一列设为主键：</li>
-<li>alter table tab_name change id id int(10);</li>
-<li>alter table tab_name drop primary key;</li>
-<li>ALTER TABLE tab_name ADD PRIMARY KEY (col_name) ;</li>
-<li>alter table tab_name add primary key(id);</li>
-<li>alter table tab_name change id id int(10) not null auto_increment~~~~~~;~~~~~~</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="数据库备份">数据库备份</h1>
-</li>
-<li>cd / var/lib/</li>
-<li>sudo -s</li>
-<li>cd musql</li>
-<li>mysqldump -uroot -p 数据库名 &gt; ~ /Desktop/备份文件.sql;</li>
-<li>数据恢复：</li>
-<li>mysql -uroot -p xxx&lt; xxx.sql;</li>
-</ul></div>
+<h2 id="1-安装与基本配置">1. 安装与基本配置</h2>
+<h3 id="11-安装mysql">1.1 安装MySQL</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 安装服务器</span>
+</span></span><span style="display:flex;"><span>sudo apt-get update
+</span></span><span style="display:flex;"><span>sudo apt-get install mysql-server
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 安装客户端</span>
+</span></span><span style="display:flex;"><span>sudo apt-get install mysql-client
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 检查安装状态</span>
+</span></span><span style="display:flex;"><span>sudo netstat -tap | grep mysql
+</span></span></code></pre></div><h3 id="12-服务管理">1.2 服务管理</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 启动服务</span>
+</span></span><span style="display:flex;"><span>sudo service mysql start
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 或</span>
+</span></span><span style="display:flex;"><span>sudo /etc/init.d/mysql start
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 停止服务</span>
+</span></span><span style="display:flex;"><span>sudo service mysql stop
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 或</span>
+</span></span><span style="display:flex;"><span>sudo mysqladmin -u root -p shutdown
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 重启服务</span>
+</span></span><span style="display:flex;"><span>sudo service mysql restart
+</span></span></code></pre></div><h3 id="13-登录与退出">1.3 登录与退出</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 登录（交互式输入密码）</span>
+</span></span><span style="display:flex;"><span>mysql -u root -p
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 登录（命令行直接提供密码，不推荐）</span>
+</span></span><span style="display:flex;"><span>mysql -u root -p12345
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 退出</span>
+</span></span><span style="display:flex;"><span>quit;
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 或</span>
+</span></span><span style="display:flex;"><span>exit;
+</span></span></code></pre></div><h2 id="2-用户管理">2. 用户管理</h2>
+<h3 id="21-用户操作">2.1 用户操作</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 查看用户列表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">user</span>, <span style="color:#66d9ef">host</span> <span style="color:#66d9ef">FROM</span> mysql.<span style="color:#66d9ef">user</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 创建用户并授权
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">ALL</span> <span style="color:#66d9ef">PRIVILEGES</span> <span style="color:#66d9ef">ON</span> <span style="color:#f92672">*</span>.<span style="color:#f92672">*</span> <span style="color:#66d9ef">TO</span> <span style="color:#e6db74">&#39;username&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span> 
+</span></span><span style="display:flex;"><span>IDENTIFIED <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;password&#39;</span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WITH</span> <span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">OPTION</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 刷新权限
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>FLUSH <span style="color:#66d9ef">PRIVILEGES</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 删除用户
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">FROM</span> mysql.<span style="color:#66d9ef">user</span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">user</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;username&#39;</span> <span style="color:#66d9ef">AND</span> <span style="color:#66d9ef">host</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;hostname&#39;</span>;
+</span></span></code></pre></div><h3 id="22-修改密码">2.2 修改密码</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 命令行修改密码</span>
+</span></span><span style="display:flex;"><span>mysqladmin -u username -p<span style="color:#e6db74">&#39;oldpassword&#39;</span> password <span style="color:#e6db74">&#39;newpassword&#39;</span>
+</span></span></code></pre></div><h2 id="3-数据库操作">3. 数据库操作</h2>
+<h3 id="31-基本操作">3.1 基本操作</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 显示所有数据库
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SHOW</span> DATABASES;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 创建数据库
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">DATABASE</span> dbname CHARACTER <span style="color:#66d9ef">SET</span> utf8;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 选择数据库
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>USE dbname;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 显示当前数据库
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">DATABASE</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 删除数据库
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">DATABASE</span> dbname;
+</span></span></code></pre></div><h3 id="32-表操作">3.2 表操作</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 创建表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> tablename (
+</span></span><span style="display:flex;"><span>    id INT(<span style="color:#ae81ff">11</span>) AUTO_INCREMENT <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    name VARCHAR(<span style="color:#ae81ff">40</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    is_deleted BIT(<span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>) CHARSET<span style="color:#f92672">=</span>utf8;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 显示所有表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SHOW</span> TABLES;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 显示表结构
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">DESC</span> tablename;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 或
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">DESCRIBE</span> tablename;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 删除表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">TABLE</span> tablename;
+</span></span></code></pre></div><h3 id="33-数据操作">3.3 数据操作</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 插入数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> tablename (column1, column2) 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">VALUES</span> (value1, value2);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 查询数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> tablename;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> column1, column2 <span style="color:#66d9ef">FROM</span> tablename <span style="color:#66d9ef">WHERE</span> condition;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 更新数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">UPDATE</span> tablename 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SET</span> column1 <span style="color:#f92672">=</span> value1 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> condition;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 删除数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">FROM</span> tablename <span style="color:#66d9ef">WHERE</span> condition;
+</span></span></code></pre></div><h3 id="34-表结构修改">3.4 表结构修改</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 添加字段
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> tablename 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ADD</span> <span style="color:#66d9ef">COLUMN</span> columnname VARCHAR(<span style="color:#ae81ff">20</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 删除字段
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> tablename 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">COLUMN</span> columnname;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 修改主键
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> tablename 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ADD</span> <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (columnname);
+</span></span></code></pre></div><h2 id="4-数据备份与恢复">4. 数据备份与恢复</h2>
+<h3 id="41-备份数据库">4.1 备份数据库</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 备份整个数据库</span>
+</span></span><span style="display:flex;"><span>mysqldump -u root -p dbname &gt; backup.sql
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 备份特定表</span>
+</span></span><span style="display:flex;"><span>mysqldump -u root -p dbname tablename &gt; backup.sql
+</span></span></code></pre></div><h3 id="42-恢复数据库">4.2 恢复数据库</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 恢复数据库</span>
+</span></span><span style="display:flex;"><span>mysql -u root -p dbname &lt; backup.sql
+</span></span></code></pre></div><h2 id="5-最佳实践">5. 最佳实践</h2>
+<h3 id="51-安全建议">5.1 安全建议</h3>
+<ol>
+<li>不要在命令行中直接输入密码</li>
+<li>定期更改密码</li>
+<li>及时删除不用的用户</li>
+<li>最小权限原则授权</li>
+</ol>
+<h3 id="52-性能优化">5.2 性能优化</h3>
+<ol>
+<li>合理使用索引</li>
+<li>定期备份数据</li>
+<li>及时清理不需要的数据</li>
+<li>优化查询语句</li>
+</ol>
+<h3 id="53-编码注意事项">5.3 编码注意事项</h3>
+<ol>
+<li>始终指定字符集为UTF-8</li>
+<li>使用预处理语句防止SQL注入</li>
+<li>使用事务确保数据一致性</li>
+<li>正确处理NULL值</li>
+</ol></div>
     </article>
   </main>
 

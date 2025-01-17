@@ -9,7 +9,7 @@
   />
   
     
-      <title>mysql查询 | 学无止境</title>
+      <title>MySQL查询语句指南 | 学无止境</title>
     
   
   <link rel="stylesheet" href="/css/reset.css"/>
@@ -61,7 +61,7 @@
         
   <main>
     <article>
-      <h1 class="title">mysql查询</h1>
+      <h1 class="title">MySQL查询语句指南</h1>
       
       <div class="post-meta">
   <strong>
@@ -71,203 +71,106 @@
     
       <a href="/categories/mysql">mysql</a>
   </strong>
-  <span> • 344 words</span>
+  <span> • 404 words</span>
   <span> • 2 minute read</span>
   
   
 </div>
 
       <div class="content"><hr>
-<h1 id="查询">查询</h1>
-<ul>
-<li>
-<p>1.准备数据创建新的数据库</p>
-</li>
-<li>
-<p>2.创建表</p>
-</li>
-<li>
-<p>创建学生表：</p>
-</li>
-<li>
-<p>create table students(
--&gt; id int(11) primary key auto_increment not null,
--&gt; name varchar(40) default null,
--&gt; birthday datetime default null,
--&gt; gender bit(1) default 0,
--&gt; isDelete bit(1
--&gt; ) default 0)charset=utf8;</p>
-</li>
-<li>
-<p>3.插入数据</p>
-</li>
-<li>
-<p>创建学科表</p>
-</li>
-<li>
-<pre><code>    create table subject(
-</code></pre>
-</li>
-<li>
-<pre><code>id int(11) primary key auto_increment not null,
-</code></pre>
-</li>
-<li>
-<pre><code>      title varchar(10),
-</code></pre>
-</li>
-<li>
-<pre><code>      isDelete bit(1) default 0)charset=utf8;
-</code></pre>
-</li>
-<li></li>
-<li>
-<p>查询记本语法</p>
-</li>
-<li>
-<p>select * from studengs;查询所有信息</p>
-</li>
-<li>
-<p>显示多个信息 select id,name,birthday from students;</p>
-</li>
-<li>
-<p>取别名显示： select id as 编号,name as 姓名,birthday as 生日 from students;</p>
-</li>
-<li>
-<p>某i额消除重复行：消除性别的重复列：</p>
-</li>
-<li>
-<p>select distinct gender from students;</p>
-</li>
-<li>
-<p>0&mdash;&ndash;</p>
-</li>
-<li>
-<h3 id="条件where">条件where；</h3>
-</li>
-<li>
-<p>select * from students where id =1;</p>
-</li>
-<li>
-<p>比较运算符： =,&gt;,&gt;=,&lt;,&lt;=,!=或者&lt;&gt;</p>
-</li>
-<li>
-<p>逻辑运算：and,or,not;</p>
-</li>
-<li>
-<p>模糊查询:like  %表示任意多个字符  _表示任意一个字符</p>
-</li>
-<li>
-<p>select * from students where name like &ldquo;郭%&rdquo;;</p>
-</li>
-<li>
-<p>查询范围：•	in表示在一个非连续的范围内</p>
-</li>
-<li>
-<p>•	between &hellip; and &hellip;表示在一个连续的范围内</p>
-</li>
-<li>
-<p>空判断&ndash;is null,is not null</p>
-</li>
-<li>
-<p>•	判空is null</p>
-</li>
-<li>
-<p>•	判非空is not null</p>
-</li>
-<li>
-<h4 id="优先级">优先级</h4>
-</li>
-<li>
-<p>•	小括号，not，比较运算符，逻辑运算符</p>
-</li>
-<li>
-<p>•	and比or先运算，如果同时出现并希望先算or，需要结合()使用</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="聚合">聚合</h1>
-</li>
-<li>5个聚合函数<code>count(*),max(列),min(列),sum(列),avg(列)</code></li>
-<li><code>count</code>计算表中的记录（行数）</li>
-<li><code>sum</code>计算表中数值列的数据合计值</li>
-<li><code>avg</code>计算表中数值列的数据平均值</li>
-<li><code>max </code>求出表中任意列中数据的最大值</li>
-<li><code>min</code>求出表中任意列中数据的最小值</li>
-<li>•	查询学生总数  select count(*) from students;</li>
-<li>•	查询女生的编号最大值 select max(id) from students where gender=0;</li>
-<li>select max(id) as 女生的最大标号 from students where gender=0;</li>
-<li>•	查询未删除的学生最小编号 select min(id) from students where isdelete=0;</li>
-<li>•	查询男生的编号之和select sum(id) from students where gender=1;</li>
-<li>•	查询未删除女生的编号平均值select avg(id) from students where isdelete=0 and gender=0;</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="分组">分组</h1>
-</li>
-<li>
-<h3 id="分组语法">分组语法：</h3>
-</li>
-<li>select 列1,列2,聚合&hellip; from 表名 group by 列1,列2,列3&hellip;</li>
-<li>•	查询男女生总数：select gender as 性别,count(*)from students group by gender;</li>
-<li>•	查询删除和未删除的人数</li>
-<li>select isdelete as 是否删除, count(*)  from students group by isdelete；</li>
-<li>
-<h3 id="分组后的数据筛选">分组后的数据筛选</h3>
-</li>
-<li>select 列1,列2,聚合&hellip; from 表名</li>
-<li>select 列1,列2,聚合&hellip; from 表名</li>
-<li>having 列1,&hellip;聚合&hellip;</li>
-<li>•	查询男生总人数数用where:</li>
-<li>select count(*)
-from students
-where gender=1;</li>
-<li>select gender,count(*) from students where gender=1;</li>
-<li>使用分组和having</li>
-<li>select count(*) from students group by genser;</li>
-<li>select gender as 男生,count(*) from students group by gender having gender=1;</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="排序">排序</h1>
-</li>
-<li>select * from 表名order by 列1 asc|desc,列2 asc|desc,&hellip;</li>
-<li>•	将行数据按照列1进行排序，如果某些行列1的值相同时，则按照列2排序，以此类推</li>
-<li>•	默认按照列值从小到大排列</li>
-<li>•	asc从小到大排列，即升序</li>
-<li>•	desc从大到小排序，即降序</li>
-<li>查询未删除的男生的信息降序</li>
-<li>select * from students where isdelete=0 and gender = 1 order by id desc;</li>
-<li>查询未删除科目信息，按名称升序</li>
-<li>select * from subjects where isdelete = 0 order by title;</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="分页">分页</h1>
-</li>
-<li>select * from 表名limit start,count</li>
-<li>•	从start开始，获取count条数据</li>
-<li>•	start索引从0开始</li>
-<li>查询数据：</li>
-<li>假设页为n,每页的数据多少条m</li>
-<li>第一页数据</li>
-<li>n=1,m=3</li>
-<li>select * from student limit 0,3;&mdash;&gt;(n-1)*m,m</li>
-<li>第二页数据</li>
-<li>n=2,m=3</li>
-<li>select * from students limit 3,3;&mdash;&gt;(n-1)*m,m</li>
-<li>第三页数据</li>
-<li>n=3,m=3</li>
-<li>select * from students limit 6,3;&mdash;&gt;(n-1)*m,m</li>
-<li>n代表第一页，m要查询多少条数据</li>
-<li>(n-1)*m,m</li>
-<li>select * from 表名 ==limit== (n-1)*m,m;</li>
-</ul></div>
+<h2 id="1-数据准备">1. 数据准备</h2>
+<h3 id="11-创建数据库">1.1 创建数据库</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">DATABASE</span> db_example;
+</span></span><span style="display:flex;"><span>USE db_example;
+</span></span></code></pre></div><h3 id="12-创建表">1.2 创建表</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> students (
+</span></span><span style="display:flex;"><span>    id INT(<span style="color:#ae81ff">11</span>) <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> AUTO_INCREMENT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    name VARCHAR(<span style="color:#ae81ff">40</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    birthday DATETIME <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    gender BIT(<span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    is_deleted BIT(<span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>) CHARSET<span style="color:#f92672">=</span>utf8;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> subjects (
+</span></span><span style="display:flex;"><span>    id INT(<span style="color:#ae81ff">11</span>) <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> AUTO_INCREMENT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    title VARCHAR(<span style="color:#ae81ff">10</span>),
+</span></span><span style="display:flex;"><span>    is_deleted BIT(<span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>) CHARSET<span style="color:#f92672">=</span>utf8;
+</span></span></code></pre></div><h3 id="13-插入数据">1.3 插入数据</h3>
+<p>略</p>
+<h2 id="2-基础查询">2. 基础查询</h2>
+<h3 id="21-查询所有列">2.1 查询所有列</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students;
+</span></span></code></pre></div><h3 id="22-查询指定列">2.2 查询指定列</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> id, name, birthday <span style="color:#66d9ef">FROM</span> students;
+</span></span></code></pre></div><h3 id="23-列别名">2.3 列别名</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> id <span style="color:#66d9ef">AS</span> <span style="color:#960050;background-color:#1e0010">编号</span>, name <span style="color:#66d9ef">AS</span> <span style="color:#960050;background-color:#1e0010">姓名</span>, birthday <span style="color:#66d9ef">AS</span> <span style="color:#960050;background-color:#1e0010">生日</span> <span style="color:#66d9ef">FROM</span> students;
+</span></span></code></pre></div><h3 id="24-去重查询">2.4 去重查询</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">DISTINCT</span> gender <span style="color:#66d9ef">FROM</span> students;
+</span></span></code></pre></div><h2 id="3-条件查询">3. 条件查询</h2>
+<h3 id="31-等值查询">3.1 等值查询</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> id <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span></code></pre></div><h3 id="32-比较运算符">3.2 比较运算符</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> id <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> id <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> id <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> id <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> id <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> id <span style="color:#f92672">&lt;&gt;</span> <span style="color:#ae81ff">1</span>;
+</span></span></code></pre></div><h3 id="33-逻辑运算符">3.3 逻辑运算符</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> id <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">AND</span> gender <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> id <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">OR</span> gender <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">NOT</span> gender <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span></code></pre></div><h3 id="34-模糊查询">3.4 模糊查询</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> name <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;郭%&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> name <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;_王&#39;</span>;
+</span></span></code></pre></div><h3 id="35-范围查询">3.5 范围查询</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> id <span style="color:#66d9ef">IN</span> (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> id <span style="color:#66d9ef">BETWEEN</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">AND</span> <span style="color:#ae81ff">10</span>;
+</span></span></code></pre></div><h3 id="36-空值判断">3.6 空值判断</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> birthday <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NULL</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> birthday <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>;
+</span></span></code></pre></div><h2 id="4-聚合函数">4. 聚合函数</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">FROM</span> students;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">MAX</span>(id) <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> gender <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">MIN</span>(id) <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> is_deleted <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">SUM</span>(id) <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> gender <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">AVG</span>(id) <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">WHERE</span> is_deleted <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">AND</span> gender <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span></code></pre></div><h2 id="5-分组查询">5. 分组查询</h2>
+<h3 id="51-基本语法">5.1 基本语法</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> gender <span style="color:#66d9ef">AS</span> <span style="color:#960050;background-color:#1e0010">性别</span>, <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> gender;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> is_deleted <span style="color:#66d9ef">AS</span> <span style="color:#960050;background-color:#1e0010">是否删除</span>, <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> is_deleted;
+</span></span></code></pre></div><h3 id="52-分组后筛选">5.2 分组后筛选</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> gender <span style="color:#66d9ef">AS</span> <span style="color:#960050;background-color:#1e0010">性别</span>, <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> students
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> gender
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">HAVING</span> gender <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span></code></pre></div><h2 id="6-排序查询">6. 排序查询</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> is_deleted <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">AND</span> gender <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> id <span style="color:#66d9ef">DESC</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> subjects
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> is_deleted <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> title <span style="color:#66d9ef">ASC</span>;
+</span></span></code></pre></div><h2 id="7-分页查询">7. 分页查询</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 第1页，每页3条
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 第2页，每页3条 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 第3页，每页3条
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> students <span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">3</span>;
+</span></span></code></pre></div><h2 id="8-最佳实践">8. 最佳实践</h2>
+<ol>
+<li>合理使用索引优化查询性能</li>
+<li>尽量减少使用通配符<code>%</code>进行模糊查询</li>
+<li>优先使用<code>IN</code>而不是<code>OR</code>进行范围查询</li>
+<li>合理设置查询缓存</li>
+<li>定期优化和重构SQL语句</li>
+<li>监控慢查询并进行优化</li>
+</ol></div>
     </article>
   </main>
 

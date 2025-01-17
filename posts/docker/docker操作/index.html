@@ -9,7 +9,7 @@
   />
   
     
-      <title>Docker操作 | 学无止境</title>
+      <title>Docker &amp; Docker Compose 使用指南 | 学无止境</title>
     
   
   <link rel="stylesheet" href="/css/reset.css"/>
@@ -61,7 +61,7 @@
         
   <main>
     <article>
-      <h1 class="title">Docker操作</h1>
+      <h1 class="title">Docker &amp; Docker Compose 使用指南</h1>
       
       <div class="post-meta">
   <strong>
@@ -71,29 +71,181 @@
     
       <a href="/categories/docker">docker</a>
   </strong>
-  <span> • 66 words</span>
-  <span> • 1 minute read</span>
+  <span> • 263 words</span>
+  <span> • 2 minute read</span>
   
   
 </div>
 
-      <div class="content"><p><code>docker build</code> 打包docker 项目</p>
-<p><code>docker-compose up</code> 启动整体项目(docker-compose.yml文件)</p>
-<p><code>docker-compose down</code> 强制停止docker运行的所有项目</p>
-<p>1、删除所有容器 docker rm <code>docker ps -a -q</code></p>
-<p>2、删除所有镜像d ocker rmi <code>docker images -q</code></p>
-<p>3、按条件删除镜像 没有打标签docker rmi <code>docker images -q | awk '/^&lt;none&gt;/ { print $3 }'</code></p>
-<p>镜像名包含关键字docker rmi &ndash;force <code>docker images | grep doss-api | awk '{print $3}'</code>    //其中doss-api为关键字</p>
-<p>　</p>
-<p><code>docker-compose.yml</code></p>
-<p><code>service</code> 项目</p>
-<p><code>image docker</code>镜像名字，若本地没有会尝试在docker服务器拉取</p>
-<p><code>restart</code> 是否stop后重启</p>
-<p><code>command</code> 启动路径</p>
-<p><code>volumes</code> 将docker容器文件夹与本地文件夹映射挂载 [本地:docker文件夹]</p>
-<p><code>environment</code> 运行携带的参数</p>
-<p><code>ports</code>运行端口</p>
-<p><code>links</code> 关联项目，关联之后内部访问</p></div>
+      <div class="content"><h2 id="1-基本命令">1. 基本命令</h2>
+<h3 id="11-docker-命令">1.1 Docker 命令</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 构建镜像</span>
+</span></span><span style="display:flex;"><span>docker build -t image_name:tag .
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看所有容器</span>
+</span></span><span style="display:flex;"><span>docker ps -a
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看所有镜像</span>
+</span></span><span style="display:flex;"><span>docker images
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 停止容器</span>
+</span></span><span style="display:flex;"><span>docker stop container_id
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 启动容器</span>
+</span></span><span style="display:flex;"><span>docker start container_id
+</span></span></code></pre></div><h3 id="12-docker-compose-命令">1.2 Docker Compose 命令</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 启动服务</span>
+</span></span><span style="display:flex;"><span>docker-compose up
+</span></span><span style="display:flex;"><span>docker-compose up -d  <span style="color:#75715e"># 后台运行</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 停止服务</span>
+</span></span><span style="display:flex;"><span>docker-compose down
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看服务日志</span>
+</span></span><span style="display:flex;"><span>docker-compose logs
+</span></span><span style="display:flex;"><span>docker-compose logs -f  <span style="color:#75715e"># 实时日志</span>
+</span></span></code></pre></div><h2 id="2-清理命令">2. 清理命令</h2>
+<h3 id="21-删除容器">2.1 删除容器</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 删除所有容器</span>
+</span></span><span style="display:flex;"><span>docker rm <span style="color:#66d9ef">$(</span>docker ps -a -q<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 删除指定容器</span>
+</span></span><span style="display:flex;"><span>docker rm container_id
+</span></span></code></pre></div><h3 id="22-删除镜像">2.2 删除镜像</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 删除所有镜像</span>
+</span></span><span style="display:flex;"><span>docker rmi <span style="color:#66d9ef">$(</span>docker images -q<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 删除未标记镜像</span>
+</span></span><span style="display:flex;"><span>docker rmi <span style="color:#66d9ef">$(</span>docker images -q | awk <span style="color:#e6db74">&#39;/^&lt;none&gt;/ { print $3 }&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 删除包含关键字的镜像</span>
+</span></span><span style="display:flex;"><span>docker rmi --force <span style="color:#66d9ef">$(</span>docker images | grep keyword | awk <span style="color:#e6db74">&#39;{print $3}&#39;</span><span style="color:#66d9ef">)</span>
+</span></span></code></pre></div><h2 id="3-docker-compose-配置">3. Docker Compose 配置</h2>
+<h3 id="31-基本结构">3.1 基本结构</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">web</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">nginx:latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;80:80&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./html:/usr/share/nginx/html</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">NODE_ENV=production</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">links</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">db</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">redis</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">db</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">mysql:5.7</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./data:/var/lib/mysql</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">MYSQL_ROOT_PASSWORD=secret</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">MYSQL_DATABASE=myapp</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">redis</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">redis:latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span></code></pre></div><h3 id="32-主要配置项说明">3.2 主要配置项说明</h3>
+<table>
+  <thead>
+      <tr>
+          <th>配置项</th>
+          <th>说明</th>
+          <th>示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>services</td>
+          <td>定义服务</td>
+          <td>web, db, redis</td>
+      </tr>
+      <tr>
+          <td>image</td>
+          <td>指定镜像</td>
+          <td>nginx:latest</td>
+      </tr>
+      <tr>
+          <td>restart</td>
+          <td>重启策略</td>
+          <td>always, no, on-failure</td>
+      </tr>
+      <tr>
+          <td>command</td>
+          <td>启动命令</td>
+          <td>python app.py</td>
+      </tr>
+      <tr>
+          <td>volumes</td>
+          <td>挂载目录</td>
+          <td>- ./local:/container</td>
+      </tr>
+      <tr>
+          <td>environment</td>
+          <td>环境变量</td>
+          <td>- KEY=value</td>
+      </tr>
+      <tr>
+          <td>ports</td>
+          <td>端口映射</td>
+          <td>- &ldquo;8080:80&rdquo;</td>
+      </tr>
+      <tr>
+          <td>links</td>
+          <td>服务连接</td>
+          <td>- db</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="4-最佳实践">4. 最佳实践</h2>
+<h3 id="41-镜像管理">4.1 镜像管理</h3>
+<ol>
+<li>使用具体的标签版本，避免使用latest</li>
+<li>定期清理未使用的镜像</li>
+<li>使用多阶段构建减小镜像大小</li>
+<li>合理使用.dockerignore文件</li>
+</ol>
+<h3 id="42-容器管理">4.2 容器管理</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看容器资源使用</span>
+</span></span><span style="display:flex;"><span>docker stats
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 清理所有停止的容器</span>
+</span></span><span style="display:flex;"><span>docker container prune
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 清理所有未使用的数据卷</span>
+</span></span><span style="display:flex;"><span>docker volume prune
+</span></span></code></pre></div><h3 id="43-docker-compose-使用建议">4.3 Docker Compose 使用建议</h3>
+<ol>
+<li>将敏感信息存储在.env文件中</li>
+<li>使用docker-compose.override.yml进行本地开发</li>
+<li>合理设置重启策略</li>
+<li>使用健康检查确保服务可用</li>
+</ol>
+<h2 id="5-常见问题解决">5. 常见问题解决</h2>
+<h3 id="51-容器无法停止">5.1 容器无法停止</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 强制停止容器</span>
+</span></span><span style="display:flex;"><span>docker kill container_id
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 强制停止所有容器</span>
+</span></span><span style="display:flex;"><span>docker kill <span style="color:#66d9ef">$(</span>docker ps -q<span style="color:#66d9ef">)</span>
+</span></span></code></pre></div><h3 id="52-磁盘空间问题">5.2 磁盘空间问题</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 清理所有未使用的对象</span>
+</span></span><span style="display:flex;"><span>docker system prune -a
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看Docker使用的磁盘空间</span>
+</span></span><span style="display:flex;"><span>docker system df
+</span></span></code></pre></div><h2 id="6-安全建议">6. 安全建议</h2>
+<ol>
+<li>定期更新基础镜像</li>
+<li>使用非root用户运行容器</li>
+<li>限制容器资源使用</li>
+<li>使用私有镜像仓库</li>
+<li>实施容器安全扫描</li>
+</ol></div>
     </article>
   </main>
 

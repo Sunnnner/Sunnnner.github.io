@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-	<meta name="generator" content="Hugo 0.140.2">
+	<meta name="generator" content="Hugo 0.141.0">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
@@ -171,7 +171,7 @@
     
       <a href="/categories/network">network</a>
   </strong>
- <span> • 48 words</span>
+ <span> • 199 words</span>
  <span> • 1 minute read</span>
   
     <div>
@@ -183,7 +183,55 @@
 </div>
 
   <div class="content">
-    <p></p>
+    <p><h2 id="1-跨域基础概念">1. 跨域基础概念</h2>
+<h3 id="11-什么是跨域">1.1 什么是跨域</h3>
+<p>浏览器出于安全考虑，对不同源的请求进行限制，这就是同源策略。</p>
+<h3 id="12-同源策略要求">1.2 同源策略要求</h3>
+<ul>
+<li>协议相同（http/https）</li>
+<li>域名相同</li>
+<li>端口相同</li>
+</ul>
+<h2 id="2-jsonp跨域方案">2. JSONP跨域方案</h2>
+<h3 id="21-基本原理">2.1 基本原理</h3>
+<ul>
+<li>JSONP利用<code>&lt;script&gt;</code>标签不受同源策略限制的特性</li>
+<li>通过函数调用的方式包装JSON数据</li>
+<li>需要服务端配合返回特定格式的数据</li>
+</ul>
+<h3 id="22-实现示例">2.2 实现示例</h3>
+<pre tabindex="0"><code>
+// 客户端实现
+function jsonp(url, callback) {
+    const script = document.createElement(&#39;script&#39;);
+    script.src = `${url}?callback=${callback}`;
+    document.body.appendChild(script);
+    
+    // 请求完成后删除script标签
+    script.onload = function() {
+        document.body.removeChild(script);
+    };
+}
+
+// 服务端实现（Python示例）
+def jsonp_view(request):
+    callback = request.GET.get(&#39;callback&#39;)
+    data = {&#39;name&#39;: &#39;test&#39;, &#39;value&#39;: 123}
+    return HttpResponse(f&#39;{callback}({json.dumps(data)})&#39;)
+</code></pre><h3 id="23-jsonp限制">2.3 JSONP限制</h3>
+<ol>
+<li>只支持GET请求</li>
+<li>需要服务器配合</li>
+<li>错误处理能力有限</li>
+</ol>
+<h2 id="3-cors跨域方案">3. CORS跨域方案</h2>
+<h3 id="31-基本概念">3.1 基本概念</h3>
+<p>CORS（Cross-Origin Resource Sharing）是W3C标准的跨域解决方案。</p>
+<h3 id="32-请求类型">3.2 请求类型</h3>
+<h4 id="简单请求">简单请求</h4>
+<p>满足以下条件的请求：</p></p>
+    
+      <a href="https://sunnnner.github.io/posts/django/%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">Read more...</a>
     
   </div>
 </article>

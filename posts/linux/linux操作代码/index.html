@@ -9,7 +9,7 @@
   />
   
     
-      <title>Liunx编程-命令 | 学无止境</title>
+      <title>Linux 命令速查手册 | 学无止境</title>
     
   
   <link rel="stylesheet" href="/css/reset.css"/>
@@ -61,7 +61,7 @@
         
   <main>
     <article>
-      <h1 class="title">Liunx编程-命令</h1>
+      <h1 class="title">Linux 命令速查手册</h1>
       
       <div class="post-meta">
   <strong>
@@ -71,309 +71,185 @@
     
       <a href="/categories/linux">linux</a>
   </strong>
-  <span> • 466 words</span>
-  <span> • 3 minute read</span>
+  <span> • 383 words</span>
+  <span> • 2 minute read</span>
   
   
 </div>
 
-      <div class="content"><ul>
-<li><code>pwd</code>显示当前目录 全称Print Working Directory</li>
-<li><code>ctrl+l</code>清屏假的清屏</li>
-<li>``</li>
-<li><code>ctrl+q</code>退出</li>
-<li><code>CTRL+-</code>调节字体大小</li>
-<li><code>ctrl+art+T</code>打开终端</li>
-<li><code>ctrl+shitf+T</code>多终端</li>
-<li><code>alt+1，23，4</code>切换窗口</li>
-<li><code>CTRL+D</code>关闭终端</li>
-<li><code>上下键</code>查看之前命令</li>
-<li><code>which</code>查看命令在那个目录</li>
-<li><code>ls -lh</code>查看当前访问权限</li>
-<li><code>ls -a</code>查看隐藏文件</li>
-<li><code> ls -l</code>以列表的方式列出</li>
-<li><code>ls -l -h</code>列表方式和大小也显示</li>
-<li><code>ls -a -h -l</code>列表方式文件大小所有的文件和目录都列出来</li>
-<li><code>ls -alh</code>简写</li>
-<li><code>r</code>读对文件而言，具有读取文件内容的权限；对目录来说，具有浏览目录的权限。</li>
-<li></li>
-<li><code>w</code>读写对文件而言，具有新增、修改文件内容的权限；对目录来说，具有删除、移动目录内文件的权限。</li>
-<li></li>
-<li><code>x</code>可执行  对文件而言，具有执行文件的权限；对目录来说该用户具有进入目录的权限。</li>
-<li><code>sudo -s</code>切换root账户</li>
-<li><code>mkdir</code>创建文件目录</li>
-<li><code>mkdir a/c/d -p</code>创建递归目录</li>
-<li><code>redir a/b/c -p</code>删除递归空目录</li>
-<li><code>rm 文件或者目录 -r</code>==通杀!!!!!!!!!!!!==</li>
-<li><code>touch</code>创建文件</li>
-<li><code>gedit</code>打开ubuntu的记事本</li>
-<li><code>rm</code>删除.文件名</li>
-<li><code>.\</code>当前目录</li>
-<li><code>.文件名</code>隐藏文件</li>
-<li><code>.目录名</code>隐藏目录</li>
-<li><code>tree</code>显示文件夹的树状结构图</li>
-<li><code>cd -</code>回调上次所在的目录</li>
-<li><code>-r</code>删除不了的后面加-r</li>
-<li><code>--help</code>获取内部shell帮助</li>
-</ul>
-<hr>
-<ul>
-<li><code>man</code>手册获得帮助信息</li>
-<li><code>b</code>回滚一瓶</li>
-<li><code>f</code>前滚一瓶</li>
-<li><code>q</code>推出</li>
-<li><code>h</code>列出所有功能键</li>
-<li><code>/word</code>搜索woed字符串</li>
-<li></li>
-</ul>
-<hr>
-<hr>
-<h3 id="通配符">通配符</h3>
-<hr>
-<ul>
-<li><code>*</code>文件代表文件名中所有字符</li>
-<li><code>ls te*</code>查找以te开头的文件</li>
-<li><code>ls *html</code>查找结尾为html的文件</li>
-<li><code>?</code>代表文件名中任意的一个字符</li>
-<li><code>ls ?.c</code>只找第一个字符任意，后缀为.c的文件</li>
-<li><code>ls a.?</code>只找中有3个字符，前2字符为a.最后一个字符任意的文件</li>
-<li><code>[]</code>【“和”】将字符组括起来，表示可以匹配字符组中的任意一个，‘-’用于表示字符范围</li>
-<li><code>[abc]</code>匹配a,b,c中的任意一个</li>
-<li><code>[a-f]</code>匹配从a到f范围内的任意一个字符</li>
-<li><code>ls[a-f]</code>找到a-f内的任意一个字符开头的文件</li>
-<li><code>ls [a-f]*</code>找到从a-f内的任意一个字符开头的文件</li>
-<li><code>ls a-f</code>吵着文件名为a-f的文件当&rsquo;-&lsquo;&lsquo;处于括号之外失去通配符的作用</li>
-<li><code>\</code>如果要使通配符作为普通字符使用，可以在其前面加上转义字符。“?”和“*”处于方括号内时不用使用转义字符就失去通配符的作用</li>
-<li><code>ls \a*</code>查找文件名为*a的文件</li>
-</ul>
-<hr>
-<h3 id="输出重定向命令">&gt;输出重定向命令</h3>
-<ul>
-<li><code>ls &gt;test.txt</code>test.txt如果不存在就创建存在则覆盖里面的内容</li>
-<li><code>ls /bin &gt;test.txt</code>将bin目录下的所有内容写入到test.txttest.txt如果不存在就创建存在则覆盖里面的内容</li>
-<li><code>ls /bin &gt;&gt;test.txt</code>将bin目录下的所有内容追加写入到test.txt</li>
-<li><code>cat feiji.py</code>显示feiji.py的所有内容</li>
-<li><code>cat test1.txt test2.txt &gt; test3.txt</code>将前两个重定向到test3然后cat test3显示</li>
-<li><code>tac</code>倒着显示内容与cat 相对</li>
-<li><code>head -2 文件名</code>打印文件前两行内容</li>
-<li><code>f</code>下屏</li>
-<li><code>b</code>上屏</li>
-<li><code>gedit feiji.py</code>使用gedit编辑工具显示：</li>
-<li>
-<h3 id="管道">管道</h3>
-</li>
-<li><code>ls -lah | more/cat</code>将lah显示的内容交给more或者cat显示</li>
-<li><code>;</code>多个命令用；隔开ls;ls -lah</li>
-<li>
-<h3 id="相对路径和相对路径">相对路径和相对路径</h3>
-</li>
-<li>绝对路径以/根目录开始</li>
-<li>相对路径就是..</li>
-<li></li>
-</ul>
-<hr>
-<h2 id="which查看命令的目录"><code>which</code>查看命令的目录</h2>
-<h3 id="grep文本中搜索">grep文本中搜索</h3>
-<ul>
-<li>搜索内容以正则表达式表示</li>
-<li></li>
-<li><code>grep &quot;^ntfs&quot; haha.txt</code>查找ntfs开头的内容</li>
-<li><code>grep -n &quot;^ntfs haha.txt&quot;</code>查找内容显示行</li>
-<li><code>grep -vni &quot;^ntfs&quot; haha.txt</code> 显示内容不是以ntfs并且显示行和忽略大小写</li>
-<li><code>grep &quot;s$&quot; haha.txt</code>以s结尾的内容</li>
-<li><code>grep -n &quot;s$&quot; haha.txt</code>显示行</li>
-<li><code>grep -n &quot;s&quot; haha.txt</code>查找haha里面包含s内容的行</li>
-<li>
-<h3 id="拷贝">拷贝</h3>
-</li>
-<li><code>cp /home/zhang/python.txt /home/zhang/test -r</code>将python.txt 拷到test目录下</li>
-<li><code>cp /home/zhang/python.txt ./r</code>将python.txt 拷到当前目录下</li>
-<li>
-<h3 id="mv移动文件和目录">mv移动文件和目录</h3>
-</li>
-<li><code>mv 文件名 移动的地方</code> 移动文件</li>
-<li><code>mv test test1</code>如果当前目录只有test文件test1目录不存在会把test目录名字修改程test1如果test1是文件就会报错如果test1是目录就会移动</li>
-<li>如果test1是文件test也是文件</li>
-<li>mv test test1 会改变名字并且会覆盖test1 的内容</li>
-<li>test1文件不存在就更改名字</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h3 id="find">find</h3>
-</li>
-<li><code>find / -size +2M</code>查找根目录下大于2M的文件</li>
-<li><code>find / -name *.py</code>查找根目录下以.py文件结尾的文件</li>
-<li><code>find / -perm 0777</code>查看根目录下所有可读可写可执行的文件</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="创建链接">创建链接</h1>
-</li>
-<li>创建软连接: <code>ln -s 1.txt 任意名字</code></li>
-<li><code>ln 1.txt + 任意名</code>字硬链接</li>
-<li>
-<h1 id="解压打包tar-归档管理">解压打包tar 归档管理</h1>
-</li>
-<li><code>-C</code> 指定目录</li>
-<li>
-<h3 id="tar-打包解压">.tar 打包解压</h3>
-</li>
-<li>打包命令 <code>tar -cvf test.tar *.txt</code></li>
-<li>解压   <code>tar -xv test.tar -C ./test2</code></li>
-<li></li>
-<li>
-<h3 id="targz-打包解压">.tar.gz 打包解压</h3>
-</li>
-<li>打包命令:<code>tar -zcvf test.tar.gz *.txt</code></li>
-<li>解包文件:<code>tar -zxvf test.tar.gz -C ./test</code></li>
-<li>
-<h3 id="targz2打包解压">.tar.gz2打包解压</h3>
-</li>
-<li>打包命令:<code>tar -jcvf test.tar.bz2 *.txt</code></li>
-<li>解包文件:<code>tar -jxvf test.tar.bz2 -C ./test</code></li>
-<li>
-<h3 id="gzip文件压缩解压">gzip文件压缩解压</h3>
-</li>
-<li><code>gzip -r 压缩所有子目录只能压缩tar</code> 的文件</li>
-<li><code>gzip -d 解压</code></li>
-<li>
-<h3 id="zipunzip文件压缩解压">zip、unzip文件压缩解压</h3>
-</li>
-<li>压缩文件：<code>zip [-r] 目标文件(没有扩展名) 源文</code>件</li>
-<li>-d 指定目录</li>
-<li>解压文件：<code>unzip -d 解压后目录文件 压缩文件</code></li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="进程管理">进程管理</h1>
-</li>
-<li>
-<h3 id="ps-查看进程"><code>ps</code> 查看进程</h3>
-</li>
-<li><code>-a</code> 显示终端上的所有进程，包括其他用户的进程</li>
-<li><code>-u</code> 显示进程的详细状态</li>
-<li><code>-x</code> 显示没有控制终端的进程</li>
-<li><code>-w</code> 显示加宽，以便显示更多的信息</li>
-<li><code>-r</code> 只前世正在运行的进程</li>
-<li><code>- ps -au</code> 查看进程</li>
-<li><code>ps -aux</code> 查看进程详细信息</li>
-<li></li>
-<li>
-<h3 id="top-按照一定的顺序排序显示所有进程">top 按照一定的顺序排序显示所有进程</h3>
-</li>
-<li><code>shift + p</code>按照cpu占有率排序</li>
-<li><code>shift +m</code> 按照内存占有率排序</li>
-<li><code>q</code>退出</li>
-<li></li>
-<li>
-<h3 id="htop">htop</h3>
-</li>
-<li><code>kill  pid</code> 杀死进程</li>
-<li><code>kill -9 pid</code> 强制杀</li>
-<li>
-<h3 id="rebootshutdowninit关机重启"><code>reboot、shutdown、init</code>关机重启</h3>
-</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="磁盘查看">磁盘查看</h1>
-</li>
-<li>
-<h3 id="df-检测磁盘空间默认字节"><code>df</code> 检测磁盘空间默认字节</h3>
-</li>
-<li><code>-a</code> 显示所有文件系统的磁盘使用情况</li>
-<li><code>-m</code> 以1024字节为单位显示</li>
-<li><code>-t</code> 显示各指定文件系统的磁盘空间使用情况</li>
-<li><code>-T</code> 显示文件系统</li>
-<li>
-<h3 id="du检测目录所占磁盘空间">du检测目录所占磁盘空间</h3>
-</li>
-<li><code>-a</code> 递归显示指定目录中各文件和子目录中文件占用的数据块</li>
-<li><code>-s</code> 显示指定文件或目录占用的数据块</li>
-<li><code>-b</code> 以字节为单位显示磁盘占用情况</li>
-<li><code>-l</code> 计算所有文件大小，对硬链接文件计算多次</li>
-<li>
-<h3 id="ifconfig查看或配置网卡信息">ifconfig查看或配置网卡信息</h3>
-</li>
-<li>修改ip地址命令 ：<code>sudo ifconfig ens33 192.168.1.108</code></li>
-<li>
-<h3 id="查看系统日期和时间">查看系统日期和时间</h3>
-</li>
-<li><code>date</code>显示或设置时间</li>
-<li><code>cal</code>命令用于查看当前日历，-y显示整年日历：查看2018年的日历 <code>cal -y 2018 </code></li>
-<li><code>date</code> &ldquo;+%y年%m月%d日&rdquo; 18年04月13日</li>
-<li><code>date</code> &ldquo;+%y年%<em>m月</em>%d日&quot;18年 4月_13日</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h1 id="用户管理">用户管理</h1>
-</li>
-<li><code>id 用户名</code>判断用户是否存在</li>
-<li><code>whoami</code>查看当前用户</li>
-<li><code>who</code></li>
-<li><code>cat /etc/passwd</code>查看系统用户信息</li>
-<li><code>cat /etc/group</code>  <code>groups+ab</code>查看系统用户组信息</li>
-<li><code>useradd</code>添加用户账号</li>
-<li><code>useradd test -m</code>创建test用户，如果/home/test不存在，就自动创建,不指定默认也是属于test用户组</li>
-<li><code>useradd -d /home/abc abc-m</code>创建abc用户，如果/home/abc目录不存在，就自动创建这个目录，同时用户属于abc组</li>
-<li><code>useradd -d /home/a a -g test-m</code>创建一个用户名字叫a，主目录在/home/a，如果主目录不存在，就自动创建主目录，同时用户属于test组</li>
-<li><code>cat /etc/passwd</code>查看系统当前用户名</li>
-<li>切换用户 su+名字</li>
-<li>sudo passwd +用户名 设置密码</li>
-<li>userdel删除用户</li>
-<li>userdel -r abc(用户名) 删除用户，同时删除用户的家目录</li>
-<li>删除一个已经登陆过的test用户</li>
-<li>sudo vim /etc/passwd &mdash;&gt;找到test这个账号&ndash;&gt;删除这行配置Esc&mdash;？:保存推出&ndash;》删除家目录sudo rm test -r</li>
-<li>su 切换用户</li>
-<li>su 用户&mdash;》提示输入密码</li>
-<li>切换到test用户 su test &mdash;&gt;设置密码sudo passwd test&mdash;-&gt;exit</li>
-</ul>
-<hr>
-<ul>
-<li>查看用户组 cat /etc/group   groupmod   groups</li>
-<li>添加一个组  sudo groupadd haha</li>
-<li>删除haha组  sudo groupdel haha</li>
-<li>查haha再哪个组groups haha</li>
-<li>修改用户所在组  usermod</li>
-<li>吧账号test从test组修改成abc sudo usermod -g abc test</li>
-<li>把账号teest从abc 到test  sudo usermod -g test test</li>
-<li>普通用户添加sudo组 sudo usermod -a -G sudo 用户名</li>
-<li>usermod -g 与 -G的区别 -g用来制定这个用户默认的用户组 -G一般配合&rsquo;-a&rsquo;来完成向其它组添加</li>
-<li>gpasswd把账号从某组移除</li>
-<li>sudo gpasswd 组 -d 账号</li>
-</ul>
-<hr>
-<ul>
-<li>
-<h3 id="文件管理">文件管理</h3>
-</li>
-<li>把1.txt文件所属组（atguigu）修改成laowang这个组：</li>
-<li>sudo chgrp laowang 1.txt</li>
-<li>把1.txt所有者（atguigu）改成laowang所有</li>
-<li>sudo chown laowang 1.txt</li>
-<li>chmod修改文件权限（重点）</li>
-<li>字母法</li>
-<li>chmod u/g/o/a + /-/+ = rwx 文件</li>
-<li>数字法</li>
-<li>r:4 读</li>
-<li>w:2 写</li>
-<li>x:1 执行</li>
-<li>
-<ul>
-<li>: 0 没有任何权限</li>
-</ul>
-</li>
-<li>3：可写可执行</li>
-<li>5：可读可执行</li>
-<li>6： 可读可写</li>
-<li>7：可读可写可执行</li>
-<li></li>
-</ul></div>
+      <div class="content"><h2 id="1-基础终端操作">1. 基础终端操作</h2>
+<h3 id="11-终端快捷键">1.1 终端快捷键</h3>
+<table>
+  <thead>
+      <tr>
+          <th>快捷键</th>
+          <th>功能</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>Ctrl + L</code></td>
+          <td>清屏</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + D</code></td>
+          <td>关闭终端</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + Alt + T</code></td>
+          <td>打开新终端</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + Shift + T</code></td>
+          <td>新建终端标签页</td>
+      </tr>
+      <tr>
+          <td><code>Alt + 1,2,3,4</code></td>
+          <td>切换终端窗口</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + -/+</code></td>
+          <td>调整字体大小</td>
+      </tr>
+      <tr>
+          <td><code>↑/↓</code></td>
+          <td>浏览历史命令</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="12-基本命令">1.2 基本命令</h3>
+<table>
+  <thead>
+      <tr>
+          <th>命令</th>
+          <th>说明</th>
+          <th>常用选项</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>pwd</code></td>
+          <td>显示当前目录</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td><code>which</code></td>
+          <td>查看命令位置</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td><code>ls</code></td>
+          <td>列出目录内容</td>
+          <td><code>-l</code>(列表) <code>-h</code>(人性化) <code>-a</code>(全部)</td>
+      </tr>
+      <tr>
+          <td><code>tree</code></td>
+          <td>显示目录树结构</td>
+          <td>-</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="2-文件和目录操作">2. 文件和目录操作</h2>
+<h3 id="21-目录操作">2.1 目录操作</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 创建目录</span>
+</span></span><span style="display:flex;"><span>mkdir dirname           <span style="color:#75715e"># 创建单个目录</span>
+</span></span><span style="display:flex;"><span>mkdir -p a/b/c         <span style="color:#75715e"># 创建递归目录</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 删除目录</span>
+</span></span><span style="display:flex;"><span>rmdir dirname          <span style="color:#75715e"># 删除空目录</span>
+</span></span><span style="display:flex;"><span>rm -r dirname          <span style="color:#75715e"># 递归删除目录及内容</span>
+</span></span></code></pre></div><h3 id="22-文件操作">2.2 文件操作</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 创建文件</span>
+</span></span><span style="display:flex;"><span>touch filename         <span style="color:#75715e"># 创建空文件</span>
+</span></span><span style="display:flex;"><span>gedit filename        <span style="color:#75715e"># 使用编辑器创建/编辑</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 复制文件</span>
+</span></span><span style="display:flex;"><span>cp source dest        <span style="color:#75715e"># 复制文件</span>
+</span></span><span style="display:flex;"><span>cp -r source dest     <span style="color:#75715e"># 递归复制目录</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 移动/重命名</span>
+</span></span><span style="display:flex;"><span>mv source dest        <span style="color:#75715e"># 移动或重命名</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 删除文件</span>
+</span></span><span style="display:flex;"><span>rm filename           <span style="color:#75715e"># 删除文件</span>
+</span></span><span style="display:flex;"><span>rm -f filename       <span style="color:#75715e"># 强制删除</span>
+</span></span></code></pre></div><h3 id="23-文件权限">2.3 文件权限</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 权限说明</span>
+</span></span><span style="display:flex;"><span>r <span style="color:#f92672">(</span>4<span style="color:#f92672">)</span> - 读权限
+</span></span><span style="display:flex;"><span>w <span style="color:#f92672">(</span>2<span style="color:#f92672">)</span> - 写权限
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">(</span>1<span style="color:#f92672">)</span> - 执行权限
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 修改权限</span>
+</span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">755</span> file       <span style="color:#75715e"># 数字方式</span>
+</span></span><span style="display:flex;"><span>chmod u+x file      <span style="color:#75715e"># 符号方式</span>
+</span></span></code></pre></div><h2 id="3-文件查找和内容搜索">3. 文件查找和内容搜索</h2>
+<h3 id="31-find命令">3.1 find命令</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find / -name <span style="color:#e6db74">&#34;*.py&#34;</span>          <span style="color:#75715e"># 按名称查找</span>
+</span></span><span style="display:flex;"><span>find / -size +2M            <span style="color:#75715e"># 按大小查找</span>
+</span></span><span style="display:flex;"><span>find / -perm <span style="color:#ae81ff">0777</span>          <span style="color:#75715e"># 按权限查找</span>
+</span></span></code></pre></div><h3 id="32-grep命令">3.2 grep命令</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grep <span style="color:#e6db74">&#34;pattern&#34;</span> file         <span style="color:#75715e"># 基本搜索</span>
+</span></span><span style="display:flex;"><span>grep -n <span style="color:#e6db74">&#34;pattern&#34;</span> file     <span style="color:#75715e"># 显示行号</span>
+</span></span><span style="display:flex;"><span>grep -v <span style="color:#e6db74">&#34;pattern&#34;</span> file     <span style="color:#75715e"># 反向匹配</span>
+</span></span><span style="display:flex;"><span>grep -i <span style="color:#e6db74">&#34;pattern&#34;</span> file     <span style="color:#75715e"># 忽略大小写</span>
+</span></span></code></pre></div><h2 id="4-文件压缩和解压">4. 文件压缩和解压</h2>
+<h3 id="41-tar-命令">4.1 tar 命令</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># .tar 文件</span>
+</span></span><span style="display:flex;"><span>tar -cvf output.tar files    <span style="color:#75715e"># 打包</span>
+</span></span><span style="display:flex;"><span>tar -xvf file.tar           <span style="color:#75715e"># 解包</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># .tar.gz 文件</span>
+</span></span><span style="display:flex;"><span>tar -zcvf output.tar.gz files    <span style="color:#75715e"># 压缩</span>
+</span></span><span style="display:flex;"><span>tar -zxvf file.tar.gz           <span style="color:#75715e"># 解压</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># .tar.bz2 文件</span>
+</span></span><span style="display:flex;"><span>tar -jcvf output.tar.bz2 files   <span style="color:#75715e"># 压缩</span>
+</span></span><span style="display:flex;"><span>tar -jxvf file.tar.bz2          <span style="color:#75715e"># 解压</span>
+</span></span></code></pre></div><h3 id="42-zipunzip">4.2 zip/unzip</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>zip -r output.zip files     <span style="color:#75715e"># 压缩</span>
+</span></span><span style="display:flex;"><span>unzip file.zip             <span style="color:#75715e"># 解压</span>
+</span></span></code></pre></div><h2 id="5-进程管理">5. 进程管理</h2>
+<h3 id="51-进程查看">5.1 进程查看</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ps aux                     <span style="color:#75715e"># 查看所有进程</span>
+</span></span><span style="display:flex;"><span>top                       <span style="color:#75715e"># 动态进程监控</span>
+</span></span><span style="display:flex;"><span>htop                      <span style="color:#75715e"># 增强版进程监控</span>
+</span></span></code></pre></div><h3 id="52-进程控制">5.2 进程控制</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kill pid                  <span style="color:#75715e"># 终止进程</span>
+</span></span><span style="display:flex;"><span>kill -9 pid              <span style="color:#75715e"># 强制终止</span>
+</span></span></code></pre></div><h2 id="6-用户和权限管理">6. 用户和权限管理</h2>
+<h3 id="61-用户管理">6.1 用户管理</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>useradd username         <span style="color:#75715e"># 创建用户</span>
+</span></span><span style="display:flex;"><span>userdel username        <span style="color:#75715e"># 删除用户</span>
+</span></span><span style="display:flex;"><span>passwd username         <span style="color:#75715e"># 设置密码</span>
+</span></span><span style="display:flex;"><span>su username            <span style="color:#75715e"># 切换用户</span>
+</span></span></code></pre></div><h3 id="62-用户组管理">6.2 用户组管理</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>groupadd groupname      <span style="color:#75715e"># 创建用户组</span>
+</span></span><span style="display:flex;"><span>groupdel groupname     <span style="color:#75715e"># 删除用户组</span>
+</span></span><span style="display:flex;"><span>usermod -g group user  <span style="color:#75715e"># 修改用户主组</span>
+</span></span><span style="display:flex;"><span>usermod -aG group user <span style="color:#75715e"># 添加附加组</span>
+</span></span></code></pre></div><h2 id="7-系统信息查看">7. 系统信息查看</h2>
+<h3 id="71-系统资源">7.1 系统资源</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>df -h                   <span style="color:#75715e"># 磁盘使用情况</span>
+</span></span><span style="display:flex;"><span>du -sh directory       <span style="color:#75715e"># 目录大小</span>
+</span></span><span style="display:flex;"><span>free -h               <span style="color:#75715e"># 内存使用情况</span>
+</span></span></code></pre></div><h3 id="72-网络信息">7.2 网络信息</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ifconfig               <span style="color:#75715e"># 网卡信息</span>
+</span></span><span style="display:flex;"><span>ip addr               <span style="color:#75715e"># IP地址信息</span>
+</span></span><span style="display:flex;"><span>netstat -tuln         <span style="color:#75715e"># 端口监听情况</span>
+</span></span></code></pre></div><h2 id="注意事项">注意事项</h2>
+<ol>
+<li>使用 <code>rm</code> 命令时要特别小心，建议使用 <code>-i</code> 选项</li>
+<li>重要操作建议先备份</li>
+<li>系统命令使用 <code>sudo</code> 需要管理员权限</li>
+<li>修改系统配置前先备份原文件</li>
+</ol>
+<h2 id="常用技巧">常用技巧</h2>
+<ol>
+<li>使用 Tab 键自动补全命令和路径</li>
+<li>使用 <code>history</code> 查看命令历史</li>
+<li>使用 <code>man</code> 或 <code>--help</code> 查看命令帮助</li>
+<li>使用通配符 <code>*</code> 和 <code>?</code> 批量操作文件</li>
+</ol></div>
     </article>
   </main>
 

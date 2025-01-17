@@ -9,7 +9,7 @@
   />
   
     
-      <title>Mysql高级 | 学无止境</title>
+      <title>MySQL关系查询与高级特性指南 | 学无止境</title>
     
   
   <link rel="stylesheet" href="/css/reset.css"/>
@@ -61,7 +61,7 @@
         
   <main>
     <article>
-      <h1 class="title">Mysql高级</h1>
+      <h1 class="title">MySQL关系查询与高级特性指南</h1>
       
       <div class="post-meta">
   <strong>
@@ -71,169 +71,216 @@
     
       <a href="/categories/mysql">mysql</a>
   </strong>
-  <span> • 515 words</span>
+  <span> • 574 words</span>
   <span> • 3 minute read</span>
   
   
 </div>
 
       <div class="content"><hr>
-<h1 id="关系">关系</h1>
+<h2 id="1-表关系与外键约束">1. 表关系与外键约束</h2>
+<h3 id="11-创建外键约束">1.1 创建外键约束</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> scores (
+</span></span><span style="display:flex;"><span>    id INT <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> AUTO_INCREMENT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    score DECIMAL(<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    stu_id INT,
+</span></span><span style="display:flex;"><span>    sub_id INT,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (stu_id) <span style="color:#66d9ef">REFERENCES</span> students(id),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (sub_id) <span style="color:#66d9ef">REFERENCES</span> subjects(id)
+</span></span><span style="display:flex;"><span>) CHARSET<span style="color:#f92672">=</span>utf8;
+</span></span></code></pre></div><h3 id="12-插入关联数据">1.2 插入关联数据</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> scores (id, score, stu_id, sub_id) 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">90</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>);
+</span></span></code></pre></div><h3 id="13-外键级联操作">1.3 外键级联操作</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> scores (
+</span></span><span style="display:flex;"><span>    id INT <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> AUTO_INCREMENT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    score DECIMAL(<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    stu_id INT,
+</span></span><span style="display:flex;"><span>    sub_id INT,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (stu_id) <span style="color:#66d9ef">REFERENCES</span> students(id) <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">CASCADE</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (sub_id) <span style="color:#66d9ef">REFERENCES</span> subjects(id) <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">CASCADE</span>
+</span></span><span style="display:flex;"><span>) CHARSET<span style="color:#f92672">=</span>utf8;
+</span></span></code></pre></div><h2 id="2-连接查询">2. 连接查询</h2>
+<h3 id="21-内连接inner-join">2.1 内连接（INNER JOIN）</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 写法1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> students.name, subjects.title, scores.score
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> scores
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> students <span style="color:#66d9ef">ON</span> scores.stu_id <span style="color:#f92672">=</span> students.id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> subjects <span style="color:#66d9ef">ON</span> scores.sub_id <span style="color:#f92672">=</span> subjects.id;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 写法2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> students.name, subjects.title, scores.score
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> students
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> scores <span style="color:#66d9ef">ON</span> scores.stu_id <span style="color:#f92672">=</span> students.id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> subjects <span style="color:#66d9ef">ON</span> scores.sub_id <span style="color:#f92672">=</span> subjects.id;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 写法3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> students.name, subjects.title, scores.score
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> subjects
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> scores <span style="color:#66d9ef">ON</span> scores.sub_id <span style="color:#f92672">=</span> subjects.id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> students <span style="color:#66d9ef">ON</span> scores.stu_id <span style="color:#f92672">=</span> students.id;
+</span></span></code></pre></div><h3 id="22-左连接left-join">2.2 左连接（LEFT JOIN）</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> students
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">LEFT</span> <span style="color:#66d9ef">JOIN</span> scores <span style="color:#66d9ef">ON</span> students.id <span style="color:#f92672">=</span> scores.stu_id;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> scores
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">LEFT</span> <span style="color:#66d9ef">JOIN</span> students <span style="color:#66d9ef">ON</span> students.id <span style="color:#f92672">=</span> scores.stu_id;
+</span></span></code></pre></div><h3 id="23-右连接right-join">2.3 右连接（RIGHT JOIN）</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> students
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">RIGHT</span> <span style="color:#66d9ef">JOIN</span> scores <span style="color:#66d9ef">ON</span> students.id <span style="color:#f92672">=</span> scores.stu_id;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> scores
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">RIGHT</span> <span style="color:#66d9ef">JOIN</span> students <span style="color:#66d9ef">ON</span> students.id <span style="color:#f92672">=</span> scores.sub_id;
+</span></span></code></pre></div><h3 id="24-连接查询技巧">2.4 连接查询技巧</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 省略重复列名的表名前缀
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> name, title, score
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> scores
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> students <span style="color:#66d9ef">ON</span> scores.stu_id <span style="color:#f92672">=</span> students.id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> subjects <span style="color:#66d9ef">ON</span> scores.sub_id <span style="color:#f92672">=</span> subjects.id;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 使用表别名简化查询
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> name, score
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> scores <span style="color:#66d9ef">AS</span> sco
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">RIGHT</span> <span style="color:#66d9ef">JOIN</span> students <span style="color:#66d9ef">AS</span> stu <span style="color:#66d9ef">ON</span> stu.id <span style="color:#f92672">=</span> sco.stu_id;
+</span></span></code></pre></div><h3 id="25-常见查询示例">2.5 常见查询示例</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 查询学生的姓名、平均分
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> students.name <span style="color:#66d9ef">AS</span> <span style="color:#960050;background-color:#1e0010">姓名</span>, <span style="color:#66d9ef">AVG</span>(scores.score) <span style="color:#66d9ef">AS</span> <span style="color:#960050;background-color:#1e0010">平均分</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> scores
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> students <span style="color:#66d9ef">ON</span> scores.stu_id <span style="color:#f92672">=</span> students.id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> students.name;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 查询男生的姓名、总分  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> students.name, <span style="color:#66d9ef">SUM</span>(scores.score)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> scores
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> students <span style="color:#66d9ef">ON</span> scores.stu_id <span style="color:#f92672">=</span> students.id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> students.gender <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> students.name;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 查询科目的名称、平均分
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> subjects.title, <span style="color:#66d9ef">AVG</span>(scores.score)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> scores
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> subjects <span style="color:#66d9ef">ON</span> scores.sub_id <span style="color:#f92672">=</span> subjects.id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> subjects.title;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 查询未删除科目的名称、平均分、最高分
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> subjects.title, <span style="color:#66d9ef">AVG</span>(scores.score), <span style="color:#66d9ef">MAX</span>(scores.score)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> scores
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> subjects <span style="color:#66d9ef">ON</span> scores.sub_id <span style="color:#f92672">=</span> subjects.id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> subjects.is_deleted <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> subjects.title;
+</span></span></code></pre></div><h2 id="3-自关联查询">3. 自关联查询</h2>
+<h3 id="31-创建自关联表">3.1 创建自关联表</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> areas (
+</span></span><span style="display:flex;"><span>    id INT <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> AUTO_INCREMENT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    title VARCHAR(<span style="color:#ae81ff">40</span>),
+</span></span><span style="display:flex;"><span>    pid INT,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (pid) <span style="color:#66d9ef">REFERENCES</span> areas(id)
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><h3 id="32-导入自关联数据">3.2 导入自关联数据</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 拷贝SQL文件到服务器</span>
+</span></span><span style="display:flex;"><span>scp areas.sql user@server:/path/to/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 登录MySQL，选择数据库</span>
+</span></span><span style="display:flex;"><span>mysql -u root -p
+</span></span><span style="display:flex;"><span>USE mydb;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行SQL文件</span>
+</span></span><span style="display:flex;"><span>SOURCE /path/to/areas.sql;
+</span></span></code></pre></div><h3 id="33-自关联查询示例">3.3 自关联查询示例</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 查询省级单位数量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">FROM</span> areas <span style="color:#66d9ef">WHERE</span> pid <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NULL</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 查询名为&#34;山西省&#34;的所有城市
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> city.<span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> areas <span style="color:#66d9ef">AS</span> city
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> areas <span style="color:#66d9ef">AS</span> province <span style="color:#66d9ef">ON</span> city.pid <span style="color:#f92672">=</span> province.id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> province.title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;山西省&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 查询名为&#34;广州市&#34;的所有区县
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> district.<span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> areas <span style="color:#66d9ef">AS</span> district
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> areas <span style="color:#66d9ef">AS</span> city <span style="color:#66d9ef">ON</span> city.id <span style="color:#f92672">=</span> district.pid
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> areas <span style="color:#66d9ef">AS</span> province <span style="color:#66d9ef">ON</span> province.id <span style="color:#f92672">=</span> city.pid
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> city.title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;广州市&#39;</span>;
+</span></span></code></pre></div><h2 id="4-视图">4. 视图</h2>
+<h3 id="41-创建视图">4.1 创建视图</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">VIEW</span> view_name <span style="color:#66d9ef">AS</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> ...
+</span></span></code></pre></div><h3 id="42-删除视图">4.2 删除视图</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">VIEW</span> view_name;
+</span></span></code></pre></div><h2 id="5-事务">5. 事务</h2>
+<h3 id="51-事务特性acid">5.1 事务特性（ACID）</h3>
 <ul>
-<li>在创建scores表时可以直接创建约束</li>
-<li>creat table socres ( id int() primary key auto_increament notnull,</li>
-<li>score decimal(5,2) default 0,</li>
-<li>stuid int,</li>
-<li>subid int,</li>
-<li>foreign key (stuid) references students(id),</li>
-<li>foreign key (subid) references subjetes(id))charset=utf8;</li>
-<li>插入数据到成绩表</li>
-<li>insert into scores(id,score,stuid,sunid) values(1,90,1,2)</li>
-<li>被引用的数据不能够删除</li>
-<li>外键的级联操作</li>
-<li>creat table socres ( id int() primary key auto_increament notnull,</li>
-<li>score decimal(5,2) default 0,</li>
-<li>stuid int,</li>
-<li>subid int,</li>
-<li>foreign key (stuid) references students(id) on delete cascade,</li>
-<li>foreign key (subid) references subjetes(id) on delete cascade</li>
-<li>)charset=utf8;</li>
+<li>原子性（Atomicity）</li>
+<li>一致性（Consistency）</li>
+<li>隔离性（Isolation）</li>
+<li>持久性（Durability）</li>
 </ul>
-<hr>
-<h1 id="连接查询">连接查询</h1>
+<h3 id="52-事务使用">5.2 事务使用</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 开启事务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">BEGIN</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 提交事务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">COMMIT</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 回滚事务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">ROLLBACK</span>;
+</span></span></code></pre></div><h3 id="53-表引擎与事务">5.3 表引擎与事务</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 查看数据库引擎
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SHOW</span> ENGINES;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 查看表的创建语句
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SHOW</span> <span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">table_name</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 修改表引擎为InnoDB  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">table_name</span> ENGINE <span style="color:#f92672">=</span> InnoDB;
+</span></span></code></pre></div><h2 id="6-索引">6. 索引</h2>
+<h3 id="61-索引设计原则">6.1 索引设计原则</h3>
 <ul>
-<li>内连接 (inner join)</li>
-<li>姓名(name)  标题(title)  分数（score）</li>
-<li>1.这三个字段来自三张表,students.name,subjects.title,scores.score</li>
-<li>2.这三张表有什么关系</li>
-<li>a,scores和学生表scores.stuid = students.id</li>
-<li>b,scores 和subjects 的关系 scores.subid  = subjects.id</li>
-<li>第一种写法</li>
-<li>select students.name,subjects.title,scores.score from</li>
-<li>scores inner join students on scores.stuid = students.id</li>
-<li>inner join subjects on scores.subid = subjects.id;</li>
-<li>第二种写法：</li>
-<li>select students.name,subjects.title,scores.score from students</li>
-<li>inner join scores on scores.stuid = students.id</li>
-<li>inner join subjects on scores.subid = subjects.id;</li>
-<li>第三种写法</li>
-<li>select students.name,subjects.title,scores.score from subjects</li>
-<li>inner join scores on scores.subid = subjects.id</li>
-<li>inner join students on scores.stuid = students.id;</li>
-<li>左链接 (left join)</li>
-<li>select * from students left join scores on students.id =scores.stuid;</li>
-<li>select * from scores left join students on students.id = scores.subid;</li>
-<li>右链接 (rigth join)</li>
-<li>select * from students right join scores on students.id =scores.stuid;</li>
-<li>select * from scores right join students on students.id = scores.subid;</li>
-<li>•	如果多个表中列名不重复可以省略“表名.”部分</li>
-<li>select name,title,score from scores</li>
-<li>inner join students on scores.stuid=students.id</li>
-<li>inner join subjects on scores.subid=subjects.id;</li>
-<li>•	如果表的名称太长，可以在表名后面使用&rsquo; as 简写名&rsquo;或&rsquo; 简写名&rsquo;，为表起个临时的简写名称</li>
-<li>select name ,score  from scores as sco</li>
-<li>right join students as stu on stu.id = sco.stuid;</li>
-<li>•	查询学生的姓名、平均分</li>
-<li>select students.name as 姓名,avg(scores.score) as 平均分 from scores inner join students on scores.stuid = students.id group by students.name;</li>
-<li>•	查询男生的姓名、总分</li>
-<li>select students.name,sum(scores.score) from scores inner join students on students on scores.stuid = students.id where students.gender=1  group by students.name;</li>
-<li>•	查询科目的名称、平均分</li>
-<li>select subjects.title,avg(scores.score) from scores inner join subjects on</li>
-<li>scores.stuid = sunjects.id where group by subjects.title;</li>
-<li>•	查询未删除科目的名称、平均分、最高分</li>
-<li>select subjects.title,avg(scores.score),max(scores.score) from scores inner join subjects on</li>
-<li>scores.stuid = sunjects.id where subjects.isdelete=0 group by subjects.title;</li>
-<li></li>
+<li>选择尽可能小的数据类型</li>
+<li>选择简单的数据类型</li>
+<li>尽量避免NULL值</li>
 </ul>
-<hr>
-<h1 id="自关联">自关联</h1>
+<h3 id="62-索引操作">6.2 索引操作</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 查看索引
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SHOW</span> <span style="color:#66d9ef">INDEX</span> <span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table_name</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 创建索引
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> index_name <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">table_name</span> (<span style="color:#66d9ef">column_name</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 删除索引
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">INDEX</span> index_name <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">table_name</span>;
+</span></span></code></pre></div><h3 id="63-性能分析">6.3 性能分析</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 开启查询分析
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SET</span> profiling <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 执行查询语句
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 查看查询耗时
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SHOW</span> PROFILES;
+</span></span></code></pre></div><h3 id="64-索引使用示例">6.4 索引使用示例</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 为areas表的title列创建索引
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> idx_areas_title <span style="color:#66d9ef">ON</span> areas (title(<span style="color:#ae81ff">20</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 执行查询语句
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 查看查询耗时
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SHOW</span> PROFILES;
+</span></span></code></pre></div><h2 id="7-常用字符串函数">7. 常用字符串函数</h2>
 <ul>
-<li>1.引入自关联</li>
-<li>创建areas地区表 ：</li>
-<li>create table areas (</li>
-<li>id int primary key auto_ increment not mull,</li>
-<li>atitle varchar(40),</li>
-<li>pid int(11),</li>
-<li>foreign key(pid) references areas(id)</li>
-<li>);</li>
-<li></li>
-<li>导入数据</li>
-<li>1.把areas.sql文件拷贝到liunx 上，</li>
-<li>2.在当前目录进入到Mysql 选择数据库，执行命令:source areas.sql</li>
-<li>自关联表的数据的查询：</li>
-<li>查询一共有多少个省级单位</li>
-<li>select * from areas where pid is null;</li>
-<li>select id,atitle from areas where pid is null;</li>
-<li>查询省的名字为&quot;&ldquo;山西省&quot;所有城市</li>
-<li>1.列出的城市的inxi:city.*</li>
-<li>2.隐含条件，city.pid=province.id 要取别名</li>
-<li>3.where provice.atitle = &ldquo;山西省&rdquo;</li>
-<li>4.总共一张表，有两中数据类型，模拟两张表</li>
-<li>select city.* from areas as city inner join areas as province on city.pid=province.id where province.atitle = &ldquo;山西省&rdquo;;</li>
-<li>查询市的名称为广州市的所有区县</li>
-<li>1.虚拟三张表，provice,city,dis  select dis.*</li>
-<li>2.隐含条件，city.pid=province.id ,dis.pid=city.id 要取别名</li>
-<li>where city.atitle=&ldquo;广州市&rdquo;</li>
-<li>select dis*  from areas as dis inner join areas as city on city.id = dis.pid inner join areas as province on procince.id = city.pid where provice.atitle = &ldquo;广州市&rdquo;;</li>
-<li></li>
-</ul>
-<hr>
-<h1 id="视图">视图</h1>
-<ul>
-<li>creat view as select&hellip;</li>
-<li>如果说两张表里面的==字段相同==就不能进行创建视图</li>
-<li>删除视图drop view xxx</li>
-</ul>
-<hr>
-<h1 id="事务">事务</h1>
-<ul>
-<li>事务的四大特性：（ACID）</li>
-<li>原子性（Atomicity）  要么全部完成，要么都不成功</li>
-<li>一致性(Consistency)  几个并行执行的事务，其执行结果必须与按照某一舒徐串执行的结果相一致</li>
-<li>隔离性(Isolation)   事务的执行不受其他事务的干扰，事务执行的中间结果对其他事务必须市透明的</li>
-<li>持久性(Durability)  对于任意已提交事务，系统必须保证该事务对数据库的改变不被丢失，即使数据库出现故障；</li>
-<li>要求：表的类型必须市innodb 或bdb类型，才可以对此表使用事务；</li>
-<li>数据库引擎是用于存储、处理和保护数据的核心服务，利用数据库引擎可以控制访问权限并快速处理事务，从而满足企业内大多数需要处理大量数据的应用程序的要求。</li>
-<li>查看引擎：show engines;</li>
-<li>查看表的创建语句： show create table students/xxx;</li>
-<li>修改表的字段：alert table &ldquo;表明&rdquo; engine=innodb;</li>
-</ul>
-<h3 id="使用事务的情况">使用事务的情况；</h3>
-<ul>
-<li>开启 begin;</li>
-<li>提交： commit</li>
-<li>回滚： rollbaack;</li>
-</ul>
-<hr>
-<h1 id="索引">索引</h1>
-<ul>
-<li>越小的数据通常更好</li>
-<li>简单的数据类型更好</li>
-<li>尽量避免null</li>
-<li>相关操作</li>
-<li>show index from xxxx;</li>
-<li>创建索引</li>
-<li>create index 索引名 on 表(哪一列);</li>
-<li>删除索引</li>
-<li>drop index  索引名 on 表；</li>
-<li>开启运行时间检测；</li>
-<li>set profiling =1;</li>
-<li>执行查询语句：</li>
-<li></li>
-<li>查看执行时间：</li>
-<li>show profiles;</li>
-<li>为表areas 的atitle创建索引</li>
-<li>create index 索引名 on areas(atitle(20))</li>
-<li>执行查询语句</li>
-<li>在看执行时间</li>
-<li>show profiles;</li>
-<li>字符串函数select ascii(&lsquo;a&rsquo;);</li>
-<li>拼接字符串select concat(12,34,&lsquo;ab&rsquo;)</li>
-<li>查看字符串长度select length(&lsquo;abbc&rsquo;)</li>
-<li>截取字符串select substring(&ldquo;abc123&rdquo;,2,3);</li>
-<li>select left(&lsquo;1234&rsquo;,2)</li>
-<li>select right()</li>
-<li>去除空格：select trim(&rdquo;  barr  &ldquo;)</li>
+<li><code>ASCII(str)</code>：返回字符串第一个字符的ASCII码值</li>
+<li><code>CONCAT(str1, str2, ...)</code>：拼接多个字符串</li>
+<li><code>LENGTH(str)</code>：返回字符串的长度</li>
+<li><code>SUBSTRING(str, pos, len)</code>：截取字符串的子串</li>
+<li><code>LEFT(str, len)</code>：返回字符串左边指定长度的子串</li>
+<li><code>RIGHT(str, len)</code>：返回字符串右边指定长度的子串</li>
+<li><code>TRIM(str)</code>：去除字符串两端的空格</li>
 </ul></div>
     </article>
   </main>

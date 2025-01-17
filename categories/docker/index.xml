@@ -44,14 +44,14 @@
       <description></description>
     </item>
     <item>
-      <title>Docker添加root权限省去sudo</title>
+      <title>Docker 用户权限配置指南</title>
       <link>https://sunnnner.github.io/posts/docker/docker%E6%B7%BB%E5%8A%A0root%E6%9D%83%E9%99%90%E7%9C%81%E5%8E%BBsudo/</link>
       <pubDate>Fri, 01 Nov 2019 15:35:30 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/docker/docker%E6%B7%BB%E5%8A%A0root%E6%9D%83%E9%99%90%E7%9C%81%E5%8E%BBsudo/</guid>
       <description></description>
     </item>
     <item>
-      <title>Docker操作</title>
+      <title>Docker &amp; Docker Compose 使用指南</title>
       <link>https://sunnnner.github.io/posts/docker/docker%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Tue, 08 Oct 2019 14:19:00 +0800</pubDate>
       <guid>https://sunnnner.github.io/posts/docker/docker%E6%93%8D%E4%BD%9C/</guid>

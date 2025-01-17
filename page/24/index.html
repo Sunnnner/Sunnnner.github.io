@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-	<meta name="generator" content="Hugo 0.140.2">
+	<meta name="generator" content="Hugo 0.141.0">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
@@ -65,7 +65,7 @@
 		
 			<article class="summary">
   <a href="https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C/session&#43;cookie%E5%92%8C%E4%BD%BF%E7%94%A8tocken%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/">
-    <h1 class="title">Session&#43;cookie和使用tocken有什么区别</h1>
+    <h1 class="title">Session&#43;cookie和使用token有什么区别</h1>
     
   </a>
   
@@ -89,8 +89,8 @@
     
       <a href="/categories/python">python</a>
   </strong>
- <span> • 12 words</span>
- <span> • 1 minute read</span>
+ <span> • 217 words</span>
+ <span> • 2 minute read</span>
   
     <div>
       <span>Tags:</span>
@@ -101,7 +101,75 @@
 </div>
 
   <div class="content">
-    <p><p>cookie数据存放在客户的浏览器上，session数据放在服务器上。</p></p>
+    <p><h2 id="1-基本概念对比">1. 基本概念对比</h2>
+<h3 id="11-存储位置">1.1 存储位置</h3>
+<table>
+  <thead>
+      <tr>
+          <th>机制</th>
+          <th>存储位置</th>
+          <th>安全性</th>
+          <th>性能影响</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Cookie</td>
+          <td>客户端浏览器</td>
+          <td>低</td>
+          <td>低</td>
+      </tr>
+      <tr>
+          <td>Session</td>
+          <td>服务器</td>
+          <td>高</td>
+          <td>高</td>
+      </tr>
+      <tr>
+          <td>Token</td>
+          <td>客户端</td>
+          <td>高</td>
+          <td>低</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="12-工作原理">1.2 工作原理</h3>
+<pre tabindex="0"><code>
+
+# Cookie工作流程
+1. 服务器发送Cookie
+Set-Cookie: user=john; expires=Sat, 31 Dec 2023 23:59:59 GMT
+
+2. 浏览器存储Cookie
+
+3. 后续请求自动携带Cookie
+Cookie: user=john
+
+# Session工作流程
+1. 用户登录
+2. 服务器创建Session并生成SessionID
+3. 将SessionID通过Cookie发送给客户端
+4. 客户端请求时携带SessionID
+5. 服务器验证SessionID并返回数据
+
+# Token工作流程
+1. 用户登录后服务器生成Token
+2. 客户端存储Token
+3. 请求时在Header中携带Token
+Authorization: Bearer &lt;token&gt;
+</code></pre><h2 id="2-特点比较">2. 特点比较</h2>
+<h3 id="21-cookie">2.1 Cookie</h3>
+<ul>
+<li>
+<p>优点：</p>
+<ol>
+<li>减轻服务器负担</li>
+<li>实现简单</li>
+<li>支持浏览器原生</li>
+</ol>
+</li>
+<li>
+<p>缺点：</p></p>
     
       <a href="https://sunnnner.github.io/posts/%E7%BD%91%E7%BB%9C/session&#43;cookie%E5%92%8C%E4%BD%BF%E7%94%A8tocken%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/">Read more...</a>
     
@@ -111,7 +179,7 @@
 		
 			<article class="summary">
   <a href="https://sunnnner.github.io/posts/linux/%E7%BA%BF%E7%A8%8B%E8%BF%9B%E7%A8%8B%E5%8D%8F%E7%A8%8B/">
-    <h1 class="title">线程进程协程</h1>
+    <h1 class="title">进程、线程与协程的深入理解</h1>
     
   </a>
   
@@ -135,7 +203,7 @@
     
       <a href="/categories/python">python</a>
   </strong>
- <span> • 20 words</span>
+ <span> • 110 words</span>
  <span> • 1 minute read</span>
   
 </div>
